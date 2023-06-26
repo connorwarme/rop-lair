@@ -11,7 +11,7 @@ export default function App() {
     <>
       <Nav />
       <div className="content">
-        <Profile />
+        <Home />
       </div>
     </>
   )

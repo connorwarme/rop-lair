@@ -1,6 +1,7 @@
 // import { useState } from 'react'
 import Nav from './components/Nav'
 import Home from './pages/Home'
+import Profile from './pages/Profile'
 
 import './App.css'
 
@@ -10,7 +11,7 @@ export default function App() {
     <>
       <Nav />
       <div className="content">
-        <Home />
+        <Profile />
       </div>
     </>
   )

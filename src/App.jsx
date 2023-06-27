@@ -12,6 +12,7 @@ export default function App() {
       <Nav />
       <div className="content">
         <Home />
+        <Profile />
       </div>
     </>
   )

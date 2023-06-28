@@ -19,8 +19,6 @@ const Profile = () => {
 
   useEffect(() => {
     fetch('http://localhost:3000/profile', {
-      method: "GET",
-      mode: "no-cors",
       headers: {
         "Authorization": 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjY0OTVkYTZkNWRlYTgwZmM2NWEwYTQ0NyIsImZpcnN0X25hbWUiOiJjb24iLCJmYW1pbHlfbmFtZSI6Im1hbiIsImVtYWlsIjoiY0BnbWFpbC5jb20iLCJsb2dpbmlkIjp7Imhhc2giOiIkMmEkMTIkbndCazFJUVpsU1BOOFVHRXFWcHl5ZUdmNFdwMmF1VGFHWm5nbGlFT1RuVnZMbmNvWXdqTXkiLCJnb29nbGVpZCI6bnVsbCwiZmJpZCI6bnVsbH0sImZyaWVuZF9saXN0IjoiNjQ5NWRhNmQ1ZGVhODBmYzY1YTBhNDQ2IiwiX192IjowfSwiaWF0IjoxNjg3NTQzMjk2fQ.BmCtxFg9iTT2PU1AwG-q_Gq2DSqgVFNmAydD47wTMrk',
       }
@@ -29,7 +27,6 @@ const Profile = () => {
       console.log(res)
       if (!res.ok) {
         throw Error('Problem getting a response from the server.')
-        
       }
       return res.json()
     })

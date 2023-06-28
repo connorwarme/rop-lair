@@ -33,12 +33,20 @@ const Profile = () => {
     .then((data) => {
       console.log(data)
       setError(null)
+      setUser({
+        // virtual "name" doesn't work yet, have to construct it from first and family name
+        // todo: check this by creating new user object (I already changed user model to provide virtuals toJSON)
+        // name: data.user.name,
+        name: data.user.first_name + ' ' + data.user.family_name,
+        photo: null,
+        description: "user updated from database",
+      })
     })
     .catch((err) => {
       console.log(err.message)
       setError(err.message)
     })
-  })
+  }, [])
 
   const handleClick = () => {
     const userCopy = { ...user }

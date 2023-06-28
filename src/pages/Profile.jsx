@@ -60,10 +60,9 @@ const Profile = () => {
         <div className="profile-content">
           { error && <div>{error}</div> }
           <h1 className="profile-title">{user.name}</h1>
+          <img className='profile-img'></img>
           <p className="description">{user.description}</p>
           <button onClick={handleClick}>Click me!</button>
-          <PostList posts={posts} />
-
         </div>
       </div>
     </>

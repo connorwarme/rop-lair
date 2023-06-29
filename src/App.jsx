@@ -2,6 +2,7 @@
 import Nav from './components/Nav'
 import Home from './pages/Home'
 import Profile from './pages/Profile'
+import Login from './pages/Login'
 
 import './App.css'
 
@@ -13,6 +14,7 @@ export default function App() {
       <div className="content">
         <Home />
         <Profile />
+        <Login />
       </div>
     </>
   )

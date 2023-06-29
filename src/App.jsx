@@ -1,10 +1,10 @@
 // import { useState } from 'react'
+import './App.css'
 import Nav from './components/Nav'
 import Home from './pages/Home'
 import Profile from './pages/Profile'
 import Login from './pages/Login'
-
-import './App.css'
+import SignUp from './pages/SignUp'
 
 export default function App() {
 
@@ -15,6 +15,7 @@ export default function App() {
         <Home />
         <Profile />
         <Login />
+        <SignUp />
       </div>
     </>
   )

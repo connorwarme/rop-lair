@@ -38,8 +38,8 @@ const Profile = () => {
       <div className="profile-container">
         <div className="profile-content">
           { error && <div>{error}</div> }
-          { data && <h1 className="profile-title">{data.user.first_name} || {data.user.family_name}</h1> }
-          <img className='profile-img'></img>
+          { data && <h1 className="profile-title">{data.profile.first_name} || {data.profile.family_name}</h1> }
+          { data.profile.picture && <img src={data.profile.picture} className='profile-img'></img> }
           <p className="description">{user.description}</p>
           <button onClick={handleClick}>Click me!</button>
         </div>

@@ -16,46 +16,16 @@ const Profile = () => {
     {title: "Post 2", author: "Connor", description: "A day at the lake...", id: 2},
     {title: "Post 3", author: "Caleb", description: "A day at the lake...", id: 3},
   ])
+  // regular profile (of actual user) works
   const url = 'http://localhost:3000/profile'
+  // visiting profile (of another user...)
+  const otherUrl = 'http://localhost:3000/profile/648f861a0f6d81f002a2a222'
   const auth = {
     headers: {
     "Authorization": value.headers.auth,
     }
   }
-  const { data, isLoading, error } = useFetch(url, auth)
-  // shifted hook logic to separate file (useFetch.js)
-  // const [error, setError] = useState(null)
-
-  // useEffect(() => {
-  //   fetch('http://localhost:3000/profile', {
-  //     headers: {
-  //       "Authorization": value.headers.auth,
-  //     }
-  //   })
-  //   .then((res) => {
-  //     console.log(res)
-  //     if (!res.ok) {
-  //       throw Error('Problem getting a response from the server.')
-  //     }
-  //     return res.json()
-  //   })
-  //   .then((data) => {
-  //     console.log(data)
-  //     setError(null)
-  //     setUser({
-  //       // virtual "name" doesn't work yet, have to construct it from first and family name
-  //       // todo: check this by creating new user object (I already changed user model to provide virtuals toJSON)
-  //       // name: data.user.name,
-  //       name: data.user.first_name + ' ' + data.user.family_name,
-  //       photo: null,
-  //       description: "user updated from database",
-  //     })
-  //   })
-  //   .catch((err) => {
-  //     console.log(err.message)
-  //     setError(err.message)
-  //   })
-  // }, [])
+  const { data, isLoading, error } = useFetch(otherUrl, auth)
 
   const handleClick = () => {
     const userCopy = { ...user }

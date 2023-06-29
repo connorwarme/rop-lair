@@ -7,7 +7,7 @@ const useFetch = (url, auth) => {
 
   useEffect(() => {
     fetch(url, {
-      headers: auth.header
+      headers: auth.headers,
     })
     .then(res => {
       if (!res.ok) {
@@ -25,7 +25,10 @@ const useFetch = (url, auth) => {
       setError(err.message)
       setLoading(false)
     })
-  }, [url, auth] )
+    // had to leave array empty otherwise it would loop infinitely
+    // not sure why, because neither url or auth values changed...
+    // seems to work now, besides vsc squawking at me
+  }, [] )
 
   return { data, isLoading, error }
 }

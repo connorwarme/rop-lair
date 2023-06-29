@@ -20,6 +20,8 @@ const useFetch = (url, auth) => {
       setError(null)
       setLoading(false)
       setData(data)
+    // virtual "name" doesn't work yet, have to construct it from first and family name
+    // todo: check this by creating new user object (I already changed user model to provide virtuals toJSON)
     })
     .catch(err => {
       setError(err.message)

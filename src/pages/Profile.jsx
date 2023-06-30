@@ -25,7 +25,7 @@ const Profile = () => {
     "Authorization": value.headers.auth,
     }
   }
-  const { data, isLoading, error } = useFetch(url, auth)
+  const { data, isLoading, error } = useFetch(otherUrl, auth)
 
   // currently debugging CORS - does it give error for both regular url and otherUrl?
   // does img display work? it threw an error (when i didn't internet) and the react page failed to load because "data was null" 

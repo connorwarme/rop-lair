@@ -57,9 +57,9 @@ const Login = () => {
         <div className="login-content">
           <form className="local-login" onSubmit={handleSubmit}>
             <label htmlFor="email">Email:</label>
-            <input type="text" id="email" value={email} onChange={(e) => handleChange(e, setEmail)} />
+            <input type="text" id="email" name="email" value={email} onChange={(e) => handleChange(e, setEmail)} />
             <label htmlFor="password">Password:</label>
-            <input type="text" id="password" value={password} onChange={(e) => handleChange(e, setPassword)} />
+            <input type="password" id="password" name='password' value={password} onChange={(e) => handleChange(e, setPassword)} />
             <button>Sign In</button>
           </form>
           <div className="google-login">

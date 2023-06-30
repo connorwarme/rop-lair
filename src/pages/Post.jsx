@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Comment from '../components/Comment';
 
 
 const Post = () => {
@@ -17,18 +18,21 @@ const Post = () => {
     {
       author: '1111',
       content: 'Here is my first mock comment',
+      id: 1,
     },
     {
       author: '2222',
       content: 'Here is the second mock comment',
+      id: 2,
     },
     {
       author: '1111',
       content: 'Here is the third mock comment',
+      id: 3,
     },
 
   ]
-  // like display:
+  // like display: *separate component*
   // need to count and report # of likes
   // need to filter likes -> if user likes, show unlike button. if not, show like button.
   // need function to handle liking or unliking post
@@ -47,8 +51,16 @@ const Post = () => {
           <div className="title">{post.title}</div>
           <div className="author">{post.author}</div>
           <div className="text">{post.text}</div>
-          <div className="likes"></div>
-          <div className="comments"></div>
+          <div className="likes">
+            {(mockLikes.length == 0) && <p>Be the first to like this post!</p>}
+            {(mockLikes.length == 1) && <p>1 Like</p>}
+            {(mockLikes.length > 1) && <p>{mockLikes.length} Likes</p>}
+          </div>
+          <div className="comments">
+            {mockComments.map(comment => {
+              return <Comment commentObj={comment} user={null} key={comment.id}/>
+            })}
+          </div>
         </div>
       </div>
     </>

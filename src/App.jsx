@@ -5,6 +5,7 @@ import Home from './pages/Home'
 import Profile from './pages/Profile'
 import Login from './pages/Login'
 import SignUp from './pages/SignUp'
+import Post from './pages/Post'
 
 export default function App() {
 
@@ -12,10 +13,11 @@ export default function App() {
     <>
       <Nav />
       <div className="content">
-        <Home />
-        <Profile />
-        <Login />
-        <SignUp />
+        {/* <Home /> */}
+        {/* <Profile /> */}
+        {/* <Login /> */}
+        {/* <SignUp /> */}
+        <Post />
       </div>
     </>
   )

@@ -11,7 +11,33 @@ const Post = () => {
     comments: [],
   })
 
+  const mockLikes = ['1111', '2222', '3333']
+  const mockComments = [
+    // real ones also have a date
+    {
+      author: '1111',
+      content: 'Here is my first mock comment',
+    },
+    {
+      author: '2222',
+      content: 'Here is the second mock comment',
+    },
+    {
+      author: '1111',
+      content: 'Here is the third mock comment',
+    },
+
+  ]
+  // like display:
+  // need to count and report # of likes
+  // need to filter likes -> if user likes, show unlike button. if not, show like button.
   // need function to handle liking or unliking post
+
+  // comment display:
+  // need a component for each comment. then map over the array and display them all. 
+  // if the user is an author of any comment, it should show:
+  // a delete button...need function
+  // an edit button... needs a function
   // need function to handle making a comment (as well as editing and deleting)
 
   return ( 

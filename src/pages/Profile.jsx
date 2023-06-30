@@ -25,7 +25,10 @@ const Profile = () => {
     "Authorization": value.headers.auth,
     }
   }
-  const { data, isLoading, error } = useFetch(otherUrl, auth)
+  const { data, isLoading, error } = useFetch(url, auth)
+
+  // currently debugging CORS - does it give error for both regular url and otherUrl?
+  // does img display work? it threw an error (when i didn't internet) and the react page failed to load because "data was null" 
 
   const handleClick = () => {
     const userCopy = { ...user }
@@ -39,7 +42,7 @@ const Profile = () => {
         <div className="profile-content">
           { error && <div>{error}</div> }
           { data && <h1 className="profile-title">{data.profile.first_name} || {data.profile.family_name}</h1> }
-          { data.profile.picture && <img src={data.profile.picture} className='profile-img'></img> }
+          {/* { data.profile.picture && <img src={data.profile.picture} className='profile-img'></img> } */}
           <p className="description">{user.description}</p>
           <button onClick={handleClick}>Click me!</button>
         </div>

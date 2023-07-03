@@ -1,6 +1,6 @@
 // local storage helper functions
 
-const local = (() => {
+const storage = (() => {
   const saveObject = (obj, key) => {
     const data = JSON.stringify(obj)
     localStorage.setItem(key, data)
@@ -22,7 +22,11 @@ const local = (() => {
   const clearStorage = (key) => {
     localStorage.removeItem(key)
   }
+
+  return { saveObject, returnObject, checkStorage, clearStorage }
 })
+
+export default storage;
 
 // copied from other project, need to adapt accordingly
 const ls = (() => {
@@ -77,4 +81,4 @@ function storageAvailable(type) {
   }
   }
 
-export { ls, storageAvailable };
+// export { ls, storageAvailable };

@@ -15,18 +15,12 @@ export default function App() {
       <Nav />
       <div className="content">
         <Routes>
-          <Route path='/' />
-          <Route path='/login' />
-          <Route path='/signup' />
-          <Route path='/profile' />
-          <Route path='/post' />
+          <Route path='/' element={ <Home /> } />
+          <Route path='/login' element={ <Login /> } />
+          <Route path='/signup' element={ <SignUp /> } />
+          <Route path='/profile' element={ <Profile /> } />
+          <Route path='/post' element={ <Post /> } />
           <Route />
-
-          {/* <Home /> */}
-        {/* <Profile /> */}
-        <Login />
-        {/* <SignUp /> */}
-        {/* <Post /> */}
         </Routes>
       </div>
     </>

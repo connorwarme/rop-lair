@@ -12,10 +12,6 @@ const Login = () => {
 
   const url = 'http://localhost:3000/auth/local'
 
-  // why is the browser blocking my request to outside resource (aka my backend)?
-
-  // removed headers and it goes through, but gives error - user not found (in db).
-  // not sure why?? is a user currently logged in? need to debug...
   const getData = () => {
     console.log('get data fired!')
     return { email: email, password: password }
@@ -28,6 +24,8 @@ const Login = () => {
     // but I haven't been able to confirm exactly how to do that / confirm that the data is going through.
     // other theory was that I passed through empty data values
     // I could check if the original state values are what is getting passed along, which would indicate a problem with my react code...
+    //
+    // update -> currently working. I think I needed to have the getData() to send through most recent input values..
     const data = getData()
     e.preventDefault()
     fetch(url, {
@@ -46,7 +44,9 @@ const Login = () => {
     .then(data => {
       console.log(data)
       setError(null)
-      // redirect to home page w/ user data
+      // need to handle data:
+      // route user to home page w/ data
+      // save token to local storage (build a getToken helper function so other pages can utilize)
     })
     .catch(err => {
       console.log(err)

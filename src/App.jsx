@@ -15,7 +15,7 @@ export default function App() {
       <Nav />
       <div className="content">
         <Routes>
-          <Route path='/' element={ <Home /> } />
+          <Route path='/' element={ <Home data="null" /> } />
           <Route path='/login' element={ <Login /> } />
           <Route path='/signup' element={ <SignUp /> } />
           <Route path='/profile' element={ <Profile /> } />

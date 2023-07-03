@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
+import { redirect, useNavigate } from 'react-router-dom';
 
 
 const Login = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState(null)
+
+  const navigate = useNavigate()
 
   const handleChange = (e, updateStateFn) => {
     updateStateFn(e.target.value)
@@ -45,6 +48,8 @@ const Login = () => {
       console.log(data)
       setError(null)
       // need to handle data:
+      // if I save the data on local storage, I could just redirect (w/o passing state)... I think?
+      navigate('/', { state: data })
       // route user to home page w/ data
       // save token to local storage (build a getToken helper function so other pages can utilize)
     })

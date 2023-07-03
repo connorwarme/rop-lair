@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import PostList from '../components/PostList';
 
 const Home = () => {
@@ -13,6 +14,9 @@ const Home = () => {
   const handleWithArg = (input) => {
     console.log('handle click with ' + input)
   }
+
+  const location = useLocation()
+
   return ( 
     <>
       <div className="home-container">
@@ -21,6 +25,7 @@ const Home = () => {
           <button onClick={handleClick} >Click Me!</button>
           <button onClick={() => handleWithArg('value')}>Click to add value!</button>
           <PostList posts={posts} full={false} />
+          { location.state && <h1>{location.state.user.first_name} || {location.state.user.family_name}</h1> }
         </div>
       </div>
     </>

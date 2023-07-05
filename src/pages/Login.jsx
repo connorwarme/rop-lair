@@ -50,8 +50,13 @@ const Login = () => {
       console.log(data)
       setError(null)
       // need to handle data:
+      // can have it return data about an error on login (incorrect email, or pw)
+      // need to differentiate b/w that and a successful login
+      // have failed ones stay on login w/ error displayed
+      // have successful ones redirect
       // save token to local storage (build a getToken helper function so other pages can utilize)
       saveObject(data.token, "token")
+      // need to deal w/ empty return value so it doesn't throw an error..
       console.log(returnObject("token"))
 
       // route user to home page w/ data

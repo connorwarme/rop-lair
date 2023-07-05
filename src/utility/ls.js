@@ -1,10 +1,16 @@
 // local storage helper functions
 
 const saveObject = (obj, key) => {
-  localStorage.setItem(key, JSON.stringify(obj))
+  if (obj) {
+    localStorage.setItem(key, JSON.stringify(obj))
+  }
 }
 
 const returnObject = (key) => {
+  const token = localStorage.getItem(key);
+  if (token === undefined) {
+    return null
+  }
   return JSON.parse(localStorage.getItem(key))
 }
 

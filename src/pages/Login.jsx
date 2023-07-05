@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { redirect, useNavigate } from 'react-router-dom';
-import storage from '../utility/ls';
+import { saveObject, returnObject } from '../utility/ls';
+
 
 
 const Login = () => {
@@ -49,12 +50,12 @@ const Login = () => {
       console.log(data)
       setError(null)
       // need to handle data:
-      // testing this, doesn't work -- need to debug
-      // "TypeError: (intermediate value).saveObject is not a function"
-      storage.saveObject(data.token, "token")
+      // save token to local storage (build a getToken helper function so other pages can utilize)
+      saveObject(data.token, "token")
+      console.log(returnObject("token"))
+
       // route user to home page w/ data
       navigate('/', { state: data })
-      // save token to local storage (build a getToken helper function so other pages can utilize)
 
     })
     .catch(err => {

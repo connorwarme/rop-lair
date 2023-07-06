@@ -42,38 +42,40 @@ const Login = () => {
     })
     .then(res => {
       if (!res.ok) {
-        throw Error('There was a problem logging in, please try again.')
+        const error = new Error()
+        setError('There was a problem logging in, please try again.')
+        error.status = 500
       }
-      return res.json()
+      return res.json({ errors: error })
     })
     .then(data => {
       console.log(data)
-      setError(null)
-      // need to handle data:
-      // can have it return data about an error on login (incorrect email, or pw)
-      // need to differentiate b/w that and a successful login
-      // have failed ones stay on login w/ error displayed
-      // have successful ones redirect
-      // save token to local storage (build a getToken helper function so other pages can utilize)
-      saveObject(data.token, "token")
-      // need to deal w/ empty return value so it doesn't throw an error..
-      console.log(returnObject("token"))
-
-      // route user to home page w/ data
-      navigate('/', { state: data })
-
+      if (data.errors) {
+        // remove password
+        setPassword('')
+        // update error
+        setError(data.errors)
+      } else {
+        setError(null)
+        // save token to local storage
+        saveObject(data.token, "token")
+        // need to deal w/ empty return value so it doesn't throw an error..
+        console.log(returnObject("token"))
+        // route user to home page w/ data
+        navigate('/', { state: data })
+      }
     })
     .catch(err => {
       console.log(err)
-      setError(err.messsage)
+      setError(err.msg)
     })
   }
 
   // local
   // handle error - return to login page w/ data, display errors
+  // highlight inputs with errors. focus on it..?
   // handle success -> redirect to...user profile?
-  // create my own function to run when the user clicks submit.
-  // have it try and submit the login to the backend, then respond accordingly. 
+
   return ( 
     <>
       <div className="login-container">
@@ -83,6 +85,18 @@ const Login = () => {
             <input type="text" id="email" name="email" value={email} onChange={(e) => handleChange(e, setEmail)} />
             <label htmlFor="password">Password:</label>
             <input type="password" id="password" name='password' value={password} onChange={(e) => handleChange(e, setPassword)} />
+            <div className="local-errors">
+              <ul className="errors-list">
+              { error && 
+                error.map( (err, index) => {
+                  if (err.path) {
+                    document.querySelector(`input#`+`${err.path}`).classList.add("input-error")
+                  }
+                return <li key={index}>Error: { err.msg }</li> 
+                })
+              }
+              </ul>
+            </div>
             <button>Sign In</button>
           </form>
           <div className="google-login">

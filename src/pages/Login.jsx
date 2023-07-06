@@ -21,6 +21,12 @@ const Login = () => {
     console.log('get data fired!')
     return { email: email, password: password }
   }
+
+  // local
+  // handle error - return to login page w/ data, display errors
+  // highlight inputs with errors. focus on it..?
+  // handle success -> redirect to...user profile?
+  
   const handleSubmit = (e) => {
     // okay, not sure what is going on.
     // I click submit and the form submits. 
@@ -55,6 +61,11 @@ const Login = () => {
         setPassword('')
         // update error
         setError(data.errors)
+        // todo: improve UI
+        // if error is with email, highlight + focus that field
+        // if error is with pw, highlight + focus that field
+        // have those errors appear beneath respective fields
+        // run validation check once user has spent time fixing either field... (remove highlight, maybe allow sign in button to be pressed)
       } else {
         setError(null)
         // save token to local storage
@@ -70,11 +81,6 @@ const Login = () => {
       setError(err.msg)
     })
   }
-
-  // local
-  // handle error - return to login page w/ data, display errors
-  // highlight inputs with errors. focus on it..?
-  // handle success -> redirect to...user profile?
 
   return ( 
     <>

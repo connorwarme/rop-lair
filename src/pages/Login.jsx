@@ -8,6 +8,7 @@ const Login = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState(null)
+  const [oauthError, setOAuthError] = useState(null)
 
   const navigate = useNavigate()
 
@@ -26,7 +27,7 @@ const Login = () => {
   // handle error - return to login page w/ data, display errors
   // highlight inputs with errors. focus on it..?
   // handle success -> redirect to...user profile?
-  
+
   const handleSubmit = (e) => {
     // okay, not sure what is going on.
     // I click submit and the form submits. 
@@ -79,6 +80,42 @@ const Login = () => {
     .catch(err => {
       console.log(err)
       setError(err.msg)
+    })
+  }
+
+  // oauth login
+  const handleOAuth = (platform) => {
+    const url = `http://localhost:3000/auth/` + platform
+    console.log(url)
+
+    fetch(url, {
+      // options
+    })
+    .then(res => {
+      if (!res.ok) {
+        const error = new Error()
+        setOAuthError('There was a problem logging in, please try again.')
+        error.status = 500
+      }
+      return res.json({ errors: error })
+    })
+    .then(data => {
+      console.log(data)
+      if (data.errors) {
+        setOAuthError(data.errors)
+      } else {
+        setOAuthError(null)
+        // save token to local storage
+        saveObject(data.token, "token")
+        // need to deal w/ empty return value so it doesn't throw an error..
+        console.log(returnObject("token"))
+        // route user to home page w/ data
+        navigate('/', { state: data })
+      }
+    })
+    .catch(err => {
+      console.log(err)
+      setOAuthError(err.msg)
     })
   }
 

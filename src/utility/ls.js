@@ -14,23 +14,9 @@ const returnObject = (key) => {
   return JSON.parse(localStorage.getItem(key))
 }
 
-
-// const storage = (() => {
-//   const checkStorage = (key) => {
-//     const content = localStorage.getItem(key)
-//     // does this check work? other one is below...slightly different
-//     if (!content) {
-//       return false
-//     }
-//     return content
-//   }
-//   // maybe create this as a way to clear everything that I store on local, not just each individual item...
-//   const clearStorage = (key) => {
-//     localStorage.removeItem(key)
-//   }
-
-//   return { saveObject, returnObject, checkStorage, clearStorage }
-// })
+const clearStorage = (key) => {
+  localStorage.removeItem(key)
+}
 
 
 // // copied from other project, need to adapt accordingly
@@ -86,4 +72,4 @@ const storageAvailable = (type) => {
   }
   }
 
-export { saveObject, returnObject, storageAvailable }
+export { saveObject, returnObject, clearStorage, storageAvailable }

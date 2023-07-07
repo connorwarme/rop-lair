@@ -90,6 +90,12 @@ const Login = () => {
 
     fetch(url, {
       // options
+      method: 'GET',
+      headers: {
+        Accept: 'application/json',
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": true,
+      }
     })
     .then(res => {
       if (!res.ok) {
@@ -114,6 +120,7 @@ const Login = () => {
       }
     })
     .catch(err => {
+      // todo: right now it is just logging an error - that there's no data to parse :(
       console.log(err)
       setOAuthError(err.msg)
     })
@@ -143,10 +150,13 @@ const Login = () => {
             <button>Sign In</button>
           </form>
           <div className="google-login">
-            <a href="/auth/google">Sign In with Google+</a>
+            <button onClick={() => handleOAuth('google')}>Sign In with Google+</button>
           </div>
           <div className="facebook-login">
-            <a href="/auth/facebook">Sign In with Facebook</a>
+            <button onClick={() => handleOAuth('facebook')}>Sign In with Facebook</button>
+          </div>
+          <div className="oauth-error">
+            { oauthError && <p>{oauthError}</p>}
           </div>
         </div>
       </div>

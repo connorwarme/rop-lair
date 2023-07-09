@@ -92,9 +92,10 @@ const Login = () => {
       // options
       method: 'GET',
       headers: {
-        Accept: 'application/json',
-        "Content-Type": "application/json",
+        // Accept: 'application/json',
+        // "Content-Type": "application/json",
         "Access-Control-Allow-Origin": true,
+
       }
     })
     .then(res => {
@@ -102,8 +103,17 @@ const Login = () => {
         const error = new Error()
         setOAuthError('There was a problem logging in, please try again.')
         error.status = 500
+        return res.json({ errors: error })
       }
-      return res.json({ errors: error })
+      console.log('wtf')
+      console.log(res.headers.get('location'))
+      // basically getting a blank response from my server
+      // which doesn't jive with my REST client test
+      // const response = Response.redirect(res.location)
+      // console.log(res)
+      // console.log(res.location)
+      // getting a blank response from my server. why?!!??!??!?!?!
+      return res.json()
     })
     .then(data => {
       console.log(data)

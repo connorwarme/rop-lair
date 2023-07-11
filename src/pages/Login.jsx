@@ -83,6 +83,10 @@ const Login = () => {
     })
   }
 
+  const google = () => {
+    window.open('http://localhost:3000/auth/google', "_self")
+  }
+
   // oauth login
   const handleOAuth = (platform) => {
     const url = `http://localhost:3000/auth/` + platform
@@ -160,7 +164,7 @@ const Login = () => {
             <button>Sign In</button>
           </form>
           <div className="google-login">
-            <button onClick={() => handleOAuth('google')}>Sign In with Google+</button>
+            <button onClick={google}>Sign In with Google+</button>
           </div>
           <div className="facebook-login">
             <button onClick={() => handleOAuth('facebook')}>Sign In with Facebook</button>

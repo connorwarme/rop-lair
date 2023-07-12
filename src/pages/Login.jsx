@@ -94,12 +94,10 @@ const Login = () => {
 
     fetch(url, {
       // options
-      // can't tell if cors or no-cors makes any difference for me...
-      // mode: 'no-cors',
       method: 'GET',
       headers: {
-        // Accept: 'application/json',
-        // "Content-Type": "application/json",
+        Accept: 'application/json',
+        "Content-Type": "application/json",
         "Access-Control-Allow-Origin": true,
 
       }
@@ -111,17 +109,8 @@ const Login = () => {
         error.status = 500
         return res.json({ errors: error })
       }
-      // none of the headers are getting read... :/
-      console.log(res.headers.get('Location')) // null
-      console.log(res.headers) // content-length: 0
-      console.log(res.headers.get('X-Redirect')) // null
-      // returns null --> because of CORS I think
-      // basically getting a blank response from my server
-      // which doesn't jive with my REST client test
-      // const response = Response.redirect(res.location)
-      // console.log(res)
-      // console.log(res.location)
-      // getting a blank response from my server. why?!!??!??!?!?!
+      console.log(res)
+
       return res.json()
     })
     .then(data => {
@@ -169,7 +158,7 @@ const Login = () => {
             <button>Sign In</button>
           </form>
           <div className="google-login">
-            <button onClick={() => handleOAuth('google')}>Sign In with Google+</button>
+            <button onClick={google}>Sign In with Google+</button>
           </div>
           <div className="facebook-login">
             <button onClick={() => handleOAuth('facebook')}>Sign In with Facebook</button>

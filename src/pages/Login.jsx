@@ -92,6 +92,7 @@ const Login = () => {
   }
 
   // oauth login
+  // not using currently (7/13)
   const handleOAuth = (platform) => {
     const url = `http://localhost:3000/auth/` + platform
     console.log(url)
@@ -132,7 +133,6 @@ const Login = () => {
       }
     })
     .catch(err => {
-      // todo: right now it is just logging an error - that there's no data to parse :(
       console.log(err)
       setOAuthError(err.msg)
     })

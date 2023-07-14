@@ -1,8 +1,24 @@
-import { useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { useLocation, useParams } from 'react-router-dom';
 import PostList from '../components/PostList';
 
 const Home = () => {
+  const { access } = useParams()
+  const [ params, setParams ] = useState(null) 
+  const [accessToken, setAccessToken] = useState(false)
+  const [refreshToken, setRefreshToken] = useState(false)
+  const [user, setUser] = useState(null)
+
+  const location = useLocation()
+  console.log(access)
+
+  // useEffect(() => {
+  //   const queryParams = new URLSearchParams(location.search)
+  //   const access = queryParams.get('access')
+  //   console.log(access)
+
+  // }, [])
+
   const [posts, setPosts] = useState([
     {title: "Post 1", author: "Amity", description: "A day at the lake...", id: 1},
     {title: "Post 2", author: "Connor", description: "A day at the lake...", id: 2},
@@ -15,7 +31,6 @@ const Home = () => {
     console.log('handle click with ' + input)
   }
 
-  const location = useLocation()
 
   return ( 
     <>

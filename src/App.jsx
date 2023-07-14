@@ -15,11 +15,12 @@ export default function App() {
       <Nav />
       <div className="content">
         <Routes>
-          <Route path='/' element={ <Home data="null" /> } />
+          <Route path='/' element={ <Home /> } />
+          <Route path='/:access' element={ <Home /> } />
           <Route path='/login' element={ <Login /> } />
           <Route path='/signup' element={ <SignUp /> } />
           <Route path='/profile' element={ <Profile /> } />
-          <Route path='/post' element={ <Post /> } />
+          <Route path='/post/:id' element={ <Post /> } />
           <Route />
         </Routes>
       </div>

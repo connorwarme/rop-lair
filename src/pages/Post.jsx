@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import Comment from '../components/Comment';
+import { useParams } from 'react-router-dom';
 
 
 const Post = () => {
+  const { id } = useParams() 
+  // then I can run a fetch request for the specific blog
   const [post, setPost] = useState({
     title: "title",
     author: "author",

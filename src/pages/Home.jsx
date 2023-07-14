@@ -3,21 +3,42 @@ import { useLocation, useParams } from 'react-router-dom';
 import PostList from '../components/PostList';
 
 const Home = () => {
-  const { access } = useParams()
   const [ params, setParams ] = useState(null) 
   const [accessToken, setAccessToken] = useState(false)
   const [refreshToken, setRefreshToken] = useState(false)
   const [user, setUser] = useState(null)
 
   const location = useLocation()
-  console.log(access)
+  
 
-  // useEffect(() => {
-  //   const queryParams = new URLSearchParams(location.search)
-  //   const access = queryParams.get('access')
-  //   console.log(access)
-
-  // }, [])
+  useEffect(() => {
+    const getUser = async () => {
+      fetch("http://localhost:3000/auth/login/success", {
+        method: "GET",
+        credentials: "include",
+        headers: {
+          
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Credentials": "true",
+        },
+      })
+      .then(res => {
+        if (res.status === 200) return res.json()
+        throw new Error("authentication has failed! :/")
+      })
+      .then(data => {
+        console.log(data)
+        setUser(data.user)
+        setAccessToken(data.access)
+        setRefreshToken(data.refresh)
+      })
+      .catch(err => {
+        console.log(err)
+      })
+    }
+    getUser()
+  }, [])
 
   const [posts, setPosts] = useState([
     {title: "Post 1", author: "Amity", description: "A day at the lake...", id: 1},
@@ -41,6 +62,9 @@ const Home = () => {
           <button onClick={() => handleWithArg('value')}>Click to add value!</button>
           <PostList posts={posts} full={false} />
           { location.state && <h1>{location.state.user.first_name} || {location.state.user.family_name}</h1> }
+
+          { user && <h1>{user.family_name} || {user.first_name}</h1>}
+          { accessToken && <p>{accessToken}</p>}
         </div>
       </div>
     </>

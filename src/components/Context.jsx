@@ -8,9 +8,11 @@ const Context = (props) => {
   useEffect(() => {
     axios.get("http://localhost:3000/auth/user", { withCredentials: true })
       .then(res => {
-        if (res.data) {
-          console.log(res)
-          setUserObject(res.data)
+        if (res.status === 200 && res.data.user) {
+          console.log(res.data)
+          setUserObject(res.data.user)
+          // need to deal with the access and refresh tokens
+          // save to local storage?
         }
       })
       .catch(err => {

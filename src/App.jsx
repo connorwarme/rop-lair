@@ -13,6 +13,10 @@ import { myContext } from './components/Context'
 export default function App() {
   const userObject = useContext(myContext)
   console.log(userObject)
+  // how to utilize userObject?
+  // how to protect routes on frontend?
+  // how to send auth header when needed?
+  // how to refresh token when needed?
   return (
     <>
       <Nav />

@@ -10,35 +10,35 @@ const Home = () => {
 
   const location = useLocation()
   
-
-  useEffect(() => {
-    const getUser = async () => {
-      fetch("http://localhost:3000/auth/login/success", {
-        method: "GET",
-        credentials: "include",
-        headers: {
+  // trying useContext hook 7/15
+  // useEffect(() => {
+  //   const getUser = async () => {
+  //     fetch("http://localhost:3000/auth/login/success", {
+  //       method: "GET",
+  //       credentials: "include",
+  //       headers: {
           
-          Accept: "application/json",
-          "Content-Type": "application/json",
-          "Access-Control-Allow-Credentials": "true",
-        },
-      })
-      .then(res => {
-        if (res.status === 200) return res.json()
-        throw new Error("authentication has failed! :/")
-      })
-      .then(data => {
-        console.log(data)
-        setUser(data.user)
-        setAccessToken(data.access)
-        setRefreshToken(data.refresh)
-      })
-      .catch(err => {
-        console.log(err)
-      })
-    }
-    getUser()
-  }, [])
+  //         Accept: "application/json",
+  //         "Content-Type": "application/json",
+  //         "Access-Control-Allow-Credentials": "true",
+  //       },
+  //     })
+  //     .then(res => {
+  //       if (res.status === 200) return res.json()
+  //       throw new Error("authentication has failed! :/")
+  //     })
+  //     .then(data => {
+  //       console.log(data)
+  //       setUser(data.user)
+  //       setAccessToken(data.access)
+  //       setRefreshToken(data.refresh)
+  //     })
+  //     .catch(err => {
+  //       console.log(err)
+  //     })
+  //   }
+  //   getUser()
+  // }, [])
 
   const [posts, setPosts] = useState([
     {title: "Post 1", author: "Amity", description: "A day at the lake...", id: 1},

@@ -56,6 +56,7 @@ const Login = () => {
       return res.json({ errors: error })
     })
     .then(data => {
+      // this is giving me user object, access token, and refresh token
       console.log(data)
       if (data.errors) {
         // remove password
@@ -70,9 +71,9 @@ const Login = () => {
       } else {
         setError(null)
         // save token to local storage
-        saveObject(data.token, "token")
+        saveObject(data.accessToken, "access")
         // need to deal w/ empty return value so it doesn't throw an error..
-        console.log(returnObject("token"))
+        console.log(returnObject("access"))
         // route user to home page w/ data
         navigate('/', { state: data })
       }

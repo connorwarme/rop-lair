@@ -11,7 +11,8 @@ const returnObject = (key) => {
   if (token === undefined) {
     return null
   }
-  return JSON.parse(localStorage.getItem(key))
+  // return JSON.parse(localStorage.getItem(key))
+  return token
 }
 
 const clearStorage = (key) => {

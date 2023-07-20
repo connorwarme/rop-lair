@@ -1,38 +1,35 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
+
+// maybe this screen just shows a loading / spin wheel...then navigates to home
 
 const Temp = () => {
   const [user, setUser] = useState(null)
 
-  const getUser = () => {
-    // get cookie
-    // send axios req w/ cookie to backend
-    // get userid, deserialize user
-    // then make JWT and return token
-    // setUser on client, show it on temp page
-    // const cookie = document.cookie
-    // const connect = cookie.split('=')[1]
-
-    axios.get("http://localhost:3000/login/failed", {
+  useEffect(() => {
+    axios.get("http://localhost:3000/auth/oauth", {
       withCredentials: true,
     })
-      .then(res => {
-        console.log(res)
-        // if (res.status === 200 && res.data.user) {
-        //   console.log(res.data)
-        //   setUserObject(res.data.user)
-        // save access and refresh tokens to local storage?
-        // }
-      })
-      .catch(err => {
-        console.log(err)
-      })
-  }
+    .then(res => {
+      console.log(res)
+      if (res.data) {
+        // should be getting user and accessToken and refreshToken
+        setUser(res.data)
+        // i guess i just need the tokens...
+
+        // navigate to home page
+      }
+    })
+    .catch(err => {
+      console.log(err)
+      // navigate to login page w/ err message (maybe pass it through state)
+    })
+  }, [])
 
   return ( 
     <>
       <h1>Temp Auth Success.. not sure what to do. </h1>
-      <button onClick={getUser}>Click Me</button>
+      <button onClick={() => console.log(user)}>Click Me</button>
       { user && <h4>{user.first_name}</h4> }
     </>
    );

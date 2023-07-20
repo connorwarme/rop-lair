@@ -85,7 +85,8 @@ const Login = () => {
   }
 
   const google = () => {
-    window.open('http://localhost:3000/auth/google', "_self")
+    // window.open('http://localhost:3000/auth/google', "_self")
+    handleOAuth('google')
   }
 
   const facebook = () => {
@@ -100,11 +101,11 @@ const Login = () => {
 
     fetch(url, {
       // options
-      method: 'GET',
+      method: 'POST',
       headers: {
         Accept: 'application/json',
         "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": true,
+        "Access-Control-Allow-Origin": 'https://accounts.google.com/o/oauth2/v2/auth',
 
       }
     })
@@ -116,7 +117,6 @@ const Login = () => {
         return res.json({ errors: error })
       }
       console.log(res)
-
       return res.json()
     })
     .then(data => {
@@ -126,9 +126,9 @@ const Login = () => {
       } else {
         setOAuthError(null)
         // save token to local storage
-        saveObject(data.token, "token")
+        saveObject(data.access, "access")
         // need to deal w/ empty return value so it doesn't throw an error..
-        console.log(returnObject("token"))
+        console.log(returnObject("access"))
         // route user to home page w/ data
         navigate('/', { state: data })
       }

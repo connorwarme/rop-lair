@@ -7,6 +7,7 @@ import Profile from './pages/Profile'
 import Login from './pages/Login'
 import SignUp from './pages/SignUp'
 import Post from './pages/Post'
+import Temp from './components/Temp'
 import { useContext } from 'react'
 import { myContext } from './components/Context'
 
@@ -23,7 +24,7 @@ export default function App() {
       <div className="content">
         <Routes>
           <Route path='/' element={ <Home /> } />
-          <Route path='/:access' element={ <Home /> } />
+          <Route path='/auth/success' element={ <Temp /> } />
           <Route path='/login' element={ <Login /> } />
           <Route path='/signup' element={ <SignUp /> } />
           <Route path='/profile' element={ <Profile /> } />

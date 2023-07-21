@@ -6,29 +6,40 @@ export const myContext = createContext({})
 
 const Context = (props) => {
   const [userObject, setUserObject] = useState(null)
+  const [access, setAccess] = useState(null)
   useEffect(() => {
+    // if in local storage, save to React state
     // need a check (scenario where return object comes back as null)
-    const token = returnObject("access")
-
-    axios.get("http://localhost:3000/auth/user", {
-      headers: {
-        "Authorization": "Bearer " + token
-      }
-    })
-      .then(res => {
-        if (res.status === 200 && res.data.user) {
-          console.log(res.data)
-          setUserObject(res.data.user)
-        // save access and refresh tokens to local storage?
+    const accessToken = returnObject("access")
+    console.log(accessToken)
+    if (accessToken) {
+      setAccess(accessToken)
+    }
+    console.log(access)
+  }, [])
+  useEffect(() => {
+    console.log(access)
+    if (access != null) {
+      axios.get("http://localhost:3000/auth/user", {
+        headers: {
+          "Authorization": "Bearer "+ access
         }
       })
-      .catch(err => {
-        console.log(err)
-      })
-  }, [])
+        .then(res => {
+          if (res.status === 200 && res.data.user) {
+            console.log(res.data)
+            setUserObject(res.data.user)
+          // save access and refresh tokens to local storage?
+          }
+        })
+        .catch(err => {
+          console.log(err)
+        })
+      }
+  }, [ access ])
 
   return ( 
-    <myContext.Provider value={userObject}>{props.children}</myContext.Provider>
+    <myContext.Provider value={{ userObject, access, setAccess }}>{props.children}</myContext.Provider>
    )
 }
  

@@ -14,8 +14,9 @@ import { LoginContext } from './contexts/LoginContext'
 
 export default function App() {
   const [token, setToken] = useState(null)
+  const [user, setUser] = useState(null)
 
-  const userObject = useContext(myContext)
+  const { userObject } = useContext(myContext)
   console.log(userObject)
   // how to utilize userObject?
   // how to protect routes on frontend?
@@ -23,7 +24,7 @@ export default function App() {
   // how to refresh token when needed?
   return (
     <>
-      <LoginContext.Provider value={{ token, setToken }}>
+      <LoginContext.Provider value={{ token, setToken, user, setUser }}>
       <Nav />
         <div className="content">
         { token ? <h1>I have the token!</h1> : <h1>no token!</h1>}

@@ -1,12 +1,17 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import { useLocation, useParams } from 'react-router-dom';
 import PostList from '../components/PostList';
+import { myContext } from '../contexts/Context';
 
 const Home = () => {
-  const [ params, setParams ] = useState(null) 
-  const [accessToken, setAccessToken] = useState(false)
-  const [refreshToken, setRefreshToken] = useState(false)
-  const [user, setUser] = useState(null)
+  // const [ params, setParams ] = useState(null) 
+  // const [accessToken, setAccessToken] = useState(false)
+  // const [refreshToken, setRefreshToken] = useState(false)
+  // const [user, setUser] = useState(null)
+
+  const { userObject, access } = useContext(myContext)
+  const user = userObject
+  const token = access
 
   const location = useLocation()
   
@@ -64,7 +69,7 @@ const Home = () => {
           { location.state && <h1>{location.state.user.first_name} || {location.state.user.family_name}</h1> }
 
           { user && <h1>{user.family_name} || {user.first_name}</h1>}
-          { accessToken && <p>{accessToken}</p>}
+          { token && <p>{token}</p>}
         </div>
       </div>
     </>

@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { redirect, useNavigate } from 'react-router-dom';
 import { saveObject, returnObject } from '../utility/ls';
+import { myContext } from '../contexts/Context';
 
 
 
@@ -10,6 +11,8 @@ const Login = () => {
   const [error, setError] = useState(null)
   const [oauthError, setOAuthError] = useState(null)
 
+  // if an error happens verifying the user after oauth login...
+  const { errorMsg } = useContext(myContext)
   const navigate = useNavigate()
 
   const handleChange = (e, updateStateFn) => {
@@ -169,6 +172,7 @@ const Login = () => {
             <button onClick={facebook}>Sign In with Facebook</button>
           </div>
           <div className="oauth-error">
+            { errorMsg && <p>{errorMsg}</p> }
             { oauthError && <p>{oauthError}</p>}
           </div>
         </div>

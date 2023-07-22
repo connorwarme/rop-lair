@@ -2,7 +2,6 @@ import { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { saveObject } from "../utility/ls";
-import { LoginContext } from "../contexts/LoginContext";
 import { myContext } from '../contexts/Context'
 
 // maybe this screen just shows a loading / spin wheel...then navigates to home
@@ -10,8 +9,8 @@ import { myContext } from '../contexts/Context'
 const Temp = () => {
   // is there any need for a user state obj? 7/20
   // const [user, setUser] = useState(null)
-  // const { setToken } = useContext(LoginContext)
-  const { setAccess } = useContext(myContext)
+
+  const { setAccess, setErrorMsg } = useContext(myContext)
 
   const navigate = useNavigate()
 
@@ -34,7 +33,6 @@ const Temp = () => {
     })
     .catch(err => {
       console.log(err)
-      // navigate to login page w/ err message (maybe pass it through state)
     })
   }, [])
 

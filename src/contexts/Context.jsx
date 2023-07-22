@@ -43,13 +43,14 @@ const Context = (props) => {
           // navigate to login page w/ err message (maybe pass it through state)
           // haven't check this
           setErrorMsg(`${err.response.status} ${err.response.statusText}: ${err.response.data.message} Please try again.`)
-          navigate("/login")
+          // problem is that it runs an error once in the login phase...takes you back to /login, even though the login worked.
+          // navigate("/login")
         })
       }
   }, [ access ])
 
   return ( 
-    <myContext.Provider value={{ userObject, access, setAccess, errorMsg, setErrorMsg }}>{props.children}</myContext.Provider>
+    <myContext.Provider value={{ userObject, setUserObject, access, setAccess, errorMsg, setErrorMsg }}>{props.children}</myContext.Provider>
    )
 }
  

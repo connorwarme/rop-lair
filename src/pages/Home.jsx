@@ -66,7 +66,6 @@ const Home = () => {
           <button onClick={handleClick} >Click Me!</button>
           <button onClick={() => handleWithArg('value')}>Click to add value!</button>
           <PostList posts={posts} full={false} />
-          { location.state && <h1>{location.state.user.first_name} || {location.state.user.family_name}</h1> }
 
           { user && <h1>{user.family_name} || {user.first_name}</h1>}
           { token && <p>{token}</p>}

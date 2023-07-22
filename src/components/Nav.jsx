@@ -25,6 +25,7 @@ const Nav = () => {
       .then(res => {
         if (res.data) {
           clearStorage("access")
+          // clear session cookie too? (if they logged in via oauth)
           window.location.href = "/login"
         }
       })

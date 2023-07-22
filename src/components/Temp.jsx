@@ -33,6 +33,8 @@ const Temp = () => {
     })
     .catch(err => {
       console.log(err)
+      // if they don't get a token, then redirect to login page?
+      navigate("/login")
     })
   }, [])
 

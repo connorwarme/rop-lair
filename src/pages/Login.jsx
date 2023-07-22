@@ -12,7 +12,7 @@ const Login = () => {
   const [oauthError, setOAuthError] = useState(null)
 
   // if an error happens verifying the user after oauth login...
-  const { errorMsg } = useContext(myContext)
+  const { setUserObject, setAccess, errorMsg } = useContext(myContext)
   const navigate = useNavigate()
 
   const handleChange = (e, updateStateFn) => {
@@ -75,6 +75,9 @@ const Login = () => {
         setError(null)
         // save token to local storage
         saveObject(data.accessToken, "access")
+        // set user & set token
+        setUserObject(data.user)
+        setAccess(data.accessToken)
         // need to deal w/ empty return value so it doesn't throw an error..
         console.log(returnObject("access"))
         // route user to home page w/ data

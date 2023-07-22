@@ -7,22 +7,23 @@ export const myContext = createContext({})
 const Context = (props) => {
   const [userObject, setUserObject] = useState(null)
   const [access, setAccess] = useState(null)
+  // useEffect(() => {
+  //   // if in local storage, save to React state
+  //   // need a check (scenario where return object comes back as null)
+  //   const accessToken = returnObject("access")
+  //   console.log(accessToken)
+  //   if (accessToken) {
+  //     setAccess(accessToken)
+  //   }
+  //   console.log(access)
+  // }, [])
   useEffect(() => {
-    // if in local storage, save to React state
-    // need a check (scenario where return object comes back as null)
-    const accessToken = returnObject("access")
-    console.log(accessToken)
+    const accessToken = JSON.parse(returnObject("access"))
     if (accessToken) {
       setAccess(accessToken)
-    }
-    console.log(access)
-  }, [])
-  useEffect(() => {
-    console.log(access)
-    if (access != null) {
       axios.get("http://localhost:3000/auth/user", {
         headers: {
-          "Authorization": "Bearer "+ access
+          "Authorization": "Bearer "+ accessToken
         }
       })
         .then(res => {

@@ -1,0 +1,22 @@
+.nav-container {
+  background-color: rgb(140, 195, 231);
+  width: calc(100vw - 4rem);
+  margin: 20px 0;
+}
+.nav-links {
+  padding: 20px;
+
+}
+.nav-links > a,
+.nav-links > li {
+  color: slategray;
+  font-size: 18px;
+  padding: 6px 9px;
+  list-style: none;
+  text-decoration: none;
+}
+.nav-links > a:hover,
+.nav-links > li:hover {
+  cursor: pointer;
+  text-decoration: underline;
+} 

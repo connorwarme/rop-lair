@@ -10,7 +10,7 @@ const Home = () => {
   // const [user, setUser] = useState(null)
 
   const { userObject, access } = useContext(myContext)
-  const user = userObject
+  const user = {...userObject}
   const token = access
 
   const location = useLocation()

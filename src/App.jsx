@@ -10,6 +10,7 @@ import Post from './pages/Post'
 import Temp from './components/Temp'
 import { useState, useContext } from 'react'
 import { myContext } from './contexts/Context'
+import CreatePost from './pages/CreatePost'
 
 export default function App() {
 
@@ -29,6 +30,7 @@ export default function App() {
             <Route path='/login' element={ <Login /> } />
             <Route path='/signup' element={ <SignUp /> } />
             <Route path='/profile' element={ <Profile /> } />
+            <Route path='/post/create' element={ <CreatePost /> } />
             <Route path='/post/:id' element={ <Post /> } />
             <Route />
           </Routes>

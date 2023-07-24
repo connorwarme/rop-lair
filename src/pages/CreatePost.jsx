@@ -1,20 +1,40 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import axios from "axios";
+import { myContext } from "../contexts/Context";
 
 const CreatePost = () => {
   const [title, setTitle] = useState(null)
   const [content, setContent] = useState(null)
+  // need to import context
+  const { access } = useContext(myContext)
 
   const handleChange = (e, updateStateFn) => {
     updateStateFn(e.target.value)
   }
-
   const getState = () => {
     return { title: title, content: content }
   }
   const handleSubmit = (e) => {
     e.preventDefault()
     // need to write this!
+    // for some reason I'm not getting my header attached to the request. my backend receives an undefined auth header. 
     const post = getState()
+    console.log(access)
+    axios.post("http://localhost:3000/createpost", {
+      headers: {
+        "Authorization": `Bearer ${access}`
+      }, 
+      data: {
+        title: post.title,
+        content: post.content,
+      }
+    })
+    .then(res => {
+      console.log(res)
+    })
+    .catch(err => {
+      console.log(err)
+    })
   }
 
   return ( 

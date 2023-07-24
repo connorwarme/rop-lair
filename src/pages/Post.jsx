@@ -1,19 +1,37 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import Comment from '../components/Comment';
-import { useParams } from 'react-router-dom';
+import { useParams, useLocation } from 'react-router-dom';
 
 
 const Post = () => {
   const { id } = useParams() 
+  const location = useLocation()
   // then I can run a fetch request for the specific blog
   const [post, setPost] = useState({
     title: "title",
     author: "author",
+    author_id: "id",
     text: "text",
     // todo: should I put the likes in it's own state? same for comments?
     likes: [],
     comments: [],
   })
+  // need to run a check, once, on load
+  // to see if value in location state or not
+  useEffect(() => {
+    if (location.state) {
+      setPost({
+        title: location.state.post.title,
+        author: location.state.user.name,
+        author_id: location.state.user._id,
+        text: location.state.post.content,
+        likes: location.state.post.likes,
+        comments: location.state.post.comments,
+      })
+    }
+  }, [])
+  console.log(location.state)
+  console.log(id)
 
   const mockLikes = ['1111', '2222', '3333']
   const mockComments = [

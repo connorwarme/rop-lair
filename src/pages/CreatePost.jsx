@@ -25,7 +25,7 @@ const CreatePost = () => {
 
     const headers = {
       "Content-Type": "application/json",
-      // "Authorization": `Bearer ${access}`
+      "Authorization": `Bearer ${access}`
     }
     console.log(access)
     axios.post("http://localhost:3000/createpost", post, { headers: headers })

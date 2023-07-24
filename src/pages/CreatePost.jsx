@@ -25,7 +25,7 @@ const CreatePost = () => {
 
     const headers = {
       "Content-Type": "application/json",
-      "Authorization": `Bearer ${access}`
+      // "Authorization": `Bearer ${access}`
     }
     console.log(access)
     axios.post("http://localhost:3000/createpost", post, { headers: headers })
@@ -55,11 +55,20 @@ const CreatePost = () => {
             <input type="text" id="title" className="title" onChange={(e) => {handleChange(e, setTitle)}}/>
           </div>
           <div className="form-input">
-            <label htmlFor="content">content</label>
+            <label htmlFor="content">Content</label>
             <input type="text" id="content" className="content" onChange={(e) => {handleChange(e, setContent)}}/>
           </div>
           <button type="submit">Save</button>
-          
+          { errors && (
+            <div className="errors">
+              { errors.map((err, index) => {
+                if (err.status) {
+                  return <p key={index}>{err.status} Error! {err.msg}</p>
+                }
+                return <p key={index}>Error! {err.msg}</p>
+              })}
+            </div>
+          )}
         </form>
 
       </div>

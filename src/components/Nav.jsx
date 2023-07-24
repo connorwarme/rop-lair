@@ -42,6 +42,7 @@ const Nav = () => {
           <Link to="/" className="home">Home</Link>
           <Link to="/profile" className="profile">Profile</Link>
           <Link to="/users" className="users">Users</Link>
+          <Link to="/post/create" className="create-post">+</Link>
           <Link to="/profile" className="user">{userObject.name}</Link>
           <li className="logout" onClick={logout}>Logout</li>
         </div>

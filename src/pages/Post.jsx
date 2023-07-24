@@ -1,11 +1,12 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import Comment from '../components/Comment';
 import { useParams, useLocation } from 'react-router-dom';
-
+import { myContext } from '../contexts/Context';
 
 const Post = () => {
   const { id } = useParams() 
   const location = useLocation()
+  const { userObject } = useContext(myContext)
   // then I can run a fetch request for the specific blog
   const [post, setPost] = useState({
     title: "title",
@@ -16,6 +17,9 @@ const Post = () => {
     likes: [],
     comments: [],
   })
+  const [edit, setEdit] = useState(false)
+  const [editTitle, setEditTitle] = useState(null)
+  const [editText, setEditText] = useState(null)
   // need to run a check, once, on load
   // to see if value in location state or not
   useEffect(() => {
@@ -30,8 +34,31 @@ const Post = () => {
       })
     }
   }, [])
-  console.log(location.state)
-  console.log(id)
+  // console.log(location.state)
+  // console.log(id)
+
+  const handleEdit = () => {
+    setEditTitle(post.title)
+    setEditText(post.text)
+    setEdit(true)
+  }
+  const handleNewValue = (e, updateFn) => {
+    updateFn(e.target.value)
+  }
+  const handleSave = () => {
+    // update database
+    // handle errors
+    // if successful, go to detail page
+  }
+  const handleCancel = () => {
+    setEditTitle('')
+    setEditText('')
+    setEdit(false)
+  }
+
+
+
+
 
   const mockLikes = ['1111', '2222', '3333']
   const mockComments = [
@@ -68,7 +95,8 @@ const Post = () => {
   return ( 
     <>
       <div className="post-detail-container">
-        <div className="post-detail-content">
+        { !edit && (
+          <div className="post-detail-content">
           <div className="title">{post.title}</div>
           <div className="author">{post.author}</div>
           <div className="text">{post.text}</div>
@@ -82,7 +110,28 @@ const Post = () => {
               return <Comment commentObj={comment} user={null} key={comment.id}/>
             })}
           </div>
-        </div>
+          { (userObject._id === post.author_id) && (
+          <div className="options-container">
+            <button onClick={handleEdit}>Edit</button>
+            <button>Delete</button>
+          </div>
+        )}
+          </div> )
+        }
+        { edit && (
+          <div className="post-detail-content edit-mode">
+            <div className="edit-title">
+              <label htmlFor="title">Title</label>
+              <input type="text" id="title" value={editTitle} onChange={(e) => handleNewValue(e, setEditTitle)}/>
+            </div>
+            <div className="edit-text">
+              <label htmlFor="text">Content</label>
+              <input type="text" id="text" value={editText} onChange={(e) => handleNewValue(e, setEditText)}/>
+            </div>
+            <button onClick={handleCancel}>Cancel</button>
+            <button onClick={handleSave}>Save</button>
+          </div>
+        )}
       </div>
     </>
    );

@@ -9,7 +9,7 @@ const ChangePost = ({ url, post, id, edit, save }) => {
   // differences?
   // cancel edit would redirect to post detail page / but cancel create would redirect to home
   const [title, setTitle] = useState( post ? post.title : '')
-  const [content, setContent] = useState( post ? post.text : '')
+  const [content, setContent] = useState( post ? post.content : '')
   const [errors, setErrors] = useState(null)
 
   const { access } = useContext(myContext)
@@ -36,8 +36,10 @@ const ChangePost = ({ url, post, id, edit, save }) => {
     .then(res => {
       console.log(res)
       if (res.status === 200 && res.data.post) {
-        edit(false)
-        save({...res.data.post, author: res.data.user.name})
+        if (edit) {
+          edit(false)
+          save({...res.data.post, author: res.data.user.name, author_id: res.data.user._id})
+        }
         // need to set up post detail page to receive / use state
         navigate(`/post/${res.data.post._id}`, { state: res.data })
       }

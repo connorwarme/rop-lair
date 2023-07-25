@@ -19,8 +19,6 @@ const Post = () => {
     comments: [],
   })
   const [edit, setEdit] = useState(false)
-  const [editTitle, setEditTitle] = useState(null)
-  const [editText, setEditText] = useState(null)
   // need to run a check, once, on load
   // to see if value in location state or not
   useEffect(() => {
@@ -35,31 +33,10 @@ const Post = () => {
       })
     }
   }, [])
-  // console.log(location.state)
-  // console.log(id)
 
   const handleEdit = () => {
-    setEditTitle(post.title)
-    setEditText(post.text)
     setEdit(true)
   }
-  const handleNewValue = (e, updateFn) => {
-    updateFn(e.target.value)
-  }
-  const handleSave = () => {
-    // update database
-    // handle errors
-    // if successful, go to detail page
-  }
-  const handleCancel = () => {
-    setEditTitle('')
-    setEditText('')
-    setEdit(false)
-  }
-
-
-
-
 
   const mockLikes = ['1111', '2222', '3333']
   const mockComments = [

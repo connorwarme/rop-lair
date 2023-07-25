@@ -2,6 +2,7 @@ import { useState, useEffect, useContext } from 'react';
 import Comment from '../components/Comment';
 import { useParams, useLocation } from 'react-router-dom';
 import { myContext } from '../contexts/Context';
+import ChangePost from '../components/ChangePost';
 
 const Post = () => {
   const { id } = useParams() 
@@ -119,18 +120,7 @@ const Post = () => {
           </div> )
         }
         { edit && (
-          <div className="post-detail-content edit-mode">
-            <div className="edit-title">
-              <label htmlFor="title">Title</label>
-              <input type="text" id="title" value={editTitle} onChange={(e) => handleNewValue(e, setEditTitle)}/>
-            </div>
-            <div className="edit-text">
-              <label htmlFor="text">Content</label>
-              <input type="text" id="text" value={editText} onChange={(e) => handleNewValue(e, setEditText)}/>
-            </div>
-            <button onClick={handleCancel}>Cancel</button>
-            <button onClick={handleSave}>Save</button>
-          </div>
+          <ChangePost url={"http://localhost:3000/post/edit/"+id}  post={post} id={id} edit={setEdit}/>
         )}
       </div>
     </>

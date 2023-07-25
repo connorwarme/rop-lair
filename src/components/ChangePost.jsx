@@ -3,12 +3,12 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { myContext } from "../contexts/Context";
 
-const ChangePost = ({ url, post }) => {
+const ChangePost = ({ url, post, id, edit }) => {
   // this could be a new post or an edit post...
   // differences?
   // cancel edit would redirect to post detail page / but cancel create would redirect to home
   const [title, setTitle] = useState( post ? post.title : '')
-  const [content, setContent] = useState( post ? post.content : '')
+  const [content, setContent] = useState( post ? post.text : '')
   const [errors, setErrors] = useState(null)
 
   const { access } = useContext(myContext)
@@ -49,6 +49,16 @@ const ChangePost = ({ url, post }) => {
     })
   }
 
+  const handleCancel = () => {
+    // navigate back to original post or back to home
+    if (id) {
+      edit(false)
+      navigate("/post/"+id, { state: { post }})
+    } else {
+      navigate("/")
+    }
+  }
+
   return ( 
     <>
       <div className="change-post-container">
@@ -61,6 +71,7 @@ const ChangePost = ({ url, post }) => {
             <label htmlFor="content">Content</label>
             <input type="text" id="content" className="content" value={content} onChange={(e) => {handleChange(e, setContent)}}/>
           </div>
+          <button type="button" onClick={handleCancel}>Cancel</button>
           <button type="submit">Save</button>
           { errors && (
             <div className="errors">

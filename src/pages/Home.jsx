@@ -43,7 +43,7 @@ const Home = () => {
       <div className="home-container">
         <div className="home-content">
           <h1 className="title">Rings of Power Fan Lair</h1>
-          <PostList posts={posts} full={true} />
+          <PostList posts={posts} full={true} user={userObject} />
           { errors && (
             errors.map((err, index) => {
               return <p key={index}>{err.status} Error! {err.msg}</p>

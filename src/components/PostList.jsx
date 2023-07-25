@@ -1,8 +1,9 @@
 /* eslint-disable react/prop-types */
 import { Link } from "react-router-dom"
 import Post from "../pages/Post"
+import Like from "./Like"
 
-const PostList = ({ posts, full }) => {
+const PostList = ({ posts, full, user }) => {
   return ( 
     <div className="postlist-container">
     { posts.map(post => {
@@ -13,6 +14,7 @@ const PostList = ({ posts, full }) => {
               <h2 className="post-title">Title: {post.title}</h2>
               { full && <p className="post-content">{post.content}</p> }
               { post.author && <p className="post-author">Written by: {post.author.name}</p> }
+              <Like likes={post.likes ? post.likes : []} user={user} />
             </div>
           </Link>
         </div>

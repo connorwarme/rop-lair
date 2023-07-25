@@ -1,55 +1,50 @@
 import { useEffect, useState, useContext } from 'react';
-import { useLocation, useParams } from 'react-router-dom';
-import PostList from '../components/PostList';
+import { useLocation } from 'react-router-dom';
 import { myContext } from '../contexts/Context';
+import axios from 'axios';
+import PostList from '../components/PostList';
 
 const Home = () => {
   // const [ params, setParams ] = useState(null) 
   // const [accessToken, setAccessToken] = useState(false)
   // const [refreshToken, setRefreshToken] = useState(false)
   // const [user, setUser] = useState(null)
+  const [posts, setPosts] = useState([
+    {title: "Post 1", author: "Amity", content: "A day at the lake...", id: 1},
+    {title: "Post 2", author: "Connor", content: "A day at the lake...", id: 2},
+    {title: "Post 3", author: "Caleb", content: "A day at the lake...", id: 3},
+  ])
+  const [errors, setErrors] = useState(null)
 
   const { userObject, access } = useContext(myContext)
   const user = {...userObject}
-  const token = access
 
   const location = useLocation()
   
-  // trying useContext hook 7/15
-  // useEffect(() => {
-  //   const getUser = async () => {
-  //     fetch("http://localhost:3000/auth/login/success", {
-  //       method: "GET",
-  //       credentials: "include",
-  //       headers: {
-          
-  //         Accept: "application/json",
-  //         "Content-Type": "application/json",
-  //         "Access-Control-Allow-Credentials": "true",
-  //       },
-  //     })
-  //     .then(res => {
-  //       if (res.status === 200) return res.json()
-  //       throw new Error("authentication has failed! :/")
-  //     })
-  //     .then(data => {
-  //       console.log(data)
-  //       setUser(data.user)
-  //       setAccessToken(data.access)
-  //       setRefreshToken(data.refresh)
-  //     })
-  //     .catch(err => {
-  //       console.log(err)
-  //     })
-  //   }
-  //   getUser()
-  // }, [])
+  useEffect(() => {
+    // query database for all posts
+    // eventually have a button to toggle b/w all posts and just friends' posts
+    const url = "http://localhost:3000/posts"
+    const headers = {
+      "Content-Type": "application/json",
+      "Authorization":  `Bearer ${access}`
+    }
+    axios.get(url, { headers: headers })
+    .then(res => {
+      if (res.status === 200 && res.data.posts) {
+        console.log(res.data.posts)
+        setPosts(res.data.posts)
+        setErrors(null)
+      } else if (res.data.errors) {
+        console.log(res.data.errors)
+        setErrors(res.data.errors)
+      }
+    })
+    .catch(err => {
+      console.log(err)
+    })
+  }, [access])
 
-  const [posts, setPosts] = useState([
-    {title: "Post 1", author: "Amity", description: "A day at the lake...", id: 1},
-    {title: "Post 2", author: "Connor", description: "A day at the lake...", id: 2},
-    {title: "Post 3", author: "Caleb", description: "A day at the lake...", id: 3},
-  ])
   const handleClick = (e) => {
     console.log('handle click event', e.target)
   }
@@ -65,10 +60,12 @@ const Home = () => {
           <h1 className="title">Rings of Power Fan Lair</h1>
           <button onClick={handleClick} >Click Me!</button>
           <button onClick={() => handleWithArg('value')}>Click to add value!</button>
-          <PostList posts={posts} full={false} />
-
-          { user && <h1>{user.family_name} || {user.first_name}</h1>}
-          { token && <p>{token}</p>}
+          <PostList posts={posts} full={true} />
+          { errors && (
+            errors.map((err, index) => {
+              <p key={index}>{err.status} Error! {err.msg}</p>
+            })
+          )}
         </div>
       </div>
     </>

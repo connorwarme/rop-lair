@@ -28,8 +28,8 @@ const Post = () => {
     if (location.state) {
       setPost({
         title: location.state.post.title,
-        author: location.state.user.name,
-        author_id: location.state.user._id,
+        author: location.state.post.author.name,
+        author_id: location.state.post.author._id,
         content: location.state.post.content,
         likes: location.state.post.likes,
         comments: location.state.post.comments,

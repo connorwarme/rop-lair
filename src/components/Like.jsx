@@ -13,7 +13,7 @@ const Like = ({ id, likes, user }) => {
   const { access } = useContext(myContext)
 
   const findUserLike = () => {
-    const userLike = likes.filter(like => like === user._id)
+    const userLike = likes.filter(like => like.author === user._id)
     return userLike.length == 1
   }
   const determineText = (boolean, number) => {
@@ -24,7 +24,7 @@ const Like = ({ id, likes, user }) => {
       } else if (number == 2) {
         text = 'You and 1 other like this post.'
       } else if (number > 2) {
-        text = `You and ${number - 1} other like this post.`
+        text = `You and ${number - 1} others like this post.`
       }
     } else if (number == 1) {
       text = '1 like.'
@@ -67,7 +67,16 @@ const Like = ({ id, likes, user }) => {
 
   }
   const handleUnlike = () => {
-
+    const url = "http://localhost:3000/unlikepost/" + id
+    const headers = makeHeader()
+    axios.post(url, {}, { headers: headers })
+    .then(res => {
+      if (res.status === 200 && res.data.post) {
+        console.log(res.data.post)
+      } else if (res.data.errors) {
+        console.log(res.data.errors)
+      }
+    })
   }
 
   return ( 

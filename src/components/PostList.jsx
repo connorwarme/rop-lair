@@ -14,7 +14,7 @@ const PostList = ({ posts, full, user }) => {
               <h2 className="post-title">Title: {post.title}</h2>
               { full && <p className="post-content">{post.content}</p> }
               { post.author && <p className="post-author">Written by: {post.author.name}</p> }
-              <Like likes={post.likes ? post.likes : []} user={user} />
+              <Like id={post._id} likes={post.likes ? post.likes : []} user={user} />
             </div>
           </Link>
         </div>

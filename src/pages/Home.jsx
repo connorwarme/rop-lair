@@ -5,10 +5,6 @@ import axios from 'axios';
 import PostList from '../components/PostList';
 
 const Home = () => {
-  // const [ params, setParams ] = useState(null) 
-  // const [accessToken, setAccessToken] = useState(false)
-  // const [refreshToken, setRefreshToken] = useState(false)
-  // const [user, setUser] = useState(null)
   const [posts, setPosts] = useState([
     {title: "Post 1", author: "Amity", content: "A day at the lake...", id: 1},
     {title: "Post 2", author: "Connor", content: "A day at the lake...", id: 2},
@@ -17,8 +13,6 @@ const Home = () => {
   const [errors, setErrors] = useState(null)
 
   const { userObject, access } = useContext(myContext)
-  const user = {...userObject}
-
   const location = useLocation()
   
   useEffect(() => {
@@ -32,11 +26,9 @@ const Home = () => {
     axios.get(url, { headers: headers })
     .then(res => {
       if (res.status === 200 && res.data.posts) {
-        console.log(res.data.posts)
         setPosts(res.data.posts)
         setErrors(null)
       } else if (res.data.errors) {
-        console.log(res.data.errors)
         setErrors(res.data.errors)
       }
     })
@@ -45,25 +37,16 @@ const Home = () => {
     })
   }, [access])
 
-  const handleClick = (e) => {
-    console.log('handle click event', e.target)
-  }
-  const handleWithArg = (input) => {
-    console.log('handle click with ' + input)
-  }
-
 
   return ( 
     <>
       <div className="home-container">
         <div className="home-content">
           <h1 className="title">Rings of Power Fan Lair</h1>
-          <button onClick={handleClick} >Click Me!</button>
-          <button onClick={() => handleWithArg('value')}>Click to add value!</button>
           <PostList posts={posts} full={true} />
           { errors && (
             errors.map((err, index) => {
-              <p key={index}>{err.status} Error! {err.msg}</p>
+              return <p key={index}>{err.status} Error! {err.msg}</p>
             })
           )}
         </div>

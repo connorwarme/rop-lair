@@ -13,7 +13,7 @@ const Post = () => {
     title: "title",
     author: "author",
     author_id: "id",
-    text: "text",
+    content: "text",
     // todo: should I put the likes in it's own state? same for comments?
     likes: [],
     comments: [],
@@ -29,7 +29,7 @@ const Post = () => {
         title: location.state.post.title,
         author: location.state.user.name,
         author_id: location.state.user._id,
-        text: location.state.post.content,
+        content: location.state.post.content,
         likes: location.state.post.likes,
         comments: location.state.post.comments,
       })
@@ -100,7 +100,7 @@ const Post = () => {
           <div className="post-detail-content">
           <div className="title">{post.title}</div>
           <div className="author">{post.author}</div>
-          <div className="text">{post.text}</div>
+          <div className="text">{post.content}</div>
           <div className="likes">
             {(mockLikes.length == 0) && <p>Be the first to like this post!</p>}
             {(mockLikes.length == 1) && <p>1 Like</p>}
@@ -120,7 +120,7 @@ const Post = () => {
           </div> )
         }
         { edit && (
-          <ChangePost url={"http://localhost:3000/post/edit/"+id}  post={post} id={id} edit={setEdit}/>
+          <ChangePost url={"http://localhost:3000/editpost/"+id}  post={post} id={id} edit={setEdit} save={setPost}/>
         )}
       </div>
     </>

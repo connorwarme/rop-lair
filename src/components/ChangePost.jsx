@@ -2,8 +2,9 @@ import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { myContext } from "../contexts/Context";
+import { saveObject } from "../utility/ls";
 
-const ChangePost = ({ url, post, id, edit }) => {
+const ChangePost = ({ url, post, id, edit, save }) => {
   // this could be a new post or an edit post...
   // differences?
   // cancel edit would redirect to post detail page / but cancel create would redirect to home
@@ -35,6 +36,8 @@ const ChangePost = ({ url, post, id, edit }) => {
     .then(res => {
       console.log(res)
       if (res.status === 200 && res.data.post) {
+        edit(false)
+        save({...res.data.post, author: res.data.user.name})
         // need to set up post detail page to receive / use state
         navigate(`/post/${res.data.post._id}`, { state: res.data })
       }

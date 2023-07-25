@@ -1,13 +1,15 @@
 import { useState, useEffect, useContext } from 'react';
-import Comment from '../components/Comment';
-import { useParams, useLocation } from 'react-router-dom';
+import { useParams, useLocation, useNavigate } from 'react-router-dom';
 import { myContext } from '../contexts/Context';
+import axios from 'axios';
+import Comment from '../components/Comment';
 import ChangePost from '../components/ChangePost';
 
 const Post = () => {
   const { id } = useParams() 
   const location = useLocation()
-  const { userObject } = useContext(myContext)
+  const { userObject, access } = useContext(myContext)
+  const navigate = useNavigate()
   // then I can run a fetch request for the specific blog
   const [post, setPost] = useState({
     title: "title",
@@ -19,6 +21,7 @@ const Post = () => {
     comments: [],
   })
   const [edit, setEdit] = useState(false)
+  const [errors, setErrors] = useState(false)
   // need to run a check, once, on load
   // to see if value in location state or not
   useEffect(() => {
@@ -36,6 +39,27 @@ const Post = () => {
 
   const handleEdit = () => {
     setEdit(true)
+  }
+  const handleDelete = () => {
+    const url = "http://localhost:3000/deletepost/" + id
+    const headers = {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${access}`
+    }
+    axios.post(url, {}, { headers: headers })
+    .then(res => {
+      console.log(res)
+      // success message?
+      if (res.status === 200 && res.data.message) {
+        navigate("/")
+      }
+      if (res.status === 200 && res.data.errors) {
+        setErrors(res.data.errors)
+      }
+    })
+    .catch(err => {
+      console.log(err)
+    })
   }
 
   const mockLikes = ['1111', '2222', '3333']
@@ -91,11 +115,21 @@ const Post = () => {
           { (userObject._id === post.author_id) && (
           <div className="options-container">
             <button onClick={handleEdit}>Edit</button>
-            <button>Delete</button>
+            <button onClick={handleDelete}>Delete</button>
+          </div>
+          )}
+          { ((userObject._id === post.author_id) && errors) && (
+            <div className="errors">
+             { errors.map((err, index) => {
+               if (err.status) {
+                 return <p key={index}>{err.status} Error! {err.msg}</p>
+               }
+              return <p key={index}>Error! {err.msg}</p>
+             })}
+            </div>
+          )}
           </div>
         )}
-          </div> )
-        }
         { edit && (
           <ChangePost url={"http://localhost:3000/editpost/"+id}  post={post} id={id} edit={setEdit} save={setPost}/>
         )}

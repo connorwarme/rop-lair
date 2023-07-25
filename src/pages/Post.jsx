@@ -10,18 +10,25 @@ const Post = () => {
   const location = useLocation()
   const { userObject, access } = useContext(myContext)
   const navigate = useNavigate()
-  // then I can run a fetch request for the specific blog
   const [post, setPost] = useState({
-    title: "title",
-    author: "author",
-    author_id: "id",
-    content: "text",
+    title: "",
+    author: "",
+    author_id: "",
+    content: "",
     // todo: should I put the likes in it's own state? same for comments?
     likes: [],
     comments: [],
   })
   const [edit, setEdit] = useState(false)
   const [errors, setErrors] = useState(false)
+
+  const makeHeader = () => {
+    return {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${access}`
+    }
+  }
+
   // need to run a check, once, on load
   // to see if value in location state or not
   useEffect(() => {
@@ -34,6 +41,25 @@ const Post = () => {
         likes: location.state.post.likes,
         comments: location.state.post.comments,
       })
+    } else {
+      axios.get("http://localhost:3000/post/" + id, { headers: makeHeader() })
+      .then(res => {
+        if (res.status === 200 && res.data) {
+          setPost({
+            title: res.data.post.title,
+            author: res.data.post.author.name,
+            author_id: res.data.post.author._id,
+            content: res.data.post.content,
+            likes: res.data.post.likes,
+            comments: res.data.post.comments,
+          })
+        } else if (res.data.errors) {
+          setErrors(res.data.errors)
+        }
+      })
+      .catch(err => {
+        console.log(err)
+      })
     }
   }, [])
 
@@ -42,10 +68,7 @@ const Post = () => {
   }
   const handleDelete = () => {
     const url = "http://localhost:3000/deletepost/" + id
-    const headers = {
-      "Content-Type": "application/json",
-      "Authorization": `Bearer ${access}`
-    }
+    const headers = makeHeader()
     axios.post(url, {}, { headers: headers })
     .then(res => {
       console.log(res)

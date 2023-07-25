@@ -9,7 +9,7 @@ const PostList = ({ posts, full, user }) => {
     { posts.map(post => {
       return (
         <div className="post-container" key={post._id}>
-          <Link to={`/post/${post._id}`} state={ { post } } element={ <Post /> }>
+          <Link to={`/post/${post._id}`} element={ <Post id={post._id}/> }>
             <div className="post-content">
               <h2 className="post-title">Title: {post.title}</h2>
               { full && <p className="post-content">{post.content}</p> }

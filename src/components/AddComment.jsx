@@ -4,6 +4,7 @@ import axios from "axios";
 const AddComment = ({ id, setComments, user, makeHeader }) => {
   const [addForm, setAddForm] = useState(false)
   const [commentText, setCommentText] = useState('')
+  const [errors, setErrors] = useState(null)
 
   const handleShowForm = () => {
     setAddForm(true)
@@ -15,25 +16,23 @@ const AddComment = ({ id, setComments, user, makeHeader }) => {
     axios.post("http://localhost:3000/addcomment", { postid: id, content: commentText }, { headers: makeHeader() })
     .then(res => {
       if (res.status === 200 && res.data.post) {
-        console.log(res.data.post)
+        setComments(res.data.post.comments)
+        setErrors(null)
+        setAddForm(false)
       } else if (res.data.errors) {
-        console.log(res.data.errors)
+        setErrors(res.data.errors)
       }
     })
     .catch(err => {
       console.log(err)
     })
-
-    // if error, show error
-    // if successful...should I update post page? (like run an axios req? or just update state?)
-    // if successful, hide add form
-    setAddForm(false)
   }
   const handleComment = (e) => {
     setCommentText(e.target.value)
   }
   const handleCancel = () => {
     setCommentText('')
+    setErrors(null)
     setAddForm(false)
   }
   return ( 
@@ -47,6 +46,14 @@ const AddComment = ({ id, setComments, user, makeHeader }) => {
               <input type="text" id="comment" onChange={handleComment} />
               <button type="button" onClick={handleCancel}>Cancel</button>
               <button type="submit">Save</button>
+              { errors && <div className="errors">
+                { errors.map((err, index) => {
+                  if (err.status) {
+                    return <p key={index}>{err.status} Error! {err.msg}</p>
+                  }
+                  return <p key={index}>Error! {err.msg}</p>
+                })}
+              </div> }
             </form>
           </div>
         )}

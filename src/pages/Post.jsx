@@ -37,8 +37,12 @@ const Post = () => {
       console.log('location state mode')
       setPost({
         title: location.state.post.title,
-        author: location.state.post.author.name,
-        author_id: location.state.post.author._id,
+        // todo: remove switch? 7/25
+        // had to add the switch because of some original posts (didn't have an author value)
+        // author: location.state.post.author.name,
+        // author_id: location.state.post.author._id,
+        author: location.state.post.author ? location.state.post.author.name : '',
+        author_id: location.state.post.author ? location.state.post.author._id : '',
         content: location.state.post.content,
         likes: location.state.post.likes,
         comments: location.state.post.comments,
@@ -50,8 +54,12 @@ const Post = () => {
         if (res.status === 200 && res.data) {
           setPost({
             title: res.data.post.title,
-            author: res.data.post.author.name,
-            author_id: res.data.post.author._id,
+            // todo: remove switch? 7/25
+            // had to add the switch because of some original posts (didn't have an author value)
+            // author: res.data.post.author.name,
+            // author_id: res.data.post.author._id,
+            author: res.data.post.author ? res.data.post.author.name : '',
+            author_id: res.data.post.author ? res.data.post.author._id : '',
             content: res.data.post.content,
             likes: res.data.post.likes,
             comments: res.data.post.comments,

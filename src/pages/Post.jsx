@@ -4,6 +4,7 @@ import { myContext } from '../contexts/Context';
 import axios from 'axios';
 import Comment from '../components/Comment';
 import ChangePost from '../components/ChangePost';
+import Like from '../components/Like';
 
 const Post = () => {
   const { id } = useParams() 
@@ -33,6 +34,7 @@ const Post = () => {
   // to see if value in location state or not
   useEffect(() => {
     if (location.state) {
+      console.log('location state mode')
       setPost({
         title: location.state.post.title,
         author: location.state.post.author.name,
@@ -42,6 +44,7 @@ const Post = () => {
         comments: location.state.post.comments,
       })
     } else {
+      console.log('axios mode')
       axios.get("http://localhost:3000/post/" + id, { headers: makeHeader() })
       .then(res => {
         if (res.status === 200 && res.data) {
@@ -85,6 +88,12 @@ const Post = () => {
     })
   }
 
+  const updateLikes = (array) => {
+    let newObj = {...post}
+    newObj.likes = array
+    setPost(newObj)
+  }
+
   const mockLikes = ['1111', '2222', '3333']
   const mockComments = [
     // real ones also have a date
@@ -126,9 +135,7 @@ const Post = () => {
           <div className="author">{post.author}</div>
           <div className="text">{post.content}</div>
           <div className="likes">
-            {(mockLikes.length == 0) && <p>Be the first to like this post!</p>}
-            {(mockLikes.length == 1) && <p>1 Like</p>}
-            {(mockLikes.length > 1) && <p>{mockLikes.length} Likes</p>}
+            <Like id={post._id} likes={post.likes} setLikes={updateLikes} user={userObject} />
           </div>
           <div className="comments">
             {mockComments.map(comment => {

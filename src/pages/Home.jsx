@@ -2,6 +2,7 @@ import { useEffect, useState, useContext } from 'react';
 import { useLocation } from 'react-router-dom';
 import { myContext } from '../contexts/Context';
 import axios from 'axios';
+import PostUnit from '../components/PostUnit';
 import PostList from '../components/PostList';
 
 const Home = () => {
@@ -43,7 +44,8 @@ const Home = () => {
       <div className="home-container">
         <div className="home-content">
           <h1 className="title">Rings of Power Fan Lair</h1>
-          <PostList posts={posts} full={true} user={userObject} />
+          { posts.map(post => <PostUnit key={post._id} user={userObject} post={post}/> )}
+          {/* <PostList posts={posts} full={true} user={userObject} /> */}
           { errors && (
             errors.map((err, index) => {
               return <p key={index}>{err.status} Error! {err.msg}</p>

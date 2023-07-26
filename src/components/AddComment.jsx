@@ -1,17 +1,29 @@
 import { useState } from "react";
+import axios from "axios";
 
-const AddComment = () => {
+const AddComment = ({ id, setComments, user, makeHeader }) => {
   const [addForm, setAddForm] = useState(false)
   const [commentText, setCommentText] = useState('')
 
   const handleShowForm = () => {
     setAddForm(true)
   }
-
   const handleAddComment = (e) => {
     e.preventDefault()
     console.log(commentText)
     // run axios request
+    axios.post("http://localhost:3000/addcomment", { postid: id, content: commentText }, { headers: makeHeader() })
+    .then(res => {
+      if (res.status === 200 && res.data.post) {
+        console.log(res.data.post)
+      } else if (res.data.errors) {
+        console.log(res.data.errors)
+      }
+    })
+    .catch(err => {
+      console.log(err)
+    })
+
     // if error, show error
     // if successful...should I update post page? (like run an axios req? or just update state?)
     // if successful, hide add form

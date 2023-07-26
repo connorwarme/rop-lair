@@ -23,7 +23,6 @@ const Post = () => {
   })
   const [edit, setEdit] = useState(false)
   const [errors, setErrors] = useState(false)
-  const [addComment, setAddComment] = useState(false)
 
   const makeHeader = () => {
     return {
@@ -103,9 +102,10 @@ const Post = () => {
     newObj.likes = array
     setPost(newObj)
   }
-
-  const handleAddComment = () => {
-
+  const updateComments = (array) => {
+    let newObj = {...post}
+    newObj.comments = array
+    setPost(newObj)
   }
 
   const mockLikes = ['1111', '2222', '3333']
@@ -149,7 +149,7 @@ const Post = () => {
           <div className="author">{post.author}</div>
           <div className="text">{post.content}</div>
           <div className="likes">
-            <Like id={id} likes={post.likes} setLikes={updateLikes} user={userObject} />
+            <Like id={id} likes={post.likes} setLikes={updateLikes} user={userObject} makeHeader={makeHeader} />
           </div>
           <div className='comments-container'>
             <div className="comments">
@@ -157,7 +157,7 @@ const Post = () => {
                 return <Comment commentObj={comment} user={null} key={comment.id}/>
               })}
             </div>
-            <AddComment />
+            <AddComment id={id} setComments={updateComments} user={userObject} makeHeader={makeHeader} />
           </div>
           { (userObject._id === post.author_id) && (
           <div className="options-container">

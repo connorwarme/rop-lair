@@ -10,6 +10,12 @@ const Comment = ({ commentObj, user }) => {
 
   // comment author is just their _id
   // need to run a query to get their names..?
+
+  // need a button to toggle (to reveal comments or hide them)
+  // comment units
+  // edit and delete buttons if comment author is user
+  // handle edit and handle delete functions
+  // edit view (in place) w/ cancel and save buttons
   return ( 
     <>
       <div className="comment-container">

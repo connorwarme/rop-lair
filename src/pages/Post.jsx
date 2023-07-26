@@ -135,7 +135,7 @@ const Post = () => {
           <div className="author">{post.author}</div>
           <div className="text">{post.content}</div>
           <div className="likes">
-            <Like id={post._id} likes={post.likes} setLikes={updateLikes} user={userObject} />
+            <Like id={id} likes={post.likes} setLikes={updateLikes} user={userObject} />
           </div>
           <div className="comments">
             {mockComments.map(comment => {

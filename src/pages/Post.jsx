@@ -2,9 +2,10 @@ import { useState, useEffect, useContext } from 'react';
 import { useParams, useLocation, useNavigate } from 'react-router-dom';
 import { myContext } from '../contexts/Context';
 import axios from 'axios';
-import Comment from '../components/Comment';
 import ChangePost from '../components/ChangePost';
 import Like from '../components/Like';
+import Comment from '../components/Comment';
+import AddComment from '../components/AddComment';
 
 const Post = () => {
   const { id } = useParams() 
@@ -22,6 +23,7 @@ const Post = () => {
   })
   const [edit, setEdit] = useState(false)
   const [errors, setErrors] = useState(false)
+  const [addComment, setAddComment] = useState(false)
 
   const makeHeader = () => {
     return {
@@ -102,6 +104,10 @@ const Post = () => {
     setPost(newObj)
   }
 
+  const handleAddComment = () => {
+
+  }
+
   const mockLikes = ['1111', '2222', '3333']
   const mockComments = [
     // real ones also have a date
@@ -145,10 +151,13 @@ const Post = () => {
           <div className="likes">
             <Like id={id} likes={post.likes} setLikes={updateLikes} user={userObject} />
           </div>
-          <div className="comments">
-            {mockComments.map(comment => {
-              return <Comment commentObj={comment} user={null} key={comment.id}/>
-            })}
+          <div className='comments-container'>
+            <div className="comments">
+              {mockComments.map(comment => {
+                return <Comment commentObj={comment} user={null} key={comment.id}/>
+              })}
+            </div>
+            <AddComment />
           </div>
           { (userObject._id === post.author_id) && (
           <div className="options-container">

@@ -157,7 +157,7 @@ const Post = () => {
                 return <Comment commentObj={comment} user={null} key={comment.id}/>
               })}
             </div>
-            <AddComment id={id} setComments={updateComments} user={userObject} makeHeader={makeHeader} />
+            <AddComment id={id} setComments={updateComments} makeHeader={makeHeader} />
           </div>
           { (userObject._id === post.author_id) && (
           <div className="options-container">

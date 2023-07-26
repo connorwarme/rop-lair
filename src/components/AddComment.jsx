@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 
-const AddComment = ({ id, setComments, user, makeHeader }) => {
+const AddComment = ({ id, setComments, makeHeader }) => {
   const [addForm, setAddForm] = useState(false)
   const [commentText, setCommentText] = useState('')
   const [errors, setErrors] = useState(null)
@@ -11,7 +11,6 @@ const AddComment = ({ id, setComments, user, makeHeader }) => {
   }
   const handleAddComment = (e) => {
     e.preventDefault()
-    console.log(commentText)
     // run axios request
     axios.post("http://localhost:3000/addcomment", { postid: id, content: commentText }, { headers: makeHeader() })
     .then(res => {

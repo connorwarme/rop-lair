@@ -2,7 +2,7 @@ import { useState, useEffect, useContext } from "react";
 import { myContext } from "../contexts/Context";
 import axios from "axios";
 
-const Like = ({ id, likes, user }) => {
+const Like = ({ id, likes, setLikes, user }) => {
 // need to grab userObject 
 // need to see if user already likes the post
 // if yes, show button to unlike
@@ -49,7 +49,7 @@ const Like = ({ id, likes, user }) => {
       setUserLikes(false)
       setLikeText(determineText(false, likes.length))
     }
-  }, [])
+  }, [ likes ])
 
   const handleLike = () => {
     const url = "http://localhost:3000/likepost/" + id
@@ -58,6 +58,7 @@ const Like = ({ id, likes, user }) => {
     .then(res => {
       if (res.status === 200 && res.data.post) {
         console.log(res.data.post)
+        setLikes(res.data.post.likes)
         // it worked -> need to fire an update
         // should i have a state value for number of likes? because I'll need the value and text to update
       } else if (res.data.errors) {
@@ -73,6 +74,7 @@ const Like = ({ id, likes, user }) => {
     .then(res => {
       if (res.status === 200 && res.data.post) {
         console.log(res.data.post)
+        setLikes(res.data.post.likes)
       } else if (res.data.errors) {
         console.log(res.data.errors)
       }

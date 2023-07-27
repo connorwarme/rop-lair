@@ -43,8 +43,8 @@ const Post = () => {
         // had to add the switch because of some original posts (didn't have an author value)
         // author: location.state.post.author.name,
         // author_id: location.state.post.author._id,
-        author: location.state.post.author ? location.state.post.author.name : '',
-        author_id: location.state.post.author ? location.state.post.author._id : '',
+        author: location.state.user ? location.state.user.name : '',
+        author_id: location.state.user ? location.state.user._id : '',
         content: location.state.post.content,
         likes: location.state.post.likes,
         comments: location.state.post.comments,

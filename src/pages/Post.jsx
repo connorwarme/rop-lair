@@ -159,8 +159,9 @@ const Post = () => {
             <button onClick={handleShowComments}>{ showComments ? 'Hide Comments' : 'Show Comments' }</button>
             { showComments && (
               <div className="comments">
-              {mockComments.map(comment => {
-                return <Comment commentObj={comment} user={null} key={comment.id}/>
+              {post.comments.map(comment => {
+                console.log(comment)
+                return <Comment commentObj={comment} user={userObject} key={comment._id} makeHeader={makeHeader} />
               })}
               </div> 
             )}

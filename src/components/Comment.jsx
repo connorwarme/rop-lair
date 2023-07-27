@@ -1,10 +1,25 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 
 
-const Comment = ({ commentObj, user }) => {
-  // should this logic be here, or in parent component? and just pass in a boolean
+const Comment = ({ commentObj, user, makeHeader }) => {
+  const [author, setAuthor] = useState(false)
+  // is the current user the author of the comment?
   const [isAuthor, setIsAuthor] = useState(false)
-  //
+  // need an axios request to get comment author from db
+
+  useEffect(() => {
+    axios.get("http://localhost:3000/author/" + commentObj.author, { headers: makeHeader() })
+    .then(res => {
+      if (res.status === 200 && res.data.author) {
+        setAuthor(res.data.author)
+        setIsAuthor(res.data.author._id === user._id)
+      }
+    })
+    .catch(err => {
+      console.log(err)
+    })
+  }, [])
 
   // delete logic should be passed in from parent component
 
@@ -20,9 +35,9 @@ const Comment = ({ commentObj, user }) => {
     <>
       <div className="comment-container">
         <div className="comment-content">
-          <h5 className="comment-author">{commentObj.author}</h5>
+          { author && <h5 className="comment-author">{author.name}</h5> }
           <p className="comment-text">{commentObj.content}</p>
-          { (commentObj.author === user) && <button onClick={() => console.log('Delete this comment from db.')}>Delete</button>}
+          { (isAuthor) && <button onClick={() => console.log('Delete this comment from db.')}>Delete</button>}
         </div>
       </div>
     </>

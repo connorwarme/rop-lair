@@ -27,6 +27,7 @@ const Home = () => {
     axios.get(url, { headers: headers })
     .then(res => {
       if (res.status === 200 && res.data.posts) {
+        console.log(res.data.posts)
         setPosts(res.data.posts)
         setErrors(null)
       } else if (res.data.errors) {

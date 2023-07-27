@@ -8,6 +8,7 @@ const Comment = ({ post, commentObj, user, setComments, makeHeader }) => {
   const [isAuthor, setIsAuthor] = useState(false)
   const [comment, setComment] = useState(false)
   const [edit, setEdit] = useState(false)
+  const [errors, setErrors] = useState(false)
 
 
   // need an axios request to get comment author from db
@@ -40,11 +41,11 @@ const Comment = ({ post, commentObj, user, setComments, makeHeader }) => {
   }
   const handleCancelEdit = () => {
     setEdit(false)
+    setErrors(false)
     setComment(commentObj.content)
   }
   const handleSaveEdit = (e) => {
     e.preventDefault()
-    console.log(post)
     // axios post req to save
     axios.post("http://localhost:3000/editcomment", {
       postid: post,
@@ -52,12 +53,12 @@ const Comment = ({ post, commentObj, user, setComments, makeHeader }) => {
       content: comment,
     }, { headers: makeHeader() }) 
     .then(res => {
-      console.log(res.data)
       if (res.status === 200 && res.data.post) {
         setComments(res.data.post.comments)
+        setErrors(false)
+        setEdit(false)
       } else if (res.data.errors) {
-        // need to set/display errors !
-        console.log(res.data.errors)
+        setErrors(res.data.errors)
       }
     })
     .catch(err => {
@@ -68,7 +69,23 @@ const Comment = ({ post, commentObj, user, setComments, makeHeader }) => {
     setEdit(true)
   }
   const handleDelete = () => {
-    // axios req to delete
+    axios.post("http://localhost:3000/deletecomment", {
+      postid: post,
+      commentid: commentObj._id,
+    }, { headers: makeHeader() })
+    .then(res => {
+      if (res.status === 200 && res.data.post) {
+        console.log(res.data.post)
+        // update post comments 
+        setComments(res.data.post.comments)
+        setErrors(false)
+      } else if (res.data.errors) {
+        setErrors(res.data.errors)
+      }
+    })
+    .catch(err => {
+      console.log(err)
+    })
   }
   return ( 
     <>
@@ -85,6 +102,16 @@ const Comment = ({ post, commentObj, user, setComments, makeHeader }) => {
               <form onSubmit={handleSaveEdit}>
                 <label htmlFor="comment">Comment:</label>
                 <input type="text" id='comment' value={comment} onChange={handleCommentEdit} />
+                { errors && (
+                  <div className="errors">
+                    { errors.map((err, index) => {
+                      if (err.status) {
+                        return <p key={index}>{err.status} Error! {err.msg}</p>
+                      }
+                      return <p key={index}>Error! {err.msg}</p>
+                    })}
+                  </div>
+                )}
                 <button type='button' onClick={handleCancelEdit}>Cancel</button>
                 <button type='submit'>Save</button>
               </form>

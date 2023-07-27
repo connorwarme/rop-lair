@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
-
 const Comment = ({ post, commentObj, user, setComments, makeHeader }) => {
   const [author, setAuthor] = useState(false)
   // is the current user the author of the comment?
@@ -9,7 +8,6 @@ const Comment = ({ post, commentObj, user, setComments, makeHeader }) => {
   const [comment, setComment] = useState(false)
   const [edit, setEdit] = useState(false)
   const [errors, setErrors] = useState(false)
-
 
   // need an axios request to get comment author from db
   useEffect(() => {
@@ -26,16 +24,6 @@ const Comment = ({ post, commentObj, user, setComments, makeHeader }) => {
     })
   }, [])
 
-  // delete logic should be passed in from parent component
-
-  // comment author is just their _id
-  // need to run a query to get their names..?
-
-  // need a button to toggle (to reveal comments or hide them)
-  // comment units
-  // edit and delete buttons if comment author is user
-  // handle edit and handle delete functions
-  // edit view (in place) w/ cancel and save buttons
   const handleCommentEdit = (e) => {
     setComment(e.target.value)
   }
@@ -46,7 +34,6 @@ const Comment = ({ post, commentObj, user, setComments, makeHeader }) => {
   }
   const handleSaveEdit = (e) => {
     e.preventDefault()
-    // axios post req to save
     axios.post("http://localhost:3000/editcomment", {
       postid: post,
       commentid: commentObj._id,
@@ -75,8 +62,6 @@ const Comment = ({ post, commentObj, user, setComments, makeHeader }) => {
     }, { headers: makeHeader() })
     .then(res => {
       if (res.status === 200 && res.data.post) {
-        console.log(res.data.post)
-        // update post comments 
         setComments(res.data.post.comments)
         setErrors(false)
       } else if (res.data.errors) {

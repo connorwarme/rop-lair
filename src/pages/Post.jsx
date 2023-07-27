@@ -17,7 +17,7 @@ const Post = () => {
     author: "",
     author_id: "",
     content: "",
-    // todo: should I put the likes in it's own state? same for comments?
+    // todo: should I put the likes in it's own state? same for comments? update 7/27 - its working for the moment as is.
     likes: [],
     comments: [],
   })
@@ -112,38 +112,6 @@ const Post = () => {
     setShowComments(!showComments)
   }
 
-  const mockLikes = ['1111', '2222', '3333']
-  const mockComments = [
-    // real ones also have a date
-    {
-      author: '1111',
-      content: 'Here is my first mock comment',
-      id: 1,
-    },
-    {
-      author: '2222',
-      content: 'Here is the second mock comment',
-      id: 2,
-    },
-    {
-      author: '1111',
-      content: 'Here is the third mock comment',
-      id: 3,
-    },
-
-  ]
-  // like display: *separate component*
-  // need to count and report # of likes
-  // need to filter likes -> if user likes, show unlike button. if not, show like button.
-  // need function to handle liking or unliking post
-
-  // comment display:
-  // need a component for each comment. then map over the array and display them all. 
-  // if the user is an author of any comment, it should show:
-  // a delete button...need function
-  // an edit button... needs a function
-  // need function to handle making a comment (as well as editing and deleting)
-
   return ( 
     <>
       <div className="post-detail-container">
@@ -160,7 +128,6 @@ const Post = () => {
             { showComments && (
               <div className="comments">
               {post.comments.map(comment => {
-                console.log(id)
                 return <Comment post={id} commentObj={comment} user={userObject} key={comment._id} setComments={updateComments} makeHeader={makeHeader} />
               })}
               </div> 

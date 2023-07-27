@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 
 
-const Comment = ({ commentObj, user, makeHeader }) => {
+const Comment = ({ post, commentObj, user, setComments, makeHeader }) => {
   const [author, setAuthor] = useState(false)
   // is the current user the author of the comment?
   const [isAuthor, setIsAuthor] = useState(false)
@@ -42,8 +42,27 @@ const Comment = ({ commentObj, user, makeHeader }) => {
     setEdit(false)
     setComment(commentObj.content)
   }
-  const handleSaveEdit = () => {
-    // axios post req to save 
+  const handleSaveEdit = (e) => {
+    e.preventDefault()
+    console.log(post)
+    // axios post req to save
+    axios.post("http://localhost:3000/editcomment", {
+      postid: post,
+      commentid: commentObj._id,
+      content: comment,
+    }, { headers: makeHeader() }) 
+    .then(res => {
+      console.log(res.data)
+      if (res.status === 200 && res.data.post) {
+        setComments(res.data.post.comments)
+      } else if (res.data.errors) {
+        // need to set/display errors !
+        console.log(res.data.errors)
+      }
+    })
+    .catch(err => {
+      console.log(err)
+    })
   }
   const handleShowEdit = () => {
     setEdit(true)

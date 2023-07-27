@@ -153,15 +153,15 @@ const Post = () => {
           <div className="author">{post.author}</div>
           <div className="text">{post.content}</div>
           <div className="likes">
-            <Like id={id} likes={post.likes} setLikes={updateLikes} user={userObject} makeHeader={makeHeader} />
+            <Like id={id} likes={post.likes} user={userObject} setLikes={updateLikes} makeHeader={makeHeader} />
           </div>
           <div className='comments-container'>
             <button onClick={handleShowComments}>{ showComments ? 'Hide Comments' : 'Show Comments' }</button>
             { showComments && (
               <div className="comments">
               {post.comments.map(comment => {
-                console.log(comment)
-                return <Comment commentObj={comment} user={userObject} key={comment._id} makeHeader={makeHeader} />
+                console.log(id)
+                return <Comment post={id} commentObj={comment} user={userObject} key={comment._id} setComments={updateComments} makeHeader={makeHeader} />
               })}
               </div> 
             )}

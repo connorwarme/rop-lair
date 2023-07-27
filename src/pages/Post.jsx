@@ -23,6 +23,7 @@ const Post = () => {
   })
   const [edit, setEdit] = useState(false)
   const [errors, setErrors] = useState(false)
+  const [showComments, setShowComments] = useState(false)
 
   const makeHeader = () => {
     return {
@@ -107,6 +108,9 @@ const Post = () => {
     newObj.comments = array
     setPost(newObj)
   }
+  const handleShowComments = () => {
+    setShowComments(!showComments)
+  }
 
   const mockLikes = ['1111', '2222', '3333']
   const mockComments = [
@@ -152,18 +156,21 @@ const Post = () => {
             <Like id={id} likes={post.likes} setLikes={updateLikes} user={userObject} makeHeader={makeHeader} />
           </div>
           <div className='comments-container'>
-            <div className="comments">
+            <button onClick={handleShowComments}>{ showComments ? 'Hide Comments' : 'Show Comments' }</button>
+            { showComments && (
+              <div className="comments">
               {mockComments.map(comment => {
                 return <Comment commentObj={comment} user={null} key={comment.id}/>
               })}
-            </div>
+              </div> 
+            )}
             <AddComment id={id} setComments={updateComments} makeHeader={makeHeader} />
           </div>
           { (userObject._id === post.author_id) && (
-          <div className="options-container">
-            <button onClick={handleEdit}>Edit</button>
-            <button onClick={handleDelete}>Delete</button>
-          </div>
+            <div className="options-container">
+              <button onClick={handleEdit}>Edit</button>
+              <button onClick={handleDelete}>Delete</button>
+            </div>
           )}
           { ((userObject._id === post.author_id) && errors) && (
             <div className="errors">

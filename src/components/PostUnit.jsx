@@ -1,3 +1,5 @@
+/* eslint-disable react/prop-types */
+
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import Like from "./Like";
@@ -22,10 +24,10 @@ const PostUnit = ( { user, post }) => {
           <div className="post-content">
             <h2 className="post-title">Title: {post.title}</h2>
             <p className="post-content">{post.content}</p> 
-            { post.author && <p className="post-author">Written by: {post.author.name}</p> }
           </div>
         </Link>
-            <Like id={post._id} likes={likesArr} setLikes={setLikesArr} user={user} />
+          { post.author && <p className="post-author">Written by: <Link to={`/profile/${post.author._id}`}>{post.author.name}</Link></p> }
+          <Like id={post._id} likes={likesArr} setLikes={setLikesArr} user={user} />
       </div>
     </>
    );

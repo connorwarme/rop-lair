@@ -24,6 +24,15 @@ const Profile = () => {
   const handleShowEdit = () => {
     setEdit(true)
   }
+  // needs edit functionality ->
+  // what are they allowed to change?
+
+  // needs add friend functionality
+  // have to see if current user is already friends w/ profile
+  // and/or see if they are pending friends
+  // and/or see if they aren't friends (and have an "add friend" button)
+
+  // still need to add favorites model and all that to the backend
   return ( 
     <>
       <div className="profile-container">

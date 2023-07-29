@@ -8,6 +8,7 @@ import icon from "../images/accountIcon.svg"
 const Profile = () => {
   const [favs, setFavs] = useState(false)
   const [edit, setEdit] = useState(false)
+  const [friend, setFriend] = useState(false)
   const { id } = useParams() 
 
   const { userObject, access } = useContext(myContext)
@@ -24,9 +25,31 @@ const Profile = () => {
   const handleShowEdit = () => {
     setEdit(true)
   }
+  const determineFriendship = (list, userid) => {
+    if (list.list.includes(userid)) {
+      return 'Friends'
+    } else if (list.pending.includes(userid)) {
+      return 'Pending'
+    } else if (list.request.includes(userid)) {
+      return 'Accept Request'
+    } else {
+      return 'Add Friend'
+    }
+  }
   // needs edit functionality ->
   // what are they allowed to change?
-
+  useEffect(() => {
+    if (data != null) {
+      if (data.profile._id === data.user._id) {
+        return setFriend(false)
+      } else {
+        // run function to check friend status
+        const status = determineFriendship(data.profile.friend_list, data.user._id)
+        console.log(status)
+        setFriend(status)
+      }
+    }
+  }, [ data ])
   // needs add friend functionality
   // have to see if current user is already friends w/ profile
   // and/or see if they are pending friends
@@ -41,6 +64,7 @@ const Profile = () => {
           <img src={(!isLoading && data.profile.picture) ? data.profile.picture : icon} style={{height: '120px'}}></img>
           { (!isLoading && data.profile) && <h1 className="profile-title">{data.profile.name}</h1> }
           <br />
+          { (data && friend)}
           { favs && (
             <div className="favs-container">
               <h1>Favorites</h1>

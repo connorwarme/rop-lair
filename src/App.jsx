@@ -11,6 +11,7 @@ import Temp from './components/Temp'
 import { useState, useContext } from 'react'
 import { myContext } from './contexts/Context'
 import CreatePost from './pages/CreatePost'
+import AddFriend from './components/AddFriend'
 
 export default function App() {
 
@@ -33,6 +34,7 @@ export default function App() {
             <Route path='/profile/:id' element={ <Profile /> } />
             <Route path='/post/create' element={ <CreatePost /> } />
             <Route path='/post/:id' element={ <Post /> } />
+            <Route path='/test' element={ <AddFriend />} />
             <Route />
           </Routes>
         </div>

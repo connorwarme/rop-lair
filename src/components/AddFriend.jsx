@@ -1,16 +1,38 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, useContext } from "react"
+import useFetch from "../hooks/useFetch";
 import axios from "axios";
+import { myContext } from "../contexts/Context";
 
 const AddFriend = ({ userFriends, profileId }) => {
   const [notFriends, setNotFriends] = useState(true)
   const [friends, setFriends] = useState(true)
   const [pending, setPending] = useState(true)
   const [request, setRequest] = useState(true)
+  const [errors, setErrors] = useState(null)
 
-  const handleNotFriends = () => {
+  const { access } = useContext(myContext)
+
+  const handleMakeRequest = () => {
     // user and profile are not friends
     // text to display: Add Friend
     // option: make friend request (put profileid on pending list for user's friend_list, put userid on request list for profile's friend_list)
+    axios.post("http://localhost:3000/sendrequest", { userid: profileId }, { headers: { "Authorization": `Bearer ${access}` }})
+    .then(res => {
+      if (res.status === 200 && res.data.friend_list) {
+        console.log(res.data)
+        setErrors(false)
+        // todo: add visual confirmation (green check) if request went through successfully
+        setNotFriends(false)
+        setPending(true)
+      } else if (res.data.errors) {
+        console.log(res.data.errors)
+        // todo: add visual confirmation (red check) if request failed...
+        setErrors(res.data.errors)
+      }
+    })
+    .catch(err => {
+      console.log(err)
+    })
   }
   const handleFriends = () => {
     // user and profile are friends
@@ -82,9 +104,14 @@ const AddFriend = ({ userFriends, profileId }) => {
         )}
         { notFriends && (
           <>
-            <button onClick={() => console.log('handle add friend')}>Add Friend</button>
+            <button onClick={handleMakeRequest}>Add Friend</button>
           </>
         )}
+        { errors && (
+            errors.map((err, index) => {
+              return <p key={index}>{err.status} Error! {err.msg}</p>
+            })
+          )}
       </div>
     </>
    );

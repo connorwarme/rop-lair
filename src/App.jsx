@@ -34,7 +34,7 @@ export default function App() {
             <Route path='/profile/:id' element={ <Profile /> } />
             <Route path='/post/create' element={ <CreatePost /> } />
             <Route path='/post/:id' element={ <Post /> } />
-            <Route path='/test' element={ <AddFriend />} />
+            <Route path='/test' element={ <AddFriend userFriends={userObject ? userObject.friend_list : null} profileId={'648f861a0f6d81f002a2a222'} />} />
             <Route />
           </Routes>
         </div>

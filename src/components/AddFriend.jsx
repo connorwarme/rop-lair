@@ -57,16 +57,58 @@ const AddFriend = ({ userFriends, profileId }) => {
     })
   }
 
-  const handlePending = () => {
+  const handleDeletePending = () => {
     // user has sent request, awaiting profile to confirm or deny
     // text to display: Pending
     // option: maybe a way to rescind the request?
+    axios.post("http://localhost:3000/deletefriend", { userid: '648f861a0f6d81f002a2a222' }, { headers: { "Authorization": `Bearer ${access}` }})
+    .then(res => {
+      console.log(res.data)
+      if (res.status === 200 && res.data.friend_list) {
+        setErrors(null)
+        setPending(false)
+        setNotFriends(true)
+      } else if (res.data.errors) {
+        setErrors(res.data.errors)
+      }
+    })
+    .catch(err => {
+      console.log(err)
+    })
   }
 
-  const handleRequest = () => {
+  const handleAcceptRequest = () => {
     // profile has sent request, awaiting user response
-    // text to display: Accept | Ignore
-    // option: handle an accept, handle an ignore
+    axios.post("http://localhost:3000/acceptrequest", { userid: '6495da6d5dea80fc65a0a447' }, { headers: { "Authorization": `Bearer ${access}` }})
+    .then(res => {
+      console.log(res.data)
+      if (res.status === 200 && res.data.friend_list) {
+        setErrors(null)
+        setRequest(false)
+        setFriends(true)
+      } else if (res.data.errors) {
+        setErrors(res.data.errors)
+      }
+    })
+    .catch(err => {
+      console.log(err)
+    })
+  }
+  const handleDeleteRequest = () => {
+    axios.post("http://localhost:3000/deletefriend", { userid: '6495da6d5dea80fc65a0a447' }, { headers: { "Authorization": `Bearer ${access}` }})
+    .then(res => {
+      console.log(res.data)
+      if (res.status === 200 && res.data.friend_list) {
+        setErrors(null)
+        setRequest(false)
+        setNotFriends(true)
+      } else if (res.data.errors) {
+        setErrors(res.data.errors)
+      }
+    })
+    .catch(err => {
+      console.log(err)
+    })
   }
 
   // fn to take userFriends array and sort out what text to show and option to display
@@ -110,13 +152,13 @@ const AddFriend = ({ userFriends, profileId }) => {
         { pending && (
           <>
             <p className="friend-status">Pending</p>
-            <button onClick={() => console.log('remove profileid from friend_list.pending')}>X</button>
+            <button onClick={handleDeletePending}>X</button>
           </>
         )}
         { request && (
           <>
-            <button onClick={() => console.log('add profileid to friend_list.list & remove from friend_list.request')}>Accept</button>
-            <button onClick={() => console.log('remove profileid from friend_list.request')}>Ignore</button>
+            <button onClick={handleAcceptRequest}>Accept</button>
+            <button onClick={handleDeleteRequest}>Ignore</button>
           </>
         )}
         { notFriends && (

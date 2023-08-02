@@ -20,7 +20,7 @@ const AddFriend = ({ userFriends, profileId }) => {
     .then(res => {
       if (res.status === 200 && res.data.friend_list) {
         console.log(res.data)
-        setErrors(false)
+        setErrors(null)
         // todo: add visual confirmation (green check) if request went through successfully
         setNotFriends(false)
         setPending(true)
@@ -38,6 +38,23 @@ const AddFriend = ({ userFriends, profileId }) => {
     // user and profile are friends
     // text to display: Friends
     // option: maybe a way to remove friend?
+  }
+  const handleDeleteFriend = () => {
+    // haven't tested this handler yet, nor the backend yet.
+    axios.post("http://localhost:3000/deletefriend", { userid: profileId }, { headers: { "Authorization": `Bearer ${access}` }})
+    .then(res => {
+      console.log(res.data)
+      if (res.status === 200 && res.data.friend_list) {
+        setErrors(null)
+        setFriends(false)
+        setNotFriends(true)
+      } else if (res.data.errors) {
+        setErrors(res.data.errors)
+      }
+    })
+    .catch(err => {
+      console.log(err)
+    })
   }
 
   const handlePending = () => {
@@ -87,7 +104,7 @@ const AddFriend = ({ userFriends, profileId }) => {
         { friends && (
           <>
             <p className="friend-status">Friends</p>
-            <button onClick={() => console.log('remove friend(profileid) from friend_list.list')}>X</button>
+            <button onClick={handleDeleteFriend}>X</button>
           </>
         )}
         { pending && (

@@ -12,6 +12,7 @@ import { useState, useContext } from 'react'
 import { myContext } from './contexts/Context'
 import CreatePost from './pages/CreatePost'
 import AddFriend from './components/AddFriend'
+import Test from './components/Test'
 
 export default function App() {
 
@@ -21,6 +22,8 @@ export default function App() {
   // how to protect routes on frontend?
   // how to send auth header when needed?
   // how to refresh token when needed?
+
+  const [ value, setValue ] = useState(2)
   return (
     <>
         <Nav />
@@ -34,7 +37,8 @@ export default function App() {
             <Route path='/profile/:id' element={ <Profile /> } />
             <Route path='/post/create' element={ <CreatePost /> } />
             <Route path='/post/:id' element={ <Post /> } />
-            <Route path='/test' element={ <AddFriend userFriends={userObject ? userObject.friend_list : null} profileId={'6495da6d5dea80fc65a0a447'} />} />
+            {/* <Route path='/test' element={ <AddFriend userFriends={userObject ? userObject.friend_list : null} profileId={'6495da6d5dea80fc65a0a447'} />} /> */}
+            <Route path='/test' element={ <Test value={value} setValue={setValue} /> } />
             <Route />
           </Routes>
         </div>

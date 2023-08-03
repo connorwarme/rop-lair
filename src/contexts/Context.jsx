@@ -34,7 +34,7 @@ const Context = (props) => {
         .then(res => {
           if (res.status === 200 && res.data.user) {
             console.log(res.data)
-            setUserObject(res.data.user.user)
+            setUserObject(res.data.user)
           // save access and refresh tokens to local storage?
           }
         })

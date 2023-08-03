@@ -23,7 +23,12 @@ export default function App() {
   // how to send auth header when needed?
   // how to refresh token when needed?
 
-  const [ value, setValue ] = useState(2)
+  const [ list, setList ] = useState({
+    list: ['6495da6d5dea80fc65a0a443', '6495da6d5dea80fc65a0a449'],
+    pending: ['6495da6d5dea80fc65a0a443', '6495da6d5dea80fc65a0a447'],
+    request: [],
+  })
+
   return (
     <>
         <Nav />
@@ -37,8 +42,8 @@ export default function App() {
             <Route path='/profile/:id' element={ <Profile /> } />
             <Route path='/post/create' element={ <CreatePost /> } />
             <Route path='/post/:id' element={ <Post /> } />
-            {/* <Route path='/test' element={ <AddFriend userFriends={userObject ? userObject.friend_list : null} profileId={'6495da6d5dea80fc65a0a447'} />} /> */}
-            <Route path='/test' element={ <Test value={value} setValue={setValue} /> } />
+            <Route path='/test' element={ <AddFriend userFriends={userObject ? userObject.friend_list : null} profileId={'6495da6d5dea80fc65a0a447'} />} />
+            <Route path='/testing' element={ <Test list={list} setList={setList} profileId={'6495da6d5dea80fc65a0a447'} /> } />
             <Route />
           </Routes>
         </div>

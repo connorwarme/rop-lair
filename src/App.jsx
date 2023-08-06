@@ -53,7 +53,7 @@ export default function App() {
             <Route path='/post/create' element={ <CreatePost /> } />
             <Route path='/post/:id' element={ <Post /> } />
             <Route path='/test' element={ <AddFriend userFriends={userObject ? userObject.friend_list : null} profileId={'6495da6d5dea80fc65a0a447'} />} />
-            <Route path='/testing' element={ <Test list={list} setList={setList} profileId={'6495da6d5dea80fc65a0a447'} /> } />
+            <Route path='/testing' element={userObject && <Test list={userObject.friend_list} setList={setNew} profileId={'6495da6d5dea80fc65a0a447'} /> } />
             <Route />
           </Routes>
         </div>

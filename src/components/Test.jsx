@@ -29,9 +29,9 @@ const Test = ({ list, setList, profileId}) => {
   }
   const handleAddRequest = () => {
     setList({
-      list: ['6495da6d5dea80fc65a0a446', '6495da6d5dea80fc65a0a449'],
-      pending: ['6495da6d5dea80fc65a0a447', '6495da6d5dea80fc65a0a448'],
-      request: ['6495da6d5dea80fc65a0a443'],
+      list: ['6495da6d5dea80fc65a0a448', '6495da6d5dea80fc65a0a449'],
+      pending: ['6495da6d5dea80fc65a0a446', '6495da6d5dea80fc65a0a448'],
+      request: ['6495da6d5dea80fc65a0a443', '6495da6d5dea80fc65a0a447'],
     })
   }
   return (  

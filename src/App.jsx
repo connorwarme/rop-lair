@@ -16,7 +16,7 @@ import Test from './components/Test'
 
 export default function App() {
 
-  const { userObject } = useContext(myContext)
+  const { userObject, setUserObject } = useContext(myContext)
   console.log(userObject)
   // how to utilize userObject?
   // how to protect routes on frontend?
@@ -25,9 +25,19 @@ export default function App() {
 
   const [ list, setList ] = useState({
     list: ['6495da6d5dea80fc65a0a443', '6495da6d5dea80fc65a0a449'],
-    pending: ['6495da6d5dea80fc65a0a443', '6495da6d5dea80fc65a0a447'],
-    request: [],
+    pending: ['6495da6d5dea80fc65a0a443', '6495da6d5dea80fc65a0a446'],
+    request: ['6495da6d5dea80fc65a0a447'],
   })
+  let newlist = {
+    list: ['6495da6d5dea80fc65a0a443', '6495da6d5dea80fc65a0a449'],
+    pending: ['6495da6d5dea80fc65a0a443'],
+    request: ['6495da6d5dea80fc65a0a445', '6495da6d5dea80fc65a0a447'],
+  }
+  const setNew = (listObject) => {
+    const newObj = {...userObject}
+    newObj.friend_list = listObject
+    setUserObject(newObj)
+  }
 
   return (
     <>

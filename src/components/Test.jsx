@@ -13,20 +13,54 @@ const Test = ({ list, setList, profileId}) => {
   const pending = queryPending()
   const request = queryRequest()
 
-  const handleClick = () => {
+  const handleDelete = () => {
     setList({
-      list: ['6495da6d5dea80fc65a0a443', '6495da6d5dea80fc65a0a449'],
+      list: [],
+      pending: [],
+      request: [],
+    })
+  }
+  const handleFriend = () => {
+    setList({
+      list: ['6495da6d5dea80fc65a0a447', '6495da6d5dea80fc65a0a449'],
       pending: ['6495da6d5dea80fc65a0a446', '6495da6d5dea80fc65a0a448'],
-      request: ['6495da6d5dea80fc65a0a443', '6495da6d5dea80fc65a0a447'],
+      request: ['6495da6d5dea80fc65a0a443'],
+    })
+  }
+  const handleAddRequest = () => {
+    setList({
+      list: ['6495da6d5dea80fc65a0a446', '6495da6d5dea80fc65a0a449'],
+      pending: ['6495da6d5dea80fc65a0a447', '6495da6d5dea80fc65a0a448'],
+      request: ['6495da6d5dea80fc65a0a443'],
     })
   }
   return (  
     <>
-      { (friend) && <div>We are friends.</div>}
-      { (pending) && <div>We are pending friends.</div>}
-      { (request) && <div>We are request friends</div>}
-      { (!friend && !pending && !request) && <div>We are not friends!</div>}
-      <button onClick={handleClick}>Click</button>
+      { (friend) && (
+        <>
+          <div>We are friends.</div>
+          <button onClick={handleDelete}>Delete Friend</button>
+        </>
+      )}
+      { (pending) && (
+        <>
+          <div>We are pending friends.</div>
+          <button onClick={handleDelete}>Delete Pending</button>
+        </>
+      )}
+      { (request) && (
+        <>
+          <div>We are request friends.</div>
+          <button onClick={handleFriend}>Accept</button>
+          <button onClick={handleDelete}>Ignore</button>
+        </>
+      )}
+      { (!friend && !pending && !request) && (
+        <>
+          <div>We are not friends!</div>
+          <button onClick={handleAddRequest}>Add Friend</button>
+        </>
+        )}
     </>
    );
 }

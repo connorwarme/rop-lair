@@ -6,6 +6,7 @@ import ChangePost from '../components/ChangePost';
 import Like from '../components/Like';
 import Comment from '../components/Comment';
 import AddComment from '../components/AddComment';
+import useAxios from '../hooks/useAxios';
 
 const Post = () => {
   const { id } = useParams() 
@@ -121,7 +122,7 @@ const Post = () => {
           <div className="author">{post.author}</div>
           <div className="text">{post.content}</div>
           <div className="likes">
-            <Like id={id} likes={post.likes} user={userObject} setLikes={updateLikes} makeHeader={makeHeader} />
+            { userObject && <Like id={id} likes={post.likes} user={userObject} setLikes={updateLikes} makeHeader={makeHeader} /> }
           </div>
           <div className='comments-container'>
             <button onClick={handleShowComments}>{ showComments ? 'Hide Comments' : 'Show Comments' }</button>

@@ -11,16 +11,12 @@ const Profile = () => {
   const [friend, setFriend] = useState(false)
   const { id } = useParams() 
 
-  const { userObject, access } = useContext(myContext)
+  const { userObject, access, makeHeader } = useContext(myContext)
   // regular profile (of actual user) works
   // have to determine if it is the current user's profile or someone else's
   const url = id ? 'http://localhost:3000/profile/' + id : 'http://localhost:3000/profile/'
-  const auth = {
-    headers: {
-    "Authorization": `Bearer ${access}`,
-    }
-  }
-  const { data, isLoading, error } = useFetch(url, auth)
+
+  const { data, isLoading, error } = useFetch(url, { headers: makeHeader() })
 
   const handleShowEdit = () => {
     setEdit(true)

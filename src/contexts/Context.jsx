@@ -57,8 +57,15 @@ const Context = (props) => {
       return () => abortController.abort()
   }, [ access ])
 
+  const makeHeader = () => {
+    return {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${access}`
+    }
+  }
+
   return ( 
-    <myContext.Provider value={{ userObject, setUserObject, access, setAccess, errorMsg, setErrorMsg }}>{props.children}</myContext.Provider>
+    <myContext.Provider value={{ userObject, setUserObject, access, setAccess, errorMsg, setErrorMsg, makeHeader }}>{props.children}</myContext.Provider>
    )
 }
  

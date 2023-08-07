@@ -112,7 +112,6 @@ const Login = () => {
         Accept: 'application/json',
         "Content-Type": "application/json",
         "Access-Control-Allow-Origin": 'https://accounts.google.com/o/oauth2/v2/auth',
-
       }
     })
     .then(res => {

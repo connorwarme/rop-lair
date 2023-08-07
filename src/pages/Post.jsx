@@ -11,7 +11,7 @@ import useAxios from '../hooks/useAxios';
 const Post = () => {
   const { id } = useParams() 
   const location = useLocation()
-  const { userObject, access } = useContext(myContext)
+  const { userObject, access, makeHeader } = useContext(myContext)
   const navigate = useNavigate()
   const [post, setPost] = useState({
     title: "",
@@ -25,13 +25,6 @@ const Post = () => {
   const [edit, setEdit] = useState(false)
   const [errors, setErrors] = useState(false)
   const [showComments, setShowComments] = useState(false)
-
-  const makeHeader = () => {
-    return {
-      "Content-Type": "application/json",
-      "Authorization": `Bearer ${access}`
-    }
-  }
 
   // need to run a check, once, on load
   // to see if value in location state or not
@@ -82,8 +75,7 @@ const Post = () => {
   }
   const handleDelete = () => {
     const url = "http://localhost:3000/deletepost/" + id
-    const headers = makeHeader()
-    axios.post(url, {}, { headers: headers })
+    axios.post(url, {}, { headers: makeHeader() })
     .then(res => {
       console.log(res)
       // success message?

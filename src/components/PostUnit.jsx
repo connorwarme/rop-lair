@@ -27,7 +27,7 @@ const PostUnit = ( { user, post }) => {
           </div>
         </Link>
           { post.author && <p className="post-author">Written by: <Link to={`/profile/${post.author._id}`}>{post.author.name}</Link></p> }
-          <Like id={post._id} likes={likesArr} setLikes={setLikesArr} user={user} />
+          { user && <Like id={post._id} likes={likesArr} setLikes={setLikesArr} user={user} /> }
       </div>
     </>
    );

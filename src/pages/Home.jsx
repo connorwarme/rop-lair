@@ -13,18 +13,15 @@ const Home = () => {
   ])
   const [errors, setErrors] = useState(null)
 
-  const { userObject, access } = useContext(myContext)
+  const { userObject, access, makeHeader } = useContext(myContext)
   const location = useLocation()
   
   useEffect(() => {
     // query database for all posts
     // eventually have a button to toggle b/w all posts and just friends' posts
     const url = "http://localhost:3000/posts"
-    const headers = {
-      "Content-Type": "application/json",
-      "Authorization":  `Bearer ${access}`
-    }
-    axios.get(url, { headers: headers })
+
+    axios.get(url, { headers: makeHeader() })
     .then(res => {
       if (res.status === 200 && res.data.posts) {
         console.log(res.data.posts)

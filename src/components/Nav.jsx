@@ -9,7 +9,7 @@ import "../styles/navStyle.css"
 // want to show routes once signed in ... but hide the sign in and login links
 const Nav = () => {
 
-  const { userObject } = useContext(myContext)
+  const { userObject, makeHeader } = useContext(myContext)
 
   // need to send auth bearer token and refresh token in request
   // then need to remove tokens from local storage
@@ -17,11 +17,7 @@ const Nav = () => {
   const logout = () => {
     const token = returnObject("access")
     console.log(token)
-    axios.post("http://localhost:3000/auth/logout", {
-      headers: {
-        "Authorization": "Bearer " + token
-      }
-    })
+    axios.post("http://localhost:3000/auth/logout", { headers: makeHeader() })
       .then(res => {
         if (res.data) {
           clearStorage("access")

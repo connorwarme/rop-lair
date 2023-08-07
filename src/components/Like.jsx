@@ -10,7 +10,7 @@ const Like = ({ id, likes, setLikes, user }) => {
   const [userLikes, setUserLikes] = useState(false)
   const [likeText, setLikeText] = useState('Be the first to like this post.')
 
-  const { access } = useContext(myContext)
+  const { access, makeHeader } = useContext(myContext)
 
   const findUserLike = () => {
     const userLike = likes.filter(like => like.author === user._id)
@@ -33,12 +33,6 @@ const Like = ({ id, likes, setLikes, user }) => {
     }
     return text
   }
-  const makeHeader = () => {
-    return {
-      "Content-Type": "application/json",
-      "Authorization": `Bearer ${access}`
-    }
-  }
 
   useEffect(() => {
     const like = findUserLike()
@@ -53,8 +47,7 @@ const Like = ({ id, likes, setLikes, user }) => {
 
   const handleLike = () => {
     const url = "http://localhost:3000/likepost/" + id
-    const headers = makeHeader()
-    axios.post(url, {}, { headers: headers })
+    axios.post(url, {}, { headers: makeHeader() })
     .then(res => {
       if (res.status === 200 && res.data.post) {
         console.log(res.data.post)
@@ -69,8 +62,7 @@ const Like = ({ id, likes, setLikes, user }) => {
   }
   const handleUnlike = () => {
     const url = "http://localhost:3000/unlikepost/" + id
-    const headers = makeHeader()
-    axios.post(url, {}, { headers: headers })
+    axios.post(url, {}, { headers: makeHeader() })
     .then(res => {
       if (res.status === 200 && res.data.post) {
         console.log(res.data.post)

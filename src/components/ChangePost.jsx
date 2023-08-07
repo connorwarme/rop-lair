@@ -28,7 +28,6 @@ const ChangePost = ({ url, post, id, edit, save }) => {
 
     axios.post(url, post, { headers: makeHeader() })
     .then(res => {
-      console.log(res)
       if (res.status === 200 && res.data.post) {
         if (edit) {
           edit(false)

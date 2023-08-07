@@ -74,7 +74,7 @@ const Profile = () => {
           { (data && data.posts) && (
             <div className="user-posts-">
             <h3>{data.profile.first_name}&#39;s Posts</h3>
-              { data.posts.map(post => <PostUnit key={post._id} user={userObject} post={post}/> )}
+              { data.posts.map(post => <PostUnit key={post._id} user={userObject} post={post} author={true}/> )}
             </div>
           )}
 

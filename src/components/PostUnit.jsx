@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import Like from "./Like";
 
-const PostUnit = ( { user, post }) => {
+const PostUnit = ( { user, post, author }) => {
   const [postUnit, setPost] = useState(null)
   const [likesArr, setLikesArr] = useState([])
 
@@ -26,7 +26,7 @@ const PostUnit = ( { user, post }) => {
             <p className="post-content">{post.content}</p> 
           </div>
         </Link>
-          { post.author && <p className="post-author">Written by: <Link to={`/profile/${post.author._id}`}>{post.author.name}</Link></p> }
+          { (!author && post.author) && <p className="post-author">Written by: <Link to={`/profile/${post.author._id}`}>{post.author.name}</Link></p> }
           { user && <Like id={post._id} likes={likesArr} setLikes={setLikesArr} user={user} /> }
       </div>
     </>

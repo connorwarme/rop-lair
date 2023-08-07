@@ -24,12 +24,14 @@ const Context = (props) => {
   // }, [])
   useEffect(() => {
     const accessToken = JSON.parse(returnObject("access"))
+    const abortController = new AbortController()
     if (accessToken) {
       setAccess(accessToken)
       axios.get("http://localhost:3000/auth/user", {
         headers: {
           "Authorization": "Bearer "+ accessToken
-        }
+        }, 
+        signal: abortController.signal,
       })
         .then(res => {
           if (res.status === 200 && res.data.user) {
@@ -39,14 +41,20 @@ const Context = (props) => {
           }
         })
         .catch(err => {
-          console.log(err)
+          if (err.name === 'CanceledError') {
+            console.log('fetch aborted (component unmounted before completed)')
+          } else {
+            console.log(err)
+            setErrorMsg(`${err.response.status} ${err.response.statusText}: ${err.response.data.message} Please try again.`)
+          }
           // navigate to login page w/ err message (maybe pass it through state)
           // haven't check this
-          setErrorMsg(`${err.response.status} ${err.response.statusText}: ${err.response.data.message} Please try again.`)
           // problem is that it runs an error once in the login phase...takes you back to /login, even though the login worked.
           // navigate("/login")
         })
       }
+
+      return () => abortController.abort()
   }, [ access ])
 
   return ( 

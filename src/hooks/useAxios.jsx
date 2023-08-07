@@ -2,9 +2,9 @@ import axios from "axios"
 import { useState, useEffect } from "react"
 
 // I'm not sure how to actually implement this properly. Tutorial was for a get req and via the fetch api
-// 
+// Not sure how to handle post requests... (moreso because there's more to do if it succeeds or fails...)
 
-const useAxios = (method, url, auth, body) => {
+const useAxios = (url, auth) => {
   const [data, setData] = useState(null)
   // tutorial example has a setTimeout (1s) delay on the fetch and shows a loading screen momentarily... (so it doesn't look like the webpage is broken)
   const [isLoading, setLoading] = useState(true)
@@ -14,11 +14,9 @@ const useAxios = (method, url, auth, body) => {
     const abortController = new AbortController()
 
     axios({
-      method: method,
       url: url,
       headers: auth.headers,
       signal: abortController.signal,
-      body: body ? body : {},
     })
     .then(res => {
       if (res.status === 200 && !res.data.errors) {
@@ -41,7 +39,7 @@ const useAxios = (method, url, auth, body) => {
     return () => abortController.abort()
     
     // tutorial has url in the dependencies array
-  }, [] )
+  }, [ url, auth ] )
 
   return { data, isLoading, error }
 }

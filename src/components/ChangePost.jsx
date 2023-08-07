@@ -13,7 +13,7 @@ const ChangePost = ({ url, post, id, edit, save }) => {
   const [content, setContent] = useState( post ? post.content : '')
   const [errors, setErrors] = useState(null)
 
-  const { access, makeHeader } = useContext(myContext)
+  const { makeHeader } = useContext(myContext)
   const navigate = useNavigate()
 
   const handleChange = (e, updateFn) => {
@@ -25,10 +25,7 @@ const ChangePost = ({ url, post, id, edit, save }) => {
   const handleSubmit = (e) => {
     e.preventDefault()
     const post = getState()
-    // reset form?
-    // or don't allow submit button to get clicked again...
 
-    console.log(access)
     axios.post(url, post, { headers: makeHeader() })
     .then(res => {
       console.log(res)

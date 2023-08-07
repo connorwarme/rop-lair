@@ -13,7 +13,7 @@ const ChangePost = ({ url, post, id, edit, save }) => {
   const [content, setContent] = useState( post ? post.content : '')
   const [errors, setErrors] = useState(null)
 
-  const { access } = useContext(myContext)
+  const { access, makeHeader } = useContext(myContext)
   const navigate = useNavigate()
 
   const handleChange = (e, updateFn) => {
@@ -28,12 +28,8 @@ const ChangePost = ({ url, post, id, edit, save }) => {
     // reset form?
     // or don't allow submit button to get clicked again...
 
-    const headers = {
-      "Content-Type": "application/json",
-      "Authorization": `Bearer ${access}`
-    }
     console.log(access)
-    axios.post(url, post, { headers: headers })
+    axios.post(url, post, { headers: makeHeader() })
     .then(res => {
       console.log(res)
       if (res.status === 200 && res.data.post) {

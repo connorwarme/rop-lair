@@ -60,7 +60,7 @@ const Context = (props) => {
   const makeHeader = () => {
     return {
       "Content-Type": "application/json",
-      "Authorization": `Bearer ${access}`
+      "Authorization": `Bearer ${access}`,
     }
   }
 

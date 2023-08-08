@@ -34,18 +34,18 @@ const Profile = () => {
   }
   // needs edit functionality ->
   // what are they allowed to change?
-  useEffect(() => {
-    if (data != null) {
-      if (data.profile._id === data.user._id) {
-        return setFriend(false)
-      } else {
-        // run function to check friend status
-        const status = determineFriendship(data.profile.friend_list, data.user._id)
-        console.log(status)
-        setFriend(status)
-      }
-    }
-  }, [ data ])
+  // useEffect(() => {
+  //   if (data != null) {
+  //     if (data.profile._id === data.user._id) {
+  //       return setFriend(false)
+  //     } else {
+  //       // run function to check friend status
+  //       const status = determineFriendship(data.profile.friend_list, data.user._id)
+  //       console.log(status)
+  //       setFriend(status)
+  //     }
+  //   }
+  // }, [ data ])
   // needs add friend functionality
   // have to see if current user is already friends w/ profile
   // and/or see if they are pending friends
@@ -57,10 +57,10 @@ const Profile = () => {
       <div className="profile-container">
         <div className="profile-content">
           { error && <div>{error}</div> }
-          <img src={(!isLoading && data.profile.picture) ? data.profile.picture : icon} style={{height: '120px'}}></img>
+          <img src={((!isLoading && !error) && data.profile.picture) ? data.profile.picture : icon} style={{height: '120px'}}></img>
           { (!isLoading && data.profile) && <h1 className="profile-title">{data.profile.name}</h1> }
           <br />
-          { (data && friend)}
+          { (data && (data.profile._id != userObject._id)) && <p>here is where it goes</p>}
           { favs && (
             <div className="favs-container">
               <h1>Favorites</h1>

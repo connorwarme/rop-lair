@@ -1,6 +1,7 @@
 import { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import useFetch from '../hooks/useFetch';
+import useAxios from '../hooks/useAxios';
 import { myContext } from '../contexts/Context';
 import PostUnit from '../components/PostUnit';
 import icon from "../images/accountIcon.svg"
@@ -16,22 +17,17 @@ const Profile = () => {
   // have to determine if it is the current user's profile or someone else's
   const url = id ? 'http://localhost:3000/profile/' + id : 'http://localhost:3000/profile/'
 
-  const { data, isLoading, error } = useFetch(url, { headers: makeHeader() })
+  const auth = {
+    headers: {
+      "Authorization": `Bearer ${access}`
+    }
+  }
+  const { data, isLoading, error } = useFetch(url, auth)
 
   const handleShowEdit = () => {
     setEdit(true)
   }
-  const determineFriendship = (list, userid) => {
-    if (list.list.includes(userid)) {
-      return 'Friends'
-    } else if (list.pending.includes(userid)) {
-      return 'Pending'
-    } else if (list.request.includes(userid)) {
-      return 'Accept Request'
-    } else {
-      return 'Add Friend'
-    }
-  }
+
   // needs edit functionality ->
   // what are they allowed to change?
   // useEffect(() => {
@@ -54,13 +50,20 @@ const Profile = () => {
   // still need to add favorites model and all that to the backend
   return ( 
     <>
-      <div className="profile-container">
+    { (!isLoading && userObject) && (
+      <>
+      { data && data.errors && <div>{data.errors[0].msg}</div> }
+      { data && data.profile && <div>{data.profile.name}</div> }
+      </>
+    )}
+      {/* <div className="profile-container">
         <div className="profile-content">
           { error && <div>{error}</div> }
-          <img src={((!isLoading && !error) && data.profile.picture) ? data.profile.picture : icon} style={{height: '120px'}}></img>
+          { (data && data.errors) && <div>{data.errors[0].msg}</div>}
+          <img src={((!isLoading && !error && !data.errors) && data.profile.picture) ? data.profile.picture : icon} style={{height: '120px'}}></img>
           { (!isLoading && data.profile) && <h1 className="profile-title">{data.profile.name}</h1> }
           <br />
-          { (data && (data.profile._id != userObject._id)) && <p>here is where it goes</p>}
+          { (data && !data.errors) && (data.profile._id != userObject._id) && <p>here is where it goes</p>}
           { favs && (
             <div className="favs-container">
               <h1>Favorites</h1>
@@ -79,7 +82,7 @@ const Profile = () => {
           )}
 
         </div>
-      </div>
+      </div> */}
     </>
    );
 }

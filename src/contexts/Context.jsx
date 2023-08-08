@@ -58,9 +58,10 @@ const Context = (props) => {
   }, [ access ])
 
   const makeHeader = () => {
+    const currentAccess = access
     return {
       "Content-Type": "application/json",
-      "Authorization": `Bearer ${access}`,
+      "Authorization": `Bearer ${currentAccess}`,
     }
   }
 

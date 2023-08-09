@@ -50,41 +50,44 @@ const Profile = () => {
   // still need to add favorites model and all that to the backend
   return ( 
     <>
-    { (!isLoading && userObject) && (
-      <>
-      { data && data.errors && <div>{data.errors[0].msg}</div> }
-      { data && data.profile && <div>{data.profile.name}</div> }
+      <div className="profile-container">
+        <div className="profile-content">
+        { !isLoading && (
+          <>
+            { (data && data.errors) && <div>{data.errors[0].msg}</div> }
+            { (error) && <div>{error}</div> }
+          </>
+        ) }
+        { (!isLoading && userObject) && (
+          <>
+            { (data && data.profile) && (
+              <>
+                <img src={data.profile.picture ? data.profile.picture : icon} style={{height: '120px'}}></img>
+                <h1 className="profile-title">{data.profile.name}</h1>
+                { (data.profile._id != userObject._id) && <p>here is where addFriend component goes</p> }
+                { favs && (
+                  <div className="favs-container">
+                    <h1>Favorites</h1>
+                    { favs.char && <p>Character: <em>{favs.char}</em></p> }
+                    { favs.story && <p>Storyline: <em>{favs.story}</em></p> }
+                    { favs.ep && <p>Episode: <em>{favs.ep}</em></p> }
+                    { favs.quote && <p>Quote: <em>{favs.quote}</em></p> }
+                  </div>
+                )}
+                { (userObject._id === data.profile._id) && <button onClick={handleShowEdit}>Edit Profile</button> }
+                { (data && data.posts) && (
+                    <div className="user-posts-">
+                    <h3>{data.profile.first_name}&#39;s Posts</h3>
+                      { data.posts.map(post => <PostUnit key={post._id} user={userObject} post={post} author={true}/> )}
+                    </div>
+                )}
+              </>
+            )}
+          </>
+        ) }
+        </div>
+      </div>
       </>
     )}
-      {/* <div className="profile-container">
-        <div className="profile-content">
-          { error && <div>{error}</div> }
-          { (data && data.errors) && <div>{data.errors[0].msg}</div>}
-          <img src={((!isLoading && !error && !data.errors) && data.profile.picture) ? data.profile.picture : icon} style={{height: '120px'}}></img>
-          { (!isLoading && data.profile) && <h1 className="profile-title">{data.profile.name}</h1> }
-          <br />
-          { (data && !data.errors) && (data.profile._id != userObject._id) && <p>here is where it goes</p>}
-          { favs && (
-            <div className="favs-container">
-              <h1>Favorites</h1>
-              { favs.char && <p>Character: <em>{favs.char}</em></p> }
-              { favs.story && <p>Storyline: <em>{favs.story}</em></p> }
-              { favs.ep && <p>Episode: <em>{favs.ep}</em></p> }
-              { favs.quote && <p>Quote: <em>{favs.quote}</em></p> }
-            </div>
-          )}
-          { (data && userObject._id === data.profile._id) && <button onClick={handleShowEdit}>Edit Profile</button> }
-          { (data && data.posts) && (
-            <div className="user-posts-">
-            <h3>{data.profile.first_name}&#39;s Posts</h3>
-              { data.posts.map(post => <PostUnit key={post._id} user={userObject} post={post} author={true}/> )}
-            </div>
-          )}
-
-        </div>
-      </div> */}
-    </>
-   );
-}
  
 export default Profile;

@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import useFetch from '../hooks/useFetch';
 import useAxios from '../hooks/useAxios';
 import { myContext } from '../contexts/Context';
+import AddFriend from '../components/AddFriend';
 import PostUnit from '../components/PostUnit';
 import icon from "../images/accountIcon.svg"
 
@@ -12,7 +13,7 @@ const Profile = () => {
   const [friend, setFriend] = useState(false)
   const { id } = useParams() 
 
-  const { userObject, access, makeHeader } = useContext(myContext)
+  const { userObject, access, setUserObject, makeHeader } = useContext(myContext)
   // regular profile (of actual user) works
   // have to determine if it is the current user's profile or someone else's
   const url = id ? 'http://localhost:3000/profile/' + id : 'http://localhost:3000/profile/'
@@ -26,6 +27,12 @@ const Profile = () => {
 
   const handleShowEdit = () => {
     setEdit(true)
+  }
+
+  const setList = (array) => {
+    const newObj = {...userObject}
+    newObj.friend_list = array
+    setUserObject(newObj)
   }
 
   // needs edit functionality ->
@@ -64,7 +71,7 @@ const Profile = () => {
               <>
                 <img src={data.profile.picture ? data.profile.picture : icon} style={{height: '120px'}}></img>
                 <h1 className="profile-title">{data.profile.name}</h1>
-                { (data.profile._id != userObject._id) && <p>here is where addFriend component goes</p> }
+                { (data.profile._id != userObject._id) && <AddFriend list={userObject.friend_list} setList={setList} profileId={data.profile._id} /> }
                 { favs && (
                   <div className="favs-container">
                     <h1>Favorites</h1>

@@ -10,7 +10,6 @@ import icon from "../images/accountIcon.svg"
 const Profile = () => {
   const [favs, setFavs] = useState(false)
   const [edit, setEdit] = useState(false)
-  const [friend, setFriend] = useState(false)
   const { id } = useParams() 
 
   const { userObject, access, setUserObject, makeHeader } = useContext(myContext)
@@ -26,7 +25,12 @@ const Profile = () => {
   const { data, isLoading, error } = useFetch(url, auth)
 
   const handleShowEdit = () => {
+    console.log('show edit')
     setEdit(true)
+  }
+  const handleCancelEdit = () => {
+    // clear form values
+    setEdit(false)
   }
 
   const setList = (array) => {
@@ -67,7 +71,7 @@ const Profile = () => {
         ) }
         { (!isLoading && userObject) && (
           <>
-            { (data && data.profile) && (
+            { (data && data.profile && !edit) && (
               <>
                 <img src={data.profile.picture ? data.profile.picture : icon} style={{height: '120px'}}></img>
                 <h1 className="profile-title">{data.profile.name}</h1>
@@ -88,6 +92,12 @@ const Profile = () => {
                       { data.posts.map(post => <PostUnit key={post._id} user={userObject} post={post} author={true}/> )}
                     </div>
                 )}
+              </>
+            )}
+            { (data && (userObject._id == data.profile._id) && edit) && (
+              <>
+                <p>Edit Profile Mode</p>
+                <button onClick={handleCancelEdit}>Cancel</button>
               </>
             )}
           </>

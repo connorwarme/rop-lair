@@ -4,6 +4,7 @@ import useFetch from '../hooks/useFetch';
 import useAxios from '../hooks/useAxios';
 import { myContext } from '../contexts/Context';
 import AddFriend from '../components/AddFriend';
+import ChangeProfile from '../components/ChangeProfile';
 import PostUnit from '../components/PostUnit';
 import icon from "../images/accountIcon.svg"
 
@@ -97,7 +98,7 @@ const Profile = () => {
             { (data && (userObject._id == data.profile._id) && edit) && (
               <>
                 <p>Edit Profile Mode</p>
-                <button onClick={handleCancelEdit}>Cancel</button>
+                <ChangeProfile user={userObject} setEdit={setEdit} setUserObject={setUserObject} makeHeader={makeHeader} />
               </>
             )}
           </>

@@ -60,6 +60,9 @@ const Profile = () => {
   // and/or see if they aren't friends (and have an "add friend" button)
 
   // still need to add favorites model and all that to the backend
+  //
+  // https://lh3.googleusercontent.com/a/AAcHTtc8Z5E-4IajyF2xvjTqncqYs3ydHQ-tO2oot6cbRg
+  //
   return ( 
     <>
       <div className="profile-container">

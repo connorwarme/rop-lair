@@ -21,8 +21,11 @@ const useAxios = (url, auth) => {
     .then(res => {
       if (res.status === 200 && !res.data.errors) {
         setError(null)
-        setLoading(false)
         setData(res.data)
+        console.log('data mode')
+        setTimeout(() => {
+          setLoading(false)
+        }, 1000)
       } else if (res.data.errors) {
         setError(res.data.errors)
         setLoading(false)

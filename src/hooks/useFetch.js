@@ -22,8 +22,12 @@ const useFetch = (url, auth) => {
     .then(data => {
       console.log(data)
       setError(null)
-      setLoading(false)
       setData(data)
+      // setLoading(false)
+      console.log('data mode')
+      setTimeout(() => {
+        setLoading(false)
+      }, 1000)
     // virtual "name" doesn't work yet, have to construct it from first and family name
     // todo: check this by creating new user object (I already changed user model to provide virtuals toJSON)
     })

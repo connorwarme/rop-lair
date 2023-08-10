@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const ChangeProfile = ({ user, setEdit, makeHeader, setUserObject }) => {
@@ -7,11 +8,13 @@ const ChangeProfile = ({ user, setEdit, makeHeader, setUserObject }) => {
   const [picture, setPicture] = useState(user.picture ? user.picture : null)
   const [errors, setErrors] = useState(null)
 
+  const navigate = useNavigate()
+
   const handleChange =(event, updateFn) => {
     updateFn(event.target.value)
   }
   const getState = () => {
-    return { first_name, family_name, picture }
+    return { first_name, family_name, picture, userid: user._id }
   }
   const handleCancelEdit = () => {
     // change edit value on parent component
@@ -19,7 +22,7 @@ const ChangeProfile = ({ user, setEdit, makeHeader, setUserObject }) => {
   }
   const handleSaveEdit = (e) => {
     e.preventDefault()
-    const url = "http://localhost:3000/profile/update/" + user._id
+    const url = "http://localhost:3000/profile/update"
     const post = getState()
     axios.post(url, post, { headers: makeHeader() })
     .then(res => {
@@ -29,6 +32,7 @@ const ChangeProfile = ({ user, setEdit, makeHeader, setUserObject }) => {
         // hide edit mode
         setEdit(false)
         // todo: do I need to navigate to profile/:id so that fresh values show up? 
+        navigate(`/profile/${res.data.profile._id}`)
       } else if (res.status === 200 && res.data.errors) {
         setErrors(res.data.errors)
       }
@@ -56,6 +60,16 @@ const ChangeProfile = ({ user, setEdit, makeHeader, setUserObject }) => {
           </div>
           <button type="button" onClick={handleCancelEdit}>Cancel</button>
           <button type="submit">Save</button>
+          { errors && (
+            <div className="errors">
+              { errors.map((err, index) => {
+                if (err.status) {
+                  return <p key={index}>{err.status} Error! {err.msg}</p>
+                }
+                return <p key={index}>Error! {err.msg}</p>
+              })}
+            </div>
+          )}
         </form>
       </div>
     </>

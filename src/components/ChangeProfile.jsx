@@ -5,7 +5,7 @@ import axios from "axios";
 const ChangeProfile = ({ user, setEdit, makeHeader, setUserObject }) => {
   const [first_name, setFirstName] = useState(user.first_name)
   const [family_name, setFamilyName] = useState(user.family_name)
-  const [picture, setPicture] = useState(user.picture ? user.picture : null)
+  const [picture, setPicture] = useState(user.picture ? user.picture : '')
   const [errors, setErrors] = useState(null)
 
   const navigate = useNavigate()

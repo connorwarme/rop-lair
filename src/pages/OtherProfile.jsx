@@ -2,14 +2,14 @@ import { useContext } from "react";
 import { useParams } from "react-router-dom";
 import { myContext } from "../contexts/Context";
 import useFetch from "../hooks/useFetch";
-import Profile from "./Profile";
+import Profile from "../components/Profile";
 import PostList from "../components/PostList";
 
 const OtherProfile = () => {
   const { id } = useParams()
   const { userObject, access, setUserObject } = useContext(myContext)
 
-  const url = 'http://localhost:3000/profile' + id
+  const url = 'http://localhost:3000/profile/' + id
   const auth = {
     headers: {
       "Authorization": `Bearer ${access}`
@@ -34,7 +34,10 @@ const OtherProfile = () => {
           { data && (
             <>
             { data.posts && (
-              <PostList posts={data.posts} full={true} user={userObject} />
+              <>
+                <h3>{data.profile.first_name}&#39;s Posts</h3>
+                <PostList posts={data.posts} full={true} user={userObject} />
+              </>
             )}
             { data.errors && (
               <div className="errors-container">

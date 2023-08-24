@@ -22,12 +22,17 @@ const UserProfile = () => {
     newObj.friend_list = array
     setUserObject(newObj)
   }
+  const handleShowEdit = () => {
+    console.log('show edit')
+    setEdit(true)
+  }
 
   return ( 
     <>
       { (userObject && !edit) && (
         <>
           <Profile userObject={userObject} profile={userObject} setList={setList} />
+          <button onClick={handleShowEdit}>Edit Profile</button>
         </>
       )}
       { (userObject && !edit) && (!isLoading) && (
@@ -35,7 +40,10 @@ const UserProfile = () => {
           { data && (
             <>
             { data.posts && (
-              <PostList posts={data.posts} full={true} user={userObject} />
+              <>
+                <h4>{userObject.first_name}&#39;s Posts</h4>
+                <PostList posts={data.posts} full={true} user={userObject} />
+              </>
             )}
             { data.errors && (
               <div className="errors-container">

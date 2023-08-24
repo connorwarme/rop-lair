@@ -8,6 +8,11 @@ import ChangeProfile from '../components/ChangeProfile';
 import PostUnit from '../components/PostUnit';
 import icon from "../images/accountIcon.svg"
 
+// update!!
+// as of 8/24, transition to using UserProfile and OtherProfile pages
+// keeping this as a reference
+// 
+
 const Profile = () => {
   const [favs, setFavs] = useState(false)
   const [edit, setEdit] = useState(false)

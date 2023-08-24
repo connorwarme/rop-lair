@@ -1,10 +1,3 @@
-// separate user profile view from a regular profile viewing
-// why?
-// edit user info
-// edit or delete posts
-// just use the user object as the profile data...
-
-// I need to get the user object and provide it to a profile component
 import { useState, useContext } from "react";
 import { myContext } from "../contexts/Context";
 import useFetch from "../hooks/useFetch";
@@ -15,8 +8,6 @@ const UserProfile = () => {
   const [edit, setEdit] = useState(false)
 
   const { userObject, access, setUserObject, makeHeader } = useContext(myContext)
-  // regular profile (of actual user) works
-  // have to determine if it is the current user's profile or someone else's
   const url = 'http://localhost:3000/profile/'
   const auth = {
     headers: {
@@ -24,12 +15,19 @@ const UserProfile = () => {
     }
   }
   const { data, isLoading, error } = useFetch(url, auth)
-  // need to fetch user posts
+
+  // todo: this is repetitive content (also on OtherProfile) - try to refactor 8/24
+  const setList = (array) => {
+    const newObj = {...userObject}
+    newObj.friend_list = array
+    setUserObject(newObj)
+  }
+
   return ( 
     <>
       { (userObject && !edit) && (
         <>
-          <Profile userObject={userObject} profile={userObject} />
+          <Profile userObject={userObject} profile={userObject} setList={setList} />
         </>
       )}
       { (userObject && !edit) && (!isLoading) && (

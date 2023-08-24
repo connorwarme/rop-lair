@@ -7,6 +7,9 @@ import Like from "./Like"
 const PostList = ({ posts, full, user }) => {
   return ( 
     <div className="postlist-container">
+    { posts.length === 0 && (
+      <div>This user has yet to post content.</div>
+    )}
     { posts.map(post => {
       return (
         <div className="post-container" key={post._id}>

@@ -13,6 +13,8 @@ import { myContext } from './contexts/Context'
 import CreatePost from './pages/CreatePost'
 import AddFriend from './components/AddFriend'
 import Test from './components/Test'
+import UserProfile from './pages/UserProfile'
+import OtherProfile from './pages/OtherProfile'
 
 export default function App() {
 
@@ -48,8 +50,8 @@ export default function App() {
             <Route path='/auth/success' element={ <Temp /> } />
             <Route path='/login' element={ <Login /> } />
             <Route path='/signup' element={ <SignUp /> } />
-            <Route path='/profile' element={ <Profile /> } />
-            <Route path='/profile/:id' element={ <Profile /> } />
+            <Route path='/profile' element={ <UserProfile /> } />
+            <Route path='/profile/:id' element={ <OtherProfile /> } />
             <Route path='/post/create' element={ <CreatePost /> } />
             <Route path='/post/:id' element={ <Post /> } />
             <Route path='/test' element={ <AddFriend userFriends={userObject ? userObject.friend_list : null} profileId={'6495da6d5dea80fc65a0a447'} />} />

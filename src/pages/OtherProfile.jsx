@@ -36,7 +36,7 @@ const OtherProfile = () => {
             { data.posts && (
               <>
                 <h3>{data.profile.first_name}&#39;s Posts</h3>
-                <PostList posts={data.posts} full={true} user={userObject} />
+                <PostList posts={data.posts} content={true} author={false} user={userObject} />
               </>
             )}
             { data.errors && (

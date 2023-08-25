@@ -4,7 +4,8 @@ import { Link } from "react-router-dom"
 import Post from "../pages/Post"
 import Like from "./Like"
 
-const PostList = ({ posts, full, user }) => {
+const PostList = ({ posts, content, author, user }) => {
+
   return ( 
     <div className="postlist-container">
     { posts.length === 0 && (
@@ -16,8 +17,8 @@ const PostList = ({ posts, full, user }) => {
           <Link to={`/post/${post._id}`} element={ <Post id={post._id}/> }>
             <div className="post-content">
               <h2 className="post-title">Title: {post.title}</h2>
-              { full && <p className="post-content">{post.content}</p> }
-              { post.author && <p className="post-author">Written by: {post.author.name}</p> }
+              { content && <p className="post-content">{post.content}</p> }
+              { (author && post.author) && <p className="post-author">Written by: {post.author.name}</p> }
               <Like id={post._id} likes={post.likes ? post.likes : []} user={user} />
             </div>
           </Link>

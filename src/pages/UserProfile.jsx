@@ -42,7 +42,7 @@ const UserProfile = () => {
             { data.posts && (
               <>
                 <h4>{userObject.first_name}&#39;s Posts</h4>
-                <PostList posts={data.posts} full={true} user={userObject} />
+                <PostList posts={data.posts} content={true} author={false} user={userObject} />
               </>
             )}
             { data.errors && (

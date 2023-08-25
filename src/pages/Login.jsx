@@ -3,7 +3,9 @@ import { redirect, useNavigate } from 'react-router-dom';
 import { saveObject, returnObject } from '../utility/ls';
 import { myContext } from '../contexts/Context';
 
-
+// just got an error trying oauth with google 8/24
+// There was an error during the transport or processing of this request. Error code = 7, Path = /v3/signin/_/AccountsSignInUi/data/batchexecute : Unknown HTTP error in underlying XHR (HTTP Status: 0) (XHR Error Code: 6) (XHR Error Message: ' [0]')
+// haven't been able to replicate the error 8/24
 
 const Login = () => {
   const [email, setEmail] = useState('')

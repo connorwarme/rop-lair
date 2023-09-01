@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import decodeEscapedData from '../utility/escape';
 
 const Comment = ({ post, commentObj, user, setComments, makeHeader }) => {
   const [author, setAuthor] = useState(false)
@@ -78,8 +79,8 @@ const Comment = ({ post, commentObj, user, setComments, makeHeader }) => {
         <div className="comment-content">
           { !edit && (
             <div className="comment-unit">
-              <h5 className="comment-author">{author ? author.name : 'Anonymous Author'}</h5>
-              <p className="comment-text">{commentObj.content}</p>
+              <h5 className="comment-author">{author ? decodeEscapedData(author.name) : 'Anonymous Author'}</h5>
+              <p className="comment-text">{decodeEscapedData(commentObj.content)}</p>
             </div>
           )}
           { edit && (

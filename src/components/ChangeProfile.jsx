@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import decodeEscapedData from "../utility/escape";
 
 const ChangeProfile = ({ user, setEdit, makeHeader, setUserObject }) => {
   const [first_name, setFirstName] = useState(user.first_name)
@@ -48,11 +49,11 @@ const ChangeProfile = ({ user, setEdit, makeHeader, setUserObject }) => {
         <form onSubmit={handleSaveEdit}>
         <div className="form-input">
             <label htmlFor="first">First Name</label>
-            <input type="text" id="first" className="first" value={first_name} onChange={(e) => {handleChange(e, setFirstName)}}/>
+            <input type="text" id="first" className="first" value={decodeEscapedData(first_name)} onChange={(e) => {handleChange(e, setFirstName)}}/>
           </div>
           <div className="form-input">
             <label htmlFor="family">Family Name</label>
-            <input type="text" id="family" className="content" value={family_name} onChange={(e) => {handleChange(e, setFamilyName)}}/>
+            <input type="text" id="family" className="content" value={decodeEscapedData(family_name)} onChange={(e) => {handleChange(e, setFamilyName)}}/>
           </div>
           <div className="form-input">
             <label htmlFor="picture">Profile Picture</label>

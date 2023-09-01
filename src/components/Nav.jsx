@@ -3,6 +3,7 @@ import { Link } from "react-router-dom"
 import axios from "axios";
 import { clearStorage, returnObject } from "../utility/ls";
 import { myContext } from "../contexts/Context";
+import decodeEscapedData from "../utility/escape";
 import "../styles/navStyle.css"
 
 // want to think through how to hide routes when the visitor has not signed in yet
@@ -39,7 +40,7 @@ const Nav = () => {
           <Link to="/profile" className="profile">Profile</Link>
           <Link to="/users" className="users">Users</Link>
           <Link to="/post/create" className="create-post">+</Link>
-          <Link to="/profile" className="user">{userObject.name}</Link>
+          <Link to="/profile" className="user">{decodeEscapedData(userObject.name)}</Link>
           <Link to="/profile/6495da6d5dea80fc65a0a447" >Other Profile</Link>
           <li className="logout" onClick={logout}>Logout</li>
         </div>

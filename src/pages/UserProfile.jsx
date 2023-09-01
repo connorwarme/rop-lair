@@ -4,6 +4,8 @@ import useFetch from "../hooks/useFetch";
 import Profile from "../components/Profile";
 import PostList from "../components/PostList";
 import ChangeProfile from "../components/ChangeProfile";
+import decodeEscapedData from "../utility/escape";
+
 const UserProfile = () => {
   const [edit, setEdit] = useState(false)
 
@@ -41,7 +43,7 @@ const UserProfile = () => {
             <>
             { data.posts && (
               <>
-                <h4>{userObject.first_name}&#39;s Posts</h4>
+                <h4>{decodeEscapedData(userObject.first_name)}&#39;s Posts</h4>
                 <PostList posts={data.posts} content={true} author={false} user={userObject} />
               </>
             )}

@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import Like from "./Like";
+import decodeEscapedData from "../utility/escape";
 
 const PostUnit = ( { user, post, author }) => {
   const [postUnit, setPost] = useState(null)
@@ -22,11 +23,11 @@ const PostUnit = ( { user, post, author }) => {
       <div className="post-container" key={'1'+post._id}>
         <Link to={`/post/${post._id}`} >
           <div className="post-content">
-            <h2 className="post-title">Title: {post.title}</h2>
-            <p className="post-content">{post.content}</p> 
+            <h2 className="post-title">Title: {decodeEscapedData(post.title)}</h2>
+            <p className="post-content">{decodeEscapedData(post.content)}</p> 
           </div>
         </Link>
-          { (!author && post.author) && <p className="post-author">Written by: <Link to={`/profile/${post.author._id}`}>{post.author.name}</Link></p> }
+          { (!author && post.author) && <p className="post-author">Written by: <Link to={`/profile/${post.author._id}`}>{decodeEscapedData(post.author.name)}</Link></p> }
           { user && <Like id={post._id} likes={likesArr} setLikes={setLikesArr} user={user} /> }
       </div>
     </>

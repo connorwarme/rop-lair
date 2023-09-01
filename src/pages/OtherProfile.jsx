@@ -4,6 +4,7 @@ import { myContext } from "../contexts/Context";
 import useFetch from "../hooks/useFetch";
 import Profile from "../components/Profile";
 import PostList from "../components/PostList";
+import decodeEscapedData from "../utility/escape";
 
 const OtherProfile = () => {
   const { id } = useParams()
@@ -35,7 +36,7 @@ const OtherProfile = () => {
             <>
             { data.posts && (
               <>
-                <h3>{data.profile.first_name}&#39;s Posts</h3>
+                <h3>{decodeEscapedData(data.profile.first_name)}&#39;s Posts</h3>
                 <PostList posts={data.posts} content={true} author={false} user={userObject} />
               </>
             )}

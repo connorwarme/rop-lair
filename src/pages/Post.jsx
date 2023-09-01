@@ -117,13 +117,17 @@ const Post = () => {
             { userObject && <Like id={id} likes={post.likes} user={userObject} setLikes={updateLikes} makeHeader={makeHeader} /> }
           </div>
           <div className='comments-container'>
-            <button onClick={handleShowComments}>{ showComments ? 'Hide Comments' : 'Show Comments' }</button>
-            { showComments && (
-              <div className="comments">
-              {post.comments.map(comment => {
-                return <Comment post={id} commentObj={comment} user={userObject} key={comment._id} setComments={updateComments} makeHeader={makeHeader} />
-              })}
-              </div> 
+            { (post && post.comments.length > 0) && (
+              <>
+                <button onClick={handleShowComments}>{ showComments ? 'Hide Comments' : 'Show Comments' }</button>
+                { showComments && (
+                  <div className="comments">
+                  {post.comments.map(comment => {
+                    return <Comment post={id} commentObj={comment} user={userObject} key={comment._id} setComments={updateComments} makeHeader={makeHeader} />
+                  })}
+                  </div> 
+                )}
+              </>
             )}
             <AddComment id={id} setComments={updateComments} makeHeader={makeHeader} />
           </div>

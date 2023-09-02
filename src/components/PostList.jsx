@@ -3,6 +3,7 @@ import { useState } from "react"
 import { Link } from "react-router-dom"
 import Post from "../pages/Post"
 import Like from "./Like"
+import decodeEscapedData from "../utility/escape"
 
 const PostList = ({ posts, content, author, user }) => {
 
@@ -16,9 +17,9 @@ const PostList = ({ posts, content, author, user }) => {
         <div className="post-container" key={post._id}>
           <Link to={`/post/${post._id}`} element={ <Post id={post._id}/> }>
             <div className="post-content">
-              <h2 className="post-title">Title: {post.title}</h2>
-              { content && <p className="post-content">{post.content}</p> }
-              { (author && post.author) && <p className="post-author">Written by: {post.author.name}</p> }
+              <h2 className="post-title">Title: {decodeEscapedData(post.title)}</h2>
+              { content && <p className="post-content">{decodeEscapedData(post.content)}</p> }
+              { (author && post.author) && <p className="post-author">Written by: {decodeEscapedData(post.author.name)}</p> }
               <Like id={post._id} likes={post.likes ? post.likes : []} user={user} />
             </div>
           </Link>

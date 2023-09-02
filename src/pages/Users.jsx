@@ -17,6 +17,12 @@ const Users = () => {
   }
   const { data, isLoading, error} = useFetch(url, auth)
 
+  const setList = (array) => {
+    const newObj = {...userObject}
+    newObj.friend_list = array
+    setUserObject(newObj)
+  }
+
   return ( 
     <>
       { isLoading && <h3>Page is loading...</h3> }
@@ -28,7 +34,7 @@ const Users = () => {
               data.users.map(user => {
                 return (
                   <>
-                    <UserUnit userObject={userObject} profile={user} />
+                    <UserUnit userObject={userObject} profile={user} setList={setList} />
                   </>
                 )
               })

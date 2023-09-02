@@ -5,6 +5,7 @@ import UserUnit from "../components/UserUnit";
 const Users = () => {
 
   const { userObject, setUserObject, access } = useContext(myContext)
+  // was using this as mock data in early iteration
   const profile = {
     name: 'Conrad Wildman',
     picture: 'https://avatars.githubusercontent.com/u/43254103?v=4',
@@ -42,6 +43,7 @@ const Users = () => {
           </div>
         </>
       )}
+      { !isLoading && error && (<p>Error! {error}</p>) }
     </>
    )
 }

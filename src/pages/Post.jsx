@@ -7,6 +7,7 @@ import Like from '../components/Like';
 import Comment from '../components/Comment';
 import AddComment from '../components/AddComment';
 import useAxios from '../hooks/useAxios';
+import decodeEscapedData from '../utility/escape';
 
 const Post = () => {
   const { id } = useParams() 
@@ -110,9 +111,9 @@ const Post = () => {
       <div className="post-detail-container">
         { !edit && (
           <div className="post-detail-content">
-          <div className="title">{post.title}</div>
-          <div className="author">{post.author}</div>
-          <div className="text">{post.content}</div>
+          <div className="title">{decodeEscapedData(post.title)}</div>
+          <div className="author">{decodeEscapedData(post.author)}</div>
+          <div className="text">{decodeEscapedData(post.content)}</div>
           <div className="likes">
             { userObject && <Like id={id} likes={post.likes} user={userObject} setLikes={updateLikes} makeHeader={makeHeader} /> }
           </div>

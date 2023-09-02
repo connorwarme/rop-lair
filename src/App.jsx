@@ -6,6 +6,7 @@ import Home from './pages/Home'
 import Profile from './pages/Profile'
 import Login from './pages/Login'
 import SignUp from './pages/SignUp'
+import Users from './pages/Users'
 import Post from './pages/Post'
 import Temp from './components/Temp'
 import { useState, useContext } from 'react'
@@ -50,6 +51,7 @@ export default function App() {
             <Route path='/auth/success' element={ <Temp /> } />
             <Route path='/login' element={ <Login /> } />
             <Route path='/signup' element={ <SignUp /> } />
+            <Route path='/users' element={ <Users />} />
             <Route path='/profile' element={ <UserProfile /> } />
             <Route path='/profile/:id' element={ <OtherProfile /> } />
             <Route path='/post/create' element={ <CreatePost /> } />

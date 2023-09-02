@@ -18,9 +18,6 @@ const AddFriend = ({ list, setList, profileId }) => {
   // when user visits a list of site members
   
   const queryFriend = () => {
-    // component was sometimes firing an error, where list.list was undefined
-    // haven't been able to duplicate the error since...
-    console.log(list)
     return list.list.includes(profileId)
   }
   const queryPending = () => {

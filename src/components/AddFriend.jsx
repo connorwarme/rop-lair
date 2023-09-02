@@ -29,9 +29,13 @@ const AddFriend = ({ list, setList, profileId }) => {
   const queryRequest = () => {
     return list.request.includes(profileId)
   }
+  const queryUser = () => {
+    return userObject._id === profileId
+  }
   const friend = queryFriend()
   const pending = queryPending()
   const request = queryRequest()
+  const user = queryUser()
 
   const handleMakeRequest = () => {
     // user and profile are not friends, user sends request
@@ -91,7 +95,7 @@ const AddFriend = ({ list, setList, profileId }) => {
 
   const handleAcceptRequest = () => {
     // profile has sent request, user clicks to accept
-    axios.post("http://localhost:3000/acceptrequest", { userid: '648f861a0f6d81f002a2a222' }, { headers: { "Authorization": `Bearer ${access}` }})
+    axios.post("http://localhost:3000/acceptrequest", { userid: profileId }, { headers: { "Authorization": `Bearer ${access}` }})
     .then(res => {
       console.log(res.data)
       if (res.status === 200 && res.data.userList) {
@@ -107,7 +111,7 @@ const AddFriend = ({ list, setList, profileId }) => {
   }
   const handleDeleteRequest = () => {
     // profile has sent request, user clicks to ignore
-    axios.post("http://localhost:3000/deletefriend", { userid: '6495da6d5dea80fc65a0a447' }, { headers: { "Authorization": `Bearer ${access}` }})
+    axios.post("http://localhost:3000/deletefriend", { userid: profileId }, { headers: { "Authorization": `Bearer ${access}` }})
     .then(res => {
       console.log(res.data)
       if (res.status === 200 && res.data.userList) {
@@ -125,34 +129,38 @@ const AddFriend = ({ list, setList, profileId }) => {
   return ( 
     <>
       <div className="add-friend-container">
-        { friend && (
-          <>
-            <p className="friend-status">Friends</p>
-            <button onClick={handleDeleteFriend}>X</button>
-          </>
-        )}
-        { pending && (
-          <>
-            <p className="friend-status">Pending</p>
-            <button onClick={handleDeletePending}>X</button>
-          </>
-        )}
-        { request && (
-          <>
-            <button onClick={handleAcceptRequest}>Accept</button>
-            <button onClick={handleDeleteRequest}>Ignore</button>
-          </>
-        )}
-        { (!friend && !pending && !request) && (
-          <>
-            <button onClick={handleMakeRequest}>Add Friend</button>
-          </>
-        )}
-        { errors && (
-            errors.map((err, index) => {
-              return <p key={index}>{err.status} Error! {err.msg}</p>
-            })
+        { !user && (
+          <>      
+          { friend && (
+            <>
+              <p className="friend-status">Friends</p>
+              <button onClick={handleDeleteFriend}>X</button>
+            </>
           )}
+          { pending && (
+            <>
+              <p className="friend-status">Pending</p>
+              <button onClick={handleDeletePending}>X</button>
+            </>
+          )}
+          { request && (
+            <>
+              <button onClick={handleAcceptRequest}>Accept</button>
+              <button onClick={handleDeleteRequest}>Ignore</button>
+            </>
+          )}
+          { (!friend && !pending && !request) && (
+            <>
+              <button onClick={handleMakeRequest}>Add Friend</button>
+            </>
+          )}
+          { errors && (
+              errors.map((err, index) => {
+                return <p key={index}>{err.status} Error! {err.msg}</p>
+              })
+          )}
+          </>
+        )}
       </div>
     </>
    );

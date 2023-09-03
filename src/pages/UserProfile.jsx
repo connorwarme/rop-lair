@@ -1,8 +1,10 @@
 import { useState, useContext } from "react";
 import { myContext } from "../contexts/Context";
 import useFetch from "../hooks/useFetch";
+import useAxios from "../hooks/useAxios";
 import Profile from "../components/Profile";
 import PostList from "../components/PostList";
+import PostUnit from "../components/PostUnit";
 import ChangeProfile from "../components/ChangeProfile";
 import decodeEscapedData from "../utility/escape";
 
@@ -16,7 +18,9 @@ const UserProfile = () => {
       "Authorization": `Bearer ${access}`
     }
   }
-  const { data, isLoading, error } = useFetch(url, auth)
+  // useFetch line works, but going to shift everything to axios
+  // const { data, isLoading, error } = useFetch(url, auth)
+  const { data, isLoading, error } = useAxios(url, auth)
 
   // todo: this is repetitive content (also on OtherProfile) - try to refactor 8/24
   const setList = (array) => {
@@ -44,7 +48,8 @@ const UserProfile = () => {
             { data.posts && (
               <>
                 <h4>{decodeEscapedData(userObject.first_name)}&#39;s Posts</h4>
-                <PostList posts={data.posts} content={true} author={false} user={userObject} />
+                {/* <PostList posts={data.posts} content={true} author={false} user={userObject} /> */}
+                { data.posts.map(post => <PostUnit key={post._id} user={userObject} post={post}/> )}
               </>
             )}
             { data.errors && (

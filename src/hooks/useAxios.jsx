@@ -42,7 +42,7 @@ const useAxios = (url, auth) => {
     return () => abortController.abort()
     
     // tutorial has url in the dependencies array
-  }, [ url, auth ] )
+  }, [] )
 
   return { data, isLoading, error }
 }

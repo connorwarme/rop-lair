@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { useParams } from "react-router-dom";
 import { myContext } from "../contexts/Context";
+import useAxios from "../hooks/useAxios";
 import useFetch from "../hooks/useFetch";
 import Profile from "../components/Profile";
 import PostList from "../components/PostList";
@@ -16,7 +17,9 @@ const OtherProfile = () => {
       "Authorization": `Bearer ${access}`
     }
   }
-  const { data, isLoading, error } = useFetch(url, auth)
+  // useFetch line works, but going to shift everything to axios
+  // const { data, isLoading, error } = useFetch(url, auth)
+  const { data, isLoading, error } = useAxios(url, auth)
   const setList = (array) => {
     const newObj = {...userObject}
     newObj.friend_list = array

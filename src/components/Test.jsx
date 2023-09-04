@@ -1,4 +1,6 @@
 const Test = ({ list, setList, profileId}) => {
+  // this file is redundant - saving for now, as reference 9/3
+  // it was the early iteration of the AddFriend component
 
   const queryFriend = () => {
     return list.list.includes(profileId)

@@ -6,7 +6,7 @@ import decodeEscapedData from "../utility/escape";
 import icon from "../images/accountIcon.svg"
 
 const UserUnit = ({ userObject, profile, setList }) => {
-  // need to add in addFriend component
+  
   return ( 
     <>
       <div className="userUnit-container">

@@ -23,10 +23,10 @@ const useAxios = (url, auth) => {
         setError(null)
         setData(res.data)
         console.log('data mode')
-        setTimeout(() => setLoading(false), 500)
+        setTimeout(() => setLoading(false), 1000)
       } else if (res.data.errors) {
         setError(res.data.errors)
-        setTimeout(() => setLoading(false), 500)
+        setTimeout(() => setLoading(false), 1000)
       }
     })
     .catch(err => {
@@ -34,7 +34,7 @@ const useAxios = (url, auth) => {
         console.log('axios request aborted (component unmounted before completed)')
       } else {
         setError(err.message)
-        setTimeout(() => setLoading(false), 500)
+        setTimeout(() => setLoading(false), 1000)
       }
     })
     return () => abortController.abort()

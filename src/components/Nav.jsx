@@ -48,8 +48,8 @@ const Nav = () => {
         {
           userObject === null && 
           <div className="nav-links">
-            <Link className="login">Login</Link>
-            <Link className="signup">Sign-Up</Link>
+            <Link to="/login" className="login">Login</Link>
+            <Link to="/signup" className="signup">Sign-Up</Link>
           </div>
         }
       </div>

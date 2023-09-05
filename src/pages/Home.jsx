@@ -7,11 +7,7 @@ import PostUnit from '../components/PostUnit';
 import PostList from '../components/PostList';
 
 const Home = () => {
-  const [posts, setPosts] = useState([
-    {title: "Post 1", author: "Amity", content: "A day at the lake...", id: 1},
-    {title: "Post 2", author: "Connor", content: "A day at the lake...", id: 2},
-    {title: "Post 3", author: "Caleb", content: "A day at the lake...", id: 3},
-  ])
+  const [posts, setPosts] = useState([])
   const [errors, setErrors] = useState(null)
 
   const { userObject, access, makeHeader } = useContext(myContext)
@@ -54,7 +50,7 @@ const Home = () => {
                 { data.posts.map(post => <PostUnit key={post._id} user={userObject} post={post}/> )}
               </>
             )}
-            { data.errors && console.log(data.errors) && (
+            { data.errors && (
               <div className="errors-container">
                 <h4>Error Loading Posts</h4>
                 <div>{data.errors[0].msg}</div> 

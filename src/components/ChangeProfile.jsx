@@ -2,10 +2,6 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import decodeEscapedData from "../utility/escape";
-import { FilePond, registerPlugin } from 'react-filepond';
-import FilePondPluginFileEncode from 'filepond-plugin-file-encode';
-import FilePondPluginImagePreview from 'filepond-plugin-image-preview';
-import FilePondPluginImageResize from 'filepond-plugin-image-resize';
 import 'filepond/dist/filepond.min.css';
 import 'filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css';
 
@@ -13,24 +9,17 @@ const ChangeProfile = ({ user, setEdit, makeHeader, setUserObject }) => {
   const [first_name, setFirstName] = useState(user.first_name)
   const [family_name, setFamilyName] = useState(user.family_name)
   const [picture, setPicture] = useState(user.picture ? user.picture : '')
-  const [file, setFile] = useState(null)
+  const [file, setFile] = useState([])
   const [errors, setErrors] = useState(null)
 
   const navigate = useNavigate()
-
-  // filepond
-  registerPlugin(
-    FilePondPluginFileEncode,
-    FilePondPluginImagePreview,
-    FilePondPluginImageResize,
-  )
-  
 
   const handleChange =(event, updateFn) => {
     updateFn(event.target.value)
   }
   const getState = () => {
-    return { first_name, family_name, picture, userid: user._id }
+    console.log(file)
+    return { first_name, family_name, picture, userid: user._id, photo: file }
   }
   const handleCancelEdit = () => {
     // change edit value on parent component
@@ -75,11 +64,8 @@ const ChangeProfile = ({ user, setEdit, makeHeader, setUserObject }) => {
             <input type="text" id="picture" className="picture" value={picture} onChange={(e) => {handleChange(e, setPicture)}}/>
           </div>
           <div className="form-input">
-            <FilePond 
-              file={file}
-              onupdatefiles={setFile}
-              name="files"
-            />
+            <label htmlFor="photo">Photo</label>
+            <input type="text" id="photo" name="photo" className="filepond"/>
           </div>
           <button type="button" onClick={handleCancelEdit}>Cancel</button>
           <button type="submit">Save</button>

@@ -2,8 +2,19 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import decodeEscapedData from "../utility/escape";
+import { FilePond, registerPlugin } from "react-filepond";
+import FilePondPluginImagePreview from "filepond-plugin-image-preview"
+import FilePondPluginImageResize from "filepond-plugin-image-resize"
+import FilePondPluginFileEncode from "filepond-plugin-file-encode"
 import 'filepond/dist/filepond.min.css';
 import 'filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css';
+
+// filepond
+registerPlugin(
+  FilePondPluginFileEncode,
+  FilePondPluginImageResize,
+  FilePondPluginImagePreview,
+)
 
 const ChangeProfile = ({ user, setEdit, makeHeader, setUserObject }) => {
   const [first_name, setFirstName] = useState(user.first_name)
@@ -64,8 +75,14 @@ const ChangeProfile = ({ user, setEdit, makeHeader, setUserObject }) => {
             <input type="text" id="picture" className="picture" value={picture} onChange={(e) => {handleChange(e, setPicture)}}/>
           </div>
           <div className="form-input">
-            <label htmlFor="photo">Photo</label>
-            <input type="text" id="photo" name="photo" className="filepond"/>
+            <FilePond 
+              files={file}
+              onupdatefiles={photo => {
+                setFile(photo.map(photo => photo.file))
+                console.log(photo)
+              }}
+              name="photo"
+            />
           </div>
           <button type="button" onClick={handleCancelEdit}>Cancel</button>
           <button type="submit">Save</button>

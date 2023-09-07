@@ -1,36 +1,48 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import decodeEscapedData from "../utility/escape";
-import { FilePond, registerPlugin } from "react-filepond";
-import FilePondPluginImagePreview from "filepond-plugin-image-preview"
-import FilePondPluginImageResize from "filepond-plugin-image-resize"
-import FilePondPluginFileEncode from "filepond-plugin-file-encode"
-import 'filepond/dist/filepond.min.css';
-import 'filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css';
+// import { FilePond, registerPlugin } from "react-filepond";
+// import FilePondPluginImagePreview from "filepond-plugin-image-preview"
+// import FilePondPluginImageResize from "filepond-plugin-image-resize"
+// import FilePondPluginFileEncode from "filepond-plugin-file-encode"
+// import 'filepond/dist/filepond.min.css';
+// import 'filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css';
 
 // filepond
-registerPlugin(
-  FilePondPluginFileEncode,
-  FilePondPluginImageResize,
-  FilePondPluginImagePreview,
-)
+// registerPlugin(FilePondPluginFileEncode)
+// registerPlugin(
+//   FilePondPluginFileEncode,
+//   FilePondPluginImageResize,
+//   FilePondPluginImagePreview,
+// )
 
 const ChangeProfile = ({ user, setEdit, makeHeader, setUserObject }) => {
   const [first_name, setFirstName] = useState(user.first_name)
   const [family_name, setFamilyName] = useState(user.family_name)
   const [picture, setPicture] = useState(user.picture ? user.picture : '')
-  const [file, setFile] = useState([])
+  const [photo, setPhoto] = useState('')
+  const [preview, setPreview] = useState('')
   const [errors, setErrors] = useState(null)
 
   const navigate = useNavigate()
 
+  useEffect(() => {
+    if (!photo) {
+      setPreview('')
+      return
+    }
+    const objectURL = URL.createObjectURL(photo)
+    setPreview(objectURL)
+
+    return () => URL.revokeObjectURL(objectURL)
+  }, [photo])
   const handleChange =(event, updateFn) => {
     updateFn(event.target.value)
   }
   const getState = () => {
-    console.log(file)
-    return { first_name, family_name, picture, userid: user._id, photo: file }
+    console.log(photo)
+    return { first_name, family_name, picture, userid: user._id, photo }
   }
   const handleCancelEdit = () => {
     // change edit value on parent component
@@ -75,15 +87,28 @@ const ChangeProfile = ({ user, setEdit, makeHeader, setUserObject }) => {
             <input type="text" id="picture" className="picture" value={picture} onChange={(e) => {handleChange(e, setPicture)}}/>
           </div>
           <div className="form-input">
-            <FilePond 
-              files={file}
-              onupdatefiles={photo => {
-                setFile(photo.map(photo => photo.file))
-                console.log(photo)
+            <label htmlFor="photo">Photo</label>
+            <input type="file" id="photo" className="photo" onChange={(e) => {
+              setPhoto(e.target.files[0])
+              const reader = new FileReader()
+              reader.onloadend = () => {
+                const base64string = reader.result
+                  .replace('data:', '')
+                  .replace(/^.+,/, '')
+                console.log(base64string)
+              }
+              reader.readAsDataURL(photo)
+              console.log(photo)
               }}
-              name="photo"
             />
           </div>
+          { preview && (
+            <>
+              <div className="photo-preview">
+                <img src={preview} alt="Photo" />
+              </div>
+            </>
+          )}
           <button type="button" onClick={handleCancelEdit}>Cancel</button>
           <button type="submit">Save</button>
           { errors && (

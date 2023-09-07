@@ -23,6 +23,7 @@ const ChangeProfile = ({ user, setEdit, makeHeader, setUserObject }) => {
   const [picture, setPicture] = useState(user.picture ? user.picture : '')
   const [photo, setPhoto] = useState('')
   const [preview, setPreview] = useState('')
+  const [photoBase, setPhotoBase] = useState('')
   const [errors, setErrors] = useState(null)
 
   const navigate = useNavigate()
@@ -41,8 +42,11 @@ const ChangeProfile = ({ user, setEdit, makeHeader, setUserObject }) => {
     updateFn(event.target.value)
   }
   const getState = () => {
-    console.log(photo)
-    return { first_name, family_name, picture, userid: user._id, photo }
+    const image = {
+      type: photo.type,
+      data: photoBase,
+    }
+    return { first_name, family_name, picture, userid: user._id, photo: image }
   }
   const handleCancelEdit = () => {
     // change edit value on parent component
@@ -57,6 +61,8 @@ const ChangeProfile = ({ user, setEdit, makeHeader, setUserObject }) => {
       if (res.status === 200 && res.data.profile) {
         // save profile to userObject
         setUserObject(res.data.profile)
+        console.log(res.data.photo)
+        console.log(res.data.photoPath)
         // hide edit mode
         setEdit(false)
         // todo: do I need to navigate to profile/:id so that fresh values show up? 
@@ -90,15 +96,15 @@ const ChangeProfile = ({ user, setEdit, makeHeader, setUserObject }) => {
             <label htmlFor="photo">Photo</label>
             <input type="file" id="photo" className="photo" onChange={(e) => {
               setPhoto(e.target.files[0])
+              console.log(photo)
               const reader = new FileReader()
               reader.onloadend = () => {
                 const base64string = reader.result
                   .replace('data:', '')
                   .replace(/^.+,/, '')
-                console.log(base64string)
+                setPhotoBase(base64string)
               }
-              reader.readAsDataURL(photo)
-              console.log(photo)
+              reader.readAsDataURL(e.target.files[0])
               }}
             />
           </div>

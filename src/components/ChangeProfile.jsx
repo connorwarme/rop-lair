@@ -24,6 +24,7 @@ const ChangeProfile = ({ user, setEdit, makeHeader, setUserObject }) => {
   const [photo, setPhoto] = useState('')
   const [preview, setPreview] = useState('')
   const [photoBase, setPhotoBase] = useState('')
+  const [photoError, setPhotoError] = useState(null)
   const [errors, setErrors] = useState(null)
 
   const navigate = useNavigate()
@@ -48,6 +49,42 @@ const ChangeProfile = ({ user, setEdit, makeHeader, setUserObject }) => {
     }
     return { first_name, family_name, picture, userid: user._id, photo: image }
   }
+  // handle photo
+  // check if they provided an image file
+  const imageMimeTypes = ['image/jpeg', 'image/png', 'image/gif']
+  const isImage = (file) => {
+    return imageMimeTypes.includes(file.type)
+  }
+  // check if image is <2mb 
+  const isTrim = (file) => {
+    return file.size < (2*1024*1024)
+  }
+  const handlePhoto = (input) => {
+    if (isImage(input) && isTrim(input)) {
+      setPhotoError(null)
+      setPhoto(input)
+      const reader = new FileReader()
+      reader.onloadend = () => {
+        const base64string = reader.result
+          .replace('data:', '')
+          .replace(/^.+,/, '')
+        setPhotoBase(base64string)
+      }
+      reader.readAsDataURL(input)
+      return true
+    }
+    else {
+      // post photo error
+      // clear photo state
+      // not sure if this is the way to handle the errors? 
+      // I want to be able to clear the file from the display aka input.value = null
+      setPhoto('')
+      setPhotoBase('')
+      setPhotoError('Upload must be an image file (.jpeg, .png, or .gif) and less than 2mb.')
+      return false
+    }
+  }
+
   const handleCancelEdit = () => {
     // change edit value on parent component
     setEdit(false)
@@ -62,7 +99,6 @@ const ChangeProfile = ({ user, setEdit, makeHeader, setUserObject }) => {
         // save profile to userObject
         setUserObject(res.data.profile)
         console.log(res.data.photo)
-        console.log(res.data.photoPath)
         // hide edit mode
         setEdit(false)
         // todo: do I need to navigate to profile/:id so that fresh values show up? 
@@ -94,8 +130,10 @@ const ChangeProfile = ({ user, setEdit, makeHeader, setUserObject }) => {
           </div>
           <div className="form-input">
             <label htmlFor="photo">Photo</label>
-            <input type="file" id="photo" className="photo" onChange={(e) => {
+            <input type="file" id="photo" className="photo" accept="image/png, image/jpeg, image/gif" onChange={(e) => {
               setPhoto(e.target.files[0])
+              // need to check if they actually provided an image file
+              // and that it is smaller than 2mb
               console.log(photo)
               const reader = new FileReader()
               reader.onloadend = () => {

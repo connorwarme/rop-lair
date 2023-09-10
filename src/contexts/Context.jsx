@@ -2,11 +2,13 @@ import React, { createContext, useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom";
 import axios from "axios"
 import { saveObject, returnObject } from '../utility/ls';
+import icon from "../images/accountIcon.svg"
 
 export const myContext = createContext({})
 
 const Context = (props) => {
   const [userObject, setUserObject] = useState(null)
+  const [userPhoto, setUserPhoto] = useState(icon)
   const [access, setAccess] = useState(null)
   const [errorMsg, setErrorMsg] = useState(null)
 
@@ -39,6 +41,9 @@ const Context = (props) => {
             setUserObject(res.data.user)
           // save access and refresh tokens to local storage?
           }
+          if (res.status === 200 && res.data.photo) {
+            setUserPhoto(res.data.photo)
+          }
         })
         .catch(err => {
           if (err.name === 'CanceledError') {
@@ -66,7 +71,7 @@ const Context = (props) => {
   }
 
   return ( 
-    <myContext.Provider value={{ userObject, setUserObject, access, setAccess, errorMsg, setErrorMsg, makeHeader }}>{props.children}</myContext.Provider>
+    <myContext.Provider value={{ userObject, setUserObject, userPhoto, setUserPhoto, access, setAccess, errorMsg, setErrorMsg, makeHeader }}>{props.children}</myContext.Provider>
    )
 }
  

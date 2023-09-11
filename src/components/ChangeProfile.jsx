@@ -131,25 +131,34 @@ const ChangeProfile = ({ user, setEdit, makeHeader, setUserObject }) => {
           <div className="form-input">
             <label htmlFor="photo">Photo</label>
             <input type="file" id="photo" className="photo" accept="image/png, image/jpeg, image/gif" onChange={(e) => {
-              setPhoto(e.target.files[0])
+              // setPhoto(e.target.files[0])
               // need to check if they actually provided an image file
               // and that it is smaller than 2mb
-              console.log(photo)
-              const reader = new FileReader()
-              reader.onloadend = () => {
-                const base64string = reader.result
-                  .replace('data:', '')
-                  .replace(/^.+,/, '')
-                setPhotoBase(base64string)
+              // const reader = new FileReader()
+              // reader.onloadend = () => {
+              //   const base64string = reader.result
+              //     .replace('data:', '')
+              //     .replace(/^.+,/, '')
+              //   setPhotoBase(base64string)
+              // }
+              // reader.readAsDataURL(e.target.files[0])
+              // }}
+              handlePhoto(e.target.files[0]) ? console.log('successful') : console.log('fail')
+              if (!handlePhoto(e.target.files[0])) {
+                e.target.value = null
+                // other option:
+                // instead of clearing value, could highlight value in red w/ exclamation point
+                // if value is photo file, could highlight with green border
               }
-              reader.readAsDataURL(e.target.files[0])
-              }}
+            }}
             />
+            <br></br>
+            { photoError && <span>{photoError}</span> } 
           </div>
           { preview && (
             <>
               <div className="photo-preview">
-                <img src={preview} alt="Photo" />
+                <img src={preview} alt="Photo" height={'250px'}/>
               </div>
             </>
           )}

@@ -15,6 +15,7 @@ import CreatePost from './pages/CreatePost'
 import AddFriend from './components/AddFriend'
 import UserProfile from './pages/UserProfile'
 import OtherProfile from './pages/OtherProfile'
+import Mock from './components/Mock'
 
 export default function App() {
 
@@ -55,7 +56,7 @@ export default function App() {
             <Route path='/profile/:id' element={ <OtherProfile /> } />
             <Route path='/post/create' element={ <CreatePost /> } />
             <Route path='/post/:id' element={ <Post /> } />
-            <Route />
+            <Route path='/mock' element={ <Mock /> } />
           </Routes>
         </div>
     </>

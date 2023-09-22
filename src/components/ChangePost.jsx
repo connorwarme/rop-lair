@@ -1,7 +1,8 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { myContext } from "../contexts/Context";
+import AddPicture from "./AddPicture";
 import { saveObject } from "../utility/ls";
 import useAxios from "../hooks/useAxios";
 
@@ -12,6 +13,11 @@ const ChangePost = ({ url, post, id, edit, save }) => {
   const [title, setTitle] = useState( post ? post.title : '')
   const [content, setContent] = useState( post ? post.content : '')
   const [errors, setErrors] = useState(null)
+  // trying to implement photo add - 9/22
+  const [photo, setPhoto] = useState('')
+  const [preview, setPreview] = useState('')
+  const [photoBase, setPhotoBase] = useState('')
+  const [photoError, setPhotoError] = useState(null)
 
   const { makeHeader } = useContext(myContext)
   const navigate = useNavigate()
@@ -19,9 +25,79 @@ const ChangePost = ({ url, post, id, edit, save }) => {
   const handleChange = (e, updateFn) => {
     updateFn(e.target.value)
   }
-  const getState = () => {
-    return { title, content }
+  // this version works. trying to add photo element to the equation.. 09/22
+  // const getState = () => {
+  //   return { title, content }
+
+  // added on 9/22
+  const getPhoto = (input) => {
+    return input
   }
+  // added on 9/22
+  const getState = () => {
+    const post = { 
+      title, 
+      content
+    }
+    if (photo) {
+      const image = {
+        type: photo.type,
+        data: photoBase,
+      }
+      post.photo = image
+    }
+    return post
+  }
+  // added on 9/22
+  useEffect(() => {
+    if (!photo) {
+      setPreview('')
+      return
+    }
+    const objectURL = URL.createObjectURL(photo)
+    setPreview(objectURL)
+
+    return () => URL.revokeObjectURL(objectURL)
+  }, [photo])
+  // added on 9/22
+  // handle photo
+  // check if they provided an image file
+  const imageMimeTypes = ['image/jpeg', 'image/png', 'image/gif']
+  const isImage = (file) => {
+    return imageMimeTypes.includes(file.type)
+  }
+  // added on 9/22
+  // check if image is <2mb 
+  const isTrim = (file) => {
+    return file.size < (2*1024*1024)
+  }
+  // added on 9/22
+  const handlePhoto = (input) => {
+    if (isImage(input) && isTrim(input)) {
+      setPhotoError(null)
+      setPhoto(input)
+      const reader = new FileReader()
+      reader.onloadend = () => {
+        const base64string = reader.result
+          .replace('data:', '')
+          .replace(/^.+,/, '')
+        setPhotoBase(base64string)
+      }
+      reader.readAsDataURL(input)
+      return true
+    }
+    else {
+      // post photo error
+      // clear photo state
+      // not sure if this is the way to handle the errors? 
+      // I want to be able to clear the file from the display aka input.value = null
+      setPhoto('')
+      setPhotoBase('')
+      setPhotoError('Upload must be an image file (.jpeg, .png, or .gif) and less than 2mb.')
+      return false
+    }
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault()
     const post = getState()
@@ -69,6 +145,28 @@ const ChangePost = ({ url, post, id, edit, save }) => {
             <label htmlFor="content">Content</label>
             <input type="text" id="content" className="content" value={content} onChange={(e) => {handleChange(e, setContent)}}/>
           </div>
+          <div className="form-input">
+            <label htmlFor="photo">Photo</label>
+            <input type="file" id="photo" className="photo" accept="image/png, image/jpeg, image/gif" onChange={(e) => {
+              handlePhoto(e.target.files[0]) ? console.log('successful') : console.log('fail')
+              if (!handlePhoto(e.target.files[0])) {
+                e.target.value = null
+                // other option:
+                // instead of clearing value, could highlight value in red w/ exclamation point
+                // if value is photo file, could highlight with green border
+              }
+            }}
+            />
+            <br></br>
+            { photoError && <span>{photoError}</span> } 
+          </div>
+          { preview && (
+            <>
+              <div className="photo-preview">
+                <img src={preview} alt="Photo" height={'250px'}/>
+              </div>
+            </>
+          )}
           <button type="button" onClick={handleCancel}>Cancel</button>
           <button type="submit">Save</button>
           { errors && (

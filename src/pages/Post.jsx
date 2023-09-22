@@ -66,6 +66,8 @@ const Post = () => {
             likes: res.data.post.likes,
             comments: res.data.post.comments,
           })
+          // added 9/22
+          setPhoto(res.data.photoPath)
         } else if (res.data.errors) {
           setErrors(res.data.errors)
         }

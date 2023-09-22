@@ -23,6 +23,9 @@ const Post = () => {
     likes: [],
     comments: [],
   })
+  // added 9/22
+  const [photo, setPhoto] = useState(null)
+
   const [edit, setEdit] = useState(false)
   const [errors, setErrors] = useState(false)
   const [showComments, setShowComments] = useState(false)
@@ -44,6 +47,8 @@ const Post = () => {
         likes: location.state.post.likes,
         comments: location.state.post.comments,
       })
+      // added 9/22
+      setPhoto(location.state.photoPath)
     } else {
       console.log('axios mode')
       axios.get("http://localhost:3000/post/" + id, { headers: makeHeader() })
@@ -113,6 +118,7 @@ const Post = () => {
           <div className="post-detail-content">
           <div className="title">{decodeEscapedData(post.title)}</div>
           <div className="author">{decodeEscapedData(post.author)}</div>
+          { photo && <img src={photo} height={'250px'} /> }
           <div className="text">{decodeEscapedData(post.content)}</div>
           <div className="likes">
             { userObject && <Like id={id} likes={post.likes} user={userObject} setLikes={updateLikes} makeHeader={makeHeader} /> }

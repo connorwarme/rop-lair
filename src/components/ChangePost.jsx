@@ -5,13 +5,14 @@ import { myContext } from "../contexts/Context";
 import AddPicture from "./AddPicture";
 import { saveObject } from "../utility/ls";
 import useAxios from "../hooks/useAxios";
+import decodeEscapedData from '../utility/escape';
 
 const ChangePost = ({ url, post, id, edit, save, savePhoto }) => {
   // this could be a new post or an edit post...
   // differences?
   // cancel edit would redirect to post detail page / but cancel create would redirect to home
-  const [title, setTitle] = useState( post ? post.title : '')
-  const [content, setContent] = useState( post ? post.content : '')
+  const [title, setTitle] = useState( post ? decodeEscapedData(post.title) : '')
+  const [content, setContent] = useState( post ? decodeEscapedData(post.content) : '')
   const [errors, setErrors] = useState(null)
   // trying to implement photo add - 9/22
   const [photo, setPhoto] = useState('')

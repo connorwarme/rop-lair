@@ -11,7 +11,7 @@ import decodeEscapedData from "../utility/escape";
 const UserProfile = () => {
   const [edit, setEdit] = useState(false)
 
-  const { userObject, access, setUserObject, setUserPhoto, makeHeader } = useContext(myContext)
+  const { userObject, userPhoto, access, setUserObject, setUserPhoto, makeHeader } = useContext(myContext)
   const url = 'http://localhost:3000/profile/'
   const auth = {
     headers: {
@@ -37,7 +37,7 @@ const UserProfile = () => {
     <>
       { (userObject && !edit) && (
         <>
-          <Profile userObject={userObject} profile={userObject} setList={setList} />
+          <Profile userObject={userObject} profile={userObject} photoPath={userPhoto} setList={setList} />
           <button onClick={handleShowEdit}>Edit Profile</button>
         </>
       )}

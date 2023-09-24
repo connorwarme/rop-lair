@@ -30,7 +30,7 @@ const OtherProfile = () => {
     <>
       { (userObject && !isLoading) && (data && data.profile) && (
         <>
-          <Profile userObject={userObject} profile={data.profile} setList={setList} />
+          <Profile userObject={userObject} profile={data.profile} photoPath={data.photoPath} setList={setList} />
         </>
       )}
       { (userObject && !isLoading) && (

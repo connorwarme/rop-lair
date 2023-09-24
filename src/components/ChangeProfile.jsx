@@ -122,18 +122,6 @@ const ChangeProfile = ({ user, setEdit, makeHeader, setUserObject, setUserPhoto 
           <div className="form-input">
             <label htmlFor="photo">Photo</label>
             <input type="file" id="photo" className="photo" accept="image/png, image/jpeg, image/gif" onChange={(e) => {
-              // setPhoto(e.target.files[0])
-              // need to check if they actually provided an image file
-              // and that it is smaller than 2mb
-              // const reader = new FileReader()
-              // reader.onloadend = () => {
-              //   const base64string = reader.result
-              //     .replace('data:', '')
-              //     .replace(/^.+,/, '')
-              //   setPhotoBase(base64string)
-              // }
-              // reader.readAsDataURL(e.target.files[0])
-              // }}
               handlePhoto(e.target.files[0]) ? console.log('successful') : console.log('fail')
               if (!handlePhoto(e.target.files[0])) {
                 e.target.value = null

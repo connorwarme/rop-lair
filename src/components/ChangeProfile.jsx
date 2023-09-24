@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import decodeEscapedData from "../utility/escape";
 
-const ChangeProfile = ({ user, setEdit, makeHeader, setUserObject }) => {
+const ChangeProfile = ({ user, setEdit, makeHeader, setUserObject, setUserPhoto }) => {
   const [first_name, setFirstName] = useState(user.first_name)
   const [family_name, setFamilyName] = useState(user.family_name)
   const [picture, setPicture] = useState(user.picture ? user.picture : '')
@@ -29,9 +29,12 @@ const ChangeProfile = ({ user, setEdit, makeHeader, setUserObject }) => {
     updateFn(event.target.value)
   }
   const getState = () => {
-    const image = {
-      type: photo.type,
-      data: photoBase,
+    let image = null 
+    if (photo) {
+      image = {
+        type: photo.type,
+        data: photoBase,
+      }
     }
     return { first_name, family_name, picture, userid: user._id, photo: image }
   }
@@ -84,7 +87,9 @@ const ChangeProfile = ({ user, setEdit, makeHeader, setUserObject }) => {
       if (res.status === 200 && res.data.profile) {
         // save profile to userObject
         setUserObject(res.data.profile)
-        console.log(res.data.photo)
+        if (res.data.photo && res.data.photoPath) {
+          setUserPhoto(res.data.photoPath)
+        }
         // hide edit mode
         setEdit(false)
         // todo: do I need to navigate to profile/:id so that fresh values show up? 

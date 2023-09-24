@@ -6,7 +6,7 @@ import AddPicture from "./AddPicture";
 import { saveObject } from "../utility/ls";
 import useAxios from "../hooks/useAxios";
 
-const ChangePost = ({ url, post, id, edit, save }) => {
+const ChangePost = ({ url, post, id, edit, save, savePhoto }) => {
   // this could be a new post or an edit post...
   // differences?
   // cancel edit would redirect to post detail page / but cancel create would redirect to home
@@ -108,6 +108,11 @@ const ChangePost = ({ url, post, id, edit, save }) => {
         if (edit) {
           edit(false)
           save({...res.data.post, author: res.data.user.name, author_id: res.data.user._id})
+          if (res.data.photoPath) {
+            savePhoto(res.data.photoPath)
+          } else {
+            savePhoto(null)
+          }
         }
         // need to set up post detail page to receive / use state
         navigate(`/post/${res.data.post._id}`, { state: res.data })

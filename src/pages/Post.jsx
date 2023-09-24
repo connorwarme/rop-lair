@@ -159,7 +159,7 @@ const Post = () => {
           </div>
         )}
         { edit && (
-          <ChangePost url={"http://localhost:3000/editpost/"+id}  post={post} id={id} edit={setEdit} save={setPost}/>
+          <ChangePost url={"http://localhost:3000/editpost/"+id}  post={post} id={id} edit={setEdit} save={setPost} savePhoto={setPhoto} />
         )}
       </div>
     </>

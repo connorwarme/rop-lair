@@ -177,11 +177,12 @@ const ChangePost = ({ url, post, id, edit, save, savePhoto, currentPhoto }) => {
           <div className="form-input">
             <fieldset>
               <legend>Select an option:</legend>
-              <div>
-                <input type="radio" id="current" name="photoRadio" value="current" checked={photoRadio === "current"} onChange={(e) => handleRadio(e)} />
-                <label htmlFor="current">Keep Current Photo</label>
-                { currentPhotoValue && <img src={currentPhotoValue.photoPath} alt="Current Photo Preview" /> }
-              </div>
+                { currentPhotoValue && (
+                  <div>
+                    <input type="radio" id="current" name="photoRadio" value="current" checked={photoRadio === "current"} onChange={(e) => handleRadio(e)} />
+                    <label htmlFor="current">Keep Current Photo</label>
+                    <img src={currentPhotoValue.photoPath} alt="Current Photo Preview" />
+                  </div> ) }
               <div>
                 <input type="radio" id="new" name="photoRadio" value="new" checked={photoRadio === "new"} onChange={(e) => handleRadio(e)} />
                 <label htmlFor="new">Add New Photo</label>

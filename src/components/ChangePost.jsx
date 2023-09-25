@@ -26,6 +26,11 @@ const ChangePost = ({ url, post, id, edit, save, savePhoto, currentPhoto }) => {
   const [photoRadio, setPhotoRadio] = useState('none')
   
   const currentPhotoValue = currentPhoto()
+  useEffect(() => {
+    if (currentPhotoValue) {
+      setPhotoRadio("current")
+    }
+  }, [])
 
   const { makeHeader } = useContext(myContext)
   const navigate = useNavigate()

@@ -21,9 +21,8 @@ const ChangePost = ({ url, post, id, edit, save, savePhoto }) => {
   const [photoError, setPhotoError] = useState(null)
   // trying to add radio buttons for photo options (keep current, add new, or none)
   // this is where I left off - 9/24
-  // currently the radio buttons have no onChange handler fn
   // best way to deal with three options? string values or what?
-  const [photoRadio, setPhotoRadio] = useState()
+  const [photoRadio, setPhotoRadio] = useState('none')
 
   const { makeHeader } = useContext(myContext)
   const navigate = useNavigate()
@@ -103,6 +102,10 @@ const ChangePost = ({ url, post, id, edit, save, savePhoto }) => {
       return false
     }
   }
+  // working on radio buttons - 9/25
+  const handleRadio = (e) => {
+    setPhotoRadio(e.target.value)
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -160,15 +163,15 @@ const ChangePost = ({ url, post, id, edit, save, savePhoto }) => {
             <fieldset>
               <legend>Select an option:</legend>
               <div>
-                <input type="radio" id="current" name="photo" value="current" checked />
+                <input type="radio" id="current" name="photo" value="current" checked={photoRadio === "current"} onChange={(e) => handleRadio(e)} />
                 <label htmlFor="current">Keep Current Photo</label>
               </div>
               <div>
-                <input type="radio" id="new" name="photo" value="new" />
+                <input type="radio" id="new" name="photo" value="new" checked={photoRadio === "new"} onChange={(e) => handleRadio(e)} />
                 <label htmlFor="new">Add New Photo</label>
               </div>
               <div>
-                <input type="radio" id="none" name="photo" value="none" />
+                <input type="radio" id="none" name="photo" value="none" checked={photoRadio === "none"} onChange={(e) => handleRadio(e)} />
                 <label htmlFor="none">No Photo</label>
               </div>
             </fieldset>

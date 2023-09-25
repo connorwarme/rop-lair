@@ -22,6 +22,7 @@ const Post = () => {
     // todo: should I put the likes in it's own state? same for comments? update 7/27 - its working for the moment as is.
     likes: [],
     comments: [],
+    photo: null
   })
   // added 9/22
   const [photo, setPhoto] = useState(null)
@@ -46,6 +47,7 @@ const Post = () => {
         content: location.state.post.content,
         likes: location.state.post.likes,
         comments: location.state.post.comments,
+        photo: location.state.post.photo ? location.state.post.photo._id : null
       })
       // added 9/22
       setPhoto(location.state.photoPath)
@@ -65,6 +67,7 @@ const Post = () => {
             content: res.data.post.content,
             likes: res.data.post.likes,
             comments: res.data.post.comments,
+            photo: res.data.post.photo ? res.data.post.photo._id : null
           })
           // added 9/22
           setPhoto(res.data.photoPath)
@@ -111,6 +114,12 @@ const Post = () => {
   }
   const handleShowComments = () => {
     setShowComments(!showComments)
+  }
+  const getCurrentPhoto = () => {
+    if (post.photo) {
+      return { _id: post.photo, photoPath: photo }
+    }
+    return false
   }
 
   return ( 
@@ -159,7 +168,7 @@ const Post = () => {
           </div>
         )}
         { edit && (
-          <ChangePost url={"http://localhost:3000/editpost/"+id}  post={post} id={id} edit={setEdit} save={setPost} savePhoto={setPhoto} />
+          <ChangePost url={"http://localhost:3000/editpost/"+id}  post={post} id={id} edit={setEdit} save={setPost} savePhoto={setPhoto} currentPhoto={getCurrentPhoto} />
         )}
       </div>
     </>

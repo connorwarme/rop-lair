@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useState, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -7,7 +8,7 @@ import { saveObject } from "../utility/ls";
 import useAxios from "../hooks/useAxios";
 import decodeEscapedData from '../utility/escape';
 
-const ChangePost = ({ url, post, id, edit, save, savePhoto }) => {
+const ChangePost = ({ url, post, id, edit, save, savePhoto, currentPhoto }) => {
   // this could be a new post or an edit post...
   // differences?
   // cancel edit would redirect to post detail page / but cancel create would redirect to home
@@ -23,6 +24,8 @@ const ChangePost = ({ url, post, id, edit, save, savePhoto }) => {
   // this is where I left off - 9/24
   // best way to deal with three options? string values or what?
   const [photoRadio, setPhotoRadio] = useState('none')
+  
+  const currentPhotoValue = currentPhoto()
 
   const { makeHeader } = useContext(myContext)
   const navigate = useNavigate()
@@ -165,6 +168,7 @@ const ChangePost = ({ url, post, id, edit, save, savePhoto }) => {
               <div>
                 <input type="radio" id="current" name="photo" value="current" checked={photoRadio === "current"} onChange={(e) => handleRadio(e)} />
                 <label htmlFor="current">Keep Current Photo</label>
+                { currentPhotoValue && <img src={currentPhotoValue.photoPath} alt="Current Photo Preview" /> }
               </div>
               <div>
                 <input type="radio" id="new" name="photo" value="new" checked={photoRadio === "new"} onChange={(e) => handleRadio(e)} />

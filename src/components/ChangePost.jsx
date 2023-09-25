@@ -52,12 +52,19 @@ const ChangePost = ({ url, post, id, edit, save, savePhoto, currentPhoto }) => {
       title, 
       content
     }
-    if (photo) {
+    if (photoRadio === 'current') {
+      post.photoRadio = true
+    }
+    else if (photoRadio === 'new' && photo) {
       const image = {
         type: photo.type,
         data: photoBase,
       }
+      post.photoRadio = 'new'
       post.photo = image
+    }
+    else {
+      post.photoRadio = false
     }
     return post
   }
@@ -171,16 +178,16 @@ const ChangePost = ({ url, post, id, edit, save, savePhoto, currentPhoto }) => {
             <fieldset>
               <legend>Select an option:</legend>
               <div>
-                <input type="radio" id="current" name="photo" value="current" checked={photoRadio === "current"} onChange={(e) => handleRadio(e)} />
+                <input type="radio" id="current" name="photoRadio" value="current" checked={photoRadio === "current"} onChange={(e) => handleRadio(e)} />
                 <label htmlFor="current">Keep Current Photo</label>
                 { currentPhotoValue && <img src={currentPhotoValue.photoPath} alt="Current Photo Preview" /> }
               </div>
               <div>
-                <input type="radio" id="new" name="photo" value="new" checked={photoRadio === "new"} onChange={(e) => handleRadio(e)} />
+                <input type="radio" id="new" name="photoRadio" value="new" checked={photoRadio === "new"} onChange={(e) => handleRadio(e)} />
                 <label htmlFor="new">Add New Photo</label>
               </div>
               <div>
-                <input type="radio" id="none" name="photo" value="none" checked={photoRadio === "none"} onChange={(e) => handleRadio(e)} />
+                <input type="radio" id="none" name="photoRadio" value="none" checked={photoRadio === "none"} onChange={(e) => handleRadio(e)} />
                 <label htmlFor="none">No Photo</label>
               </div>
             </fieldset>

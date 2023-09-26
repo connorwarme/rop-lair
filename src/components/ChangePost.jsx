@@ -118,12 +118,19 @@ const ChangePost = ({ url, post, id, edit, save, savePhoto, currentPhoto }) => {
     }
   }
   // working on radio buttons - 9/25
-  const handleRadio = (e) => {
+  const handleRadio = (e, boolean) => {
     setPhotoRadio(e.target.value)
+    if (boolean) {
+      setPhotoError('')
+    }
   }
 
   const handleSubmit = (e) => {
     e.preventDefault()
+    if (photoRadio === 'new' && photo == '') {
+      setPhotoError('Please upload a new photo file.')
+      return
+    }
     const post = getState()
 
     axios.post(url, post, { headers: makeHeader() })
@@ -179,7 +186,7 @@ const ChangePost = ({ url, post, id, edit, save, savePhoto, currentPhoto }) => {
               <legend>Select an option:</legend>
                 { currentPhotoValue && (
                   <div>
-                    <input type="radio" id="current" name="photoRadio" value="current" checked={photoRadio === "current"} onChange={(e) => handleRadio(e)} />
+                    <input type="radio" id="current" name="photoRadio" value="current" checked={photoRadio === "current"} onChange={(e) => handleRadio(e, true)} />
                     <label htmlFor="current">Keep Current Photo</label>
                     <img src={currentPhotoValue.photoPath} alt="Current Photo Preview" />
                   </div> ) }
@@ -188,7 +195,7 @@ const ChangePost = ({ url, post, id, edit, save, savePhoto, currentPhoto }) => {
                 <label htmlFor="new">Add New Photo</label>
               </div>
               <div>
-                <input type="radio" id="none" name="photoRadio" value="none" checked={photoRadio === "none"} onChange={(e) => handleRadio(e)} />
+                <input type="radio" id="none" name="photoRadio" value="none" checked={photoRadio === "none"} onChange={(e) => handleRadio(e, true)} />
                 <label htmlFor="none">No Photo</label>
               </div>
             </fieldset>
@@ -196,7 +203,6 @@ const ChangePost = ({ url, post, id, edit, save, savePhoto, currentPhoto }) => {
           <div className="form-input">
             <label htmlFor="photo">Photo</label>
             <input type="file" id="photo" className="photo" accept="image/png, image/jpeg, image/gif" onChange={(e) => {
-              handlePhoto(e.target.files[0]) ? console.log('successful') : console.log('fail')
               if (!handlePhoto(e.target.files[0])) {
                 e.target.value = null
                 // other option:

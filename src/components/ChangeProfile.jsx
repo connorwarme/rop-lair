@@ -3,8 +3,9 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import decodeEscapedData from "../utility/escape";
+import icon from "../images/accountIcon.svg"
 
-const ChangeProfile = ({ user, setEdit, makeHeader, setUserObject, setUserPhoto }) => {
+const ChangeProfile = ({ user, setEdit, makeHeader, setUserObject, setUserPhoto, currentPhoto }) => {
   const [first_name, setFirstName] = useState(user.first_name)
   const [family_name, setFamilyName] = useState(user.family_name)
   const [picture, setPicture] = useState(user.picture ? user.picture : '')
@@ -13,6 +14,24 @@ const ChangeProfile = ({ user, setEdit, makeHeader, setUserObject, setUserPhoto 
   const [photoBase, setPhotoBase] = useState('')
   const [photoError, setPhotoError] = useState(null)
   const [errors, setErrors] = useState(null)
+  const [photoRadio, setPhotoRadio] = useState('none')
+  
+  const currentPhotoValue = currentPhoto()
+  useEffect(() => {
+    if (currentPhotoValue) {
+      setPhotoRadio("current")
+    }
+  }, [])
+  useEffect(() => {
+    if (!photo) {
+      setPreview('')
+      return
+    }
+    const objectURL = URL.createObjectURL(photo)
+    setPreview(objectURL)
+
+    return () => URL.revokeObjectURL(objectURL)
+  }, [photo])
 
   const navigate = useNavigate()
 
@@ -30,14 +49,23 @@ const ChangeProfile = ({ user, setEdit, makeHeader, setUserObject, setUserPhoto 
     updateFn(event.target.value)
   }
   const getState = () => {
-    let image = null 
-    if (photo) {
-      image = {
+    const photoObj = {}
+    if (photoRadio === 'current') {
+      photoObj.photoRadio = true
+    }
+    else if (photoRadio === 'new' && photo) {
+      const image = {
         type: photo.type,
         data: photoBase,
       }
+      console.log(image.type)
+      photoObj.photoRadio = 'new'
+      photoObj.photo = image
     }
-    return { first_name, family_name, picture, userid: user._id, photo: image }
+    else {
+      photoObj.photoRadio = false
+    }
+    return { first_name, family_name, picture, userid: user._id, photo: photoObj }
   }
   // handle photo
   // check if they provided an image file
@@ -74,6 +102,13 @@ const ChangeProfile = ({ user, setEdit, makeHeader, setUserObject, setUserPhoto 
       return false
     }
   }
+  // working on radio buttons - 9/26
+  const handleRadio = (e, boolean) => {
+    setPhotoRadio(e.target.value)
+    if (boolean) {
+      setPhotoError('')
+    }
+  }
 
   const handleCancelEdit = () => {
     // change edit value on parent component
@@ -81,15 +116,21 @@ const ChangeProfile = ({ user, setEdit, makeHeader, setUserObject, setUserPhoto 
   }
   const handleSaveEdit = (e) => {
     e.preventDefault()
+    if (photoRadio === 'new' && photo == '') {
+      setPhotoError('Please upload a new photo file.')
+      return
+    }
     const url = "http://localhost:3000/profile/update"
-    const post = getState()
-    axios.post(url, post, { headers: makeHeader() })
+    const profile = getState()
+    axios.post(url, profile, { headers: makeHeader() })
     .then(res => {
       if (res.status === 200 && res.data.profile) {
         // save profile to userObject
         setUserObject(res.data.profile)
         if (res.data.photo && res.data.photoPath) {
           setUserPhoto(res.data.photoPath)
+        } else {
+          setUserPhoto(icon)
         }
         // hide edit mode
         setEdit(false)
@@ -121,9 +162,27 @@ const ChangeProfile = ({ user, setEdit, makeHeader, setUserObject, setUserPhoto 
             <input type="text" id="picture" className="picture" value={picture} onChange={(e) => {handleChange(e, setPicture)}}/>
           </div>
           <div className="form-input">
+            <fieldset>
+              <legend>Select an option:</legend>
+                { currentPhotoValue && (
+                  <div>
+                    <input type="radio" id="current" name="photoRadio" value="current" checked={photoRadio === "current"} onChange={(e) => handleRadio(e, true)} />
+                    <label htmlFor="current">Keep Current Photo</label>
+                    <img src={currentPhotoValue.photoPath} alt="Current Photo Preview" />
+                  </div> ) }
+              <div>
+                <input type="radio" id="new" name="photoRadio" value="new" checked={photoRadio === "new"} onChange={(e) => handleRadio(e)} />
+                <label htmlFor="new">Add New Photo</label>
+              </div>
+              <div>
+                <input type="radio" id="none" name="photoRadio" value="none" checked={photoRadio === "none"} onChange={(e) => handleRadio(e, true)} />
+                <label htmlFor="none">No Photo</label>
+              </div>
+            </fieldset>
+          </div>
+          <div className="form-input">
             <label htmlFor="photo">Photo</label>
             <input type="file" id="photo" className="photo" accept="image/png, image/jpeg, image/gif" onChange={(e) => {
-              handlePhoto(e.target.files[0]) ? console.log('successful') : console.log('fail')
               if (!handlePhoto(e.target.files[0])) {
                 e.target.value = null
                 // other option:

@@ -32,6 +32,12 @@ const UserProfile = () => {
     console.log('show edit')
     setEdit(true)
   }
+  const getCurrentPhoto = () => {
+    if (userObject.photo && userPhoto) {
+      return { _id: userObject.photo._id, photoPath: userPhoto }
+    }
+    return false
+  }
 
   return ( 
     <>
@@ -71,7 +77,7 @@ const UserProfile = () => {
       { (userObject && edit) && (
         <>
           <p>Edit Profile Mode</p>
-          <ChangeProfile user={userObject} setEdit={setEdit} setUserObject={setUserObject} setUserPhoto={setUserPhoto} makeHeader={makeHeader} />
+          <ChangeProfile user={userObject} setEdit={setEdit} setUserObject={setUserObject} setUserPhoto={setUserPhoto} makeHeader={makeHeader} currentPhoto={getCurrentPhoto} />
         </>
       )}
     </>

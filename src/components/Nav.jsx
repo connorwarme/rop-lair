@@ -4,6 +4,7 @@ import axios from "axios";
 import { clearStorage } from "../utility/ls";
 import { myContext } from "../contexts/Context";
 import decodeEscapedData from "../utility/escape";
+import settingsIcon from "../images/icons/settings.svg"
 import "../styles/navStyle.css"
 
 // want to think through how to hide routes when the visitor has not signed in yet
@@ -33,17 +34,23 @@ const Nav = () => {
     <>
       <div className="nav-container">
         { userObject &&
-        <div className="nav-links">
-          <Link to="/" className="home">Home</Link>
-          <Link to="/profile" className="profile">Profile</Link>
-          <Link to="/users" className="users">Users</Link>
+        <div className="nav-links-full">
+          <Link to="/" className="fan-lair">Fan Lair</Link>
           <Link to="/post/create" className="create-post">+</Link>
           <Link to="/profile" className="user">
             { userPhoto && <img src={userPhoto} height={'30px'} /> }
             {decodeEscapedData(userObject.name)}
           </Link>
-          <Link to="/profile/6495da6d5dea80fc65a0a447" >Other Profile</Link>
-          <li className="logout" onClick={logout}>Logout</li>
+          <div className="nav-dropdown">
+            <button type="button">
+              <img src={settingsIcon} alt="Options" />
+            </button>
+            <div className="nav-dropdown-content">
+              <Link to="/users" className="users">Users</Link>
+              <Link to="/profile" className="user">My Profile</Link>
+              <li className="logout" onClick={logout}>Logout</li>
+            </div>
+          </div>
         </div>
         }
         {

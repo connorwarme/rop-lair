@@ -1,15 +1,35 @@
 .nav-container {
-  background-color: rgb(206, 225, 238);
-  width: calc(100vw - 4rem);
-  margin: 20px 0;
+  background-color: var(--primary);
+  width: 100vw;
+  margin: 0;
+}
+.nav-dropdown > button {
+  border-radius: 50%;
+  /* border: none; */
+  outline: none;
+  /* background-color: var(--primary); */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.nav-dropdown > button:hover {
+  background-color: var(--dark-bg);
+}
+.nav-dropdown > button > img {
+  height: 35px;
+  filter: invert(100%);
+  :hover {
+    cursor: pointer;
+    background-color: white;
+    filter: invert(0%);
+  }
 }
 .nav-links {
-  padding: 20px;
-
+  padding: 0px;
 }
-.nav-links > a,
-.nav-links > li {
-  color: slategray;
+.nav-links a,
+.nav-links li {
+  color: var(--main-text-color);
   font-size: 18px;
   padding: 6px 9px;
   list-style: none;

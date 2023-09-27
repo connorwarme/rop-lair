@@ -10,7 +10,7 @@ const UserUnit = ({ userObject, profile, setList }) => {
   return ( 
     <>
       <div className="userUnit-container">
-        <Link to={`/user/${profile._id}`} element={<OtherProfile />} >
+        <Link to={`/profile/${profile._id}`} element={<OtherProfile />} >
           <div className="userUnit-content">
             <img src={profile.picture ? profile.picture : icon} alt="User Icon" height={'80px'}/>
             <h4>{decodeEscapedData(profile.name)}</h4>

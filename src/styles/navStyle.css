@@ -1,16 +1,78 @@
 .nav-container {
-  background-color: var(--primary);
+  background-color: var(--main-bg-color);
   width: 100vw;
   margin: 0;
 }
+.nav-links-full {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0.5rem
+}
+.nav-links {
+  padding: 0px;
+}
+.nav-links a {
+  color: var(--main-text-color);
+  font-size: 1.5rem;
+  padding: 0.25rem 0.5rem;
+  list-style: none;
+  text-decoration: none;
+  &:hover {
+    cursor: pointer;
+    color: rgb(63, 60, 60);
+    text-decoration: underline;
+  }
+}
+.fan-lair {
+  justify-self: flex-start;
+  padding: 0 1rem;
+}
+.nav-spacer {
+  flex-grow: 1;
+}
+.create-post {
+  --b: 4px; /* the thickness */
+  width: 24px; /* the size */
+  aspect-ratio: 1;
+  border: 8px solid #000; /* the outer space */
+  background:
+    conic-gradient(from 90deg at var(--b) var(--b),#000 90deg,#fff 0) 
+    calc(100% + var(--b)/2) calc(100% + var(--b)/2)/
+    calc(50%  + var(--b))   calc(50%  + var(--b));
+  display: inline-block;
+}
+.radius {
+  border-radius: 50%;
+}
+a.user {
+  display: flex;
+  align-items: center;
+}
+a.user > img {
+  height: 40px;
+  width: 40px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+.hide {
+  display: none;
+}
+.show {
+  display: block;
+}
+.nav-dropdown {
+  position: relative;
+}
 .nav-dropdown > button {
   border-radius: 50%;
-  /* border: none; */
+  border: none;
   outline: none;
-  /* background-color: var(--primary); */
+  background-color: var(--primary);
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 2.5px;
 }
 .nav-dropdown > button:hover {
   background-color: var(--dark-bg);
@@ -24,20 +86,25 @@
     filter: invert(0%);
   }
 }
-.nav-links {
-  padding: 0px;
+.nav-dropdown-content {
+  background-color: var(--off-white-bg);
+  position: absolute;
+  z-index: 3;
+  right: 0;
+  padding: 0.25rem 0;
+  margin-top: 0.15rem;
+  border-radius: 3px;
 }
-.nav-links a,
-.nav-links li {
-  color: var(--main-text-color);
-  font-size: 18px;
-  padding: 6px 9px;
-  list-style: none;
-  text-decoration: none;
+.divider {
+  height: 2px;
+  background-color: var(--shadow-lite);
+  margin: 0.1rem 0;
 }
-.nav-links > a:hover,
-.nav-links > li:hover {
+.nav-dropdown-content a {
+  display: block;
+  /* width: 100%; */
+  padding: .25rem 1.5rem;
+}
+.logout:hover {
   cursor: pointer;
-  color: rgb(63, 60, 60);
-  text-decoration: underline;
-} 
+}

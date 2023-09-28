@@ -35,12 +35,25 @@
   --b: 4px; /* the thickness */
   width: 24px; /* the size */
   aspect-ratio: 1;
-  border: 8px solid #000; /* the outer space */
+  border: 8px solid var(--primary); /* the outer space */
   background:
-    conic-gradient(from 90deg at var(--b) var(--b),#000 90deg,#fff 0) 
+    conic-gradient(from 90deg at var(--b) var(--b), var(--primary) 90deg,#fff 0) 
     calc(100% + var(--b)/2) calc(100% + var(--b)/2)/
     calc(50%  + var(--b))   calc(50%  + var(--b));
   display: inline-block;
+  margin: 0.25rem;
+  transition: transform var(--btn-press) ease;
+  &:hover {
+    border-color: var(--main-bg-shadow);
+    background:
+    conic-gradient(from 90deg at var(--b) var(--b), var(--main-bg-shadow) 90deg,#fff 0)
+    calc(100% + var(--b)/2) calc(100% + var(--b)/2)/
+    calc(50%  + var(--b))   calc(50%  + var(--b));
+  }
+  &:active {
+    transform: scale(0.95);
+    box-shadow: 0 0 3px var(--dark-bg);
+  }
 }
 .radius {
   border-radius: 50%;
@@ -48,12 +61,19 @@
 a.user {
   display: flex;
   align-items: center;
+  margin: 0.25rem;
+  border-radius: 50%;
+  transition: transform var(--btn-press) ease;
+  &:active {
+    transform: scale(0.95);
+    box-shadow: 0 0 3px var(--dark-bg);
+  }
 }
 a.user > img {
   height: 40px;
   width: 40px;
   object-fit: cover;
-  border-radius: 50%;
+  border-radius: inherit;
 }
 .hide .dropdown-item-1,
 .hide .dropdown-item-2,
@@ -110,24 +130,23 @@ a.user > img {
 .nav-dropdown > button {
   border-radius: 50%;
   border: none;
-  outline: none;
   background-color: var(--primary);
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 2.5px;
-}
-.nav-dropdown > button:hover {
-  background-color: var(--dark-bg);
+  transition: transform var(--btn-press) ease;
+  &:hover {
+    background-color: var(--main-bg-shadow);
+  }
+  &:active {
+    transform: scale(0.95);
+    box-shadow: 0 0 3px var(--dark-bg);
+  }
 }
 .nav-dropdown > button > img {
   height: 35px;
   filter: invert(100%);
-  :hover {
-    cursor: pointer;
-    background-color: white;
-    filter: invert(0%);
-  }
 }
 .nav-dropdown-content {
   display: block;
@@ -171,4 +190,33 @@ a.user > img {
 }
 .logout:hover {
   cursor: pointer;
+}
+.outside-nav {
+  display: flex;
+  align-items: center;
+}
+.outside-nav > h1 {
+  font-size: 1.5rem;
+  margin: 1rem 1.5rem;
+}
+.outside-nav .nav-links {
+  justify-self: flex-end;
+}
+.outside-nav .signup,
+.outside-nav .login {
+  font-size: 1rem;
+  color: var(--main-text-lite);
+  font-weight: 600;
+  border-radius: 3px;
+  padding: 0.5rem 1rem;
+}
+.login {
+  background-color: var(--primary);
+}
+.signup {
+  background-color: var(--secondary);
+
+}
+.hidden-div {
+  display: none;
 }

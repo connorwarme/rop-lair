@@ -46,7 +46,7 @@ const Nav = () => {
         <div className="nav-links-full">
           <Link to="/" className="fan-lair">Fan Lair</Link>
           <div className="nav-spacer"></div>
-          <Link to="/post/create" className="create-post radius"> </Link>
+          <Link to="/post/create" className="create-post radius"></Link>
           <Link to="/profile" className="user">
             { userPhoto && <img src={userPhoto} /> }
             {/* {decodeEscapedData(userObject.name)} */}
@@ -66,11 +66,19 @@ const Nav = () => {
         </div>
         }
         {
-          userObject === null && 
-          <div className="nav-links">
-            <Link to="/login" className="login">Login</Link>
-            <Link to="/signup" className="signup">Sign-Up</Link>
-          </div>
+          userObject === null && (
+            <>
+              {/* <div className="outside-nav">
+                <h1>Fan Lair</h1>
+                <div className="nav-spacer"></div>
+                <div className="nav-links">
+                  <Link to="/login" className="login">Login</Link>
+                  <Link to="/signup" className="signup">Sign-Up</Link>
+                  <div ref={dropdownRef} className="hidden-div"></div>
+                </div>
+              </div> */}
+            </>
+          )
         }
       </div>
     </>

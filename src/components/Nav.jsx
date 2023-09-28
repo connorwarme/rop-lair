@@ -3,8 +3,12 @@ import { Link } from "react-router-dom"
 import axios from "axios";
 import { clearStorage } from "../utility/ls";
 import { myContext } from "../contexts/Context";
+import useClickOutside from "../hooks/useClickOutside";
 import decodeEscapedData from "../utility/escape";
 import settingsIcon from "../images/icons/settings.svg"
+import usersIcon from "../images/icons/users.svg"
+import accountIcon from "../images/icons/account.svg"
+import logoutIcon from "../images/icons/logout.svg"
 import "../styles/navStyle.css"
 
 // want to think through how to hide routes when the visitor has not signed in yet
@@ -31,18 +35,9 @@ const Nav = () => {
       })
   }
 
-  const optionsRef = useRef(null);
-  useEffect(() => {
-    const handler = (e) => {
-      if(!optionsRef.current.contains(e.target)) {
-        setShowDropdown(false)
-      }
-    }
-    document.addEventListener('mousedown', handler)
-    return () => {
-      document.removeEventListener('mousedown', handler)
-    }
-  }, [])
+  // close dropdown with click anywhere else on screen
+  const dropdownRef = useRef(null);
+  useClickOutside(dropdownRef, () => setShowDropdown(false))
 
   return ( 
     <>
@@ -56,16 +51,16 @@ const Nav = () => {
             { userPhoto && <img src={userPhoto} /> }
             {/* {decodeEscapedData(userObject.name)} */}
           </Link>
-          <div ref={optionsRef} className="nav-dropdown">
-            <button type="button" onClick={() => setShowDropdown(!showDropdown)}>
+          <div className="nav-dropdown">
+            <button ref={dropdownRef} type="button" onClick={() => setShowDropdown(!showDropdown)}>
               <img src={settingsIcon} alt="Options" />
             </button>
               <div className={`nav-dropdown-content ${showDropdown ? 'show' : 'hide'}`}>
-                <Link to="/users" className="users">Users</Link>
-                <div className="divider"></div>
-                <Link to="/profile" className="user">My Profile</Link>
-                <div className="divider"></div>
-                <a className="logout" onClick={logout}>Logout</a>
+                <Link to="/users" className="dropdown-item-1"><div><img src={usersIcon} /><p>Users</p></div></Link>
+                <div className="divider dropdown-item-2"></div>
+                <Link to="/profile" className="dropdown-item-3"><div><img src={accountIcon} /><p>My Profile</p></div></Link>
+                <div className="divider dropdown-item-4"></div>
+                <a className="logout dropdown-item-5" onClick={logout} ><div><img src={logoutIcon} /><p>Logout</p></div></a>
               </div>
           </div>
         </div>

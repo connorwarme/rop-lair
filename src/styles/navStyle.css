@@ -55,12 +55,55 @@ a.user > img {
   object-fit: cover;
   border-radius: 50%;
 }
-.hide {
+.hide .dropdown-item-1,
+.hide .dropdown-item-2,
+.hide .dropdown-item-3,
+.hide .dropdown-item-4,
+.hide .dropdown-item-5 {
   display: none;
+  opacity: 0; 
+  animation: rotateX ease-in-out backwards;
+  transition: all 300ms ease;
 }
 .show {
-  display: block;
+  opacity: 1;
+  visibility: visible;
 }
+.show .dropdown-item-1 {
+  transform-origin: top center;
+  animation: rotateX 100ms ease-in-out forwards;
+}
+.show .dropdown-item-2 {
+  transform-origin: top center;
+  animation: rotateX 150ms ease-in-out forwards;
+}
+.show .dropdown-item-3 {
+  transform-origin: top center;
+  animation: rotateX 300ms ease-in-out forwards;
+}
+.show .dropdown-item-4 {
+  transform-origin: top center;
+  animation: rotateX 350ms ease-in-out forwards;
+}
+.show .dropdown-item-5 {
+  transform-origin: top center;
+  animation: rotateX 500ms ease-in-out forwards;
+}
+
+@keyframes rotateX {
+  0% {
+    opacity: 0;
+    transform: rotateX(-90deg);
+  }
+  50% {
+    transform: rotateX(-20deg);
+  }
+  100% {
+    opacity: 1;
+    transform: rotateX(0deg);
+  }
+}
+
 .nav-dropdown {
   position: relative;
 }
@@ -87,13 +130,16 @@ a.user > img {
   }
 }
 .nav-dropdown-content {
+  display: block;
   background-color: var(--off-white-bg);
   position: absolute;
   z-index: 3;
   right: 0;
+  width: max-content;
   padding: 0.25rem 0;
   margin-top: 0.15rem;
   border-radius: 3px;
+  /* animation: rotateMenu 400ms ease-in-out forwards; */
 }
 .divider {
   height: 2px;
@@ -102,8 +148,26 @@ a.user > img {
 }
 .nav-dropdown-content a {
   display: block;
-  /* width: 100%; */
-  padding: .25rem 1.5rem;
+  padding: .25rem 0;
+  &:hover {
+    color: var(--main-text-color);
+  }
+}
+.nav-dropdown-content div {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0 1rem;
+  &:hover {
+    background-color: var(--shadow-lite);
+  }
+}
+.nav-dropdown-content div > img {
+  height: 35px;
+}
+.nav-dropdown-content div > p {
+  padding: 0 0.5rem;
+  margin: 0;
 }
 .logout:hover {
   cursor: pointer;

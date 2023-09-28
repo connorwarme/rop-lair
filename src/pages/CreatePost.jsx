@@ -82,7 +82,7 @@ const CreatePost = () => {
   const url = "http://localhost:3000/createpost"
   return (
     <>
-      <ChangePost url={url} post={false} />
+      <ChangePost url={url} post={false} currentPhoto={() => false}/>
     </>
   )
 }

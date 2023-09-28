@@ -1,24 +1,21 @@
-import { useState, useEffect, useRef } from "react";
+import { useEffect } from "react"
 // left off here - working on a component to recognize if a click occurs outside of a component (ie to close a dropdown menu, etc)
+// this may work now that I debugged things... have a simple version in the Nav component
 
-
-const IsVisible = (initialVisible) => {
-  const [isComponentVisible, setIsComponentVisible] = useState(initialVisible);
-  const ref = useRef(null);
-
-  const handleClickOutside = (event) => {
-      if (ref.current && !ref.current.contains(event.target) && isComponentVisible) {
-          setIsComponentVisible(false);
-      }
-  };
-
+const useClickOutside = (ref, onClickOutside) => {
   useEffect(() => {
-      document.addEventListener('click', handleClickOutside, true);
-      return () => {
-          document.removeEventListener('click', handleClickOutside, true);
-      };
-  }, []);
+    const handleClickOutside = (event) => {
+      if (!ref.current.contains(event.target)) {
+        console.log('click outside')
+        onClickOutside()
+      }
+      
+    };
+    document.addEventListener('click', handleClickOutside)
+    return () => {
+      document.removeEventListener('click', handleClickOutside)
+    }
+  }, [])
 
-  return { ref, isComponentVisible, setIsComponentVisible };
 }
-export default IsVisible;
+export default useClickOutside

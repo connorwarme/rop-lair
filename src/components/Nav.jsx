@@ -68,6 +68,7 @@ const Nav = () => {
         {
           userObject === null && (
             <>
+              <div ref={dropdownRef} className="hidden-div"></div>
               {/* <div className="outside-nav">
                 <h1>Fan Lair</h1>
                 <div className="nav-spacer"></div>

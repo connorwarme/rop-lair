@@ -2,6 +2,10 @@ import React, { useState, useEffect, useContext } from 'react';
 import { redirect, useNavigate } from 'react-router-dom';
 import { saveObject, returnObject } from '../utility/ls';
 import { myContext } from '../contexts/Context';
+import banner from "../images/titlebanner.png" 
+import fbIcon from "../images/icons/facebook.svg"
+import gIcon from "../images/icons/google.svg"
+import "../styles/loginStyle.css"
 
 // just got an error trying oauth with google 8/24
 // There was an error during the transport or processing of this request. Error code = 7, Path = /v3/signin/_/AccountsSignInUi/data/batchexecute : Unknown HTTP error in underlying XHR (HTTP Status: 0) (XHR Error Code: 6) (XHR Error Message: ' [0]')
@@ -149,12 +153,20 @@ const Login = () => {
   return ( 
     <>
       <div className="login-container">
+        <div className="title-container">
+          <img src={banner} alt="Lord of the Rings: The Rings of Power" />
+          <h1>Fan Lair</h1>
+        </div>
         <div className="login-content">
           <form className="local-login" onSubmit={handleSubmit}>
-            <label htmlFor="email">Email:</label>
-            <input type="text" id="email" name="email" value={email} onChange={(e) => handleChange(e, setEmail)} />
-            <label htmlFor="password">Password:</label>
-            <input type="password" id="password" name='password' value={password} onChange={(e) => handleChange(e, setPassword)} />
+            <div className="form-group">
+              <label htmlFor="email">Email:</label>
+              <input type="text" id="email" name="email" value={email} onChange={(e) => handleChange(e, setEmail)} />
+            </div>
+            <div className="form-group">
+              <label htmlFor="password">Password:</label>
+              <input type="password" id="password" name='password' value={password} onChange={(e) => handleChange(e, setPassword)} />
+            </div>
             <div className="local-errors">
               <ul className="errors-list">
               { error && 
@@ -167,17 +179,20 @@ const Login = () => {
               }
               </ul>
             </div>
-            <button>Sign In</button>
+            <button>Log In</button>
           </form>
           <div className="google-login">
-            <button onClick={google}>Sign In with Google+</button>
+            <button onClick={google}><img src={gIcon}></img>Continue with Google+</button>
           </div>
           <div className="facebook-login">
-            <button onClick={facebook}>Sign In with Facebook</button>
+            <button onClick={facebook}><img src={fbIcon}></img>Continue with Facebook</button>
           </div>
           <div className="oauth-error">
             { errorMsg && <p>{errorMsg}</p> }
             { oauthError && <p>{oauthError}</p>}
+          </div>
+          <div className="guest-login">
+            <button onClick={() => console.log('login as guest')}>Log In as Guest</button>
           </div>
         </div>
       </div>

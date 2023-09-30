@@ -158,6 +158,7 @@ const Login = () => {
           <h1>Fan Lair</h1>
         </div>
         <div className="login-content">
+        <div className="login-position">
           <form className="local-login" onSubmit={handleSubmit}>
             <div className="form-group">
               <label htmlFor="email">Email:</label>
@@ -203,6 +204,7 @@ const Login = () => {
           <div className="create-acct-container">
             <button onClick={() => console.log('create account')}>Create Account</button>
           </div>
+        </div>
         </div>
       </div>
     </>

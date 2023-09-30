@@ -181,6 +181,9 @@ const Login = () => {
             </div>
             <button>Log In</button>
           </form>
+          <div className="or-divider">
+            <h3>OR</h3>
+          </div>
           <div className="google-login">
             <button onClick={google}><img src={gIcon}></img>Continue with Google+</button>
           </div>
@@ -192,7 +195,13 @@ const Login = () => {
             { oauthError && <p>{oauthError}</p>}
           </div>
           <div className="guest-login">
-            <button onClick={() => console.log('login as guest')}>Log In as Guest</button>
+            <button onClick={() => console.log('login as guest')}>Continue as Guest</button>
+          </div>
+          <div className="or-divider">
+            <h3>OR</h3>
+          </div>
+          <div className="create-acct-container">
+            <button onClick={() => console.log('create account')}>Create Account</button>
           </div>
         </div>
       </div>

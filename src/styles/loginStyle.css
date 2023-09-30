@@ -1,26 +1,39 @@
+.content {
+  background-color: var(--main-grey-light);
+}
 .login-container {
-
+  padding-bottom: 1rem;
 }
 .title-container {
   margin:0;
-  background-color: var(--dark-bg);
+  background-color: var(--main-blue);
+  border-bottom: 2px solid var(--main-gold);
+  border-bottom-left-radius: 5%;
+  border-bottom-right-radius: 5%;
+  box-shadow: 0 0 10px var(--main-gold);
 }
 .title-container > img {
   width: 90vw;
+  max-width: 600px;
   object-fit: cover;
-  margin: 1rem 0;
+  padding: 1rem 0;
   color: var(--main-text-lite);
+  border-bottom: 5px solid var(--main-gold);
+  border-radius: 15%;
 }
 .title-container > h1 {
+  font-family: var(--font-header);
   font-size: 2rem;
   margin: 0.5rem;
   color: var(--main-text-lite);
+  text-shadow: 2px 1px 0px var(--main-blue-dark);
 }
 .login-content {
-  /* display: flex;
+  display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center; */
+  align-items: center;
+  width: 300px;
 }
 .login-content .form-group {
   display: flex;
@@ -33,33 +46,56 @@
 }
 .form-group > input {
   font-size: 1rem;
-  /* width: 90%; */
   padding: 0.375rem 0.75rem;
-  border: 1px solid var(--dark-bg);
+  background-color: var(--main-off-white);
+  color: var(--main-grey);
+  border: none;
   border-radius: 2rem;
+  box-shadow: 0 0 3px var(--main-blue-dark);
+  &:focus {
+    outline: 1px solid var(--main-gold);
+    box-shadow: 0 0 3px var(--main-gold);
+  }
 }
 .login-content button {
+  font-family: var(--font-body);
   font-size: 1rem;
-  width: 288px;
-  color: var(--dark-bg);
+  font-weight: 600;
+  width: calc(100% - 2rem);
+  color: var(--main-text-dark);
   background-color: transparent;
   text-align: center;
   padding: 0.375rem 0.75rem;
   margin: 0.5rem 1rem;
-  border: 1px solid var(--dark-bg);
+  border: 1px solid var(--main-blue-dark);
   border-radius: 2rem;
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: all 200ms ease;
+  &:hover {
+    background-color: var(--main-blue-dark);
+    color: var(--main-text-lite);
+  }
+}
+.facebook-login,
+.google-login,
+.guest-login,
+.create-acct-container {
+  width: 100%;
 }
 .facebook-login > button,
 .google-login > button {
   padding: 0;
+  &:hover img {
+    filter: invert(99%) sepia(0%) saturate(482%) hue-rotate(150deg) brightness(117%) contrast(80%);
+  }
 }
 .facebook-login img,
 .google-login img {
   height: 35px;
   margin: 0 0.5rem;
+  filter: invert(32%) sepia(18%) saturate(1083%) hue-rotate(166deg) brightness(97%) contrast(86%);
 }
 .or-divider h3 {
   margin: 0.25rem;

@@ -1,22 +1,52 @@
+@font-face {
+  font-family: 'Collier';
+  src: url('./styles/fonts/Collier-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Collier-Thin';
+  src: url('./styles/fonts/Collier-Thin.otf') format('opentype');
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Collier-Bold';
+  src: url('./styles/fonts/Collier-Bold.otf') format('opentype');
+  font-style: normal;
+}
+
 :root {
   --main-bg-color: rgb(245, 245, 245);
   --main-bg-shadow: rgb(96, 114, 131);
-  --main-text-color: rgb(68, 64, 64);
+  --main-text-color: rgb(0, 18, 51);
   --main-text-lite: rgb(245, 245, 245);
+  --main-gold: rgb(234, 144, 16);
+  --main-grey: rgb(120, 133, 133);
+  --main-grey-light: rgb(229, 229, 229);
+  --main-green: rgb(75, 112, 54);
+  --main-blue: rgb(62, 92, 118);
+  --main-blue-dark: rgb(29, 45, 68);
+  --main-accent: rgb(255, 77, 75);
+  --main-off-white: rgb(245, 245, 245);
   --primary: rgb(11, 98, 156);
-  --secondary: rgb(228, 97, 65);
+  --secondary: rgb(255, 77, 75);
   --dark-bg: rgb(68, 64, 64);
-  --shadow-lite: rgb(214, 214, 214);
+  --shadow-lite: rgba(214, 214, 214, 0.5);
+  --input-box-shadow: rgba(0, 0, 0, 0.3);
   --off-white-bg: rgb(250, 250, 250);
+  --login-bg: rgba(34, 152, 231, 0.3);
   --speed: 500ms;
   --btn-press: 500ms;
+  --font-header: 'Collier-Bold', Arial, sans-serif;
+  --font-body: 'Collier', Arial, sans-serif;
+  --font-body-thin: 'Collier-Thin', Arial, sans-serif;
 
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Collier', Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
+  color: var(--main-text-color);
   background-color: #242424;
 
   font-synthesis: none;
@@ -63,8 +93,6 @@ button:focus-visible {
 
 @media (prefers-color-scheme: light) {
   :root {
-    color: #213547;
-    background-color: #ffffff;
   }
   a:hover {
     color: #747bff;

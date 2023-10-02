@@ -5,6 +5,7 @@ import { myContext } from '../contexts/Context';
 import banner from "../images/titlebanner.png" 
 import fbIcon from "../images/icons/facebook.svg"
 import gIcon from "../images/icons/google.svg"
+import SignUp from '../components/Signup';
 import "../styles/loginStyle.css"
 
 // just got an error trying oauth with google 8/24
@@ -16,6 +17,8 @@ const Login = () => {
   const [password, setPassword] = useState('')
   const [error, setError] = useState(null)
   const [oauthError, setOAuthError] = useState(null)
+  const [login, setLogin] = useState(true)
+  const [signup, setSignup] = useState(false)
 
   // if an error happens verifying the user after oauth login...
   const { setUserObject, setAccess, errorMsg } = useContext(myContext)
@@ -149,6 +152,14 @@ const Login = () => {
       setOAuthError(err.msg)
     })
   }
+  const handleCreate = () => {
+    setLogin(false)
+    setSignup(true)
+  }
+  const handleCancelSignup = () => {
+    setSignup(false)
+    setLogin(true)
+  }
 
   return ( 
     <>
@@ -157,55 +168,60 @@ const Login = () => {
           <img src={banner} alt="Lord of the Rings: The Rings of Power" />
           <h1>Fan Lair</h1>
         </div>
-        <div className="login-content">
-        <div className="login-position">
-          <form className="local-login" onSubmit={handleSubmit}>
-            <div className="form-group">
-              <label htmlFor="email">Email:</label>
-              <input type="text" id="email" name="email" value={email} onChange={(e) => handleChange(e, setEmail)} />
+        { login && ( 
+          <>
+            <div className="login-content">
+              <div className="login-position">
+                <form className="local-login" onSubmit={handleSubmit}>
+                  <div className="form-group">
+                    <label htmlFor="email">Email:</label>
+                    <input type="text" id="email" name="email" value={email} onChange={(e) => handleChange(e, setEmail)} />
+                  </div>
+                  <div className="form-group">
+                    <label htmlFor="password">Password:</label>
+                    <input type="password" id="password" name='password' value={password} onChange={(e) => handleChange(e, setPassword)} />
+                  </div>
+                  <div className="local-errors">
+                    <ul className="errors-list">
+                    { error && 
+                      error.map( (err, index) => {
+                        if (err.path) {
+                          document.querySelector(`input#`+`${err.path}`).classList.add("input-error")
+                        }
+                      return <li key={index}>Error: { err.msg }</li> 
+                      })
+                    }
+                    </ul>
+                  </div>
+                  <button>Log In</button>
+                </form>
+                <div className="or-divider">
+                  <h3>OR</h3>
+                </div>
+                <div className="google-login">
+                  <button onClick={google}><img src={gIcon}></img>Continue with Google+</button>
+                </div>
+                <div className="facebook-login">
+                  <button onClick={facebook}><img src={fbIcon}></img>Continue with Facebook</button>
+                </div>
+                <div className="oauth-error">
+                  { errorMsg && <p>{errorMsg}</p> }
+                  { oauthError && <p>{oauthError}</p>}
+                </div>
+                <div className="guest-login">
+                  <button onClick={() => console.log('login as guest')}>Continue as Guest</button>
+                </div>
+                <div className="or-divider">
+                  <h3>OR</h3>
+                </div>
+                <div className="create-acct-container">
+                  <button onClick={handleCreate}>Create Account</button>
+                </div>
+              </div>
             </div>
-            <div className="form-group">
-              <label htmlFor="password">Password:</label>
-              <input type="password" id="password" name='password' value={password} onChange={(e) => handleChange(e, setPassword)} />
-            </div>
-            <div className="local-errors">
-              <ul className="errors-list">
-              { error && 
-                error.map( (err, index) => {
-                  if (err.path) {
-                    document.querySelector(`input#`+`${err.path}`).classList.add("input-error")
-                  }
-                return <li key={index}>Error: { err.msg }</li> 
-                })
-              }
-              </ul>
-            </div>
-            <button>Log In</button>
-          </form>
-          <div className="or-divider">
-            <h3>OR</h3>
-          </div>
-          <div className="google-login">
-            <button onClick={google}><img src={gIcon}></img>Continue with Google+</button>
-          </div>
-          <div className="facebook-login">
-            <button onClick={facebook}><img src={fbIcon}></img>Continue with Facebook</button>
-          </div>
-          <div className="oauth-error">
-            { errorMsg && <p>{errorMsg}</p> }
-            { oauthError && <p>{oauthError}</p>}
-          </div>
-          <div className="guest-login">
-            <button onClick={() => console.log('login as guest')}>Continue as Guest</button>
-          </div>
-          <div className="or-divider">
-            <h3>OR</h3>
-          </div>
-          <div className="create-acct-container">
-            <button onClick={() => console.log('create account')}>Create Account</button>
-          </div>
-        </div>
-        </div>
+            </>
+        )}
+        { signup && <SignUp cancelFn={handleCancelSignup} /> }    
       </div>
     </>
    );

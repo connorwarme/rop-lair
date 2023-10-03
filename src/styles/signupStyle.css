@@ -1,0 +1,27 @@
+.signup-form .form-group {
+  display: flex;
+  flex-direction: column;
+  margin: 0.5rem 1rem;
+}
+.signup-form .button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.signup-form .button-container label {
+  background-color: var(--main-grey-light);
+  color: var(--main-blue-dark);
+  padding: 0.5rem 1.5rem;
+  border: 1px solid var(--main-blue-dark);
+  border-radius: 21px;
+  transition: all 200ms ease;
+  &:hover {
+    background-color: var(--main-blue-dark);
+    color: var(--main-grey-light);
+    cursor: pointer;
+  }
+  &:active {
+    transform: scale(0.95);
+    box-shadow: 0 0 3px var(--main-blue-dark);
+  }
+}

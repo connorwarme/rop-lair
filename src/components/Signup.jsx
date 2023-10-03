@@ -1,8 +1,10 @@
 import { useState, useContext } from "react"
 import { useNavigate } from "react-router-dom"
 import { myContext } from "../contexts/Context"
-import { saveObject, returnObject } from '../utility/ls';
+import { saveObject } from '../utility/ls';
 import axios from "axios"
+import errorIcon from "../images/icons/error.svg"
+import "../styles/signupStyle.css"
 
 const SignUp = ({ cancelFn }) => {
   const [firstName, setFirstName] = useState('')
@@ -50,34 +52,46 @@ const SignUp = ({ cancelFn }) => {
   return ( 
     <>
       <div className="signup-container">
-        <form action="" className="signup">
-          <div className="input-unit">
+        <form action="" className="signup-form">
+          <div className="form-group">
             <label htmlFor="first_name">First Name:</label>
             <input type="text" id="first_name" value={firstName} onChange={(e) => setFirstName(e.target.value)} required />
           </div>
-          <div className="input-unit">
+          <div className="form-group">
             <label htmlFor="family_name">Family Name:</label>
             <input type="text" id="family_name" value={familyName} onChange={(e) => setFamilyName(e.target.value)} required />
           </div>
-          <div className="input-unit">
+          <div className="form-group">
             <label htmlFor="email">Email:</label>
             <input type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
           </div>
-          <div className="input-unit">
+          <div className="form-group">
             <label htmlFor="password">Password:</label>
             <input type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
           </div>
-          <div className="input-unit">
+          <div className="form-group">
             <label htmlFor="pwd-conf">Confirm Password:</label>
             <input type="password" id="pwd-conf" value={confirmPW} onChange={(e) => setConfPW(e.target.value)} required />
           </div>
-          <div className="input-unit">
-            <label htmlFor="cancel" onClick={handleCancel}>Cancel</label>
-            <input type="button" id="cancel" style={{display: 'none'}} />
-          </div>
-          <div className="input-unit">
-            <label htmlFor="submit" onClick={handleSubmit}>Sign Up!</label>
-            <input type="submit" id="submit" style={{display: 'none'}} />
+          { errors && (
+            <div className="errors">
+              { errors.map((err, index) => {
+                if (err.status) {
+                  return <div key={index}><img src={errorIcon}/><p>{err.status} Error! {err.msg}</p></div>
+                }
+                return <div key={index}><img src={errorIcon}/><p>Error! {err.msg}</p></div>
+              })}
+            </div>
+          )}          
+          <div className="button-container">
+            <div className="form-group">
+              <label htmlFor="cancel" onClick={handleCancel}>Cancel</label>
+              <input type="button" id="cancel" style={{display: 'none'}} />
+            </div>
+            <div className="form-group">
+              <label htmlFor="submit" onClick={handleSubmit}>Sign Up!</label>
+              <input type="submit" id="submit" style={{display: 'none'}} />
+            </div>
           </div>
         </form>
       </div>

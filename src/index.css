@@ -26,7 +26,7 @@
   --main-green: rgb(75, 112, 54);
   --main-blue: rgb(62, 92, 118);
   --main-blue-dark: rgb(29, 45, 68);
-  --main-accent: rgb(255, 77, 75);
+  --main-accent: rgb(193, 18, 31);
   --main-off-white: rgb(245, 245, 245);
   --primary: rgb(11, 98, 156);
   --secondary: rgb(255, 77, 75);
@@ -89,6 +89,18 @@ button:focus-visible {
   height: 500px;
   width: 500px;
   border: 2px solid black;
+}
+.errors div {
+  display: flex;
+  align-items: center;
+  margin: 0.25rem 0.5rem;
+}
+.errors div > img {
+  height: 25px;
+  filter: invert(30%) sepia(95%) saturate(4337%) hue-rotate(341deg) brightness(73%) contrast(112%);
+}
+.errors div > p {
+  margin: 0.25rem 0.5rem;
 }
 
 @media (prefers-color-scheme: light) {

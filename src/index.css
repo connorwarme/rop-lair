@@ -90,16 +90,20 @@ button:focus-visible {
   width: 500px;
   border: 2px solid black;
 }
+.form-group .input-error {
+  border: 2px solid var(--main-accent) !important;
+}
 .errors div {
   display: flex;
   align-items: center;
-  margin: 0.25rem 0.5rem;
+  margin: 0.25rem 1rem;
 }
 .errors div > img {
   height: 25px;
   filter: invert(30%) sepia(95%) saturate(4337%) hue-rotate(341deg) brightness(73%) contrast(112%);
 }
 .errors div > p {
+  font-family: var(--font-body-thin);
   margin: 0.25rem 0.5rem;
 }
 

@@ -50,15 +50,17 @@
 }
 .form-group > input {
   font-size: 1rem;
-  padding: 0.375rem 0.75rem;
+  font-family: var(--font-body-thin);
+  padding: 0.35rem 0.75rem;
   background-color: var(--main-off-white);
-  color: var(--main-grey);
-  border: none;
+  color: var(--main-blue-dark);
+  border: 2px solid transparent;
   border-radius: 2rem;
-  box-shadow: 0 0 3px var(--main-blue-dark);
+  box-shadow: 0 0 2px var(--main-blue-dark);
+  transition: all 100ms ease;
   &:focus {
-    outline: 1px solid var(--main-gold);
-    box-shadow: 0 0 3px var(--main-gold);
+    box-shadow: 0 0 2px var(--main-blue);
+    outline: 1px solid var(--main-blue);
   }
 }
 .login-content button {

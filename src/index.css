@@ -105,6 +105,7 @@ button:focus-visible {
 .errors div > p {
   font-family: var(--font-body-thin);
   margin: 0.25rem 0.5rem;
+  text-align: left;
 }
 
 @media (prefers-color-scheme: light) {

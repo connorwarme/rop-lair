@@ -2,7 +2,8 @@ import React, { useState, useEffect, useContext } from 'react';
 import { redirect, useNavigate } from 'react-router-dom';
 import { saveObject, returnObject } from '../utility/ls';
 import { myContext } from '../contexts/Context';
-import banner from "../images/titlebanner.png" 
+import banner from "../images/titlebanner.png"
+import errorIcon from "../images/icons/error.svg" 
 import fbIcon from "../images/icons/facebook.svg"
 import gIcon from "../images/icons/google.svg"
 import SignUp from '../components/Signup';
@@ -14,7 +15,10 @@ import "../styles/loginStyle.css"
 
 const Login = () => {
   const [email, setEmail] = useState('')
+  const [emailErr, setEmailErr] = useState(null)
   const [password, setPassword] = useState('')
+  const [passwordErr, setPasswordErr] = useState(null)
+  // adding state to deal with displaying error colors or not...still needs work 
   const [error, setError] = useState(null)
   const [oauthError, setOAuthError] = useState(null)
   const [login, setLogin] = useState(true)
@@ -155,6 +159,8 @@ const Login = () => {
   const handleCreate = () => {
     setLogin(false)
     setSignup(true)
+    setError(null)
+    setOAuthError(null)
   }
   const handleCancelSignup = () => {
     setSignup(false)
@@ -181,17 +187,15 @@ const Login = () => {
                     <label htmlFor="password">Password:</label>
                     <input type="password" id="password" name='password' value={password} onChange={(e) => handleChange(e, setPassword)} />
                   </div>
-                  <div className="local-errors">
-                    <ul className="errors-list">
+                  <div className="local-errors errors">
                     { error && 
                       error.map( (err, index) => {
                         if (err.path) {
                           document.querySelector(`input#`+`${err.path}`).classList.add("input-error")
                         }
-                      return <li key={index}>Error: { err.msg }</li> 
+                        return <div key={index}><img src={errorIcon}/><p>{err.msg}</p></div> 
                       })
                     }
-                    </ul>
                   </div>
                   <button>Log In</button>
                 </form>

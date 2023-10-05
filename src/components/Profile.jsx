@@ -1,14 +1,13 @@
 /* eslint-disable react/prop-types */
 
 import AddFriend from "./AddFriend";
-import icon from "../images/accountIcon.svg"
+import icon from "../images/icons/accountIcon.svg"
 import decodeEscapedData from "../utility/escape";
 
 const Profile = ({ userObject, profile, photoPath, setList }) => {
 
   // todo: add favorites content 8/24
   
-  // (profile.picture ? profile.picture : icon)
   return ( 
     <>            
     { profile && (

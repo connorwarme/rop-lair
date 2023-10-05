@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import decodeEscapedData from "../utility/escape";
-import icon from "../images/accountIcon.svg"
+import icon from "../images/icons/accountIcon.svg"
 
 const ChangeProfile = ({ user, setEdit, makeHeader, setUserObject, setUserPhoto, currentPhoto }) => {
   const [first_name, setFirstName] = useState(user.first_name)

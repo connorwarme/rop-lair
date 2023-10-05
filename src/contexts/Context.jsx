@@ -1,8 +1,7 @@
-import React, { createContext, useState, useEffect } from "react"
-import { useNavigate } from "react-router-dom";
+import { createContext, useState, useEffect } from "react"
 import axios from "axios"
-import { saveObject, returnObject } from '../utility/ls';
-import icon from "../images/accountIcon.svg"
+import { returnObject } from '../utility/ls';
+import icon from "../images/icons/accountIcon.svg"
 
 export const myContext = createContext({})
 
@@ -12,7 +11,6 @@ const Context = (props) => {
   const [access, setAccess] = useState(null)
   const [errorMsg, setErrorMsg] = useState(null)
 
-  const navigate = useNavigate()
 
   // useEffect(() => {
   //   // if in local storage, save to React state
@@ -52,10 +50,6 @@ const Context = (props) => {
             console.log(err)
             setErrorMsg(`${err.response.status} ${err.response.statusText}: ${err.response.data.message} Please try again.`)
           }
-          // navigate to login page w/ err message (maybe pass it through state)
-          // haven't check this
-          // problem is that it runs an error once in the login phase...takes you back to /login, even though the login worked.
-          // navigate("/login")
         })
       }
 

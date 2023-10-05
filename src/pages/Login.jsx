@@ -28,10 +28,6 @@ const Login = () => {
   const { setUserObject, setAccess, errorMsg } = useContext(myContext)
   const navigate = useNavigate()
 
-  const handleChange = (e, updateStateFn) => {
-    updateStateFn(e.target.value)
-  }
-
   const url = 'http://localhost:3000/auth/local'
 
   const getData = () => {
@@ -45,15 +41,6 @@ const Login = () => {
   // handle success -> redirect to...user profile?
 
   const handleSubmit = (e) => {
-    // okay, not sure what is going on.
-    // I click submit and the form submits. 
-    // the initial passport function runs but nothing else in the process...
-    // current theory is that I'm failing to pass along the user inputs in the request body
-    // but I haven't been able to confirm exactly how to do that / confirm that the data is going through.
-    // other theory was that I passed through empty data values
-    // I could check if the original state values are what is getting passed along, which would indicate a problem with my react code...
-    //
-    // update -> currently working. I think I needed to have the getData() to send through most recent input values..
     const data = getData()
     e.preventDefault()
     fetch(url, {
@@ -79,11 +66,7 @@ const Login = () => {
         setPassword('')
         // update error
         setError(data.errors)
-        // todo: improve UI
-        // if error is with email, highlight + focus that field
-        // if error is with pw, highlight + focus that field
-        // have those errors appear beneath respective fields
-        // run validation check once user has spent time fixing either field... (remove highlight, maybe allow sign in button to be pressed)
+        handleErrors(data.errors)
       } else {
         setError(null)
         // save token to local storage
@@ -102,7 +85,17 @@ const Login = () => {
       setError(err.msg)
     })
   }
-
+  const handleErrors = (array) => {
+    array.forEach(index => {
+      if (index.path) {
+        if (index.path == 'email') {
+          setEmailErr(true)
+        } else if (index.path == 'password') {
+          setPasswordErr(true)
+        }
+      }
+    })
+  }
   const google = () => {
     window.open('http://localhost:3000/auth/google', "_self")
     // handleOAuth('google')
@@ -156,6 +149,12 @@ const Login = () => {
       setOAuthError(err.msg)
     })
   }
+  const handleField = (event, setState, setError, length) => {
+    setState(event.target.value)
+    if (event.target.classList && event.target.value.length > length) {
+      setError(null)
+    }
+  }
   const handleCreate = () => {
     setLogin(false)
     setSignup(true)
@@ -181,20 +180,15 @@ const Login = () => {
                 <form className="local-login" onSubmit={handleSubmit}>
                   <div className="form-group">
                     <label htmlFor="email">Email:</label>
-                    <input type="text" id="email" name="email" value={email} onChange={(e) => handleChange(e, setEmail)} />
+                    <input type="text" className={emailErr ? 'input-error' : null} id="email" name="email" value={email} onChange={(e) => handleField(e, setEmail, setEmailErr, 0)} />
                   </div>
                   <div className="form-group">
                     <label htmlFor="password">Password:</label>
-                    <input type="password" id="password" name='password' value={password} onChange={(e) => handleChange(e, setPassword)} />
+                    <input type="password" className={passwordErr ? 'input-error' : null} id="password" name='password' value={password} onChange={(e) => handleField(e, setPassword, setPasswordErr, 5)} />
                   </div>
                   <div className="local-errors errors">
                     { error && 
-                      error.map( (err, index) => {
-                        if (err.path) {
-                          document.querySelector(`input#`+`${err.path}`).classList.add("input-error")
-                        }
-                        return <div key={index}><img src={errorIcon}/><p>{err.msg}</p></div> 
-                      })
+                      error.map( (err, index) => <div key={index}><img src={errorIcon}/><p>{err.msg}</p></div> )
                     }
                   </div>
                   <button>Log In</button>
@@ -209,8 +203,8 @@ const Login = () => {
                   <button onClick={facebook}><img src={fbIcon}></img>Continue with Facebook</button>
                 </div>
                 <div className="oauth-error">
-                  { errorMsg && <p>{errorMsg}</p> }
-                  { oauthError && <p>{oauthError}</p>}
+                  { errorMsg && <div><img src={errorIcon}/><p>{errorMsg}</p></div> }
+                  { oauthError && <div><img src={errorIcon}/><p>{oauthError}</p></div>}
                 </div>
                 <div className="guest-login">
                   <button onClick={() => console.log('login as guest')}>Continue as Guest</button>

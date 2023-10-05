@@ -6,7 +6,7 @@
 }
 .title-container {
   margin:0;
-  background-color: var(--main-blue);
+  background-color: var(--main-blue-dark);
   border-bottom: 2px solid var(--main-gold);
   box-shadow: 0 0 10px var(--main-gold);
 }
@@ -21,11 +21,11 @@
   border-radius: 10%;
 }
 .title-container > h1 {
-  font-family: var(--font-body);
+  font-family: var(--font-header);
   font-size: 2rem;
+  text-transform: uppercase;
   margin: 0.5rem;
   color: var(--main-grey-light);
-  text-shadow: 2px 1px 0px var(--main-blue-dark);
 }
 .login-content {
   display: flex;
@@ -75,6 +75,7 @@
   margin: 0.5rem 1rem;
   border: 1px solid var(--main-blue-dark);
   border-radius: 2rem;
+  box-shadow: 2px 2px 1px var(--main-grey);
   display: flex;
   justify-content: center;
   align-items: center;

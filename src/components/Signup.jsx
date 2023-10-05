@@ -105,7 +105,7 @@ const SignUp = ({ cancelFn }) => {
           </div>
           <div className="form-group">
             <label htmlFor="password">Password:</label>
-            <input type="password" id="password" className={passwordErr ? 'input-error' : null} value={password} onChange={(e) => handleField(e, setPassword, setPasswordErr, 6)} required />
+            <input type="password" id="password" className={passwordErr ? 'input-error' : null} value={password} onChange={(e) => handleField(e, setPassword, setPasswordErr, 5)} required />
           </div>
           <div className="form-group">
             <label htmlFor="pwd-conf">Confirm Password:</label>

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import OtherProfile from "../pages/OtherProfile";
 import AddFriend from "./AddFriend";
 import decodeEscapedData from "../utility/escape";
-import icon from "../images/accountIcon.svg"
+import icon from "../images/icons/accountIcon.svg"
 
 const UserUnit = ({ userObject, profile, setList }) => {
   

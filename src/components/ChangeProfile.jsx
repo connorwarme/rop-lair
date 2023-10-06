@@ -8,6 +8,7 @@ import icon from "../images/icons/accountIcon.svg"
 const ChangeProfile = ({ user, setEdit, makeHeader, setUserObject, setUserPhoto, currentPhoto }) => {
   const [first_name, setFirstName] = useState(user.first_name)
   const [family_name, setFamilyName] = useState(user.family_name)
+  const [bio, setBio] = useState(user.bio)
   const [picture, setPicture] = useState(user.picture ? user.picture : '')
   const [photo, setPhoto] = useState('')
   const [preview, setPreview] = useState('')
@@ -65,7 +66,7 @@ const ChangeProfile = ({ user, setEdit, makeHeader, setUserObject, setUserPhoto,
     else {
       photoObj.photoRadio = false
     }
-    return { first_name, family_name, picture, userid: user._id, photo: photoObj }
+    return { first_name, family_name, bio, picture, userid: user._id, photo: photoObj }
   }
   // handle photo
   // check if they provided an image file
@@ -156,6 +157,10 @@ const ChangeProfile = ({ user, setEdit, makeHeader, setUserObject, setUserPhoto,
           <div className="form-input">
             <label htmlFor="family">Family Name</label>
             <input type="text" id="family" className="content" value={decodeEscapedData(family_name)} onChange={(e) => {handleChange(e, setFamilyName)}}/>
+          </div>
+          <div className="form-input">
+            <label htmlFor="bio">About Me:</label>
+            <input type="textarea" id="bio" className="bio" value={decodeEscapedData(bio)} onChange={(e) => {handleChange(e, setBio)}}/>
           </div>
           <div className="form-input">
             <label htmlFor="picture">Profile Picture</label>

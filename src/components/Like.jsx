@@ -1,6 +1,11 @@
-import { useState, useEffect, useContext } from "react";
-import { myContext } from "../contexts/Context";
-import axios from "axios";
+/* eslint-disable react/prop-types */
+
+import { useState, useEffect, useContext } from "react"
+import { myContext } from "../contexts/Context"
+import axios from "axios"
+import like from "../images/icons/thumb-up-outline.svg"
+import unlike from "../images/icons/thumb-down-outline.svg"
+import "../styles/likeStyle.css"
 
 const Like = ({ id, likes, setLikes, user }) => {
 // need to grab userObject 
@@ -76,9 +81,27 @@ const Like = ({ id, likes, setLikes, user }) => {
   return ( 
     <>
       <div className="like-container">
-        <p>Icon  ||  {likeText}</p>
-        { !userLikes && <button onClick={handleLike}>Like</button> }
-        { userLikes && <button onClick={handleUnlike}>Unlike</button> }
+        <p>{likeText}</p>
+        { !userLikes && (
+          <>
+            <div className="like-btn-container">
+              <button onClick={handleLike}>
+                <img src={like} className="like-icon" />
+                <p>Like</p>
+              </button>
+            </div>
+          </>
+          ) }
+        { userLikes && (
+          <>
+            <div className="like-btn-container">
+              <button onClick={handleUnlike}>
+                <img src={unlike} className="like-icon" />
+                <p>Unlike</p>
+              </button>
+            </div>
+          </>
+          ) }
       </div>
     </>
    );

@@ -1,0 +1,32 @@
+.like-container {
+  display: grid;
+  background-color: var(--main-blue-dark);
+}
+.like-container p {
+  color: var(--main-text-lite);
+  margin: 0.5rem;
+}
+.like-btn-container {
+  display: flex;
+  justify-content: center;
+}
+.like-container button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--main-grey-light);
+  font-family: var(--font-body);
+  width: 100px;
+  margin-bottom: 0.5rem;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+}
+.like-container button > p {
+  color: var(--main-blue-dark);
+}
+.like-icon {
+  height: 25px;
+  margin: 0.25rem;
+  filter: invert(14%) sepia(10%) saturate(2929%) hue-rotate(176deg) brightness(96%) contrast(91%);
+}

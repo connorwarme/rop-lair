@@ -1,9 +1,10 @@
 /* eslint-disable react/prop-types */
 
-import { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
-import Like from "./Like";
-import decodeEscapedData from "../utility/escape";
+import { useState, useEffect } from "react"
+import { Link, useLocation } from "react-router-dom"
+import Like from "./Like"
+import decodeEscapedData from "../utility/escape"
+import "../styles/postUnitStyle.css"
 
 const PostUnit = ( { user, post, author }) => {
   const [postUnit, setPost] = useState(null)

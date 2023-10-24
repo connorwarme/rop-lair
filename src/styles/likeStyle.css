@@ -18,9 +18,17 @@
   font-family: var(--font-body);
   width: 100px;
   margin-bottom: 0.5rem;
-  border: none;
+  border: 2px solid var(--main-blue-dark);
   border-radius: 5px;
   outline: none;
+  transition: all 200ms ease;
+  &:hover {
+    cursor: pointer;
+    border: 2px solid var(--main-grey-light);
+  }
+  &:active {
+    transform: scale(0.95);
+  }
 }
 .like-container button > p {
   color: var(--main-blue-dark);

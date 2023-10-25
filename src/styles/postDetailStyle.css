@@ -1,0 +1,13 @@
+.post-detail-content {
+
+}
+.post-detail-content .title {
+  font-family: var(--font-header);
+  font-size: 2rem;
+  text-transform: uppercase;
+}
+.post-detail-content .author-link {
+  &:hover {
+    color: var(--main-gold);
+  }
+}

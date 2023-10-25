@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from 'react';
-import { useParams, useLocation, useNavigate } from 'react-router-dom';
+import { useParams, useLocation, useNavigate, Link } from 'react-router-dom';
 import { myContext } from '../contexts/Context';
 import axios from 'axios';
 import ChangePost from '../components/ChangePost';
@@ -129,7 +129,10 @@ const Post = () => {
         { !edit && (
           <div className="post-detail-content">
           <div className="title">{decodeEscapedData(post.title)}</div>
-          <div className="author">{decodeEscapedData(post.author)}</div>
+          <div className="author">
+            { post.author_id != "" && <Link className='author-link' to={`/profile/${post.author_id}`}>{decodeEscapedData(post.author)}</Link> }
+            { post.author_id == "" && <p className='author-link'>{decodeEscapedData(post.author)}</p>}
+          </div>
           { photo && <img src={photo} height={'250px'} /> }
           <div className="text">{decodeEscapedData(post.content)}</div>
           <div className="likes">

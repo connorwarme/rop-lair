@@ -8,6 +8,7 @@ import Comment from '../components/Comment';
 import AddComment from '../components/AddComment';
 import useAxios from '../hooks/useAxios';
 import decodeEscapedData from '../utility/escape';
+import "../styles/postDetailStyle.css"
 
 const Post = () => {
   const { id } = useParams() 

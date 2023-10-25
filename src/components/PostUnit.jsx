@@ -6,7 +6,7 @@ import Like from "./Like"
 import decodeEscapedData from "../utility/escape"
 import "../styles/postUnitStyle.css"
 
-const PostUnit = ( { user, post, author }) => {
+const PostUnit = ( { user, post, author, photo }) => {
   const [postUnit, setPost] = useState(null)
   const [likesArr, setLikesArr] = useState([])
 
@@ -27,6 +27,7 @@ const PostUnit = ( { user, post, author }) => {
             <div className="post-title-container">
               <h2 className="post-title">{decodeEscapedData(post.title)}</h2>
             </div>
+            { photo && <img src={photo} height={'150px'} /> }
             <p className="post-content-text">{decodeEscapedData(post.content)}</p> 
           </div>
         </Link>

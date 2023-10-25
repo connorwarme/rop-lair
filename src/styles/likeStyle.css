@@ -1,14 +1,21 @@
 .like-container {
-  display: grid;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0;
   background-color: var(--main-blue-dark);
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 .like-container p {
   color: var(--main-text-lite);
-  margin: 0.5rem;
+  font-size: 12px;
+  margin: 0.5rem auto;
 }
 .like-btn-container {
   display: flex;
   justify-content: center;
+  margin-right: 0.75rem;
 }
 .like-container button {
   display: flex;
@@ -17,7 +24,6 @@
   background-color: var(--main-grey-light);
   font-family: var(--font-body);
   width: 100px;
-  margin-bottom: 0.5rem;
   border: 2px solid var(--main-blue-dark);
   border-radius: 5px;
   outline: none;

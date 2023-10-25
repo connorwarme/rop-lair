@@ -27,7 +27,7 @@ const PostUnit = ( { user, post, author }) => {
             <div className="post-title-container">
               <h2 className="post-title">{decodeEscapedData(post.title)}</h2>
             </div>
-            <p className="post-content">{decodeEscapedData(post.content)}</p> 
+            <p className="post-content-text">{decodeEscapedData(post.content)}</p> 
           </div>
         </Link>
           { (!author && post.author) && <p className="post-author"><Link to={`/profile/${post.author._id}`}>{decodeEscapedData(post.author.name)}</Link></p> }

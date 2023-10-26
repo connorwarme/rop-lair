@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import errorIcon from "../images/icons/error.svg"
 import "../styles/commentStyle.css"
 
 const AddComment = ({ id, setComments, makeHeader }) => {
@@ -43,7 +44,7 @@ const AddComment = ({ id, setComments, makeHeader }) => {
           <div className="add-comment-content">
             <form onSubmit={handleAddComment}>
               <div className="text-input">
-                <label htmlFor="comment">Comment:</label>
+                <label htmlFor="comment">Add Comment:</label>
                 <input type="textarea" id="comment" onChange={handleComment} />
               </div>
               <button type="button" onClick={handleCancel}>Cancel</button>
@@ -51,9 +52,9 @@ const AddComment = ({ id, setComments, makeHeader }) => {
               { errors && <div className="errors">
                 { errors.map((err, index) => {
                   if (err.status) {
-                    return <p key={index}>{err.status} Error! {err.msg}</p>
+                    return <div key={index}><img src={errorIcon}/><p>{err.status} Error! {err.msg}</p></div>
                   }
-                  return <p key={index}>Error! {err.msg}</p>
+                  return <div key={index}><img src={errorIcon}/><p>Error! {err.msg}</p></div>
                 })}
               </div> }
             </form>

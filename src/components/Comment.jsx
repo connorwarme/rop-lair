@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import decodeEscapedData from '../utility/escape';
+import errorIcon from "../images/icons/error.svg"
 import "../styles/commentStyle.css"
 
 const Comment = ({ post, commentObj, user, setComments, makeHeader }) => {
@@ -88,16 +89,16 @@ const Comment = ({ post, commentObj, user, setComments, makeHeader }) => {
             <div className="comment-unit edit">
               <form onSubmit={handleSaveEdit}>
                 <div className="text-input">
-                  <label htmlFor="comment">Comment:</label>
+                  <label htmlFor="comment">Edit Comment:</label>
                   <input type="text" id='comment' value={comment} onChange={handleCommentEdit} />
                 </div>
                 { errors && (
                   <div className="errors">
                     { errors.map((err, index) => {
                       if (err.status) {
-                        return <p key={index}>{err.status} Error! {err.msg}</p>
+                        return <div key={index}><img src={errorIcon}/><p>{err.status} Error! {err.msg}</p></div>
                       }
-                      return <p key={index}>Error! {err.msg}</p>
+                      return <div key={index}><img src={errorIcon}/><p>Error! {err.msg}</p></div>
                     })}
                   </div>
                 )}

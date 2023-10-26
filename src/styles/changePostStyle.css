@@ -1,0 +1,12 @@
+.change-post-container {
+  padding: 1rem;
+}
+.change-post-container .form-input .input-title,
+.change-post-container .form-input .input-content {
+  color: var(--main-blue-dark);
+  font-family: var(--font-body);
+  background-color: var(--main-grey-light);
+  border: 1px solid var(--main-blue-dark);
+  border-radius: 3px;
+  outline: none;
+}

@@ -176,12 +176,12 @@ const ChangePost = ({ url, post, id, edit, save, savePhoto, currentPhoto }) => {
       <div className="change-post-container">
         <form onSubmit={handleSubmit}>
           <div className="form-input">
-            <label htmlFor="title">Title</label>
-            <input type="text" id="title" className="title" value={title} onChange={(e) => {handleChange(e, setTitle)}}/>
+            <label htmlFor="title">Title:</label>
+            <input type="text" id="title" className="input-title" value={title} onChange={(e) => {handleChange(e, setTitle)}}/>
           </div>
           <div className="form-input">
-            <label htmlFor="content">Content</label>
-            <input type="text" id="content" className="content" value={content} onChange={(e) => {handleChange(e, setContent)}}/>
+            <label htmlFor="content">Content:</label>
+            <input type="text" id="content" className="input-content" value={content} onChange={(e) => {handleChange(e, setContent)}}/>
           </div>
           <div className="form-input">
             <fieldset>

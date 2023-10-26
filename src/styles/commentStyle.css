@@ -1,21 +1,55 @@
-.add-comment-container {
-  background-color: var(--main-gold);
+.comments-container {
+  border-top: 1rem solid var(--main-gold);
+  border-bottom: 1rem solid var(--main-gold);
   padding: 1rem;
 }
-.add-comment-container button {
+.comments-container button {
   font-family: var(--font-body);
   color: var(--main-blue-dark);
   background-color: var(--main-grey-light);
-  border: 2px solid var(--main-gold);
+  border: 2px solid var(--main-blue-dark);
   outline: none;
   padding: 0.75rem 1.5rem;
+  margin: 1rem;
   border-radius: 5px;
   transition: all 200ms ease;
   &:hover {
-    border-color: var(--main-grey-light);
+    border-color: var(--main-gold);
   }
   &:active {
     transform: scale(0.95);
     box-shadow: 0 0 3px var(--main-blue-dark);
+  }
+}
+.comment-container,
+.add-comment-content {
+  border: 2px solid var(--main-gold);
+  border-radius: 5px;
+  padding: 0.5rem;
+  margin: 1rem 0;
+}
+.comment-container .comment-author {
+  font-family: var(--font-header);
+  font-size: 1rem;
+  margin: 0.5rem;
+}
+.comment-container button,
+.add-comment-content button {
+  padding: 0.5rem 1rem;
+  margin: 0.5rem;
+}
+.text-input {
+  display: grid;
+  margin: 1rem 0.5rem;
+}
+.text-input > input {
+  font-family: var(--font-body-thin);
+  font-size: 1rem;
+  padding: 0.25rem 0.5rem;
+  margin-top: 0.5rem;
+  border: 1px solid var(--main-blue-dark);
+  border-radius: 3px;
+  &:focus {
+    outline: 2px solid var(--main-gold);
   }
 }

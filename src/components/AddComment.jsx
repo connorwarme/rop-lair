@@ -42,8 +42,10 @@ const AddComment = ({ id, setComments, makeHeader }) => {
         {  addForm && (
           <div className="add-comment-content">
             <form onSubmit={handleAddComment}>
-              <label htmlFor="comment">Comment:</label>
-              <input type="text" id="comment" onChange={handleComment} />
+              <div className="text-input">
+                <label htmlFor="comment">Comment:</label>
+                <input type="textarea" id="comment" onChange={handleComment} />
+              </div>
               <button type="button" onClick={handleCancel}>Cancel</button>
               <button type="submit">Save</button>
               { errors && <div className="errors">

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import decodeEscapedData from '../utility/escape';
+import "../styles/commentStyle.css"
 
 const Comment = ({ post, commentObj, user, setComments, makeHeader }) => {
   const [author, setAuthor] = useState(false)
@@ -86,8 +87,10 @@ const Comment = ({ post, commentObj, user, setComments, makeHeader }) => {
           { edit && (
             <div className="comment-unit edit">
               <form onSubmit={handleSaveEdit}>
-                <label htmlFor="comment">Comment:</label>
-                <input type="text" id='comment' value={comment} onChange={handleCommentEdit} />
+                <div className="text-input">
+                  <label htmlFor="comment">Comment:</label>
+                  <input type="text" id='comment' value={comment} onChange={handleCommentEdit} />
+                </div>
                 { errors && (
                   <div className="errors">
                     { errors.map((err, index) => {

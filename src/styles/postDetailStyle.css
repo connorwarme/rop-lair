@@ -1,5 +1,5 @@
 .post-detail-content {
-
+  padding: 0.5rem 0;
 }
 .post-detail-content .title {
   font-family: var(--font-header);
@@ -10,4 +10,11 @@
   &:hover {
     color: var(--main-gold);
   }
+}
+.post-detail-content img {
+  max-height: 50vh;
+  object-fit: cover;
+}
+.post-detail-content .text {
+  margin: 0.5rem 1rem 1rem 1rem;
 }

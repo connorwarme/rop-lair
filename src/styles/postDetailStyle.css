@@ -18,3 +18,17 @@
 .post-detail-content .text {
   margin: 0.5rem 1rem 1rem 1rem;
 }
+.post-detail-content .options-container button {
+  font-family: var(--font-body);
+  color: var(--main-blue-dark);
+  background-color: var(--main-grey-light);
+  padding: 0.5rem 1rem;
+  margin: 0.5rem;
+  border: 2px solid var(--main-blue-dark);
+  border-radius: 5px;
+  outline: none;
+  transition: all 200ms ease;
+  &:hover {
+    border-color: var(--main-gold);
+  }
+}

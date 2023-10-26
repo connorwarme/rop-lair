@@ -181,7 +181,7 @@ const ChangePost = ({ url, post, id, edit, save, savePhoto, currentPhoto }) => {
           </div>
           <div className="form-input">
             <label htmlFor="content">Content:</label>
-            <input type="text" id="content" className="input-content" value={content} onChange={(e) => {handleChange(e, setContent)}}/>
+            <input type="textarea" id="content" className="input-content" value={content} onChange={(e) => {handleChange(e, setContent)}}/>
           </div>
           <div className="form-input">
             <fieldset>
@@ -195,6 +195,30 @@ const ChangePost = ({ url, post, id, edit, save, savePhoto, currentPhoto }) => {
               <div>
                 <input type="radio" id="new" name="photoRadio" value="new" checked={photoRadio === "new"} onChange={(e) => handleRadio(e)} />
                 <label htmlFor="new">Add New Photo</label>
+                { photoRadio === "new" && (
+                  <>
+                    <div className="photo-file-input">
+                      <label htmlFor="photo"></label>
+                      <input type="file" id="photo" className="photo" accept="image/png, image/jpeg, image/gif" onChange={(e) => {
+                        if (!handlePhoto(e.target.files[0])) {
+                          e.target.value = null
+                          // other option:
+                          // instead of clearing value, could highlight value in red w/ exclamation point
+                          // if value is photo file, could highlight with green border
+                        }
+                      }} />
+                      <br></br>
+                     { photoError && <span>{photoError}</span> }
+                     { preview && (
+                        <>
+                          <div className="photo-preview">
+                            <img src={preview} alt="Photo" height={'250px'}/>
+                          </div>
+                        </>
+                      )} 
+                    </div>
+                  </>
+                )}
               </div>
               <div>
                 <input type="radio" id="none" name="photoRadio" value="none" checked={photoRadio === "none"} onChange={(e) => handleRadio(e, true)} />

@@ -1,12 +1,48 @@
 .change-post-container {
-  padding: 1rem;
+  padding: 0.5rem 1rem;
+}
+.change-post-container .form-input {
+  margin: 0.5rem 0;
+}
+.change-post-container .form-input:nth-child(1),
+.change-post-container .form-input:nth-child(2) {
+  display: grid;
 }
 .change-post-container .form-input .input-title,
 .change-post-container .form-input .input-content {
   color: var(--main-blue-dark);
   font-family: var(--font-body);
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
   background-color: var(--main-grey-light);
-  border: 1px solid var(--main-blue-dark);
+  border: 2px solid var(--main-blue-dark);
   border-radius: 3px;
   outline: none;
+  &:focus {
+    border-color: var(--main-gold);
+  }
+}
+.change-post-container .form-input .input-title {
+  font-family: var(--font-header);
+}
+.change-post-container fieldset {
+  border: 2px solid var(--main-blue-dark);
+}
+.change-post-container fieldset div {
+  margin: 0.25rem 0;
+}
+.change-post-container .photo-file-input {
+  max-width: 236px;
+  padding: 0.5rem;
+  border: 2px solid var(--main-gold);
+  border-radius: 5px;
+  margin-bottom: 0.5rem;
+}
+.change-post-container .form-input .photo {
+  font-family: var(--font-body-thin);
+}
+.change-post-container .photo-preview {
+  object-fit: cover;
+  max-width: inherit;
+  /* not finished here!! needs more work */
 }

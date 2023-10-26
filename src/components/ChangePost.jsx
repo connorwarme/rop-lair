@@ -7,6 +7,7 @@ import AddPicture from "./AddPicture";
 import { saveObject } from "../utility/ls";
 import useAxios from "../hooks/useAxios";
 import decodeEscapedData from '../utility/escape';
+import "../styles/changePostStyle.css"
 
 const ChangePost = ({ url, post, id, edit, save, savePhoto, currentPhoto }) => {
   // this could be a new post or an edit post...

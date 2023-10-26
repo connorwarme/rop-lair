@@ -7,6 +7,7 @@ import AddPicture from "./AddPicture";
 import { saveObject } from "../utility/ls";
 import useAxios from "../hooks/useAxios";
 import decodeEscapedData from '../utility/escape';
+import errorIcon from "../images/icons/error.svg"
 import "../styles/changePostStyle.css"
 
 const ChangePost = ({ url, post, id, edit, save, savePhoto, currentPhoto }) => {
@@ -228,9 +229,9 @@ const ChangePost = ({ url, post, id, edit, save, savePhoto, currentPhoto }) => {
             <div className="errors">
               { errors.map((err, index) => {
                 if (err.status) {
-                  return <p key={index}>{err.status} Error! {err.msg}</p>
+                  return <div key={index}><img src={errorIcon}/><p>{err.status} Error! {err.msg}</p></div>
                 }
-                return <p key={index}>Error! {err.msg}</p>
+                return <div key={index}><img src={errorIcon}/><p>Error! {err.msg}</p></div>
               })}
             </div>
           )}

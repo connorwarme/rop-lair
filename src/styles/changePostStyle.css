@@ -14,9 +14,9 @@
   font-family: var(--font-body);
   font-size: 1rem;
   padding: 0.5rem 1rem;
-  background-color: var(--main-grey-light);
+  background-color: var(--main-bg-color);
   border: 2px solid var(--main-blue-dark);
-  border-radius: 3px;
+  border-radius: 5px;
   outline: none;
   &:focus {
     border-color: var(--main-gold);
@@ -26,23 +26,37 @@
   font-family: var(--font-header);
 }
 .change-post-container fieldset {
-  border: 2px solid var(--main-blue-dark);
+  border: none;
+  text-align: center;
+}
+.change-post-container legend {
+  align-self: center;
 }
 .change-post-container fieldset div {
   margin: 0.25rem 0;
 }
-.change-post-container .photo-file-input {
-  max-width: 236px;
-  padding: 0.5rem;
-  border: 2px solid var(--main-gold);
+.change-post-container .photo-file-input > input {
+  visibility: hidden;
+}
+.change-post-container .photo-file-input label {
+  border: 2px solid var(--main-blue-dark);
   border-radius: 5px;
-  margin-bottom: 0.5rem;
+  color: var(--main-blue-dark);
+  padding: 0.5rem 1rem;
+  margin: 1rem;
+  transition: all 200ms ease;
+  &:hover {
+    cursor: pointer;
+    border-color: var(--main-gold);
+  }
+  &:active {
+    transform: scale(0.95);
+  }
 }
 .change-post-container .form-input .photo {
   font-family: var(--font-body-thin);
 }
-.change-post-container .photo-preview {
+.change-post-container .photo-preview > img {
   object-fit: cover;
-  max-width: inherit;
-  /* not finished here!! needs more work */
+  max-width: 80vw;
 }

@@ -198,7 +198,7 @@ const ChangePost = ({ url, post, id, edit, save, savePhoto, currentPhoto }) => {
                 { photoRadio === "new" && (
                   <>
                     <div className="photo-file-input">
-                      <label htmlFor="photo"></label>
+                      <label htmlFor="photo">Add</label>
                       <input type="file" id="photo" className="photo" accept="image/png, image/jpeg, image/gif" onChange={(e) => {
                         if (!handlePhoto(e.target.files[0])) {
                           e.target.value = null
@@ -226,7 +226,7 @@ const ChangePost = ({ url, post, id, edit, save, savePhoto, currentPhoto }) => {
               </div>
             </fieldset>
           </div>
-          <div className="form-input">
+          {/* <div className="form-input">
             <label htmlFor="photo">Photo</label>
             <input type="file" id="photo" className="photo" accept="image/png, image/jpeg, image/gif" onChange={(e) => {
               if (!handlePhoto(e.target.files[0])) {
@@ -246,7 +246,7 @@ const ChangePost = ({ url, post, id, edit, save, savePhoto, currentPhoto }) => {
                 <img src={preview} alt="Photo" height={'250px'}/>
               </div>
             </>
-          )}
+          )} */}
           <button type="button" onClick={handleCancel}>Cancel</button>
           <button type="submit">Save</button>
           { errors && (

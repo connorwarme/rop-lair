@@ -174,6 +174,7 @@ const ChangePost = ({ url, post, id, edit, save, savePhoto, currentPhoto }) => {
   return ( 
     <>
       <div className="change-post-container">
+        { id ? <h2>Edit Post</h2> : <h2>Create Post</h2> }
         <form onSubmit={handleSubmit}>
           <div className="form-input">
             <label htmlFor="title">Title:</label>

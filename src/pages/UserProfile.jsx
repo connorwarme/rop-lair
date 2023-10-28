@@ -7,6 +7,7 @@ import PostList from "../components/PostList";
 import PostUnit from "../components/PostUnit";
 import ChangeProfile from "../components/ChangeProfile";
 import decodeEscapedData from "../utility/escape";
+import "../styles/profileStyle.css"
 
 const UserProfile = () => {
   const [edit, setEdit] = useState(false)
@@ -44,7 +45,7 @@ const UserProfile = () => {
       { (userObject && !edit) && (
         <>
           <Profile userObject={userObject} profile={userObject} photoPath={userPhoto} setList={setList} />
-          <button onClick={handleShowEdit}>Edit Profile</button>
+          <button onClick={handleShowEdit} className="profile-edit-button">Edit Profile</button>
         </>
       )}
       { (userObject && !edit) && (!isLoading) && (
@@ -53,7 +54,7 @@ const UserProfile = () => {
             <>
             { data.posts && (
               <>
-                <h4>{decodeEscapedData(userObject.first_name)}&#39;s Posts</h4>
+                <h4 className="profile-posts-title">{decodeEscapedData(userObject.first_name)}&#39;s Posts</h4>
                 {/* <PostList posts={data.posts} content={true} author={false} user={userObject} /> */}
                 { data.posts.map(post => <PostUnit key={post._id} user={userObject} post={post}/> )}
               </>

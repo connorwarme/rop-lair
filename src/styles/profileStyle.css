@@ -1,0 +1,43 @@
+.profile-content {
+  padding-top: 1rem;
+}
+.profile-content .profile-picture {
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+.profile-content .profile-title {
+  margin: 0.5rem;
+} 
+.profile-content .about-me-container {
+  border-top: 1rem solid var(--main-gold);
+  border-bottom: 1rem solid var(--main-gold);
+}
+.profile-content .about-me-container > h4 {
+  margin: 0.5rem;
+}
+.profile-content .about-me-container > p {
+  font-family: var(--font-body-thin);
+  margin: 0.5rem 0.5rem 0.5rem 0.25rem;
+}
+.profile-edit-button {
+  font-family: var(--font-body);
+  color: var(--main-blue-dark);
+  background-color: var(--main-grey-light);
+  padding: 0.75rem 1.5rem;
+  margin: 1rem;
+  border: 2px solid var(--main-blue-dark);
+  border-radius: 5px;
+  outline: none;
+  transition: all 200ms ease;
+   &:hover {
+    border-color: var(--main-gold);
+   }
+   &:active {
+    transform: scale(0.95);
+    box-shadow: 0 0 3px var(--main-blue-dark);
+   }
+}
+.profile-posts-title {
+  margin: 0.5rem;
+}

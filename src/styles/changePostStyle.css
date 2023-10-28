@@ -26,11 +26,28 @@
   font-family: var(--font-header);
 }
 .change-post-container fieldset {
+  padding: 0;
   border: none;
   text-align: center;
 }
 .change-post-container legend {
   align-self: center;
+}
+.change-post-container fieldset > div > input {
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: var(--main-grey-light);
+    margin: 0;
+    height: 1rem;
+    width: 1rem;
+    color: var(--main-blue-dark);
+    border: 2px solid var(--main-blue-dark);
+    border-radius: 50%;
+}
+.change-post-container fieldset > div > label {
+  &:hover {
+    cursor: pointer;
+  }
 }
 .change-post-container fieldset div {
   margin: 0.25rem 0;

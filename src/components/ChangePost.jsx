@@ -183,6 +183,16 @@ const ChangePost = ({ url, post, id, edit, save, savePhoto, currentPhoto }) => {
             <label htmlFor="content">Content:</label>
             <input type="textarea" id="content" className="input-content" value={content} onChange={(e) => {handleChange(e, setContent)}}/>
           </div>
+          { (photoRadio === "current" || photoRadio === "new") && (
+            <div className="form-input">
+              <label htmlFor="image-preview">Photo Preview:</label>
+              <div id="image-preview">
+                { photoRadio === "current" && <img src={currentPhotoValue.photoPath} alt="Current Photo Preview" /> }
+                { photoRadio === "new" && !preview && <p>Please add a new photo!</p> }
+                { photoRadio === "new" && preview && <img src={preview} alt="New Photo Preview" /> }
+              </div> 
+            </div>
+          )}
           <div className="form-input">
             <fieldset>
               <legend>Select an option:</legend>
@@ -190,7 +200,6 @@ const ChangePost = ({ url, post, id, edit, save, savePhoto, currentPhoto }) => {
                   <div>
                     <input type="radio" id="current" name="photoRadio" value="current" checked={photoRadio === "current"} onChange={(e) => handleRadio(e, true)} />
                     <label htmlFor="current">Keep Current Photo</label>
-                    <img src={currentPhotoValue.photoPath} alt="Current Photo Preview" />
                   </div> ) }
               <div>
                 <input type="radio" id="new" name="photoRadio" value="new" checked={photoRadio === "new"} onChange={(e) => handleRadio(e)} />
@@ -209,13 +218,6 @@ const ChangePost = ({ url, post, id, edit, save, savePhoto, currentPhoto }) => {
                       }} />
                       <br></br>
                      { photoError && <span>{photoError}</span> }
-                     { preview && (
-                        <>
-                          <div className="photo-preview">
-                            <img src={preview} alt="Photo" height={'250px'}/>
-                          </div>
-                        </>
-                      )} 
                     </div>
                   </>
                 )}

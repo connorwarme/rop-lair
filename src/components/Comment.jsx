@@ -90,7 +90,7 @@ const Comment = ({ post, commentObj, user, setComments, makeHeader }) => {
               <form onSubmit={handleSaveEdit}>
                 <div className="text-input">
                   <label htmlFor="comment">Edit Comment:</label>
-                  <input type="text" id='comment' value={comment} onChange={handleCommentEdit} />
+                  <input type="text" id='comment' value={decodeEscapedData(comment)} onChange={handleCommentEdit} />
                 </div>
                 { errors && (
                   <div className="errors">

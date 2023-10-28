@@ -45,6 +45,7 @@ const Comment = ({ post, commentObj, user, setComments, makeHeader }) => {
     .then(res => {
       if (res.status === 200 && res.data.post) {
         setComments(res.data.post.comments)
+        setComment(false)
         setErrors(false)
         setEdit(false)
       } else if (res.data.errors) {
@@ -66,6 +67,7 @@ const Comment = ({ post, commentObj, user, setComments, makeHeader }) => {
     .then(res => {
       if (res.status === 200 && res.data.post) {
         setComments(res.data.post.comments)
+        setComment(false)
         setErrors(false)
       } else if (res.data.errors) {
         setErrors(res.data.errors)

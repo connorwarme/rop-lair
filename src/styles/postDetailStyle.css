@@ -19,6 +19,7 @@
 }
 .post-detail-content .options-container {
   background-color: var(--main-blue-dark);
+  padding: 0.75rem;
 }
 .post-detail-content .options-container button {
   font-family: var(--font-body);

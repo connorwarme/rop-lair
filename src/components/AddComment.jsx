@@ -18,6 +18,7 @@ const AddComment = ({ id, setComments, makeHeader }) => {
     .then(res => {
       if (res.status === 200 && res.data.post) {
         setComments(res.data.post.comments)
+        setCommentText('')
         setErrors(null)
         setAddForm(false)
       } else if (res.data.errors) {

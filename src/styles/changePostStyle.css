@@ -68,12 +68,6 @@
       box-shadow: 0 0 3px var(--main-blue-dark);
     }
     /* &::before {
-      need to fix the "add" button -> the input width is big and messes up the display!!!
-      need to style the cancel and save buttons at the bottom to match the rest
-      need to decide about radio button size and border
-      uninstall filepond and others
-      add decodedData for comment edit
-      add active class to edit and delete buttons on post detail page
       content: "";
       width: 0.65em;
       height: 0.65em;

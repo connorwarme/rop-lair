@@ -1,9 +1,8 @@
-.post-detail-content {
-  padding: 0.5rem 0;
-}
 .post-detail-content .title {
+  padding-top: 0.5rem;
   font-family: var(--font-header);
   font-size: 2rem;
+  letter-spacing: 0.05rem;
   text-transform: uppercase;
 }
 .post-detail-content .author-link {
@@ -18,11 +17,14 @@
 .post-detail-content .text {
   margin: 0.5rem 1rem 1rem 1rem;
 }
+.post-detail-content .options-container {
+  background-color: var(--main-blue-dark);
+}
 .post-detail-content .options-container button {
   font-family: var(--font-body);
   color: var(--main-blue-dark);
   background-color: var(--main-grey-light);
-  padding: 0.5rem 1rem;
+  padding: 0.75rem 1.5rem;
   margin: 0.5rem;
   border: 2px solid var(--main-blue-dark);
   border-radius: 5px;

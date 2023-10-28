@@ -31,4 +31,8 @@
   &:hover {
     border-color: var(--main-gold);
   }
+  &:active {
+    transform: scale(0.95);
+    box-shadow: 0 0 3px var(--main-blue-dark);
+  }
 }

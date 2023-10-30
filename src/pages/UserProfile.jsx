@@ -8,6 +8,7 @@ import PostUnit from "../components/PostUnit";
 import ChangeProfile from "../components/ChangeProfile";
 import decodeEscapedData from "../utility/escape";
 import "../styles/profileStyle.css"
+import FriendList from "../components/FriendList";
 
 const UserProfile = () => {
   const [edit, setEdit] = useState(false)
@@ -73,6 +74,7 @@ const UserProfile = () => {
               <div>{error}</div>
             </div>
           )}
+          <FriendList username={userObject.first_name} list={userObject.friend_list.list}/>
         </>
       )}
       { (userObject && edit) && (

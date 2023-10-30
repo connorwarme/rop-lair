@@ -6,6 +6,7 @@ import useFetch from "../hooks/useFetch";
 import Profile from "../components/Profile";
 import PostList from "../components/PostList";
 import decodeEscapedData from "../utility/escape";
+import FriendList from "../components/FriendList";
 
 const OtherProfile = () => {
   const { id } = useParams()
@@ -57,6 +58,7 @@ const OtherProfile = () => {
               <div>{error}</div>
             </div>
           )}
+          <FriendList />
         </>
       )}
     </> 

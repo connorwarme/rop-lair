@@ -10,7 +10,7 @@ import FriendList from "../components/FriendList";
 
 const OtherProfile = () => {
   const { id } = useParams()
-  const { userObject, access, setUserObject } = useContext(myContext)
+  const { userObject, access, setUserObject, makeHeader } = useContext(myContext)
 
   const url = 'http://localhost:3000/profile/' + id
   const auth = {
@@ -58,7 +58,7 @@ const OtherProfile = () => {
               <div>{error}</div>
             </div>
           )}
-          <FriendList />
+          { data && data.profile && <FriendList username={data.profile.first_name} makeHeader={makeHeader} /> }
         </>
       )}
     </> 

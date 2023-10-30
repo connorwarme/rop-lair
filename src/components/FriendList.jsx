@@ -1,9 +1,11 @@
 import useAxios from "../hooks/useAxios";
 import decodeEscapedData from "../utility/escape";
+import FriendName from "./FriendName";
 
 const FriendList = ({ username, listId, makeHeader }) => {
 
-  const url = `http://localhost:3000/friendlist/${listId}`
+  const fakeid = '648f856814238c73acf5de51'
+  const url = `http://localhost:3000/friendlist/${fakeid}`
   const auth = { headers: makeHeader()}
   const { data, isLoading, error } = useAxios(url, auth)
 
@@ -24,7 +26,7 @@ const FriendList = ({ username, listId, makeHeader }) => {
                 { data.friends.length > 0 && (
                   <>
                     <ul>
-                      { data.friends.map((friend, index) => <li key={index}>{friend}</li>)}
+                      { data.friends.map(friend => <li key={friend._id}><FriendName userid={friend} makeHeader={makeHeader} /></li> )}
                     </ul>
                   </>
                 )}

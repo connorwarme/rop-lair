@@ -74,7 +74,7 @@ const UserProfile = () => {
               <div>{error}</div>
             </div>
           )}
-          <FriendList username={userObject.first_name} list={userObject.friend_list.list}/>
+          <FriendList username={userObject.first_name} listId={userObject.friend_list._id} makeHeader={makeHeader}/>
         </>
       )}
       { (userObject && edit) && (

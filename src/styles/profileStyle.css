@@ -10,10 +10,14 @@
   margin: 0.5rem;
 } 
 .profile-content .about-me-container {
-  border-top: 1rem solid var(--main-gold);
-  border-bottom: 1rem solid var(--main-gold);
+  background-color: var(--main-gold);
+  margin: 0.5rem 1rem;
+  padding: 0.5rem;
+  border-radius: 5px;
 }
 .profile-content .about-me-container > h4 {
+  font-family: var(--font-header);
+  font-size: 1rem;
   margin: 0.5rem;
 }
 .profile-content .about-me-container > p {
@@ -40,4 +44,5 @@
 }
 .profile-posts-title {
   margin: 0.5rem;
+  font-size: 1.5rem;
 }

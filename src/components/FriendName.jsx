@@ -4,7 +4,6 @@ import decodeEscapedData from "../utility/escape";
 import errorIcon from "../images/icons/error.svg"
 
 const FriendName = ({ userid, makeHeader, setLoading }) => {
-  console.log(userid)
   const url = `http://localhost:3000/getuser/${userid}`
   const auth = {
     headers: makeHeader()

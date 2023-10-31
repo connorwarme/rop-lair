@@ -97,7 +97,7 @@ const OtherProfile = () => {
               <div>{error}</div>
             </div>
           )}
-          { data && data.profile && <FriendList username={data.profile.first_name} makeHeader={makeHeader} setLoading={setIsLoading} /> }
+          { data && data.profile && <FriendList username={data.profile.first_name} listId={data.profile.friend_list} makeHeader={makeHeader} setLoading={setIsLoading} /> }
         </>
       )}
     </> 

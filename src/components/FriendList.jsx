@@ -4,13 +4,10 @@ import FriendName from "./FriendName";
 
 const FriendList = ({ username, listId, makeHeader, setLoading }) => {
 
-  const fakeid = '648f856814238c73acf5de51'
-  const url = `http://localhost:3000/friendlist/${fakeid}`
+  // needs to be updated to friendlist/listId._id
+  const url = `http://localhost:3000/friendlist/${'648f856814238c73acf5de51'}`
   const auth = { headers: makeHeader()}
   const { data, isLoading, error } = useAxios(url, auth)
-
-
-  const list = ['Amy', 'Bob', 'Luke']
 
   return ( 
     <>
@@ -26,7 +23,11 @@ const FriendList = ({ username, listId, makeHeader, setLoading }) => {
                 { data.friends.length > 0 && (
                   <>
                     <ul>
-                      { data.friends.map(friend => <li key={friend._id}><FriendName userid={friend} makeHeader={makeHeader} setLoading={setLoading} /></li> )}
+                      { data.friends.map(friend => (
+                        <li key={friend._id}>
+                          <FriendName userid={friend} makeHeader={makeHeader} setLoading={setLoading} />
+                        </li> 
+                      ))}
                     </ul>
                   </>
                 )}
@@ -45,14 +46,6 @@ const FriendList = ({ username, listId, makeHeader, setLoading }) => {
               <h4>Error Loading Friends</h4>
               <div>{error}</div>
             </div>
-          )}
-          { list.length == 0 && <p>No friends yet!</p> }
-          { list.length > 0 && (
-            <>
-              <ul>
-                { list.map(index => <li key={index}>{index}</li>)}
-              </ul>
-            </>
           )}
         </div>
       </div>

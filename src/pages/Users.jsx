@@ -2,6 +2,9 @@ import { useContext } from "react";
 import { myContext } from "../contexts/Context";
 import useFetch from "../hooks/useFetch";
 import UserUnit from "../components/UserUnit";
+import errorIcon from "../images/icons/error.svg"
+import "../styles/userListStyle.css"
+
 const Users = () => {
 
   const { userObject, setUserObject, access } = useContext(myContext)
@@ -26,12 +29,12 @@ const Users = () => {
       { !isLoading && !error && (
         <>
           <div className="user-list-container">
-            <h1>This is the User List page.</h1>
+            <h1>Fellow Fans</h1>
             { (data && data.users) && (
               data.users.map(user => {
                 return (
                   <>
-                    <UserUnit userObject={userObject} profile={user} setList={setList} />
+                    <UserUnit key={user._id} userObject={userObject} profile={user} setList={setList} />
                   </>
                 )
               })
@@ -39,7 +42,14 @@ const Users = () => {
           </div>
         </>
       )}
-      { !isLoading && error && (<p>Error! {error}</p>) }
+      { !isLoading && error && (
+        <>
+          <div className="user-list-error">
+            <img src={errorIcon} />
+            <p>Error! {error}</p>
+          </div> 
+        </>
+        ) }
     </>
    )
 }

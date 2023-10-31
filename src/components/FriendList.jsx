@@ -25,8 +25,8 @@ const FriendList = ({ username, listId, makeHeader, setLoading, userObject, setL
                 { data.friends.length > 0 && (
                   <>
                     <ul>
-                      { data.friends.map(friend => (
-                        <li key={friend._id}>
+                      { data.friends.map((friend, index) => (
+                        <li key={index}>
                           <FriendName userid={friend} makeHeader={makeHeader} setLoading={setLoading} userObject={userObject} setList={setList} />
                         </li> 
                       ))}

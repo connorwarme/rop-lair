@@ -6,9 +6,17 @@
   color: var(--main-blue-dark);
   background-color: var(--main-bg-light);
   padding: 0.5rem 1rem;
-  border: 1px solid var(--main-blue-dark);
+  border: 2px solid var(--main-blue-dark);
   border-radius: 5px;
   outline: none;
+  transition: all 150ms ease-in-out;
+  &:hover {
+    border-color: var(--main-gold);
+  }
+  &:active {
+    transform: scale(0.95);
+    box-shadow: 0 0 3px var(--main-blue-dark);
+  }
 }
 
 .friend-add-btn {

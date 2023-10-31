@@ -1,16 +1,37 @@
 .friend-list-title {
   font-size: 1.25rem;
 }
+.friend-list-content {
+  margin: 0.5rem 1rem;
+}
+.friend-list-content > ul {
+  padding: 0;
+  margin: 0;
+}
 .friend-list-content > ul > li {
   list-style: none;
+}
+.friend-name-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 .friend-name-link {
   display: flex;
   align-items: center; 
+}
+.friend-name-link:hover p {
+  color: var(--main-gold);
+  text-decoration: underline;
+}
+.friend-name-link p {
+  margin: 0.75rem 0;
+  transition: all 150ms ease-in-out;
 }
 .friend-name-link > img {
   height: 25px;
   width: 25px;
   border-radius: 50%;
   object-fit: cover;
+  margin: 0 0.5rem;
 }

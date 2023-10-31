@@ -23,11 +23,13 @@ const FriendName = ({ userid, makeHeader, setLoading, userObject, setList }) => 
         <>
           { data.user && (
             <>
-              <Link to={`/profile/${data.user._id}`} onClick={handleClick} className="friend-name-link">
-                <img src={data.photoPath ? data.photoPath : icon} />
-                <p>{decodeEscapedData(data.user.name)}</p>
+              <div className="friend-name-container">
+                <Link to={`/profile/${data.user._id}`} onClick={handleClick} className="friend-name-link">
+                  <img src={data.photoPath ? data.photoPath : icon} />
+                  <p>{decodeEscapedData(data.user.name)}</p>
+                </Link>
                 <AddFriend list={userObject.friend_list} setList={setList} profileId={data.user._id} />
-              </Link>
+              </div>
             </>
           )}
           { data.errors && <div className="friend-error-container"><img src={errorIcon}/><p>{data.errors[0].msg}</p></div> }

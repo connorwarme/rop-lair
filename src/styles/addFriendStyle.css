@@ -7,6 +7,7 @@
   color: var(--main-blue-dark);
   background-color: var(--main-bg-light);
   padding: 0.15rem 0.25rem;
+  margin-left: 0.5rem;
   border: none;
   border-radius: 5px;
   outline: none;
@@ -14,12 +15,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  max-height: 40px;
   &:hover {
     background-color: var(--main-gold);
     box-shadow: 0 0 3px var(--main-blue-dark);
   }
   &:active {
     transform: scale(0.95);
+    background-color: var(--main-gold);
     box-shadow: 0 0 3px var(--main-blue-dark);
   }
 }

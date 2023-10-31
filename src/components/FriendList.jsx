@@ -4,7 +4,7 @@ import FriendName from "./FriendName";
 import errorIcon from "../images/icons/error.svg"
 import "../styles/friendListStyle.css"
 
-const FriendList = ({ username, listId, makeHeader, setLoading }) => {
+const FriendList = ({ username, listId, makeHeader, setLoading, userObject, setList }) => {
 
   // needs to be updated to friendlist/listId._id
   const url = `http://localhost:3000/friendlist/${'648f856814238c73acf5de51'}`
@@ -27,7 +27,7 @@ const FriendList = ({ username, listId, makeHeader, setLoading }) => {
                     <ul>
                       { data.friends.map(friend => (
                         <li key={friend._id}>
-                          <FriendName userid={friend} makeHeader={makeHeader} setLoading={setLoading} />
+                          <FriendName userid={friend} makeHeader={makeHeader} setLoading={setLoading} userObject={userObject} setList={setList} />
                         </li> 
                       ))}
                     </ul>

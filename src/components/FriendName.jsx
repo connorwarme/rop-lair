@@ -1,10 +1,11 @@
 import useAxios from "../hooks/useAxios";
 import { Link } from "react-router-dom";
+import AddFriend from "./AddFriend";
 import decodeEscapedData from "../utility/escape";
 import icon from "../images/icons/account.svg"
 import errorIcon from "../images/icons/error.svg"
 
-const FriendName = ({ userid, makeHeader, setLoading }) => {
+const FriendName = ({ userid, makeHeader, setLoading, userObject, setList }) => {
   const url = `http://localhost:3000/getuser/${userid}`
   const auth = {
     headers: makeHeader()
@@ -24,8 +25,8 @@ const FriendName = ({ userid, makeHeader, setLoading }) => {
             <>
               <Link to={`/profile/${data.user._id}`} onClick={handleClick} className="friend-name-link">
                 <img src={data.photoPath ? data.photoPath : icon} />
-                { data && console.log(data.photoPath) }
                 <p>{decodeEscapedData(data.user.name)}</p>
+                <AddFriend list={userObject.friend_list} setList={setList} profileId={data.user._id} />
               </Link>
             </>
           )}

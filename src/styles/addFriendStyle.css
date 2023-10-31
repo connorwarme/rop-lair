@@ -7,7 +7,7 @@
   color: var(--main-blue-dark);
   background-color: var(--main-bg-light);
   padding: 0.15rem 0.25rem;
-  border: 2px solid var(--main-blue-dark);
+  border: none;
   border-radius: 5px;
   outline: none;
   transition: all 150ms ease-in-out;
@@ -15,7 +15,8 @@
   justify-content: center;
   align-items: center;
   &:hover {
-    border-color: var(--main-gold);
+    background-color: var(--main-gold);
+    box-shadow: 0 0 3px var(--main-blue-dark);
   }
   &:active {
     transform: scale(0.95);

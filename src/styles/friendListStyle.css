@@ -1,0 +1,6 @@
+.friend-list-title {
+  font-size: 1.25rem;
+}
+.friend-list-content > ul > li {
+  list-style: none;
+}

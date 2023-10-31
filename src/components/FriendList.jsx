@@ -1,6 +1,8 @@
 import useAxios from "../hooks/useAxios";
 import decodeEscapedData from "../utility/escape";
 import FriendName from "./FriendName";
+import errorIcon from "../images/icons/error.svg"
+import "../styles/friendListStyle.css"
 
 const FriendList = ({ username, listId, makeHeader, setLoading }) => {
 
@@ -34,17 +36,17 @@ const FriendList = ({ username, listId, makeHeader, setLoading }) => {
               </>
             )}
             { data.errors && (
-              <div className="errors-container">
-                <h4>Error Loading Friends</h4>
-                <div>{data.errors[0].msg}</div> 
+              <div className="friend-error-container">
+                <img src={errorIcon}/>
+                <p>{error}</p>
               </div>
             )}
             </>
           )}
           { error && (
-            <div className="errors-container">
-              <h4>Error Loading Friends</h4>
-              <div>{error}</div>
+            <div className="friend-error-container">
+              <img src={errorIcon}/>
+              <p>{error}</p>
             </div>
           )}
         </div>

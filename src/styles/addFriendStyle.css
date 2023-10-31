@@ -6,7 +6,7 @@
   font-family: var(--font-body);
   color: var(--main-blue-dark);
   background-color: var(--main-bg-light);
-  padding: 0.5rem 1rem;
+  padding: 0.15rem 0.25rem;
   border: 2px solid var(--main-blue-dark);
   border-radius: 5px;
   outline: none;
@@ -29,10 +29,17 @@
 .add-icon,
 .add-friend-error > img {
   height: 25px;
+  filter: var(--filter-blue);
 }
 
 .friend-add-btn {
 
+}
+.add-friend-container .friend-status {
+  font-size: 0.75rem;
+  margin: 0.25rem 0.75rem;
+  display: flex;
+  align-items: center;
 }
 
 .add-friend-error {

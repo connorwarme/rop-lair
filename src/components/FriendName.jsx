@@ -25,7 +25,8 @@ const FriendName = ({ userid, makeHeader, setLoading, userObject, setList }) => 
             <>
               <div className="friend-name-container">
                 <Link to={`/profile/${data.user._id}`} onClick={handleClick} className="friend-name-link">
-                  <img src={data.photoPath ? data.photoPath : icon} />
+                  { data.photoPath && <img src={data.photoPath} /> }
+                  { !data.photoPath && <img src={icon} className="account-icon"/> }
                   <p>{decodeEscapedData(data.user.name)}</p>
                 </Link>
                 <AddFriend list={userObject.friend_list} setList={setList} profileId={data.user._id} />

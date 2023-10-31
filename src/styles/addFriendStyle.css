@@ -1,0 +1,16 @@
+.add-friend-container {
+
+}
+.add-friend-container button {
+  font-family: var(--font-body);
+  color: var(--main-blue-dark);
+  background-color: var(--main-bg-light);
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--main-blue-dark);
+  border-radius: 5px;
+  outline: none;
+}
+
+.friend-add-btn {
+
+}

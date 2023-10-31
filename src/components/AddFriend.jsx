@@ -1,6 +1,8 @@
 import { useState, useEffect, useContext } from "react"
 import axios from "axios";
 import { myContext } from "../contexts/Context";
+import errorIcon from "../images/icons/error.svg"
+import "../styles/addFriendStyle.css"
 
 const AddFriend = ({ list, setList, profileId }) => {
   const [errors, setErrors] = useState(null)
@@ -131,29 +133,29 @@ const AddFriend = ({ list, setList, profileId }) => {
           { friend && (
             <>
               <p className="friend-status">Friends</p>
-              <button onClick={handleDeleteFriend}>X</button>
+              <button onClick={handleDeleteFriend} className="friend-remove-btn">X</button>
             </>
           )}
           { pending && (
             <>
               <p className="friend-status">Pending</p>
-              <button onClick={handleDeletePending}>X</button>
+              <button onClick={handleDeletePending} className="friend-remove-btn">X</button>
             </>
           )}
           { request && (
             <>
-              <button onClick={handleAcceptRequest}>Accept</button>
-              <button onClick={handleDeleteRequest}>Ignore</button>
+              <button onClick={handleAcceptRequest} className="friend-accept-btn">Accept</button>
+              <button onClick={handleDeleteRequest} className="friend-ignore-btn">Ignore</button>
             </>
           )}
           { (!friend && !pending && !request) && (
             <>
-              <button onClick={handleMakeRequest}>Add Friend</button>
+              <button onClick={handleMakeRequest} className="friend-add-btn">Add Friend</button>
             </>
           )}
           { errors && (
               errors.map((err, index) => {
-                return <p key={index}>{err.status} Error! {err.msg}</p>
+                return <p key={index}><img src={errorIcon} />{err.status} Error! {err.msg}</p>
               })
           )}
           </>

@@ -1,6 +1,11 @@
 import { useState, useEffect, useContext } from "react"
 import axios from "axios";
 import { myContext } from "../contexts/Context";
+import add from "../images/icons/plus.svg"
+import accept from "../images/icons/check.svg"
+import cancel from "../images/icons/cancel.svg"
+import deleteIcon from "../images/icons/delete2.svg"
+import ignore from "../images/icons/close.svg"
 import errorIcon from "../images/icons/error.svg"
 import "../styles/addFriendStyle.css"
 
@@ -129,33 +134,56 @@ const AddFriend = ({ list, setList, profileId }) => {
     <>
       <div className="add-friend-container">
         { !user && (
-          <>      
-          { friend && (
+          <> 
+          { !errors && (
             <>
-              <p className="friend-status">Friends</p>
-              <button onClick={handleDeleteFriend} className="friend-remove-btn">X</button>
+              { friend && (
+                <>
+                  <p className="friend-status">Friends</p>
+                  <button onClick={handleDeleteFriend} className="friend-remove-btn">
+                    <img src={deleteIcon} alt="Delete" title="Remove Friend" className="delete-icon"/>
+                  </button>
+                </>
+              )}
+              { pending && (
+                <>
+                  <p className="friend-status">Pending</p>
+                  <button onClick={handleDeletePending} className="friend-remove-btn">
+                    <img src={cancel} alt="Cancel" title="Cancel Request" className="cancel-icon"/>
+                  </button>
+                </>
+              )}
+              { request && (
+                <>
+                  <button onClick={handleAcceptRequest} className="friend-accept-btn">
+                    <img src={accept} alt="Accept" title="Accept Request" className="accept-icon"/>
+                  </button>
+                  <button onClick={handleDeleteRequest} className="friend-ignore-btn">
+                    <img src={ignore} alt="Ignore" title="Ignore Request" className="ignore-icon"/>
+                  </button>
+                </>
+              )}
+              { (!friend && !pending && !request) && (
+                <>
+                  <button onClick={handleMakeRequest} className="friend-add-btn">
+                    <img src={add} alt="Add Friend" title="Add Friend" className="add-icon"/>
+                  </button>
+                </>
+              )}
             </>
-          )}
-          { pending && (
-            <>
-              <p className="friend-status">Pending</p>
-              <button onClick={handleDeletePending} className="friend-remove-btn">X</button>
-            </>
-          )}
-          { request && (
-            <>
-              <button onClick={handleAcceptRequest} className="friend-accept-btn">Accept</button>
-              <button onClick={handleDeleteRequest} className="friend-ignore-btn">Ignore</button>
-            </>
-          )}
-          { (!friend && !pending && !request) && (
-            <>
-              <button onClick={handleMakeRequest} className="friend-add-btn">Add Friend</button>
-            </>
-          )}
+          )}     
+
           { errors && (
               errors.map((err, index) => {
-                return <p key={index}><img src={errorIcon} />{err.status} Error! {err.msg}</p>
+                return (
+                  <>
+                    <div className="add-friend-spacer"></div>
+                    <div key={index} className="add-friend-error">
+                      <img src={errorIcon} />
+                      <p>{err.status} Error! {err.msg}</p>
+                    </div>
+                  </>
+                )
               })
           )}
           </>

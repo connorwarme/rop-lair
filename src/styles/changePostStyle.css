@@ -34,6 +34,7 @@
   padding: 0;
   border: none;
   text-align: center;
+  margin-top: 1rem;
 }
 .change-post-container legend {
   align-self: center;
@@ -113,9 +114,10 @@
 .change-post-container .form-input .photo {
   font-family: var(--font-body-thin);
 }
-.change-post-container .photo-preview > img {
+.change-post-container #image-preview > img {
   object-fit: cover;
   max-width: 80vw;
+  border-radius: 10px;
 }
 .change-post-container button {
   font-family: var(--font-body);
@@ -123,7 +125,7 @@
   background-color: var(--main-grey-light);
   border: 2px solid var(--main-blue-dark);
   outline: none;
-  padding: 0.75rem 1.5rem;
+  padding: 0.625rem 1.25rem;
   margin: 1rem;
   border-radius: 5px;
   transition: all 200ms ease;

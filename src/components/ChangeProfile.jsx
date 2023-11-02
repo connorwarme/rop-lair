@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import decodeEscapedData from "../utility/escape";
 import icon from "../images/icons/accountIcon.svg"
+import "../styles/changeProfileStyle.css"
 
 const ChangeProfile = ({ user, setEdit, makeHeader, setUserObject, setUserPhoto, currentPhoto }) => {
   const [first_name, setFirstName] = useState(user.first_name)
@@ -156,16 +157,26 @@ const ChangeProfile = ({ user, setEdit, makeHeader, setUserObject, setUserPhoto,
           </div>
           <div className="form-input">
             <label htmlFor="family">Family Name</label>
-            <input type="text" id="family" className="content" value={decodeEscapedData(family_name)} onChange={(e) => {handleChange(e, setFamilyName)}}/>
+            <input type="text" id="family" className="family" value={decodeEscapedData(family_name)} onChange={(e) => {handleChange(e, setFamilyName)}}/>
           </div>
           <div className="form-input">
             <label htmlFor="bio">About Me:</label>
             <input type="textarea" id="bio" className="bio" value={decodeEscapedData(bio)} onChange={(e) => {handleChange(e, setBio)}}/>
           </div>
-          <div className="form-input">
+          { (photoRadio === "current" || photoRadio === "new") && (
+            <div className="form-input">
+              <label htmlFor="image-preview">Photo Preview:</label>
+              <div id="image-preview">
+                { photoRadio === "current" && <img src={currentPhotoValue.photoPath} alt="Current Photo Preview" /> }
+                { photoRadio === "new" && !preview && <p>Please add a new photo!</p> }
+                { photoRadio === "new" && preview && <img src={preview} alt="New Photo Preview" /> }
+              </div> 
+            </div>
+          )}
+          {/* <div className="form-input">
             <label htmlFor="picture">Profile Picture</label>
             <input type="text" id="picture" className="picture" value={picture} onChange={(e) => {handleChange(e, setPicture)}}/>
-          </div>
+          </div> */}
           <div className="form-input">
             <fieldset>
               <legend>Select an option:</legend>
@@ -173,32 +184,35 @@ const ChangeProfile = ({ user, setEdit, makeHeader, setUserObject, setUserPhoto,
                   <div>
                     <input type="radio" id="current" name="photoRadio" value="current" checked={photoRadio === "current"} onChange={(e) => handleRadio(e, true)} />
                     <label htmlFor="current">Keep Current Photo</label>
-                    <img src={currentPhotoValue.photoPath} alt="Current Photo Preview" />
-                  </div> ) }
+                  </div> 
+                ) }
               <div>
                 <input type="radio" id="new" name="photoRadio" value="new" checked={photoRadio === "new"} onChange={(e) => handleRadio(e)} />
                 <label htmlFor="new">Add New Photo</label>
+                { photoRadio === "new" && (
+                  <>
+                    <div className="photo-file-input">
+                      <label htmlFor="photo">Add</label>
+                      <input type="file" id="photo" className="photo" accept="image/png, image/jpeg, image/gif" onChange={(e) => {
+                        if (!handlePhoto(e.target.files[0])) {
+                          e.target.value = null
+                          // other option:
+                          // instead of clearing value, could highlight value in red w/ exclamation point
+                          // if value is photo file, could highlight with green border
+                        }
+                      }} />
+                      <br></br>
+                     { photoError && <span>{photoError}</span> }
+                    </div>
+                  </>
+                )}
               </div>
               <div>
                 <input type="radio" id="none" name="photoRadio" value="none" checked={photoRadio === "none"} onChange={(e) => handleRadio(e, true)} />
                 <label htmlFor="none">No Photo</label>
               </div>
             </fieldset>
-          </div>
-          <div className="form-input">
-            <label htmlFor="photo">Photo</label>
-            <input type="file" id="photo" className="photo" accept="image/png, image/jpeg, image/gif" onChange={(e) => {
-              if (!handlePhoto(e.target.files[0])) {
-                e.target.value = null
-                // other option:
-                // instead of clearing value, could highlight value in red w/ exclamation point
-                // if value is photo file, could highlight with green border
-              }
-            }}
-            />
-            <br></br>
-            { photoError && <span>{photoError}</span> } 
-          </div>
+          </div> 
           { preview && (
             <>
               <div className="photo-preview">

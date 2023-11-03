@@ -21,7 +21,7 @@ const Profile = ({ userObject, profile, photoPath, setList }) => {
             { profile.bio && <p>{profile.bio}</p> }
             { !profile.bio && <p>no content</p> }
           </div>
-          { (profile._id != userObject._id) && <AddFriend list={userObject.friend_list} setList={setList} profileId={profile._id} /> }
+          { (profile._id != userObject._id) && <AddFriend list={userObject.friend_list} setList={setList} profileId={profile._id} full={true}/> }
         </div>
       </>
     )}

@@ -9,7 +9,7 @@ import ignore from "../images/icons/close.svg"
 import errorIcon from "../images/icons/error.svg"
 import "../styles/addFriendStyle.css"
 
-const AddFriend = ({ list, setList, profileId }) => {
+const AddFriend = ({ list, setList, profileId, full }) => {
   const [errors, setErrors] = useState(null)
 
   const { userObject, access } = useContext(myContext)
@@ -137,36 +137,42 @@ const AddFriend = ({ list, setList, profileId }) => {
           <> 
           { !errors && (
             <>
+              { full && <h3>Friendship:</h3> }
               { friend && (
                 <>
-                  <p className="friend-status">Friends</p>
-                  <button onClick={handleDeleteFriend} className="friend-remove-btn">
+                  <p className={`friend-status ${full}`}>Friends</p>
+                  <button onClick={handleDeleteFriend} className={`friend-remove-btn ${full}`}>
                     <img src={deleteIcon} alt="Delete" title="Remove Friend" className="delete-icon"/>
+                    { full && <p>Remove Friend</p> }
                   </button>
                 </>
               )}
               { pending && (
                 <>
-                  <p className="friend-status">Pending</p>
-                  <button onClick={handleDeletePending} className="friend-remove-btn">
-                    <img src={cancel} alt="Cancel" title="Cancel Request" className="cancel-icon"/>
+                  <p className={`friend-status ${full}`}>Pending</p>
+                  <button onClick={handleDeletePending} className={`friend-remove-btn ${full}`} title="Cancel Request" >
+                    <img src={cancel} alt="Cancel" className="cancel-icon"/>
+                    { full && <p>Cancel</p> }
                   </button>
                 </>
               )}
               { request && (
                 <>
-                  <button onClick={handleAcceptRequest} className="friend-accept-btn">
-                    <img src={accept} alt="Accept" title="Accept Request" className="accept-icon"/>
+                  <button onClick={handleAcceptRequest} className={`friend-accept-btn ${full}`} title="Accept Request" >
+                    <img src={accept} alt="Accept" className="accept-icon"/>
+                    { full && <p>Accept</p> }
                   </button>
-                  <button onClick={handleDeleteRequest} className="friend-ignore-btn">
-                    <img src={ignore} alt="Ignore" title="Ignore Request" className="ignore-icon"/>
+                  <button onClick={handleDeleteRequest} className={`friend-ignore-btn ${full}`} title="Ignore Request" >
+                    <img src={ignore} alt="Ignore" className="ignore-icon"/>
+                    { full && <p>Ignore</p> }
                   </button>
                 </>
               )}
               { (!friend && !pending && !request) && (
                 <>
-                  <button onClick={handleMakeRequest} className="friend-add-btn">
-                    <img src={add} alt="Add Friend" title="Add Friend" className="add-icon"/>
+                  <button onClick={handleMakeRequest} className={`friend-add-btn ${full}`} title="Add Friend" >
+                    <img src={add} alt="Add Friend" className="add-icon"/>
+                    { full && <p>Add Friend</p> }
                   </button>
                 </>
               )}

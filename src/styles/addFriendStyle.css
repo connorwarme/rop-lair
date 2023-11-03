@@ -1,5 +1,7 @@
 .add-friend-container {
   display: flex;
+  justify-content: center;
+  align-items: center;
 
 }
 .add-friend-container button {
@@ -35,9 +37,9 @@
   height: 25px;
   filter: var(--filter-blue);
 }
-
-.friend-add-btn {
-
+.add-friend-container button > p {
+  font-size: 1rem;
+  margin: 0.5rem;
 }
 .add-friend-container .friend-status {
   font-size: 0.75rem;
@@ -45,7 +47,20 @@
   display: flex;
   align-items: center;
 }
-
+.add-friend-container .friend-status.true {
+  font-size: 1rem;
+}
+.add-friend-container button.true {
+  border: 2px solid var(--main-blue-dark);
+  &:hover {
+    border-color: var(--main-gold);
+    background-color: var(--main-bg-light);
+    box-shadow: none;
+  }
+  &:active {
+    background-color: var(--main-bg-light);
+  }
+}
 .add-friend-error {
   display: grid;
   grid-template-columns: 1fr 1fr 3fr;

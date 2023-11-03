@@ -25,7 +25,7 @@ const Users = () => {
 
   return ( 
     <>
-      { isLoading && <h3>Page is loading...</h3> }
+      { isLoading && <h3 className="loading-page">Page is loading...</h3> }
       { !isLoading && !error && (
         <>
           <div className="user-list-container">

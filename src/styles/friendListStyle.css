@@ -1,5 +1,10 @@
+
 .friend-list-content {
   margin: 0.5rem 1rem;
+}
+.friend-list-content .content-loading {
+  padding-top: 1rem;
+  margin-top: 0;
 }
 .friend-list-content > ul {
   padding: 0;

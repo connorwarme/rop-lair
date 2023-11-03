@@ -56,7 +56,7 @@ const UserProfile = () => {
             <>
             { data.posts && (
               <>
-                { data.posts.map(post => <PostUnit key={post._id} user={userObject} post={post}/> )}
+                { data.posts.map(post => <PostUnit key={post._id} user={userObject} post={post._doc} photo={post.photoImagePath ? post.photoImagePath : false} /> )}
               </>
             )}
             { data.errors && (

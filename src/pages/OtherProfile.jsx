@@ -5,7 +5,7 @@ import axios from "axios";
 import useAxios from "../hooks/useAxios";
 import useFetch from "../hooks/useFetch";
 import Profile from "../components/Profile";
-import PostList from "../components/PostList";
+import PostUnit from "../components/PostUnit";
 import decodeEscapedData from "../utility/escape";
 import FriendList from "../components/FriendList";
 
@@ -75,12 +75,13 @@ const OtherProfile = () => {
       )}
       { (userObject && !isLoading) && (
         <>
+        <h3>{decodeEscapedData(data.profile.first_name)}&#39;s Posts</h3>
           { data && (
             <>
+            { data.posts && data.posts.length == 0 && <p>{decodeEscapedData(data.profile.first_name)} has yet to post content.</p>}
             { data.posts && (
               <>
-                <h3>{decodeEscapedData(data.profile.first_name)}&#39;s Posts</h3>
-                <PostList posts={data.posts} content={true} author={false} user={userObject} />
+                { data.posts.map(post => <PostUnit key={post._id} user={userObject} post={post._doc} photo={post.photoImagePath ? post.photoImagePath : false} /> )}
               </>
             )}
             { data.errors && (

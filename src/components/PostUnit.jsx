@@ -20,7 +20,8 @@ const PostUnit = ( { user, post, author, photo }) => {
   }, [])
 
   return ( 
-    <>
+    <> 
+      { console.log(post) }
       <div className="post-container" key={'1'+post._id}>
         <Link to={`/post/${post._id}`} >
           <div className="post-content">

@@ -25,8 +25,27 @@
   }
 }
 .fan-lair {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   justify-self: flex-start;
   padding: 0 1rem;
+}
+.fan-lair > h1 {
+  font-family: var(--font-header);
+  font-size: 2rem;
+  margin: 0;
+  color: var(--main-blue-dark);
+  transition: all 150ms ease-in-out;
+}
+.fan-lair:hover > h1 {
+  color: var(--main-gold);
+}
+.fan-lair > .fan-lair-divider {
+  color: var(--main-gold);
+}
+.fan-lair:hover > .fan-lair-divider {
+  color: var(--main-blue-dark);
 }
 .nav-spacer {
   flex-grow: 1;
@@ -35,18 +54,18 @@
   --b: 4px; /* the thickness */
   width: 24px; /* the size */
   aspect-ratio: 1;
-  border: 8px solid var(--primary); /* the outer space */
+  border: 8px solid var(--main-blue-dark); /* the outer space */
   background:
-    conic-gradient(from 90deg at var(--b) var(--b), var(--primary) 90deg,#fff 0) 
+    conic-gradient(from 90deg at var(--b) var(--b), var(--main-blue-dark) 90deg, var(--main-grey-light) 0) 
     calc(100% + var(--b)/2) calc(100% + var(--b)/2)/
     calc(50%  + var(--b))   calc(50%  + var(--b));
   display: inline-block;
   margin: 0.25rem;
   transition: transform var(--btn-press) ease;
   &:hover {
-    border-color: var(--main-bg-shadow);
+    border-color: var(--main-gold);
     background:
-    conic-gradient(from 90deg at var(--b) var(--b), var(--main-bg-shadow) 90deg,#fff 0)
+    conic-gradient(from 90deg at var(--b) var(--b), var(--main-gold) 90deg, var(--main-blue-dark) 0)
     calc(100% + var(--b)/2) calc(100% + var(--b)/2)/
     calc(50%  + var(--b))   calc(50%  + var(--b));
   }
@@ -130,27 +149,30 @@ a.user > img {
 .nav-dropdown > button {
   border-radius: 50%;
   border: none;
-  background-color: var(--primary);
+  background-color: var(--main-blue-dark);
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 2.5px;
   transition: transform var(--btn-press) ease;
   &:hover {
-    background-color: var(--main-bg-shadow);
+    background-color: var(--main-gold);
   }
   &:active {
     transform: scale(0.95);
-    box-shadow: 0 0 3px var(--dark-bg);
+    box-shadow: 0 0 3px var(--main-blue-dark);
   }
 }
 .nav-dropdown > button > img {
   height: 35px;
-  filter: invert(100%);
+  filter: var(--filter-bg);
+}
+.nav-dropdown > button:hover img {
+  filter: var(--filter-blue);
 }
 .nav-dropdown-content {
   display: block;
-  background-color: var(--off-white-bg);
+  background-color: var(--main-grey-light);
   position: absolute;
   z-index: 3;
   right: 0;
@@ -183,10 +205,17 @@ a.user > img {
 }
 .nav-dropdown-content div > img {
   height: 35px;
+  filter: var(--filter-blue);
+}
+.nav-dropdown-content div:hover img {
+  filter: var(--filter-gold);
 }
 .nav-dropdown-content div > p {
   padding: 0 0.5rem;
   margin: 0;
+}
+.nav-dropdown-content div:hover p {
+  text-decoration: underline;
 }
 .logout:hover {
   cursor: pointer;

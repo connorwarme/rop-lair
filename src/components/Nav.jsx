@@ -44,7 +44,11 @@ const Nav = () => {
       <div className="nav-container">
         { userObject &&
         <div className="nav-links-full">
-          <Link to="/" className="fan-lair">Fan Lair</Link>
+          <Link to="/" className="fan-lair" title="Home">
+            <h1>F</h1>
+            <h1 className="fan-lair-divider">||</h1>
+            <h1>L</h1>
+          </Link>
           <div className="nav-spacer"></div>
           <Link to="/post/create" className="create-post radius"></Link>
           <Link to="/profile" className="user">

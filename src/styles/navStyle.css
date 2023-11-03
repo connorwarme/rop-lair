@@ -61,7 +61,7 @@
     calc(50%  + var(--b))   calc(50%  + var(--b));
   display: inline-block;
   margin: 0.25rem;
-  transition: transform var(--btn-press) ease;
+  transition: transform var(--btn-press) ease-in-out;
   &:hover {
     border-color: var(--main-gold);
     background:
@@ -154,7 +154,7 @@ a.user > img {
   justify-content: center;
   align-items: center;
   padding: 2.5px;
-  transition: transform var(--btn-press) ease;
+  transition: all var(--btn-press) ease;
   &:hover {
     background-color: var(--main-gold);
   }
@@ -166,6 +166,7 @@ a.user > img {
 .nav-dropdown > button > img {
   height: 35px;
   filter: var(--filter-bg);
+  transition: all var(--btn-press) ease;
 }
 .nav-dropdown > button:hover img {
   filter: var(--filter-blue);

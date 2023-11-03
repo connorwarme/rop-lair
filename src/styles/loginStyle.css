@@ -6,6 +6,7 @@
   padding-bottom: 1rem;
 }
 .title-container {
+  width: 100vw;
   padding-top: 0.75rem;
   margin:0;
   background-color: var(--main-blue-dark);
@@ -121,18 +122,24 @@
   margin: 0.25rem 0.5rem;
   filter: invert(14%) sepia(10%) saturate(2929%) hue-rotate(176deg) brightness(96%) contrast(91%);
 }
-
-@media screen and (min-width: 700px) {
+@media screen and (min-width: 464px) {
   .content {
-
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
-  .content > .login-container {
-    display: grid;
+  .login-container {
+    border: 5px solid var(--main-blue-dark);
   }
-  .title-container {
-    justify-self: center;
-    width: 100vw;
-    box-shadow: none;
-    padding: 2rem 0;
+  .login-container .title-container {
+    max-width: 464px;
+  }
+  .login-container .title-container > img {
+    max-width: 400px;
+    margin: 0.5rem 2rem;
+  }
+  .login-container .signup-container {
+    width: 335px;
   }
 }
+

@@ -51,12 +51,11 @@ const UserProfile = () => {
       )}
       { (userObject && !edit) && (!isLoading) && (
         <>
+          <h4 className="profile-posts-title">{decodeEscapedData(userObject.first_name)}&#39;s Posts</h4>
           { data && (
             <>
             { data.posts && (
               <>
-                <h4 className="profile-posts-title">{decodeEscapedData(userObject.first_name)}&#39;s Posts</h4>
-                {/* <PostList posts={data.posts} content={true} author={false} user={userObject} /> */}
                 { data.posts.map(post => <PostUnit key={post._id} user={userObject} post={post}/> )}
               </>
             )}

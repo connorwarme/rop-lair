@@ -4,7 +4,8 @@ import { myContext } from '../contexts/Context';
 import axios from 'axios';
 import useAxios from '../hooks/useAxios';
 import PostUnit from '../components/PostUnit';
-import PostList from '../components/PostList';
+import ropBanner from '../images/titlebanner.png'
+import "../styles/homeStyle.css"
 
 const Home = () => {
   const [posts, setPosts] = useState([])
@@ -41,7 +42,10 @@ const Home = () => {
     <>
       <div className="home-container">
         <div className="home-content">
-          <h1 className="title">Rings of Power Fan Lair</h1>
+          <div className="title-container">
+            <img src={ropBanner} />
+            <h1 className="title">Fan Lair</h1>
+          </div>
           { isLoading && <p>Content is loading...</p> }
           { (!isLoading && data) && (
             <>

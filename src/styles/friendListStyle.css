@@ -38,3 +38,15 @@
 .friend-name-link .account-icon {
   filter: var(--filter-blue);
 }
+.friend-error-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.friend-error-container > img {
+  height: 25px;
+  filter: var(--filter-blue);
+}
+.friend-error-container > p {
+  margin: 0.5rem 1rem;
+}

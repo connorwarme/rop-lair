@@ -1,6 +1,6 @@
 .post-container {
   max-width: 280px;
-  margin: 0.25rem auto;
+  margin: 0.5rem auto;
   border: 1px solid var(--main-blue-dark);
   border-radius: 10px;
 }

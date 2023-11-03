@@ -6,10 +6,10 @@
   padding-bottom: 1rem;
 }
 .title-container {
+  padding-top: 0.75rem;
   margin:0;
   background-color: var(--main-blue-dark);
   border-bottom: 2px solid var(--main-gold);
-  box-shadow: 0 0 10px var(--main-gold);
 }
 .title-container > img {
   width: 90vw;

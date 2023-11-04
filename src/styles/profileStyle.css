@@ -50,3 +50,11 @@
   margin: 0 0.5rem 0.5rem 0.5rem;
   padding-top: 1rem;
 }
+@media screen and (min-width: 464px) { 
+  .profile-content .profile-picture {
+    height: 300px;
+  }
+  .profile-content-container {
+    grid-area: 1/1/2/3;
+  }
+}

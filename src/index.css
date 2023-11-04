@@ -121,3 +121,10 @@ button:focus-visible {
   button {
   }
 }
+@media screen and (min-width: 1000px) {
+  .content {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: 1fr auto;
+  }
+}

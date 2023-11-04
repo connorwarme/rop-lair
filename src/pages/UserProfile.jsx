@@ -45,34 +45,38 @@ const UserProfile = () => {
     <>
       { (userObject && !edit) && (
         <>
-          <Profile userObject={userObject} profile={userObject} photoPath={userPhoto} setList={setList} />
-          <button onClick={handleShowEdit} className="profile-edit-button">Edit Profile</button>
+          <div className="profile-content-container">
+            <Profile userObject={userObject} profile={userObject} photoPath={userPhoto} setList={setList} />
+            <button onClick={handleShowEdit} className="profile-edit-button">Edit Profile</button>
+          </div>
         </>
       )}
       { (userObject && !edit) && (!isLoading) && (
         <>
-          <h4 className="profile-posts-title">{decodeEscapedData(userObject.first_name)}&#39;s Posts</h4>
-          { data && (
-            <>
-            { data.posts && (
+          <div className="profile-posts-container">
+            <h4 className="profile-posts-title">{decodeEscapedData(userObject.first_name)}&#39;s Posts</h4>
+            { data && (
               <>
-                { data.posts.map(post => <PostUnit key={post._id} user={userObject} post={post._doc} photo={post.photoImagePath ? post.photoImagePath : false} /> )}
+              { data.posts && (
+                <>
+                  { data.posts.map(post => <PostUnit key={post._id} user={userObject} post={post._doc} photo={post.photoImagePath ? post.photoImagePath : false} /> )}
+                </>
+              )}
+              { data.errors && (
+                <div className="errors-container">
+                  <h4>Error Loading Posts</h4>
+                  <div>{data.errors[0].msg}</div> 
+                </div>
+              )}
               </>
             )}
-            { data.errors && (
+            { error && (
               <div className="errors-container">
                 <h4>Error Loading Posts</h4>
-                <div>{data.errors[0].msg}</div> 
+                <div>{error}</div>
               </div>
             )}
-            </>
-          )}
-          { error && (
-            <div className="errors-container">
-              <h4>Error Loading Posts</h4>
-              <div>{error}</div>
-            </div>
-          )}
+          </div>
           <FriendList username={userObject.first_name} listId={userObject.friend_list._id} makeHeader={makeHeader} userObject={userObject} setList={setList}/>
         </>
       )}

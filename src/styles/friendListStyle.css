@@ -52,3 +52,9 @@
 .friend-error-container > p {
   margin: 0.5rem 1rem;
 }
+@media screen and (min-width: 1000px) {
+  .friend-list-container {
+    justify-self: start;
+  }
+  
+}

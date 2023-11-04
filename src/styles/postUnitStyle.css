@@ -1,5 +1,5 @@
 .post-container {
-  max-width: 280px;
+  width: calc(100vw - 2rem);
   margin: 0.5rem auto;
   border: 1px solid var(--main-blue-dark);
   border-radius: 10px;
@@ -53,4 +53,15 @@
 }
 .post-container .post-author a:hover {
   color: var(--main-gold);
+}
+@media screen and (min-width: 464px) {
+  .post-container {
+    border-width: 3px;
+    max-width: 70vw;
+  }
+}
+@media screen and (min-width: 1000px) { 
+  .post-container {
+    max-width: 60vw;
+  }
 }

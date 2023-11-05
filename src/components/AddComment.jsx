@@ -46,7 +46,7 @@ const AddComment = ({ id, setComments, makeHeader }) => {
             <form onSubmit={handleAddComment}>
               <div className="text-input">
                 <label htmlFor="comment">Add Comment:</label>
-                <input type="textarea" id="comment" onChange={handleComment} />
+                <textarea id="comment" onChange={handleComment} rows={'3'}/>
               </div>
               <button type="button" onClick={handleCancel}>Cancel</button>
               <button type="submit">Save</button>

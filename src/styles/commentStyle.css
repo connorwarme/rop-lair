@@ -33,6 +33,9 @@
   font-size: 1rem;
   margin: 0.5rem;
 }
+.comment-container .comment-text {
+  margin: 0.75rem 0.5rem;
+}
 .comment-container button,
 .add-comment-content button {
   padding: 0.5rem 1rem;
@@ -42,7 +45,8 @@
   display: grid;
   margin: 1rem 0.5rem;
 }
-.text-input > input {
+.text-input > input,
+.text-input > textarea {
   font-family: var(--font-body-thin);
   font-size: 1rem;
   padding: 0.25rem 0.5rem;
@@ -52,4 +56,7 @@
   &:focus {
     outline: 2px solid var(--main-gold);
   }
+}
+.text-input > textarea {
+  resize: none;
 }

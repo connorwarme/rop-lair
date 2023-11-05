@@ -182,7 +182,7 @@ const ChangePost = ({ url, post, id, edit, save, savePhoto, currentPhoto }) => {
           </div>
           <div className="form-input">
             <label htmlFor="content">Content:</label>
-            <input type="textarea" id="content" className="input-content" value={content} onChange={(e) => {handleChange(e, setContent)}}/>
+            <textarea id="content" className="input-content" value={content} onChange={(e) => {handleChange(e, setContent)}} rows={'4'}/>
           </div>
           { (photoRadio === "current" || photoRadio === "new") && (
             <div className="form-input">

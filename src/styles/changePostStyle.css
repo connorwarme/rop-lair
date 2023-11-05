@@ -30,6 +30,9 @@
 .change-post-container .form-input .input-title {
   font-family: var(--font-header);
 }
+.change-post-container .form-input .input-content {
+  resize: none;
+}
 .change-post-container fieldset {
   padding: 0;
   border: none;
@@ -136,4 +139,13 @@
     transform: scale(0.95);
     box-shadow: 0 0 3px var(--main-blue-dark);
   }
+}
+@media screen and (min-width: 464px) {
+  .change-post-container {
+    width: calc(90vw - (2rem + 10px));
+    max-width: 650px;
+  }
+}
+@media screen and (min-width: 1000px) {
+  
 }

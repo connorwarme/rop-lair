@@ -34,6 +34,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  max-width: 350px;
 }
 .login-position {
   min-width: 300px;
@@ -130,16 +131,31 @@
   }
   .login-container {
     border: 5px solid var(--main-blue-dark);
+    border-radius: 10px;
+    display: grid;
+    grid-template-rows: 1fr auto;
+    place-items: center;
   }
   .login-container .title-container {
-    max-width: 464px;
+    max-width: 500px;
+    width: calc(100vw - 10px);
   }
   .login-container .title-container > img {
     max-width: 400px;
+    width: calc(90vw - (4rem + 10px));
     margin: 0.5rem 2rem;
+  }
+  .login-content {
+    max-width: 400px;
   }
   .login-container .signup-container {
     width: 335px;
   }
 }
-
+@media screen and (min-width: 1000px) {
+  .login-container {
+    max-width: 500px;
+    grid-area: 1/1/2/3;
+    justify-self: center;
+  }
+}

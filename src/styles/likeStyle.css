@@ -2,13 +2,13 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.5rem 0;
+  padding: 0.5rem 1rem;
   background-color: var(--main-blue-dark);
 }
 .like-container p {
   color: var(--main-text-lite);
   font-size: 12px;
-  margin: 0.5rem auto;
+  margin: 0.5rem;
 }
 .like-btn-container {
   display: flex;

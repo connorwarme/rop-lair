@@ -58,6 +58,7 @@
 @media screen and (min-width: 1000px) {
   .friend-list-container {
     align-self: start;
+    max-width: 400px;
   }
   .friend-list-content {
     margin: 0.5rem 2rem 0.5rem 0;

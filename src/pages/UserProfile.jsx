@@ -82,7 +82,6 @@ const UserProfile = () => {
       )}
       { (userObject && edit) && (
         <>
-          <h2 className="edit-profile-mode">Edit Profile Mode</h2>
           <ChangeProfile user={userObject} setEdit={setEdit} setUserObject={setUserObject} setUserPhoto={setUserPhoto} makeHeader={makeHeader} currentPhoto={getCurrentPhoto} />
         </>
       )}

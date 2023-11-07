@@ -39,7 +39,7 @@
   --filter-gold: invert(64%) sepia(66%) saturate(1930%) hue-rotate(354deg) brightness(94%) contrast(94%);
   --filter-bg: invert(99%) sepia(0%) saturate(3659%) hue-rotate(59deg) brightness(120%) contrast(80%);
   --speed: 500ms;
-  --btn-press: 500ms;
+  --btn-press: 150ms;
   --font-header: 'Collier-Bold', Arial, sans-serif;
   --font-body: 'Collier', Arial, sans-serif;
   --font-body-thin: 'Collier-Thin', Arial, sans-serif;

@@ -44,19 +44,24 @@ const Nav = () => {
       <div className="nav-container">
         { userObject &&
         <div className="nav-links-full">
-          <Link to="/" className="fan-lair" title="Home">
+          <Link to="/" className="fan-lair small" title="Home">
             <h1>F</h1>
             <h1 className="fan-lair-divider">||</h1>
             <h1>L</h1>
           </Link>
-          <div className="nav-spacer"></div>
-          <Link to="/post/create" className="create-post radius"></Link>
-          <Link to="/profile" className="user">
-            { userPhoto && <img src={userPhoto} /> }
-            {/* {decodeEscapedData(userObject.name)} */}
+          <Link to="/" className="fan-lair large" title="Home">
+            <h1>Fan</h1>
+            <h1 className="fan-lair-divider">||</h1>
+            <h1>Lair</h1>
           </Link>
-          <div className="nav-dropdown">
-            <button ref={dropdownRef} type="button" onClick={() => setShowDropdown(!showDropdown)}>
+          <div className="nav-spacer"></div>
+          <Link to="/profile" className="user" title="My Profile">
+            { userPhoto && <img src={userPhoto} /> }
+            <div className="user-name">{decodeEscapedData(userObject.name)}</div>
+          </Link>
+          <Link to="/post/create" className="create-post radius" title="Create Post"></Link>
+          <div className="nav-dropdown" >
+            <button ref={dropdownRef} type="button" onClick={() => setShowDropdown(!showDropdown)} title="More Options">
               <img src={settingsIcon} alt="Options" />
             </button>
               <div className={`nav-dropdown-content ${showDropdown ? 'show' : 'hide'}`}>

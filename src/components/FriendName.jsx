@@ -29,7 +29,7 @@ const FriendName = ({ userid, makeHeader, setLoading, userObject, setList }) => 
                   { !data.photoPath && <img src={icon} className="account-icon"/> }
                   <p>{decodeEscapedData(data.user.name)}</p>
                 </Link>
-                <AddFriend list={userObject.friend_list} setList={setList} profileId={data.user._id} />
+                <AddFriend list={userObject.friend_list} setList={setList} profileId={data.user._id} full={false}/>
               </div>
             </>
           )}

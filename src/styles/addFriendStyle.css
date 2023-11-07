@@ -2,7 +2,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 0 2rem;
 }
 .add-friend-container button {
   font-family: var(--font-body);
@@ -81,6 +80,9 @@
 }
 .add-friend-full-spacer {
   flex-grow: 1;
+}
+.profile-content .add-friend-container {
+  margin: 0 2rem;
 }
 @media screen and (min-width: 464px) {
   .profile-content .add-friend-container {

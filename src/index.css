@@ -50,7 +50,7 @@
 
   color-scheme: light dark;
   color: var(--main-text-color);
-  background-color: #242424;
+  background-color: var(--main-grey-light);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;

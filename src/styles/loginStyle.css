@@ -153,6 +153,9 @@
   }
 }
 @media screen and (min-width: 1000px) {
+  .content {
+    max-width: 1200px;
+  }
   .login-container {
     max-width: 500px;
     grid-area: 1/1/2/3;

@@ -27,6 +27,9 @@
 .edit-profile-container .form-input .input-first-name {
   font-family: var(--font-header);
 }
+.edit-profile-container .form-input .bio {
+  resize: none;
+}
 .edit-profile-container fieldset {
   padding: 0;
   border: none;
@@ -132,5 +135,21 @@
   &:active {
     transform: scale(0.95);
     box-shadow: 0 0 3px var(--main-blue-dark);
+  }
+}
+@media screen and (min-width: 464px) {
+  .edit-profile-container {
+    width: 85vw;
+    max-width: 500px;
+  }
+  .edit-profile-container #image-preview > img {
+    width: 85vw;
+    max-width: 500px;
+  }
+}
+@media screen and (min-width: 1000px) {
+  .edit-profile-container {
+    grid-area: 1/1/2/3;
+    justify-self: center;
   }
 }

@@ -80,6 +80,10 @@
   }
   .profile-content .about-me-container {
     margin-bottom: 0;
+    min-height: 250px;
+    width: 33vw;
+    max-width: 550px;
+    border-radius: 10px;
   }
   .profile-posts-container {
     max-width: 800px;

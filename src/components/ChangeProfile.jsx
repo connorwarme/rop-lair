@@ -150,6 +150,7 @@ const ChangeProfile = ({ user, setEdit, makeHeader, setUserObject, setUserPhoto,
   return ( 
     <>
       <div className="edit-profile-container">
+        <h2 className="edit-profile-mode">Edit Profile Mode</h2>
         <form onSubmit={handleSaveEdit}>
         <div className="form-input">
             <label htmlFor="first">First Name</label>
@@ -161,7 +162,7 @@ const ChangeProfile = ({ user, setEdit, makeHeader, setUserObject, setUserPhoto,
           </div>
           <div className="form-input">
             <label htmlFor="bio">About Me:</label>
-            <input type="textarea" id="bio" className="bio" value={decodeEscapedData(bio)} onChange={(e) => {handleChange(e, setBio)}}/>
+            <textarea id="bio" className="bio" value={decodeEscapedData(bio)} onChange={(e) => {handleChange(e, setBio)}} rows={'3'}/>
           </div>
           { (photoRadio === "current" || photoRadio === "new") && (
             <div className="form-input">

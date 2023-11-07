@@ -55,6 +55,11 @@
     height: 300px;
   }
   .profile-content-container {
+    
+  }
+}
+@media screen and (min-width: 1000px) { 
+  .profile-content-container {
     grid-area: 1/1/2/3;
   }
 }

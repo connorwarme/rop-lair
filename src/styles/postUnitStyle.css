@@ -57,7 +57,7 @@
 @media screen and (min-width: 464px) {
   .post-container {
     border-width: 3px;
-    max-width: 70vw;
+    max-width: 80vw;
   }
 }
 @media screen and (min-width: 1000px) { 

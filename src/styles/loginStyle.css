@@ -125,7 +125,7 @@
 }
 @media screen and (min-width: 464px) {
   .content {
-    display: flex;
+    display: grid;
     justify-content: center;
     align-items: center;
   }

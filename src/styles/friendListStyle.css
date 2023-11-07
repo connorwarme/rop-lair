@@ -1,4 +1,7 @@
-
+.friend-list-container .friend-list-title {
+  font-size: 1.5rem;
+  margin: 0.5rem;
+}
 .friend-list-content {
   margin: 0.5rem 1rem;
 }
@@ -54,7 +57,10 @@
 }
 @media screen and (min-width: 1000px) {
   .friend-list-container {
-    justify-self: start;
+    align-self: start;
+  }
+  .friend-list-content {
+    margin: 0.5rem 2rem 0.5rem 0;
   }
   
 }

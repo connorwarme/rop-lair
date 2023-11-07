@@ -14,7 +14,7 @@ const FriendList = ({ username, listId, makeHeader, setLoading, userObject, setL
   return ( 
     <>
       <div className="friend-list-container">
-        <h3 className="friend-list-title">{decodeEscapedData(username)}&#39;s Friends</h3>
+        <h4 className="friend-list-title">{decodeEscapedData(username)}&#39;s Friends</h4>
         <div className="friend-list-content">
           { isLoading && <p className="content-loading">Content is loading.</p> }
           { data && (

@@ -51,3 +51,26 @@
   margin-top: 0;
   padding-top: 1rem;
 }
+@media screen and (min-width: 464px) {
+  .user-list-container {
+    width: 70vw;
+    max-width: 600px;
+    justify-self: center;
+    align-self: start;
+  }
+  .userUnit-content > h4 {
+    font-size: 1.15rem;
+    margin: 0.75rem;
+  }
+}
+@media screen and (min-width: 1000px) {
+  .user-list-container {
+    grid-area: 1/1/2/3;
+  }
+  .userUnit-content > h4 {
+    font-size: 1.25rem;
+  }
+  .userUnit-container .add-friend-container > button > img {
+    height: 35px;
+  }
+}

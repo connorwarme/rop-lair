@@ -1,5 +1,5 @@
 .user-list-container {
-  margin: 0 1rem;
+  margin: 0;
   padding: 1rem 0;
 }
 .user-list-container > h1 {
@@ -10,6 +10,8 @@
 .userUnit-container {
   display: grid;
   grid-template-columns: 2fr 1fr;
+  padding: 0 1rem;
+  border-radius: 3px;
 }
 .userUnit-container > a {
   transition: all 150ms ease-in-out;
@@ -51,12 +53,18 @@
   margin-top: 0;
   padding-top: 1rem;
 }
+.userUnit-container:nth-child(odd) {
+  background-color: var(--main-bg-color);
+}
 @media screen and (min-width: 464px) {
   .user-list-container {
-    width: 70vw;
+    width: 80vw;
     max-width: 600px;
     justify-self: center;
     align-self: start;
+  }
+  .userUnit-container {
+    padding-left: 2rem;
   }
   .userUnit-content > h4 {
     font-size: 1.15rem;

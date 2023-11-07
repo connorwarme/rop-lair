@@ -137,7 +137,12 @@ const AddFriend = ({ list, setList, profileId, full }) => {
           <> 
           { !errors && (
             <>
-              { full && <h3>Friendship:</h3> }
+              { full && (
+                <>
+                  <h3>Friendship:</h3>
+                  <div className="add-friend-full-spacer"></div>
+                </> 
+              )}
               { friend && (
                 <>
                   <p className={`friend-status ${full}`}>Friends</p>

@@ -8,6 +8,7 @@ import Profile from "../components/Profile";
 import PostUnit from "../components/PostUnit";
 import decodeEscapedData from "../utility/escape";
 import FriendList from "../components/FriendList";
+import "../styles/profileStyle.css"
 
 const OtherProfile = () => {
   const { id } = useParams()
@@ -70,33 +71,37 @@ const OtherProfile = () => {
     <>
       { (userObject && !isLoading) && (data && data.profile) && (
         <>
-          <Profile userObject={userObject} profile={data.profile} photoPath={data.photoPath} setList={setList} />
+          <div className="profile-content-container">
+            <Profile userObject={userObject} profile={data.profile} photoPath={data.photoPath} setList={setList} />
+          </div>
         </>
       )}
       { (userObject && !isLoading) && (
         <>
-        <h3>{decodeEscapedData(data.profile.first_name)}&#39;s Posts</h3>
           { data && (
             <>
-            { data.posts && data.posts.length == 0 && <p>{decodeEscapedData(data.profile.first_name)} has yet to post content.</p>}
-            { data.posts && (
-              <>
-                { data.posts.map(post => <PostUnit key={post._id} user={userObject} post={post._doc} photo={post.photoImagePath ? post.photoImagePath : false} /> )}
-              </>
-            )}
-            { data.errors && (
-              <div className="errors-container">
-                <h4>Error Loading Posts</h4>
-                <div>{data.errors[0].msg}</div> 
+              <div className="profile-posts-container">
+                <h4 className="profile-posts-title">{decodeEscapedData(data.profile.first_name)}&#39;s Posts</h4>
+              { data.posts && data.posts.length == 0 && <p>{decodeEscapedData(data.profile.first_name)} has yet to post content.</p>}
+              { data.posts && (
+                <>
+                  { data.posts.map(post => <PostUnit key={post._id} user={userObject} post={post._doc} photo={post.photoImagePath ? post.photoImagePath : false} /> )}
+                </>
+              )}
+              { data.errors && (
+                <div className="errors-container">
+                  <h4>Error Loading Posts</h4>
+                  <div>{data.errors[0].msg}</div> 
+                </div>
+              )}
+              { error && (
+                <div className="errors-container">
+                  <h4>Error Loading Posts</h4>
+                  <div>{error}</div>
+                </div>
+              )}
               </div>
-            )}
             </>
-          )}
-          { error && (
-            <div className="errors-container">
-              <h4>Error Loading Posts</h4>
-              <div>{error}</div>
-            </div>
           )}
           { data && data.profile && <FriendList username={data.profile.first_name} listId={data.profile.friend_list} makeHeader={makeHeader} setLoading={setIsLoading} userObject={userObject} setList={setList} /> }
         </>

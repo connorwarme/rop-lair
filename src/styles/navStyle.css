@@ -284,9 +284,16 @@ a.user .user-name {
   .nav-links-full a.user > img {
     height: 48px;
     width: 48px;
+    border-radius: 50%;
   }
   .nav-links-full div.nav-dropdown > button > img {
     height: 43px;
+  }
+  a.user {
+    border-radius: 3px;
+    &:active {
+      box-shadow: none;
+    }
   }
   a.user .user-name {
     display: block;

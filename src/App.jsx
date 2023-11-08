@@ -12,6 +12,7 @@ import { myContext } from './contexts/Context'
 import CreatePost from './pages/CreatePost'
 import UserProfile from './pages/UserProfile'
 import OtherProfile from './pages/OtherProfile'
+import Footer from './components/Footer'
 
 export default function App() {
 
@@ -38,6 +39,7 @@ export default function App() {
           <Route path='/post/:id' element={ <Post /> } />
         </Routes>
       </div>
+      <Footer />
     </>
   )
 }

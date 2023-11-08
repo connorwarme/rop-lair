@@ -1,0 +1,64 @@
+.footer-container .back-container {
+  background-color: var(--main-blue-dark);
+  width: 100vw;
+  padding: 0.75rem 0;
+}
+.footer-container .back-top {
+  color: var(--main-grey-light);
+  font-family: var(--font-header);
+  text-decoration: underline;
+  transition: all 150ms ease-in-out;
+  &:hover {
+    color: var(--main-gold);
+  }
+}
+.footer-container .watch-link {
+  margin-left: 0.35rem;
+  text-decoration: underline;
+  transition: all 150ms ease-in-out;
+  &:hover {
+    cursor: pointer;
+    color: var(--main-gold);
+  }
+}
+.footer-container p {
+  margin: 0.75rem 0.5rem;
+}
+.credit-container p > em {
+  font-family: var(--font-header);
+}
+.credit-container > a > img {
+  height: 40px;
+  filter: var(--filter-blue);
+  margin: .5rem;
+  border-radius: 5px;
+}
+
+@keyframes profileImage {
+  0% {
+    box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
+    transform: translateY(0px);
+  }
+  25% {
+    box-shadow: 0 25px 15px 0px rgba(0,0,0,0.2);
+    transform: translateY(-20px);
+  }
+  50% {
+    box-shadow: 0 25px 15px 0px rgba(0,0,0,0.6);
+    transform: translateY(0px);
+  }
+  75% {
+    box-shadow: 0 25px 15px 0px rgba(0,0,0,0.2);
+    transform: translateY(-20px);
+  }
+  100% {
+    box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
+    transform: translateY(0px);
+  }
+}
+.credit-container > a:hover img {
+  filter: var(--filter-gold);
+  animation-name: profileImage;
+  animation-duration: 1200ms;
+  animation-iteration-count: 1;
+}

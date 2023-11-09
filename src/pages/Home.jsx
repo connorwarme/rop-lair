@@ -5,6 +5,8 @@ import axios from 'axios';
 import useAxios from '../hooks/useAxios';
 import PostUnit from '../components/PostUnit';
 import ropBanner from '../images/titlebanner.png'
+import spinner from "../images/icons/spinner.svg"
+import custom from "../images/icons/custom2.svg"
 import "../styles/homeStyle.css"
 
 const Home = () => {
@@ -18,6 +20,7 @@ const Home = () => {
   const auth = { headers: makeHeader()}
   const { data, isLoading, error } = useAxios(url, auth)
 
+  const isLoadingFake = true
   // useEffect(() => {
   //   // query database for all posts
   //   // eventually have a button to toggle b/w all posts and just friends' posts
@@ -46,8 +49,13 @@ const Home = () => {
             <img src={ropBanner} />
             <h1 className="title">Fan Lair</h1>
           </div>
-          { isLoading && <p>Content is loading...</p> }
-          { (!isLoading && data) && (
+          { isLoadingFake && (
+            <div className='spinner-loading-container'>
+              <img src={custom} />
+              <p>Content is loading...</p>
+            </div> 
+          )}
+          {/* { (!isLoading && data) && (
             <>
             { data.posts && (
               <>
@@ -69,7 +77,7 @@ const Home = () => {
                 <div>{error[0].status} Error! {error[0].msg}</div>
               </div>
             </>
-          )}
+          )} */}
         </div>
       </div>
     </>

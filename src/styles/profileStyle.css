@@ -96,4 +96,9 @@
   .friend-list-container {
     grid-area: 2/2/3/3;
   }
+  .spinner-loading-container {
+    margin: 3rem;
+    grid-area: 1/1/2/3;
+    align-self: flex-start;
+  }
 }

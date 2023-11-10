@@ -9,6 +9,7 @@ import ChangeProfile from "../components/ChangeProfile";
 import decodeEscapedData from "../utility/escape";
 import "../styles/profileStyle.css"
 import FriendList from "../components/FriendList";
+import custom from "../images/icons/custom2.svg"
 
 const UserProfile = () => {
   const [edit, setEdit] = useState(false)
@@ -40,6 +41,7 @@ const UserProfile = () => {
     }
     return false
   }
+  const isLoadingFake=true
 
   return ( 
     <>
@@ -51,7 +53,18 @@ const UserProfile = () => {
           </div>
         </>
       )}
-      { (userObject && !edit) && (!isLoading) && (
+      { (isLoadingFake && !edit) && (
+        <>
+          <div className="profile-posts-container">
+            <h4 className="profile-posts-title">{decodeEscapedData(userObject.first_name)}&#39;s Posts</h4>
+            <div className='spinner-loading-container'>
+              <img src={custom} />
+              <p>Content is loading.</p>
+            </div> 
+          </div>
+        </>
+      )}
+      { (userObject && !edit) && (!isLoadingFake) && (
         <>
           <div className="profile-posts-container">
             <h4 className="profile-posts-title">{decodeEscapedData(userObject.first_name)}&#39;s Posts</h4>

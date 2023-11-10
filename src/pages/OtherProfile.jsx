@@ -8,6 +8,7 @@ import Profile from "../components/Profile";
 import PostUnit from "../components/PostUnit";
 import decodeEscapedData from "../utility/escape";
 import FriendList from "../components/FriendList";
+import custom from "../images/icons/custom2.svg"
 import "../styles/profileStyle.css"
 
 const OtherProfile = () => {
@@ -16,13 +17,8 @@ const OtherProfile = () => {
   const [data, setData] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState(false)
-  const { userObject, access, setUserObject, makeHeader } = useContext(myContext)
+  const { userObject, setUserObject, makeHeader } = useContext(myContext)
 
-  const auth = {
-    headers: {
-      "Authorization": `Bearer ${access}`
-    }
-  }
   // not sure what to do / how to get the page to update to different profile. 
   useEffect(() => {
 
@@ -41,7 +37,7 @@ const OtherProfile = () => {
         setTimeout(() => setIsLoading(false), 1000)
       } else if (res.data.errors) {
         setError(res.data.errors)
-        setTimeout(() => setIsLoading(false), 1000)
+        setTimeout(() => setIsLoading(false), 5000)
       }
     })
     .catch(err => {
@@ -49,7 +45,7 @@ const OtherProfile = () => {
         console.log('axios request aborted (component unmounted before completed)')
       } else {
         setError(err.message)
-        setTimeout(() => setIsLoading(false), 1000)
+        setTimeout(() => setIsLoading(false), 5000)
       }
     })
     return () => abortController.abort()
@@ -69,6 +65,14 @@ const OtherProfile = () => {
 
   return ( 
     <>
+      { isLoading && (
+        <>
+          <div className='spinner-loading-container'>
+            <img src={custom} />
+            <p>Content is loading.</p>
+          </div> 
+        </>
+      )}
       { (userObject && !isLoading) && (data && data.profile) && (
         <>
           <div className="profile-content-container">

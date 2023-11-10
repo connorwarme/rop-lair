@@ -20,7 +20,7 @@ const FriendName = ({ userid, makeHeader, setLoading, userObject, setList }) => 
 
   return ( 
     <>
-      { isLoadingFake && (
+      { isLoading && (!data || !data.user) && (
         <>
           <div className="friend-name-container">
             <div className="friend-name-loading">
@@ -31,7 +31,7 @@ const FriendName = ({ userid, makeHeader, setLoading, userObject, setList }) => 
           </div> 
         </>
       )}
-      { (data && !isLoadingFake) && (
+      { data && (
         <>
           { data.user && (
             <>
@@ -45,10 +45,10 @@ const FriendName = ({ userid, makeHeader, setLoading, userObject, setList }) => 
               </div>
             </>
           )}
-          { data.errors && <div className="friend-error-container"><img src={errorIcon}/><p>{data.errors[0].msg}</p></div> }
+          { (data.errors && !isLoading) && <div className="friend-error-container"><img src={errorIcon}/><p>{data.errors[0].msg}</p></div> }
         </>
       )}
-      { error && <div className="friend-error-container"><img src={errorIcon}/><p>{error}</p></div> }
+      { (error && !isLoading) && <div className="friend-error-container"><img src={errorIcon}/><p>{error}</p></div> }
     </>
    );
 }

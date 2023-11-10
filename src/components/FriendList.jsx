@@ -17,7 +17,7 @@ const FriendList = ({ username, listId, makeHeader, setLoading, userObject, setL
       <div className="friend-list-container">
         <h4 className="friend-list-title">{decodeEscapedData(username)}&#39;s Friends</h4>
         <div className="friend-list-content">
-          { isLoading && (
+          { isLoading && (!data || !data.friends) && (
             <>
               <div className='spinner-loading-container'>
                 <img src={custom} />

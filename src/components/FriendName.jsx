@@ -23,7 +23,11 @@ const FriendName = ({ userid, makeHeader, setLoading, userObject, setList }) => 
       { isLoadingFake && (
         <>
           <div className="friend-name-container">
-            <div className="friend-name-loading">User info is loading...</div>
+            <div className="friend-name-loading">
+              <span className="friend-loader-element"></span>
+              <span className="friend-loader-element"></span>
+              <span className="friend-loader-element"></span>
+            </div>
           </div> 
         </>
       )}

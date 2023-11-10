@@ -64,6 +64,32 @@
 .friend-list-container .spinner-loading-container > img {
   height: 35px;
 }
+.friend-name-container .friend-name-loading {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+.friend-name-container .friend-loader-element {
+  display: block;
+  height: 0.5rem;
+  width: 0.5rem;
+  content: "";
+  background-color: var(--main-blue-dark);
+  border-radius: 100%;
+  margin: 0.75rem;
+}
+.friend-loader-element:nth-child(1) {
+  animation: miniloading .6s ease-in-out alternate infinite;
+}
+.friend-loader-element:nth-child(2) {
+  animation: miniloading .6s ease-in-out alternate .2s infinite;
+}
+.friend-loader-element:nth-child(3) {
+  animation: miniloading .6s ease-in-out alternate .4s infinite;
+}
+@keyframes miniloading {
+  100% { transform: scale(2); }
+}
 @media screen and (min-width: 1000px) {
   .friend-list-container {
     align-self: start;

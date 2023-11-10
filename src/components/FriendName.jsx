@@ -16,7 +16,6 @@ const FriendName = ({ userid, makeHeader, setLoading, userObject, setList }) => 
     setLoading(true)
     window.scrollTo(0, 0)
   }
-  const isLoadingFake=true
 
   return ( 
     <>

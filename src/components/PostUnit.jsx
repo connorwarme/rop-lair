@@ -19,10 +19,14 @@ const PostUnit = ( { user, post, author, photo }) => {
     }
   }, [])
 
+  const handleClick = () => {
+    window.scrollTo(0, 0)
+  }
+
   return ( 
     <> 
       <div className="post-container" key={'1'+post._id}>
-        <Link to={`/post/${post._id}`} >
+        <Link to={`/post/${post._id}`} onClick={handleClick}>
           <div className="post-content">
             <div className="post-title-container">
               <h2 className="post-title">{decodeEscapedData(post.title)}</h2>
@@ -31,7 +35,7 @@ const PostUnit = ( { user, post, author, photo }) => {
             <p className="post-content-text">{decodeEscapedData(post.content)}</p> 
           </div>
         </Link>
-          { (!author && post.author) && <p className="post-author"><Link to={`/profile/${post.author._id}`}>{decodeEscapedData(post.author.name)}</Link></p> }
+          { (!author && post.author) && <p className="post-author"><Link to={`/profile/${post.author._id}`} onClick={handleClick}>{decodeEscapedData(post.author.name)}</Link></p> }
           { user && <Like id={post._id} likes={likesArr} setLikes={setLikesArr} user={user} /> }
       </div>
     </>

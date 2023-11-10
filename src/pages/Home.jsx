@@ -20,26 +20,6 @@ const Home = () => {
   const auth = { headers: makeHeader()}
   const { data, isLoading, error } = useAxios(url, auth)
 
-  // useEffect(() => {
-  //   // query database for all posts
-  //   // eventually have a button to toggle b/w all posts and just friends' posts
-  //   const url = "http://localhost:3000/posts"
-
-  //   axios.get(url, { headers: makeHeader() })
-  //   .then(res => {
-  //     if (res.status === 200 && res.data.posts) {
-  //       console.log(res.data.posts)
-  //       setPosts(res.data.posts)
-  //       setErrors(null)
-  //     } else if (res.data.errors) {
-  //       setErrors(res.data.errors)
-  //     }
-  //   })
-  //   .catch(err => {
-  //     console.log(err)
-  //   })
-  // }, [access])
-
   return (
     <>
       <div className="home-container">
@@ -81,24 +61,6 @@ const Home = () => {
       </div>
     </>
   )
-
-  // this is the old version. trying to implement useAxios and rewrite display accordingly
-  // return ( 
-  //   <>
-  //     <div className="home-container">
-  //       <div className="home-content">
-  //         <h1 className="title">Rings of Power Fan Lair</h1>
-  //         { posts.map(post => <PostUnit key={post._id} user={userObject} post={post}/> )}
-  //         {/* <PostList posts={posts} full={true} user={userObject} /> */}
-  //         { errors && (
-  //           errors.map((err, index) => {
-  //             return <p key={index}>{err.status} Error! {err.msg}</p>
-  //           })
-  //         )}
-  //       </div>
-  //     </div>
-  //   </>
-  //  );
 }
  
 export default Home;

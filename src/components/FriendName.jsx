@@ -16,10 +16,18 @@ const FriendName = ({ userid, makeHeader, setLoading, userObject, setList }) => 
     setLoading(true)
     window.scrollTo(0, 0)
   }
+  const isLoadingFake=true
+
   return ( 
     <>
-      { isLoading && <div>User info is loading...</div> }
-      { data && (
+      { isLoadingFake && (
+        <>
+          <div className="friend-name-container">
+            <div className="friend-name-loading">User info is loading...</div>
+          </div> 
+        </>
+      )}
+      { (data && !isLoadingFake) && (
         <>
           { data.user && (
             <>

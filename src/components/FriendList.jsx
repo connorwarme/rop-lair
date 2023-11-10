@@ -2,6 +2,7 @@ import useAxios from "../hooks/useAxios";
 import decodeEscapedData from "../utility/escape";
 import FriendName from "./FriendName";
 import errorIcon from "../images/icons/error.svg"
+import custom from "../images/icons/custom2.svg"
 import "../styles/friendListStyle.css"
 
 const FriendList = ({ username, listId, makeHeader, setLoading, userObject, setList }) => {
@@ -16,7 +17,14 @@ const FriendList = ({ username, listId, makeHeader, setLoading, userObject, setL
       <div className="friend-list-container">
         <h4 className="friend-list-title">{decodeEscapedData(username)}&#39;s Friends</h4>
         <div className="friend-list-content">
-          { isLoading && <p className="content-loading">Content is loading.</p> }
+          { isLoading && (
+            <>
+              <div className='spinner-loading-container'>
+                <img src={custom} />
+                <p>Loading..</p>
+              </div> 
+            </>
+            ) }
           { data && (
             <>
             { data.friends && (

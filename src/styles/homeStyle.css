@@ -6,8 +6,6 @@
   padding-bottom: 0.25rem;
 }
 .spinner-loading-container {
-  width: 90vw;
-  max-width: 700px;
   margin:1em auto;
   position:relative;
 }

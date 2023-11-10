@@ -41,7 +41,6 @@ const UserProfile = () => {
     }
     return false
   }
-  const isLoadingFake=true
 
   return ( 
     <>
@@ -53,7 +52,7 @@ const UserProfile = () => {
           </div>
         </>
       )}
-      { (isLoadingFake && !edit) && (
+      { (isLoading && !edit) && (
         <>
           <div className="profile-posts-container">
             <h4 className="profile-posts-title">{decodeEscapedData(userObject.first_name)}&#39;s Posts</h4>
@@ -64,7 +63,7 @@ const UserProfile = () => {
           </div>
         </>
       )}
-      { (userObject && !edit) && (!isLoadingFake) && (
+      { (userObject && !edit) && (!isLoading) && (
         <>
           <div className="profile-posts-container">
             <h4 className="profile-posts-title">{decodeEscapedData(userObject.first_name)}&#39;s Posts</h4>
@@ -90,6 +89,10 @@ const UserProfile = () => {
               </div>
             )}
           </div>
+        </>
+      )}
+      { (userObject && !edit) && (
+        <>
           <FriendList username={userObject.first_name} listId={userObject.friend_list._id} makeHeader={makeHeader} userObject={userObject} setList={setList}/>
         </>
       )}

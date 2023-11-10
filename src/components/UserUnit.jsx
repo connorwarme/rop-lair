@@ -5,7 +5,7 @@ import AddFriend from "./AddFriend";
 import decodeEscapedData from "../utility/escape";
 import icon from "../images/icons/accountIcon.svg"
 
-const UserUnit = ({ userObject, profile, setList }) => {
+const UserUnit = ({ userObject, profile, photo, setList }) => {
   
   return ( 
     <>
@@ -13,9 +13,9 @@ const UserUnit = ({ userObject, profile, setList }) => {
         {/* <Link to={`/profile/${profile._id}`} element={<OtherProfile />} > */}
         <Link to={`/profile/${profile._id}`}  >
           <div className="userUnit-content">
-            { profile.picture && <img src={profile.picture} alt="Icon" /> }
-            { !profile.picture && <img src={icon} alt="Icon" className="account-icon" /> }
-            <h4>{decodeEscapedData(profile.name)}</h4>
+            { photo && <img src={photo} alt="Icon" /> }
+            { !photo && <img src={icon} alt="Icon" className="account-icon" /> }
+            <h4>{`${decodeEscapedData(profile.first_name)} ${decodeEscapedData(profile.family_name)}`}</h4>
           </div>
         </Link>
         <AddFriend list={userObject.friend_list} setList={setList} profileId={profile._id} />

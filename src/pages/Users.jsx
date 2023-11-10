@@ -34,7 +34,7 @@ const Users = () => {
               data.users.map(user => {
                 return (
                   <>
-                    <UserUnit key={user._id} userObject={userObject} profile={user} setList={setList} />
+                    <UserUnit key={user._doc._id} userObject={userObject} profile={user._doc} photo={user.photoImagePath ? user.photoImagePath : false} setList={setList} />
                   </>
                 )
               })

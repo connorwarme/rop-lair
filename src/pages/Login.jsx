@@ -7,6 +7,7 @@ import errorIcon from "../images/icons/error.svg"
 import fbIcon from "../images/icons/facebook.svg"
 import gIcon from "../images/icons/google.svg"
 import SignUp from '../components/Signup';
+import check from "../images/icons/accept.svg"
 import "../styles/loginStyle.css"
 
 // just got an error trying oauth with google 8/24
@@ -191,7 +192,10 @@ const Login = () => {
                       error.map( (err, index) => <div key={index}><img src={errorIcon}/><p>{err.msg}</p></div> )
                     }
                   </div>
-                  <button>Log In</button>
+                  <button>
+                    <span>Log In</span>
+                    <img src={check} alt='Log In' />
+                  </button>
                 </form>
                 <div className="or-divider">
                   <h3>OR</h3>

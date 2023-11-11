@@ -43,7 +43,7 @@ const FriendList = ({ username, listId, makeHeader, setLoading, userObject, setL
                 )}
               </>
             )}
-            { data.errors && (
+            { (data.errors && !isLoading) && (
               <div className="friend-error-container">
                 <img src={errorIcon}/>
                 <p>{error}</p>
@@ -51,7 +51,7 @@ const FriendList = ({ username, listId, makeHeader, setLoading, userObject, setL
             )}
             </>
           )}
-          { error && (
+          { (error && !isLoading) && (
             <div className="friend-error-container">
               <img src={errorIcon}/>
               <p>{error}</p>

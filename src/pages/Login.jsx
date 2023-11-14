@@ -19,6 +19,7 @@ const Login = () => {
   const [emailErr, setEmailErr] = useState(null)
   const [password, setPassword] = useState('')
   const [passwordErr, setPasswordErr] = useState(null)
+  const [success, setSuccess] = useState(null)
   // adding state to deal with displaying error colors or not...still needs work 
   const [error, setError] = useState(null)
   const [oauthError, setOAuthError] = useState(null)
@@ -68,8 +69,10 @@ const Login = () => {
         // update error
         setError(data.errors)
         handleErrors(data.errors)
+        setSuccess(false)
       } else {
         setError(null)
+        setSuccess(true)
         // save token to local storage
         saveObject(data.accessToken, "access")
         // set user & set token
@@ -83,6 +86,7 @@ const Login = () => {
     })
     .catch(err => {
       console.log(err)
+      setSuccess(false)
       setError(err.msg)
     })
   }
@@ -193,8 +197,15 @@ const Login = () => {
                     }
                   </div>
                   <button>
-                    <span>Log In</span>
-                    <img src={check} alt='Log In' />
+                    { (emailErr || passwordErr) && (
+                      <img src={errorIcon} alt='Error!' className='local-login-error'/>
+                    )}
+                    { (!emailErr && !passwordErr) && (
+                      <>
+                        { !success && <span>Log In</span> }
+                        { success && <img src={check} alt='Log In' className='local-login-success' /> }
+                      </>
+                    )}
                   </button>
                 </form>
                 <div className="or-divider">

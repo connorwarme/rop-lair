@@ -20,6 +20,7 @@ const Login = () => {
   const [password, setPassword] = useState('')
   const [passwordErr, setPasswordErr] = useState(null)
   const [success, setSuccess] = useState(null)
+  const [loading, setLoading] = useState(null)
   // adding state to deal with displaying error colors or not...still needs work 
   const [error, setError] = useState(null)
   const [oauthError, setOAuthError] = useState(null)
@@ -43,6 +44,7 @@ const Login = () => {
   // handle success -> redirect to...user profile?
 
   const handleSubmit = (e) => {
+    setLoading(true)
     const data = getData()
     e.preventDefault()
     fetch(url, {
@@ -55,6 +57,7 @@ const Login = () => {
     .then(res => {
       if (!res.ok) {
         const error = new Error()
+        setLoading(false)
         setError('There was a problem logging in, please try again.')
         error.status = 500
       }
@@ -64,6 +67,7 @@ const Login = () => {
       // this is giving me user object, access token, and refresh token
       console.log(data)
       if (data.errors) {
+        setLoading(false)
         // remove password
         setPassword('')
         // update error
@@ -72,6 +76,7 @@ const Login = () => {
         setSuccess(false)
       } else {
         setError(null)
+        setLoading(false)
         setSuccess(true)
         // save token to local storage
         saveObject(data.accessToken, "access")
@@ -86,6 +91,7 @@ const Login = () => {
     })
     .catch(err => {
       console.log(err)
+      setLoading(false)
       setSuccess(false)
       setError(err.msg)
     })
@@ -202,7 +208,16 @@ const Login = () => {
                     )}
                     { (!emailErr && !passwordErr) && (
                       <>
-                        { !success && <span>Log In</span> }
+                        { (!success && !loading) && <span>Log In</span> }
+                        { (!success && loading) && (
+                          <>
+                            <div className="local-login-loading">
+                              <span className="friend-loader-element"></span>
+                              <span className="friend-loader-element"></span>
+                              <span className="friend-loader-element"></span>
+                            </div>
+                          </>
+                        )}
                         { success && <img src={check} alt='Log In' className='local-login-success' /> }
                       </>
                     )}

@@ -70,17 +70,7 @@
     &:active {
       transform: scale(0.97);
       box-shadow: 0 0 3px var(--main-blue-dark);
-    }
-    /* &::before {
-      content: "";
-      width: 0.65em;
-      height: 0.65em;
-      border-radius: 50%;
-      transform: scale(0);
-      transition: 120ms all ease-in-out;
-      box-shadow: inset 1em 1em var(--main-blue-dark);
-    } */
-    
+    }    
 }
 .change-post-container fieldset > div > label {
   margin: 0;
@@ -147,5 +137,7 @@
   }
 }
 @media screen and (min-width: 1000px) {
-  
+  .change-post-container {
+    grid-area: 1/1/2/3;
+  }
 }

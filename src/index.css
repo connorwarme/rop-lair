@@ -43,6 +43,8 @@
   --font-header: 'Collier-Bold', Arial, sans-serif;
   --font-body: 'Collier', Arial, sans-serif;
   --font-body-thin: 'Collier-Thin', Arial, sans-serif;
+  --bg-galadriel: url(./images/gallery/wallpaper-galadriel.jpg);
+  --bg-city: url(./images/gallery/wallpaper-city.jpg);
 
   font-family: 'Collier', Arial, sans-serif;
   line-height: 1.5;
@@ -51,6 +53,13 @@
   color-scheme: light dark;
   color: var(--main-text-color);
   background-color: var(--main-grey-light);
+  background: var(--bg-city) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  /* background: radial-gradient(circle, rgba(229,229,229,1) 0%, rgba(96,114,131,1) 75%, rgba(29,45,68,1) 100%); */
+  /* background: linear-gradient(90deg, rgba(29,45,68,1) 0%, rgba(229,229,229,1) 30%, rgba(229,229,229,1) 70%, rgba(29,45,68,1) 100%); */
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;

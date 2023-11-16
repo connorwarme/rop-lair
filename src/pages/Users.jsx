@@ -3,6 +3,7 @@ import { myContext } from "../contexts/Context";
 import useFetch from "../hooks/useFetch";
 import UserUnit from "../components/UserUnit";
 import errorIcon from "../images/icons/error.svg"
+import custom from "../images/icons/custom2.svg"
 import "../styles/userListStyle.css"
 
 const Users = () => {
@@ -25,7 +26,12 @@ const Users = () => {
 
   return ( 
     <>
-      { isLoading && <h3 className="loading-page">Page is loading...</h3> }
+      { isLoading && (
+        <div className='spinner-loading-container'>
+              <img src={custom} />
+              <p>Content is loading.</p>
+        </div>  
+      )}
       { !isLoading && !error && (
         <>
           <div className="user-list-container">

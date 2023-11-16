@@ -17,6 +17,7 @@ const SignUp = ({ cancelFn }) => {
   const [passwordErr, setPasswordErr] = useState(null)
   const [confirmPW, setConfPW] = useState('')
   const [confirmPWErr, setConfPWErr] = useState(null)
+  const [loading, setLoading] = useState(null)
   const [errors, setErrors] = useState(null)
 
   const { setAccess } = useContext(myContext)
@@ -35,6 +36,7 @@ const SignUp = ({ cancelFn }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
+    setLoading(true)
     console.log('submit form')
     const url = "http://localhost:3000/signup"
     const account = getState()
@@ -44,14 +46,18 @@ const SignUp = ({ cancelFn }) => {
         // save token to context
         saveObject(res.data.access, "access")
         setAccess(res.data.access)
+        setLoading(false)
         navigate(`/`)
       } else if (res.status === 200 && res.data.errors) {
+        console.log(res.data)
+        setLoading(false)
         setErrors(res.data.errors)
         handleErrors(res.data.errors)
       }
     })
     .catch(err => {
       console.log(err)
+      setLoading(false)
     })
   }
   const handleField = (event, setState, setError, length) => {
@@ -70,7 +76,9 @@ const SignUp = ({ cancelFn }) => {
     }
   }
   const handleErrors = (array) => {
-    array.forEach(index => {
+    const getArray = Array.from(array)
+    getArray.forEach(index => {
+      console.log(index.path)
       if (index.path) {
         if (index.path == 'first_name') {
           setFirst_NameErr(true)
@@ -114,23 +122,43 @@ const SignUp = ({ cancelFn }) => {
           </div>
           { errors && (
             <div className="errors">
-              { errors.map((err, index) => {
-                if (err.status) {
-                  return <div key={index}><img src={errorIcon}/><p>{err.status} Error! {err.msg}</p></div>
-                }
-                return <div key={index}><img src={errorIcon}/><p>{err.msg}</p></div>
-              })}
+              { !Array.isArray(errors) && (
+                <div><img src={errorIcon}/><p>{errors.status} Error! {errors.msg}</p></div>
+              )}
+              { Array.isArray(errors) && (
+                <>
+                { errors.map((err, index) => {
+                    if (err.status) {
+                      return <div key={index}><img src={errorIcon}/><p>{err.status} Error! {err.msg}</p></div>
+                    }
+                    return <div key={index}><img src={errorIcon}/><p>{err.msg}</p></div>
+                })}
+                </>
+              )}
             </div>
           )}          
           <div className="button-container">
-            <div className="form-group">
-              <label htmlFor="cancel" onClick={handleCancel}>Cancel</label>
-              <input type="button" id="cancel" style={{display: 'none'}} />
-            </div>
-            <div className="form-group">
-              <label htmlFor="submit" onClick={handleSubmit}>Sign Up!</label>
-              <input type="submit" id="submit" style={{display: 'none'}} />
-            </div>
+            { !loading && (
+              <>
+                <div className="form-group">
+                  <label htmlFor="cancel" onClick={handleCancel}>Cancel</label>
+                  <input type="button" id="cancel" style={{display: 'none'}} />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="submit" onClick={handleSubmit}>Sign Up!</label>
+                  <input type="submit" id="submit" style={{display: 'none'}} />
+                </div>
+              </>
+            )}
+            { loading && (
+              <>
+                <div className="signup-loading">
+                  <span className="friend-loader-element"></span>
+                  <span className="friend-loader-element"></span>
+                  <span className="friend-loader-element"></span>
+                </div>
+              </>
+            )}
           </div>
         </form>
       </div>

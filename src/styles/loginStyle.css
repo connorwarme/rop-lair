@@ -98,12 +98,14 @@
 .local-login > button > span {
   padding: 0.5rem 0.75rem;
 }
-.local-login-loading {
+.local-login-loading, 
+.signup-loading {
   display: flex;
   justify-content: center;
   align-content: center;
 }
-.local-login-loading .friend-loader-element {
+.local-login-loading .friend-loader-element,
+.signup-loading .friend-loader-element {
   display: block;
   height: 0.5rem;
   width: 0.5rem;

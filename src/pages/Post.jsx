@@ -8,6 +8,7 @@ import Comment from '../components/Comment';
 import AddComment from '../components/AddComment';
 import useAxios from '../hooks/useAxios';
 import decodeEscapedData from '../utility/escape';
+import custom from "../images/icons/custom2.svg"
 import "../styles/postDetailStyle.css"
 
 const Post = () => {
@@ -27,10 +28,10 @@ const Post = () => {
   })
   // added 9/22
   const [photo, setPhoto] = useState(null)
-
   const [edit, setEdit] = useState(false)
   const [errors, setErrors] = useState(false)
   const [showComments, setShowComments] = useState(false)
+  const [loading, setLoading] = useState(true)
 
   // need to run a check, once, on load
   // to see if value in location state or not
@@ -50,6 +51,7 @@ const Post = () => {
         comments: location.state.post.comments,
         photo: location.state.post.photo ? location.state.post.photo._id : null
       })
+      setLoading(false)
       // added 9/22
       setPhoto(location.state.photoPath)
     } else {
@@ -70,9 +72,11 @@ const Post = () => {
             comments: res.data.post.comments,
             photo: res.data.post.photo ? res.data.post.photo._id : null
           })
+          setLoading(false)
           // added 9/22
           setPhoto(res.data.photoPath)
         } else if (res.data.errors) {
+          setLoading(false)
           setErrors(res.data.errors)
         }
       })
@@ -126,7 +130,15 @@ const Post = () => {
   return ( 
     <>
       <div className="post-detail-container">
-        { !edit && (
+        { !edit && loading && (
+          <>
+            <div className='spinner-loading-container'>
+              <img src={custom} />
+              <p>Content is loading.</p>
+            </div> 
+          </>
+        )}
+        { !edit && !loading && (
           <div className="post-detail-content">
           <div className="title">{decodeEscapedData(post.title)}</div>
           <div className="author">

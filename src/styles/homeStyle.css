@@ -5,47 +5,52 @@
   border-bottom: none;
   padding-bottom: 0.25rem;
 }
+.title-container .title-blur-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: fit-content;
+  background-color: transparent;
+  backdrop-filter: blur(0.1rem);
+  -webkit-backdrop-filter: blur(0.1rem);
+}
+.home-content .image-blur-container {
+  border-top: 0.75rem solid var(--main-gold);
+  border-bottom: 0.75rem solid var(--main-gold);
+  border-radius: 10%;
+  padding: 0 3rem;
+  margin: 1rem 0;
+  backdrop-filter: blur(0.25rem);
+  -webkit-backdrop-filter: blur(0.25rem);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.home-content .title-blur-container > div > img {
+  width: 90vw;
+  max-width: 600px;
+  object-fit: cover;
+  padding: 1rem 1.5rem;
+  color: var(--main-text-lite);
+  background-color: var(--main-blue-dark);
+  backdrop-filter: blur(0.1rem);
+  -webkit-backdrop-filter: blur(0.1rem);
+  border-radius: 5px;
+}
+.home-content .title-blur-container > h1 {
+  font-family: var(--font-header);
+  text-transform: uppercase;
+}
 .spinner-loading-container {
-  margin:1em auto;
-  position:relative;
+  margin: 1em auto;
+  position: relative;
 }
 .spinner-loading-container > img {
   height: 60px;
 }
-  /* -webkit-transition-property: -webkit-transform;
-  -webkit-transition-duration: 1.2s;
-  -webkit-animation-name: rotate;
-  -webkit-animation-iteration-count: infinite;
-  -webkit-animation-timing-function: linear;
-  
-  -moz-transition-property: -moz-transform;
-  -moz-animation-name: rotate; 
-  -moz-animation-duration: 1.2s; 
-  -moz-animation-iteration-count: infinite;
-  -moz-animation-timing-function: linear;
-  
-  transition-property: transform;
-  animation-name: rotate; 
-  animation-duration: 1.2s; 
-  animation-iteration-count: infinite;
-  animation-timing-function: linear;
-
-}
-
-@-webkit-keyframes rotate {
-    from {-webkit-transform: rotate(0deg);}
-    to {-webkit-transform: rotate(360deg);}
-}
-
-@-moz-keyframes rotate {
-    from {-moz-transform: rotate(0deg);}
-    to {-moz-transform: rotate(360deg);}
-}
-
-@keyframes rotate {
-    from {transform: rotate(0deg);}
-    to {transform: rotate(360deg);}
-} */
-.spinner-loading-container > p {
-
+@media screen and (min-width: 1000px) {
+  .home-container {
+    grid-area: 1/1/2/3;
+  }
 }

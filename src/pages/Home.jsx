@@ -25,8 +25,12 @@ const Home = () => {
       <div className="home-container">
         <div className="home-content">
           <div className="title-container">
-            <img src={ropBanner} />
-            <h1 className="title">Fan Lair</h1>
+            <div className="title-blur-container">
+              <div className="image-blur-container">
+                <img src={ropBanner} />
+              </div>
+              <h1 className="title">Fan Lair</h1>
+            </div>
           </div>
           { isLoading && (
             <div className='spinner-loading-container'>

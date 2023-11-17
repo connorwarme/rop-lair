@@ -7,10 +7,9 @@
   grid-template-rows: 1fr auto;
   place-items: center;
   padding-bottom: 1rem;
-  background-color: rgba(229, 229, 229, 0.4);
+  background-color: rgba(229, 229, 229, 0.5);
   backdrop-filter: blur(0.1rem);
   -webkit-backdrop-filter: blur(0.1rem);
-  box-shadow: 0 0 0.1rem 1px;
 }
 .title-container {
   width: 100vw; 
@@ -183,6 +182,7 @@
   }
   .login-container {
     border-radius: 10px; 
+    box-shadow: 0 0 0.1rem 1px;
   }
   .login-container .title-container {
     max-width: 500px;

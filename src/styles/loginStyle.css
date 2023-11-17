@@ -1,12 +1,19 @@
 .content {
   min-height: calc(100vh - 64px);
-  background-color: var(--main-grey-light);
+  background-color: transparent;
 }
 .login-container {
+  display: grid;
+  grid-template-rows: 1fr auto;
+  place-items: center;
   padding-bottom: 1rem;
+  background-color: rgba(229, 229, 229, 0.4);
+  backdrop-filter: blur(0.1rem);
+  -webkit-backdrop-filter: blur(0.1rem);
+  box-shadow: 0 0 0.1rem 1px;
 }
 .title-container {
-  width: 100vw;
+  width: 100vw; 
   padding-top: 0.75rem;
   margin:0;
   background-color: var(--main-blue-dark);
@@ -55,7 +62,7 @@
   font-size: 1rem;
   font-family: var(--font-body-thin);
   padding: 0.35rem 0.75rem;
-  background-color: var(--main-off-white);
+  background-color: var(--main-grey-light);
   color: var(--main-blue-dark);
   border: 2px solid transparent;
   border-radius: 2rem;
@@ -72,7 +79,7 @@
   font-weight: 600;
   width: calc(100% - 2rem);
   color: var(--main-text-dark);
-  background-color: transparent;
+  background-color: var(--main-grey-light);
   text-align: center;
   padding: 0.5rem 0.75rem;
   margin: 0.5rem 1rem;
@@ -175,15 +182,13 @@
     align-items: center;
   }
   .login-container {
-    border: 5px solid var(--main-blue-dark);
-    border-radius: 10px;
-    display: grid;
-    grid-template-rows: 1fr auto;
-    place-items: center;
+    border-radius: 10px; 
   }
   .login-container .title-container {
     max-width: 500px;
     width: calc(100vw - 10px);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
   }
   .login-container .title-container > img {
     max-width: 400px;

@@ -3,6 +3,7 @@
   margin: 0.5rem auto;
   border: 1px solid var(--main-blue-dark);
   border-radius: 10px;
+  background-color: rgba(229, 229, 229, 0.7);
 }
 .post-title-container  {
   display: flex;

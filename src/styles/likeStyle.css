@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem;
   background-color: var(--main-blue-dark);
 }
 .like-container p {
@@ -13,7 +13,6 @@
 .like-btn-container {
   display: flex;
   justify-content: center;
-  margin-right: 0.75rem;
 }
 .like-container button {
   display: flex;
@@ -41,4 +40,12 @@
   height: 25px;
   margin: 0.25rem;
   filter: invert(14%) sepia(10%) saturate(2929%) hue-rotate(176deg) brightness(96%) contrast(91%);
+}
+@media screen and (min-width: 464px) {
+  .like-container {
+    padding: 0.5rem 1rem;
+  }
+  .like-btn-container {
+    margin-right: 1rem;
+  }
 }

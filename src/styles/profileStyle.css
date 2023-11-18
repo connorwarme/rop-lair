@@ -5,15 +5,20 @@
   height: 200px;
   object-fit: cover;
   border-radius: 10px;
+  box-shadow: 0 0 10px 1px var(--main-blue-dark);
 }
 .profile-content .profile-title {
   margin: 0.5rem;
+  color: var(--main-grey-light);
+  font-family: var(--font-header);
+  text-shadow: 0 0 3px var(--main-blue-dark);
 } 
 .profile-content .about-me-container {
   background-color: var(--main-gold);
   margin: 0.5rem 1rem;
   padding: 0.5rem;
   border-radius: 5px;
+  box-shadow: 0 0 10px 1px var(--main-blue-dark);
 }
 .profile-content .about-me-container > h4 {
   font-family: var(--font-header);
@@ -26,6 +31,7 @@
 }
 .profile-edit-button {
   font-family: var(--font-body);
+  font-size: 1rem;
   color: var(--main-blue-dark);
   background-color: var(--main-grey-light);
   padding: 0.75rem 1.5rem;

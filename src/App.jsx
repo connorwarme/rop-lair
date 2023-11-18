@@ -22,9 +22,10 @@ export default function App() {
   // how to protect routes on frontend?
   // how to send auth header when needed?
   // how to refresh token when needed?
-  const setBgPhoto = (source) => {
+  const setBgPhoto = (source, position) => {
     const rootDiv = document.getElementById('root')
     rootDiv.style.backgroundImage = `url(${source})`
+    rootDiv.style.backgroundPosition = position ? position : 'center center'
   }
 
   return (

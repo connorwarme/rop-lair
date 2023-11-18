@@ -9,7 +9,7 @@ import ChangeProfile from "../components/ChangeProfile";
 import decodeEscapedData from "../utility/escape";
 import "../styles/profileStyle.css"
 import FriendList from "../components/FriendList";
-import background from "../images/gallery/wp-elves.jpg"
+import background from "../images/gallery/galadriel-warrior.jpg"
 import custom from "../images/icons/custom2.svg"
 
 const UserProfile = ({ setBg }) => {
@@ -42,7 +42,7 @@ const UserProfile = ({ setBg }) => {
     }
     return false
   }
-  setBg(background)
+  setBg(background, '56% 27%')
 
   return ( 
     <>

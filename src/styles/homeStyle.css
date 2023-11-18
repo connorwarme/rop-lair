@@ -41,20 +41,19 @@
 }
 .home-content .title-blur-container > h1 {
   font-family: var(--font-header);
+  font-size: 2rem;
   text-transform: uppercase;
-  margin: 0.5rem 0 1rem 0;
+  margin: 0;
 }
 .spinner-loading-container {
-  margin: 1em auto;
+  margin: 1rem;
   position: relative;
+  background-color: rgba(229, 229, 229, 0.5);
+  padding: 2rem 0 1rem 0;
+  border-radius: 10px;
 }
 .spinner-loading-container > img {
   height: 60px;
-}
-@media screen and (min-width: 1000px) {
-  .home-container {
-    grid-area: 1/1/2/3;
-  }
 }
 @media screen and (min-width: 700px) {
   .home-content .image-blur-container {
@@ -64,5 +63,14 @@
   }
   .home-content .title-blur-container > div > img {
     width: calc(90vw - 8rem);
+  }
+  .home-content .title-blur-container > h1 {
+    font-size: 3.2rem;
+    margin: 0.5rem 0 1rem 0;
+  }
+}
+@media screen and (min-width: 1000px) {
+  .home-container {
+    grid-area: 1/1/2/3;
   }
 }

@@ -7,9 +7,10 @@ import PostUnit from '../components/PostUnit';
 import ropBanner from '../images/titlebanner.png'
 import spinner from "../images/icons/spinner.svg"
 import custom from "../images/icons/custom2.svg"
+import mainBgImg from "../images/gallery/wallpaper-city.jpg"
 import "../styles/homeStyle.css"
 
-const Home = () => {
+const Home = ({ setBg }) => {
   const [posts, setPosts] = useState([])
   const [errors, setErrors] = useState(null)
 
@@ -20,6 +21,9 @@ const Home = () => {
   const auth = { headers: makeHeader()}
   const { data, isLoading, error } = useAxios(url, auth)
 
+  setBg(mainBgImg)
+
+  const isLoadingFake = true
   return (
     <>
       <div className="home-container">
@@ -32,13 +36,13 @@ const Home = () => {
               <h1 className="title">Fan Lair</h1>
             </div>
           </div>
-          { isLoading && (
+          { isLoadingFake && (
             <div className='spinner-loading-container'>
               <img src={custom} />
               <p>Content is loading.</p>
             </div> 
           )}
-          { (!isLoading && data) && (
+          { (!isLoadingFake && data) && (
             <>
             { data.posts && (
               <>
@@ -53,7 +57,7 @@ const Home = () => {
             )}
             </>
           )}
-          { (!isLoading && error) && (
+          { (!isLoadingFake && error) && (
             <>
               <div className="errors-container">
                 <h4>Error Loading Posts</h4>

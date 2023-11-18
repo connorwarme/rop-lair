@@ -9,9 +9,10 @@ import ChangeProfile from "../components/ChangeProfile";
 import decodeEscapedData from "../utility/escape";
 import "../styles/profileStyle.css"
 import FriendList from "../components/FriendList";
+import background from "../images/gallery/wp-elves.jpg"
 import custom from "../images/icons/custom2.svg"
 
-const UserProfile = () => {
+const UserProfile = ({ setBg }) => {
   const [edit, setEdit] = useState(false)
 
   const { userObject, userPhoto, access, setUserObject, setUserPhoto, makeHeader } = useContext(myContext)
@@ -41,6 +42,7 @@ const UserProfile = () => {
     }
     return false
   }
+  setBg(background)
 
   return ( 
     <>

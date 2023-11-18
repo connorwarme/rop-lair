@@ -22,21 +22,25 @@ export default function App() {
   // how to protect routes on frontend?
   // how to send auth header when needed?
   // how to refresh token when needed?
+  const setBgPhoto = (source) => {
+    const rootDiv = document.getElementById('root')
+    rootDiv.style.backgroundImage = `url(${source})`
+  }
 
   return (
     <>
       <Nav />
       <div className="content">
         <Routes>
-          <Route path='/' element={ <Home /> } />
+          <Route path='/' element={ <Home setBg={setBgPhoto} /> } />
           <Route path='/auth/success' element={ <Temp /> } />
-          <Route path='/login' element={ <Login /> } />
+          <Route path='/login' element={ <Login setBg={setBgPhoto} /> } />
           <Route path='/signup' element={ <SignUp /> } />
-          <Route path='/users' element={ <Users />} />
-          <Route path='/profile' element={ <UserProfile /> } />
-          <Route path='/profile/:id' element={ <OtherProfile /> } />
-          <Route path='/post/create' element={ <CreatePost /> } />
-          <Route path='/post/:id' element={ <Post /> } />
+          <Route path='/users' element={ <Users setBg={setBgPhoto} />} />
+          <Route path='/profile' element={ <UserProfile setBg={setBgPhoto} /> } />
+          <Route path='/profile/:id' element={ <OtherProfile setBg={setBgPhoto} /> } />
+          <Route path='/post/create' element={ <CreatePost setBg={setBgPhoto} /> } />
+          <Route path='/post/:id' element={ <Post setBg={setBgPhoto} /> } />
         </Routes>
       </div>
       <Footer />

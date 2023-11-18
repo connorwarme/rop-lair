@@ -12,10 +12,8 @@
   -webkit-backdrop-filter: blur(0.1rem);
 }
 .title-container {
-  width: 100vw; 
   padding-top: 0.75rem;
   margin:0;
-  background-color: var(--main-blue-dark);
   border-bottom: 2px solid var(--main-gold);
 }
 .title-container > img {

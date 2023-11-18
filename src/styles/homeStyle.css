@@ -1,5 +1,6 @@
 .home-container {
   min-height: calc(100vh - 64px);
+  padding-bottom: 10vh;
 }
 .home-content .title-container {
   border-bottom: none;
@@ -20,7 +21,7 @@
   border-bottom: 0.5rem solid var(--main-gold);
   border-radius: 10%;
   padding: 0 1.5rem;
-  margin: 1rem;
+  margin: 1rem auto;
   backdrop-filter: blur(0.25rem);
   -webkit-backdrop-filter: blur(0.25rem);
   display: flex;

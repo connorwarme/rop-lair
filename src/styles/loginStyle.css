@@ -16,6 +16,9 @@
   margin:0;
   border-bottom: 2px solid var(--main-gold);
 }
+.login-container .title-container {
+  background-color: var(--main-blue-dark);
+}
 .title-container > img {
   width: 90vw;
   max-width: 600px;

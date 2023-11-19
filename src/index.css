@@ -119,6 +119,10 @@ button:focus-visible {
   margin: 0.25rem 0.5rem;
   text-align: left;
 }
+.content {
+  display: grid;
+  width: 100vw;
+}
 
 @media (prefers-color-scheme: light) {
   :root {
@@ -132,8 +136,5 @@ button:focus-visible {
 @media screen and (min-width: 1000px) {
   .content {
     min-height: calc(100vh - 80px);
-    display: grid;
-    grid-template-rows: 1fr auto;
-    max-width: 1000px;
   }
 }

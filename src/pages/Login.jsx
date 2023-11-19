@@ -178,7 +178,7 @@ const Login = () => {
   }
 
   return ( 
-    <>
+    <div className='loginDiv'>
       <div className="login-container">
         <div className="title-container">
           <img src={banner} alt="Lord of the Rings: The Rings of Power" />
@@ -251,7 +251,7 @@ const Login = () => {
         )}
         { signup && <SignUp cancelFn={handleCancelSignup} /> }    
       </div>
-    </>
+    </div>
    );
 }
  

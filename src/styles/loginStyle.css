@@ -205,7 +205,8 @@
 }
 @media screen and (min-width: 1000px) {
   .content {
-    max-width: 1200px;
+    max-width: 900px;
+    margin-left: 3rem;
   }
   .login-container {
     max-width: 500px;

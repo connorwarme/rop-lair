@@ -42,7 +42,7 @@ const UserProfile = ({ setBg }) => {
     }
     return false
   }
-  setBg(background, '56% 27%')
+  setBg(background, '52% 15%')
 
   return ( 
     <>

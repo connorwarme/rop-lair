@@ -1,5 +1,5 @@
 .post-container {
-  width: calc(100vw - 2rem);
+  width: calc(100vw - (2rem + 2px));
   margin: 0.5rem auto;
   border: 1px solid var(--main-blue-dark);
   border-radius: 10px;

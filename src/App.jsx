@@ -26,6 +26,8 @@ export default function App() {
     const rootDiv = document.getElementById('root')
     rootDiv.style.backgroundImage = `url(${source})`
     rootDiv.style.backgroundPosition = position ? position : 'center center'
+    rootDiv.style.backgroundRepeat = 'no-repeat'
+    rootDiv.style.backgroundAttachment = 'fixed'
   }
 
   return (

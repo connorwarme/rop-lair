@@ -45,7 +45,7 @@ const UserProfile = ({ setBg }) => {
   setBg(background, '52% 15%')
 
   return ( 
-    <>
+    <div className="profileDiv">
       { (userObject && !edit) && (
         <>
           <div className="profile-content-container">
@@ -103,7 +103,7 @@ const UserProfile = ({ setBg }) => {
           <ChangeProfile user={userObject} setEdit={setEdit} setUserObject={setUserObject} setUserPhoto={setUserPhoto} makeHeader={makeHeader} currentPhoto={getCurrentPhoto} />
         </>
       )}
-    </>
+    </div>
    );
 }
  

@@ -53,7 +53,10 @@
   color-scheme: light dark;
   color: var(--main-text-color);
   background-color: var(--main-grey-light);
-  background: var(--bg-city) no-repeat center center fixed;
+  background-image: var(--bg-city);
+  background-attachment: fixed;
+  background-position: center center;
+  background-repeat: fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -135,6 +138,6 @@ button:focus-visible {
 }
 @media screen and (min-width: 1000px) {
   .content {
-    min-height: calc(100vh - 80px);
+    min-height: calc(70vh);
   }
 }

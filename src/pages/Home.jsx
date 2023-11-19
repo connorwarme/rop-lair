@@ -23,9 +23,8 @@ const Home = ({ setBg }) => {
 
   setBg(mainBgImg)
 
-  const isLoadingFake = true
   return (
-    <>
+    <div className='homeDiv'>
       <div className="home-container">
         <div className="home-content">
           <div className="title-container">
@@ -36,13 +35,13 @@ const Home = ({ setBg }) => {
               <h1 className="title">Fan Lair</h1>
             </div>
           </div>
-          { isLoadingFake && (
+          { isLoading && (
             <div className='spinner-loading-container'>
               <img src={custom} />
               <p>Content is loading.</p>
             </div> 
           )}
-          { (!isLoadingFake && data) && (
+          { (!isLoading && data) && (
             <>
             { data.posts && (
               <>
@@ -57,7 +56,7 @@ const Home = ({ setBg }) => {
             )}
             </>
           )}
-          { (!isLoadingFake && error) && (
+          { (!isLoading && error) && (
             <>
               <div className="errors-container">
                 <h4>Error Loading Posts</h4>
@@ -67,7 +66,7 @@ const Home = ({ setBg }) => {
           )}
         </div>
       </div>
-    </>
+    </div>
   )
 }
  

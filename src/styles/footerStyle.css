@@ -2,6 +2,7 @@
   background-color: rgba(229, 229, 229, 0.5); 
   backdrop-filter: blur(1px);
   -webkit-backdrop-filter: blur(1px);
+  align-self: flex-end;
 }
 .footer-container .back-container {
   width: 100vw;

@@ -4,7 +4,7 @@
   border: 1px solid var(--main-blue-dark);
   border-radius: 10px;
   background-color: rgba(229, 229, 229, 0.7);
-  box-shadow: 0 0 10px 0.5px var(--main-blue-dark);
+  box-shadow: 0 0 3px 0.5px var(--main-blue-dark);
 }
 .post-title-container  {
   display: flex;

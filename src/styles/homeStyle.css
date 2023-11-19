@@ -48,10 +48,10 @@
   margin: 0;
 }
 .spinner-loading-container {
-  margin: 1rem;
+  margin: auto;
   position: relative;
   background-color: rgba(229, 229, 229, 0.5);
-  padding: 2rem 0 1rem 0;
+  padding: 2rem 4rem;
   border-radius: 10px;
 }
 .spinner-loading-container > img {

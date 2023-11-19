@@ -65,6 +65,8 @@
 }
 .profile-posts-container .spinner-loading-container {
   padding: 2rem 4rem 1.5rem 4rem;
+  border: 1px solid var(--main-blue-dark);
+  box-shadow: 0 0 3px 0.5px var(--main-blue-dark);
 }
 .profile-posts-container .errors-container {
   max-width: 288px;
@@ -86,11 +88,18 @@
   .profile-content .about-me-container { 
     margin: 0.5rem 2.5rem;
   }
+  .profile-posts-container .spinner-loading-container {
+    border-width: 3px;
+  }
 }
 @media screen and (min-width: 1000px) { 
   .profileDiv {
     justify-self: start;
     margin-left: 2.5vw;
+    min-width: 40vw;
+  }
+  .profileDiv .spinner-loading-container {
+    margin: auto;
   }
   .profile-content {
     display: grid; 
@@ -122,7 +131,6 @@
     justify-self: center;
   }
   .spinner-loading-container {
-    margin: 3rem;
     align-self: flex-start;
   }
 }

@@ -64,7 +64,7 @@ const OtherProfile = () => {
   }
 
   return ( 
-    <>
+    <div className="profileDiv">
       { isLoading && (
         <>
           <div className='spinner-loading-container'>
@@ -110,7 +110,7 @@ const OtherProfile = () => {
           { data && data.profile && <FriendList username={data.profile.first_name} listId={data.profile.friend_list} makeHeader={makeHeader} setLoading={setIsLoading} userObject={userObject} setList={setList} /> }
         </>
       )}
-    </> 
+    </div> 
   );
 }
  

@@ -23,7 +23,7 @@ const Users = () => {
     newObj.friend_list = array
     setUserObject(newObj)
   }
-
+  
   return ( 
     <>
       { isLoading && (

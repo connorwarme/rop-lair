@@ -1,11 +1,15 @@
 .user-list-container {
-  margin: 0;
-  padding: 1rem 0;
+  margin: auto 1rem;
+  padding: 1rem 0 0 0;
+  background-color: rgba(229, 229, 229, 0.7);
+  border-radius: 10px;
+  box-shadow: 0 0 3px 1px var(--main-blue-dark);
 }
 .user-list-container > h1 {
   margin-top: 0;
   font-family: var(--font-header);
   font-size: 2.75rem;
+  text-decoration: 2px underline;
 }
 .userUnit-container {
   display: grid;
@@ -50,11 +54,11 @@
   margin-right: 0;
 }
 .loading-page {
-  margin-top: 0;
+  margin: auto;
   padding-top: 1rem;
 }
 .userUnit-container:nth-child(odd) {
-  background-color: var(--main-bg-color);
+  background-color: rgba(229, 229, 229, 0.9);
 }
 @media screen and (min-width: 464px) {
   .user-list-container {
@@ -62,6 +66,7 @@
     max-width: 600px;
     justify-self: center;
     align-self: start;
+    margin: auto;
   }
   .userUnit-container {
     padding-left: 2rem;

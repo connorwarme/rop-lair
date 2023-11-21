@@ -4,9 +4,10 @@ import useFetch from "../hooks/useFetch";
 import UserUnit from "../components/UserUnit";
 import errorIcon from "../images/icons/error.svg"
 import custom from "../images/icons/custom2.svg"
+import elves from "../images/gallery/wp-elves.jpg"
 import "../styles/userListStyle.css"
 
-const Users = () => {
+const Users = ({ setBg }) => {
 
   const { userObject, setUserObject, access } = useContext(myContext)
 
@@ -23,6 +24,7 @@ const Users = () => {
     newObj.friend_list = array
     setUserObject(newObj)
   }
+  setBg(elves)
   
   return ( 
     <>

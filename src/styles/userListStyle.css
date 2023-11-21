@@ -6,7 +6,7 @@
   box-shadow: 0 0 3px 1px var(--main-blue-dark);
 }
 .user-list-container > h1 {
-  margin-top: 0;
+  margin: 0 0 1rem 0;
   font-family: var(--font-header);
   font-size: 2.75rem;
   text-decoration: 2px underline;
@@ -49,6 +49,8 @@
 .userUnit-container .add-friend-container {
   justify-content: center;
   align-items: center;
+  box-shadow: none;
+  background-color: transparent;
 }
 .userUnit-container .friend-status {
   margin-right: 0;

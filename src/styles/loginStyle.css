@@ -189,6 +189,7 @@
     width: fit-content;
     border-radius: 10px; 
     box-shadow: 0 0 0.1rem 1px;
+    margin: 5vh 0;
   }
   .login-container .title-container {
     max-width: 500px;

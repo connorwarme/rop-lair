@@ -27,7 +27,7 @@ const Users = ({ setBg }) => {
   setBg(elves)
   
   return ( 
-    <>
+    <div className="userlistDiv">
       { isLoading && (
         <div className='spinner-loading-container'>
               <img src={custom} />
@@ -58,7 +58,7 @@ const Users = ({ setBg }) => {
           </div> 
         </>
         ) }
-    </>
+    </div>
    )
 }
  

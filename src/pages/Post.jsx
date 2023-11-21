@@ -142,13 +142,15 @@ const Post = ({ setBg }) => {
         )}
         { !edit && !loading && (
           <div className="post-detail-content">
-          <div className="title">{decodeEscapedData(post.title)}</div>
-          <div className="author">
-            { post.author_id != "" && <Link className='author-link' to={`/profile/${post.author_id}`}>{decodeEscapedData(post.author)}</Link> }
-            { post.author_id == "" && <p className='author-link'>{decodeEscapedData(post.author)}</p>}
+          <div className="post-detail-body">
+            <div className="title">{decodeEscapedData(post.title)}</div>
+            <div className="author">
+              { post.author_id != "" && <Link className='author-link' to={`/profile/${post.author_id}`}>{decodeEscapedData(post.author)}</Link> }
+              { post.author_id == "" && <p className='author-link'>{decodeEscapedData(post.author)}</p>}
+            </div>
+            { photo && <img src={photo} /> }
+            <div className="text">{decodeEscapedData(post.content)}</div>
           </div>
-          { photo && <img src={photo} /> }
-          <div className="text">{decodeEscapedData(post.content)}</div>
           <div className="likes">
             { userObject && <Like id={id} likes={post.likes} user={userObject} setLikes={updateLikes} makeHeader={makeHeader} /> }
           </div>

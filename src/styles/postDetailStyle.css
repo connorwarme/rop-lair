@@ -1,3 +1,6 @@
+.post-detail-content {
+  background-color: rgba(229, 229, 229, 0.7);
+}
 .post-detail-content .title {
   padding-top: 0.5rem;
   margin: 0 0.5rem;
@@ -41,6 +44,10 @@
   }
 }
 @media screen and (min-width: 464px) {
+  .postDetailDiv {
+    display: grid;
+    margin: 5vh 0;
+  }
   .post-detail-container {
     align-self: flex-start;
   }

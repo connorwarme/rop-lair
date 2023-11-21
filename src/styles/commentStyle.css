@@ -21,6 +21,12 @@
     box-shadow: 0 0 3px var(--main-blue-dark);
   }
 }
+.comment-container {
+  transition: all 150ms ease-in-out;
+  &:hover {
+    background-color: rgba(229, 229, 229, 0.7);
+  }
+}
 .comment-container,
 .add-comment-content {
   border: 2px solid var(--main-gold);

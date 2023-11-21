@@ -9,9 +9,10 @@ import AddComment from '../components/AddComment';
 import useAxios from '../hooks/useAxios';
 import decodeEscapedData from '../utility/escape';
 import custom from "../images/icons/custom2.svg"
+import bgPhoto from "../images/gallery/wallpaper-goodvsevil.jpg"
 import "../styles/postDetailStyle.css"
 
-const Post = () => {
+const Post = ({ setBg }) => {
   const { id } = useParams() 
   const location = useLocation()
   const { userObject, access, makeHeader } = useContext(myContext)
@@ -33,6 +34,7 @@ const Post = () => {
   const [showComments, setShowComments] = useState(false)
   const [loading, setLoading] = useState(true)
 
+  setBg(bgPhoto)
   // need to run a check, once, on load
   // to see if value in location state or not
   useEffect(() => {
@@ -128,7 +130,7 @@ const Post = () => {
   }
 
   return ( 
-    <>
+    <div className='postDetailDiv'>
       <div className="post-detail-container">
         { !edit && loading && (
           <>
@@ -187,7 +189,7 @@ const Post = () => {
           <ChangePost url={"http://localhost:3000/editpost/"+id}  post={post} id={id} edit={setEdit} save={setPost} savePhoto={setPhoto} currentPhoto={getCurrentPhoto} />
         )}
       </div>
-    </>
+    </div>
    );
 }
  

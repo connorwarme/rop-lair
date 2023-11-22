@@ -54,11 +54,15 @@
   margin: 0.5rem;
 }
 .post-container .like-container {
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
+  /* border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px; */
 }
 .post-container .post-author a:hover {
   color: var(--main-gold);
+}
+.post-container .comments-container {
+  border: none;
+  padding: 0.5rem;
 }
 @media screen and (min-width: 464px) {
   .post-container {

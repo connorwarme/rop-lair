@@ -45,7 +45,7 @@ const Home = ({ setBg }) => {
             <>
             { data.posts && (
               <>
-                { data.posts.map(post => <PostUnit key={post._id} user={userObject} post={post._doc} photo={post.photoImagePath ? post.photoImagePath : false} /> )}
+                { data.posts.map(post => <PostUnit key={post._id} user={userObject} post={post._doc} photo={post.photoImagePath ? post.photoImagePath : false} makeHeader={makeHeader} /> )}
               </>
             )}
             { data.errors && (

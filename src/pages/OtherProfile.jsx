@@ -89,7 +89,7 @@ const OtherProfile = () => {
               { data.posts && data.posts.length == 0 && <p>{decodeEscapedData(data.profile.first_name)} has yet to post content.</p>}
               { data.posts && (
                 <>
-                  { data.posts.map(post => <PostUnit key={post._id} user={userObject} post={post._doc} photo={post.photoImagePath ? post.photoImagePath : false} /> )}
+                  { data.posts.map(post => <PostUnit key={post._id} user={userObject} post={post._doc} photo={post.photoImagePath ? post.photoImagePath : false} makeHeader={makeHeader}/> )}
                 </>
               )}
               { data.errors && (

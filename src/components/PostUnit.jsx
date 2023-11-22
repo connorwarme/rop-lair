@@ -3,12 +3,15 @@
 import { useState, useEffect } from "react"
 import { Link, useLocation } from "react-router-dom"
 import Like from "./Like"
+import Comment from "./Comment"
+import AddComment from "./AddComment"
 import decodeEscapedData from "../utility/escape"
 import "../styles/postUnitStyle.css"
 
-const PostUnit = ( { user, post, author, photo }) => {
+const PostUnit = ( { user, post, author, photo, makeHeader }) => {
   const [postUnit, setPost] = useState(null)
   const [likesArr, setLikesArr] = useState([])
+  const [showComments, setShowComments] = useState(false)
 
   // const location = useLocation()
 
@@ -21,6 +24,14 @@ const PostUnit = ( { user, post, author, photo }) => {
 
   const handleClick = () => {
     window.scrollTo(0, 0)
+  }
+  const updateComments = (array) => {
+    let newObj = {...post}
+    newObj.comments = array
+    setPost(newObj)
+  }
+  const handleShowComments = () => {
+    setShowComments(!showComments)
   }
 
   return ( 
@@ -37,6 +48,21 @@ const PostUnit = ( { user, post, author, photo }) => {
         </Link>
           { (!author && post.author) && <p className="post-author"><Link to={`/profile/${post.author._id}`} onClick={handleClick}>{decodeEscapedData(post.author.name)}</Link></p> }
           { user && <Like id={post._id} likes={likesArr} setLikes={setLikesArr} user={user} /> }
+          <div className='comments-container'>
+            { (post && post.comments.length > 0) && (
+              <>
+                <button onClick={handleShowComments}>{ showComments ? 'Hide Comments' : `View Comments (${post.comments.length})` }</button>
+                { showComments && (
+                  <div className="comments">
+                  {post.comments.map(comment => {
+                    return <Comment post={post._id} commentObj={comment} user={user} key={comment._id} setComments={updateComments} makeHeader={makeHeader} />
+                  })}
+                  </div> 
+                )}
+              </>
+            )}
+            <AddComment id={post._id} setComments={updateComments} makeHeader={makeHeader} />
+          </div>
       </div>
     </>
    );

@@ -88,6 +88,10 @@
   margin: 1rem auto;
   padding: 0 0.5rem;
 }
+.friend-list-container .add-friend-container {
+  box-shadow: none;
+  background-color: transparent;
+}
 @media screen and (min-width: 464px) {
   .profile-content .add-friend-container {
     width: 65vw;

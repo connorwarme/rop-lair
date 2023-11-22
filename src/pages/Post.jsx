@@ -157,7 +157,7 @@ const Post = ({ setBg }) => {
           <div className='comments-container'>
             { (post && post.comments.length > 0) && (
               <>
-                <button onClick={handleShowComments}>{ showComments ? 'Hide Comments' : 'Show Comments' }</button>
+                <button onClick={handleShowComments}>{ showComments ? 'Hide Comments' : `View Comments (${post.comments.length})` }</button>
                 { showComments && (
                   <div className="comments">
                   {post.comments.map(comment => {

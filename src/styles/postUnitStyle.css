@@ -1,6 +1,6 @@
 .post-container {
   width: calc(100vw - (2rem + 2px));
-  margin: 0.5rem auto;
+  margin: 0.75rem auto;
   border: 1px solid var(--main-blue-dark);
   border-radius: 10px;
   background-color: rgba(229, 229, 229, 0.7);
@@ -66,12 +66,14 @@
 }
 @media screen and (min-width: 464px) {
   .post-container {
+    margin: 1rem auto;
     border-width: 3px;
     max-width: 80vw;
   }
 }
 @media screen and (min-width: 1000px) { 
   .post-container {
+    margin: 1.5rem auto;
     width: 60vw;
     max-width: 750px;
   }

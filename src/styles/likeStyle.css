@@ -49,3 +49,11 @@
     margin-right: 1rem;
   }
 }
+@media screen and (min-width: 1000px) {
+  .like-container p {
+    font-size: 0.85rem;
+  }
+  .like-btn-container {
+    margin-right: 1rem;
+  }
+}

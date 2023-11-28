@@ -81,6 +81,9 @@
 }
 .friend-list-container .spinner-loading-container {
   margin: 1.5rem;
+  box-shadow: none;
+  border: none;
+  background-color: rgba(229, 229, 229, 0.7);
 }
 .friend-list-container .spinner-loading-container > img {
   height: 35px;

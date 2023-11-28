@@ -3,7 +3,6 @@ import { Route, Routes } from "react-router-dom"
 import Nav from './components/Nav'
 import Home from './pages/Home'
 import Login from './pages/Login'
-import SignUp from './pages/SignUp'
 import Users from './pages/Users'
 import Post from './pages/Post'
 import Temp from './components/Temp'
@@ -38,7 +37,6 @@ export default function App() {
           <Route path='/' element={ <Home setBg={setBgPhoto} /> } />
           <Route path='/auth/success' element={ <Temp /> } />
           <Route path='/login' element={ <Login setBg={setBgPhoto} /> } />
-          <Route path='/signup' element={ <SignUp /> } />
           <Route path='/users' element={ <Users setBg={setBgPhoto} />} />
           <Route path='/profile' element={ <UserProfile setBg={setBgPhoto} /> } />
           <Route path='/profile/:id' element={ <OtherProfile setBg={setBgPhoto} /> } />

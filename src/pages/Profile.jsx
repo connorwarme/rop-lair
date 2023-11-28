@@ -45,29 +45,8 @@ const Profile = () => {
     setUserObject(newObj)
   }
 
-  // needs edit functionality ->
-  // what are they allowed to change?
-  // useEffect(() => {
-  //   if (data != null) {
-  //     if (data.profile._id === data.user._id) {
-  //       return setFriend(false)
-  //     } else {
-  //       // run function to check friend status
-  //       const status = determineFriendship(data.profile.friend_list, data.user._id)
-  //       console.log(status)
-  //       setFriend(status)
-  //     }
-  //   }
-  // }, [ data ])
-  // needs add friend functionality
-  // have to see if current user is already friends w/ profile
-  // and/or see if they are pending friends
-  // and/or see if they aren't friends (and have an "add friend" button)
-
   // still need to add favorites model and all that to the backend
-  //
-  // https://lh3.googleusercontent.com/a/AAcHTtc8Z5E-4IajyF2xvjTqncqYs3ydHQ-tO2oot6cbRg
-  //
+
   return ( 
     <>
       <div className="profile-container">

@@ -24,8 +24,8 @@
   border-radius: 10%;
   padding: 0 1.5rem;
   margin: 1rem auto;
-  backdrop-filter: blur(0.25rem);
-  -webkit-backdrop-filter: blur(0.25rem);
+  /* backdrop-filter: blur(0.25rem);
+  -webkit-backdrop-filter: blur(0.25rem); */
   display: flex;
   justify-content: center;
   align-items: center;

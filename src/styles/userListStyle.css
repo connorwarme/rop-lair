@@ -42,6 +42,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  object-fit: cover;
 }
 .userUnit-content .account-icon {
   filter: var(--filter-blue);

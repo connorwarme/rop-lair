@@ -4,7 +4,7 @@
   align-items: center;
   background-color: rgba(229, 229, 229, 0.7);
   border-radius: 3px;
-  box-shadow: 0 0 3px 1px var(--main-blue-dark);
+  box-shadow: 0 0 3px 2px var(--main-blue-dark);
 }
 .add-friend-container button {
   font-family: var(--font-body);
@@ -85,8 +85,9 @@
   flex-grow: 1;
 }
 .profile-content .add-friend-container {
-  margin: 1rem auto;
-  padding: 0 0.5rem;
+  margin: 1rem;
+  padding: 0 1rem;
+  border-radius: 5px;
 }
 .friend-list-container .add-friend-container {
   box-shadow: none;
@@ -94,8 +95,14 @@
 }
 @media screen and (min-width: 464px) {
   .profile-content .add-friend-container {
-    width: 65vw;
-    max-width: 300px;
     padding: 0 2rem;
+    margin: 1rem 2.5rem;
+    border-radius: 10px;
+  }
+}
+@media screen and (min-width: 1000px) { 
+  .profile-content .add-friend-container {
+    width: 40vw;
+    max-width: 450px;
   }
 }

@@ -24,7 +24,7 @@
   margin: 0.5rem 1rem;
   padding: 0.5rem;
   border-radius: 5px;
-  box-shadow: 0 0 10px 1px var(--main-blue-dark);
+  box-shadow: 0 0 3px 2px var(--main-blue-dark);
 }
 .profile-content .about-me-container > h4 {
   font-family: var(--font-header);
@@ -73,9 +73,8 @@
 .profile-posts-container > p {
   padding: 1rem 2rem;
   margin: 1rem;
-  border: 1px solid var(--main-blue-dark);
   border-radius: 10px;
-  box-shadow: 0 0 10px 0.5px var(--main-blue-dark);
+  box-shadow: 0 0 3px 2px var(--main-blue-dark);
   background-color: rgba(229, 229, 229, 0.7);
 }
 .profile-posts-container .errors-container {
@@ -97,16 +96,16 @@
   }
   .profile-content .about-me-container {
     border-radius: 10px;
-    border: 3px solid var(--main-blue-dark);
-    box-shadow: 0 0 3px 1px;
   }
   .profile-content .about-me-container,
   .profile-posts-container > p { 
     margin: 0.5rem 2.5rem;
   }
-  .profile-posts-container .spinner-loading-container,
-  .profile-posts-container > p {
+  .profile-posts-container .spinner-loading-container {
     border-width: 3px;
+  }
+  .profileDiv .friend-list-container {
+    justify-self: center;
   }
 }
 @media screen and (min-width: 1000px) { 

@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { saveObject } from "../utility/ls";
 import { myContext } from '../contexts/Context'
+import custom from "../images/icons/custom2.svg"
 
 // maybe this screen just shows a loading / spin wheel...then navigates to home
 
@@ -28,7 +29,8 @@ const Temp = () => {
         saveObject(res.data.accessToken, "access")
         // navigate to home page
         // do i need to pass through any state?
-        navigate("/")
+        // just commented 11/23 - needs to go back after styling page
+        // navigate("/")
       }
     })
     .catch(err => {
@@ -40,7 +42,13 @@ const Temp = () => {
 
   return ( 
     <>
-      <h1>Temp Auth Success.. not sure what to do. </h1>
+    <div className="success-container">
+      <div className='spinner-loading-container'>
+        <img src={custom} />  
+        <h1>Login successful, redirecting...</h1>
+      </div>
+    </div>
+      
     </>
    );
 }

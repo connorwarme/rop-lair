@@ -68,6 +68,16 @@
 .spinner-loading-container > img {
   height: 60px;
 }
+.success-container {
+  margin: 1rem;
+}
+.success-container .spinner-loading-container {
+  padding: 1rem 0 0.5rem 0;
+}
+.success-container h1 {
+  padding: 0.5rem 1rem;
+  font-size: 1.5rem;
+}
 @media screen and (min-width: 700px) {
   .home-content .image-blur-container {
     border-top: 0.75rem solid var(--main-gold);
@@ -80,6 +90,12 @@
   .home-content .title-blur-container > h1 {
     font-size: 3.2rem;
     margin: 0.5rem 0 1rem 0;
+  }
+  .success-container {
+    margin: 10vh auto;
+  }
+  .success-container .spinner-loading-container {
+    padding: 1rem 2rem;
   }
 }
 @media screen and (min-width: 1000px) {

@@ -6,10 +6,12 @@
   padding-top: 1rem;
 }
 .profile-content .profile-picture {
-  height: 200px;
+  height: auto;
+  width: 90vw;
   object-fit: cover;
   border-radius: 10px;
   box-shadow: 0 0 10px 1px var(--main-blue-dark);
+  background-color: rgba(229, 229, 229, 0.7);
 }
 .profile-content .profile-title {
   margin: 0.5rem;
@@ -68,6 +70,14 @@
   border: 1px solid var(--main-blue-dark);
   box-shadow: 0 0 3px 0.5px var(--main-blue-dark);
 }
+.profile-posts-container > p {
+  padding: 1rem 2rem;
+  margin: 1rem;
+  border: 1px solid var(--main-blue-dark);
+  border-radius: 10px;
+  box-shadow: 0 0 10px 0.5px var(--main-blue-dark);
+  background-color: rgba(229, 229, 229, 0.7);
+}
 .profile-posts-container .errors-container {
   max-width: 288px;
   padding: 1rem 3rem 2rem 3rem;
@@ -79,16 +89,23 @@
 }
 @media screen and (min-width: 464px) { 
   .profile-content .profile-picture {
-    height: 300px;
+    max-width: 700px;
   }
   .profile-content-container {
     max-width: 700px;
     justify-self: center;
   }
-  .profile-content .about-me-container { 
+  .profile-content .about-me-container {
+    border-radius: 10px;
+    border: 3px solid var(--main-blue-dark);
+    box-shadow: 0 0 3px 1px;
+  }
+  .profile-content .about-me-container,
+  .profile-posts-container > p { 
     margin: 0.5rem 2.5rem;
   }
-  .profile-posts-container .spinner-loading-container {
+  .profile-posts-container .spinner-loading-container,
+  .profile-posts-container > p {
     border-width: 3px;
   }
 }
@@ -105,18 +122,18 @@
     display: grid; 
     place-items: center;
   }
-  .profile-content .profile-picture {
-    height: 400px;
-  }
   .profile-content .profile-title {
     margin: 1rem;
   }
-  .profile-content .about-me-container {
+  .profile-content .about-me-container,
+  .profile-posts-container > p  {
     margin-bottom: 0;
-    min-height: 150px;
-    width: 33vw;
+    padding: 0.75rem 2rem;
+    width: 40vw;
     max-width: 550px;
-    border-radius: 10px;
+  }
+  .profile-content .about-me-container {
+    min-height: 150px;
   }
   .profile-content .add-friend-container {
   }

@@ -174,10 +174,6 @@ const ChangeProfile = ({ user, setEdit, makeHeader, setUserObject, setUserPhoto,
               </div> 
             </div>
           )}
-          {/* <div className="form-input">
-            <label htmlFor="picture">Profile Picture</label>
-            <input type="text" id="picture" className="picture" value={picture} onChange={(e) => {handleChange(e, setPicture)}}/>
-          </div> */}
           <div className="form-input">
             <fieldset>
               <legend>Select an option:</legend>
@@ -214,13 +210,6 @@ const ChangeProfile = ({ user, setEdit, makeHeader, setUserObject, setUserPhoto,
               </div>
             </fieldset>
           </div> 
-          { preview && (
-            <>
-              <div className="photo-preview">
-                <img src={preview} alt="Photo" height={'250px'}/>
-              </div>
-            </>
-          )}
           <button type="button" onClick={handleCancelEdit}>Cancel</button>
           <button type="submit">Save</button>
           { errors && (

@@ -18,7 +18,7 @@ const Profile = ({ userObject, profile, photoPath, setList }) => {
           <h1 className="profile-title">{decodeEscapedData(profile.name)}</h1>
           <div className="about-me-container">
             <h4>About Me:</h4>
-            { profile.bio && <p>{profile.bio}</p> }
+            { profile.bio && <p>{decodeEscapedData(profile.bio)}</p> }
             { !profile.bio && <p>no content</p> }
           </div>
           { (profile._id != userObject._id) && <AddFriend list={userObject.friend_list} setList={setList} profileId={profile._id} full={true}/> }

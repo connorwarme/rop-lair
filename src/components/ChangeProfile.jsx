@@ -150,7 +150,7 @@ const ChangeProfile = ({ user, setEdit, makeHeader, setUserObject, setUserPhoto,
   return ( 
     <>
       <div className="edit-profile-container">
-        <h2 className="edit-profile-mode">Edit Profile Mode</h2>
+        <h2 className="edit-profile-mode">Edit Profile</h2>
         <form onSubmit={handleSaveEdit}>
         <div className="form-input">
             <label htmlFor="first">First Name</label>

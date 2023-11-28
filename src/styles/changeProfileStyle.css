@@ -1,5 +1,12 @@
 .edit-profile-container {
-  padding: 0.5rem 1rem;
+  padding: 0 1rem;
+  background-color: rgba(229, 229, 229, 0.5);
+  width: calc(100vw - 2rem);
+}
+.edit-profile-container .edit-profile-mode {
+  text-transform: uppercase;
+  font-family: var(--font-header);
+  letter-spacing: 0.05rem;
 }
 .edit-profile-container .form-input {
   margin: 0.5rem 0;
@@ -140,11 +147,14 @@
 @media screen and (min-width: 464px) {
   .edit-profile-container {
     width: 85vw;
-    max-width: 500px;
+    max-width: 650px;
+    border-radius: 10px;
+    margin: 1rem 0 10vh 0;
+    box-shadow: 0 0 3px 2px var(--main-blue-dark);
   }
   .edit-profile-container #image-preview > img {
-    width: 85vw;
-    max-width: 500px;
+    width: 80vw;
+    max-width: 550px;
   }
 }
 @media screen and (min-width: 1000px) {

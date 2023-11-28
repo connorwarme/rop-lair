@@ -45,7 +45,6 @@
 }
 .userUnit-content .account-icon {
   filter: var(--filter-blue);
-  transition: all 150ms ease-in-out;
 }
 .userUnit-container > a:hover .account-icon {
   filter: var(--filter-gold);
@@ -79,7 +78,7 @@
   }
   .userUnit-content > h4 {
     font-size: 1.15rem;
-    margin: 0.75rem;
+    margin: 1.25rem 0.75rem;
   }
 }
 @media screen and (min-width: 1000px) {

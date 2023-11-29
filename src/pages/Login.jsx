@@ -115,7 +115,47 @@ const Login = () => {
   const facebook = () => {
     window.open('http://localhost:3000/auth/facebook', "_self")
   }
-
+  const handleGuest = () => {
+    const url = 'http://localhost:3000/auth/guest'
+    const data = {
+      email: 'filler',
+      password: 'filler',
+    }
+    fetch(url, {
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json"
+        },
+      body: JSON.stringify(data)
+    })
+    .then(response => {
+      if (!response.ok) {
+        const error = new Error()
+        setLoading(false)
+        setError('There was a problem logging in, please try again.')
+        error.status = 500
+      }
+      return response.json({ errors: error })
+    })
+    .then(intel => {
+      // this is giving me user object, access token
+      console.log(intel)
+      if (intel.errors) {
+        console.log(intel.errors)
+      } else {
+        // save token to local storage
+        saveObject(intel.accessToken, "access")
+        // set user & set token
+        setUserObject(intel.user)
+        setAccess(intel.accessToken)
+        // route user to home page w/ data
+        navigate('/', { state: intel })
+      }
+    })
+    .catch(err => {
+      console.log(err)
+    })
+  }
   // oauth login
   // not using currently (7/13)
   const handleOAuth = (platform) => {
@@ -237,7 +277,7 @@ const Login = () => {
                   { oauthError && <div><img src={errorIcon}/><p>{oauthError}</p></div>}
                 </div>
                 <div className="guest-login">
-                  <button onClick={() => console.log('login as guest')}>Continue as Guest</button>
+                  <button onClick={handleGuest}>Continue as Guest</button>
                 </div>
                 <div className="or-divider">
                   <h3>OR</h3>

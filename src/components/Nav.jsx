@@ -22,7 +22,7 @@ const Nav = () => {
   // then need to remove tokens from local storage
   
   const logout = () => {
-    axios.post("http://localhost:3000/auth/logout", { headers: makeHeader() })
+    axios.post("https://rings-of-power.fly.dev/auth/logout", { headers: makeHeader() })
       .then(res => {
         if (res.data) {
           clearStorage("access")

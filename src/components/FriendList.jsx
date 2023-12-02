@@ -8,7 +8,7 @@ import "../styles/friendListStyle.css"
 const FriendList = ({ username, listId, makeHeader, setLoading, userObject, setList }) => {
 
   // needs to be updated to friendlist/listId._id
-  const url = `http://localhost:3000/friendlist/${'648f856814238c73acf5de51'}`
+  const url = `https://rings-of-power.fly.dev/friendlist/${'648f856814238c73acf5de51'}`
   const auth = { headers: makeHeader()}
   const { data, isLoading, error } = useAxios(url, auth)
 

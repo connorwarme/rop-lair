@@ -51,7 +51,7 @@ const Like = ({ id, likes, setLikes, user }) => {
   }, [ likes ])
 
   const handleLike = () => {
-    const url = "http://localhost:3000/likepost/" + id
+    const url = "https://rings-of-power.fly.dev/likepost/" + id
     axios.post(url, {}, { headers: makeHeader() })
     .then(res => {
       if (res.status === 200 && res.data.post) {
@@ -66,7 +66,7 @@ const Like = ({ id, likes, setLikes, user }) => {
 
   }
   const handleUnlike = () => {
-    const url = "http://localhost:3000/unlikepost/" + id
+    const url = "https://rings-of-power.fly.dev/unlikepost/" + id
     axios.post(url, {}, { headers: makeHeader() })
     .then(res => {
       if (res.status === 200 && res.data.post) {

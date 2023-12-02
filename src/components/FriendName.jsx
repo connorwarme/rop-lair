@@ -6,7 +6,7 @@ import icon from "../images/icons/account.svg"
 import errorIcon from "../images/icons/error.svg"
 
 const FriendName = ({ userid, makeHeader, setLoading, userObject, setList }) => {
-  const url = `http://localhost:3000/getuser/${userid}`
+  const url = `https://rings-of-power.fly.dev/getuser/${userid}`
   const auth = {
     headers: makeHeader()
   }

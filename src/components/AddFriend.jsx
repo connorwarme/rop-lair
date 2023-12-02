@@ -43,7 +43,7 @@ const AddFriend = ({ list, setList, profileId, full }) => {
 
   const handleMakeRequest = () => {
     // user and profile are not friends, user sends request
-    axios.post("http://localhost:3000/sendrequest", { userid: profileId }, { headers: { "Authorization": `Bearer ${access}` }})
+    axios.post("https://rings-of-power.fly.dev/sendrequest", { userid: profileId }, { headers: { "Authorization": `Bearer ${access}` }})
     .then(res => {
       if (res.status === 200 && res.data.userList) {
         console.log(res.data)
@@ -63,7 +63,7 @@ const AddFriend = ({ list, setList, profileId, full }) => {
 
   const handleDeleteFriend = () => {
     // currently friends, want to remove from friend list
-    axios.post("http://localhost:3000/deletefriend", { userid: profileId }, { headers: { "Authorization": `Bearer ${access}` }})
+    axios.post("https://rings-of-power.fly.dev/deletefriend", { userid: profileId }, { headers: { "Authorization": `Bearer ${access}` }})
     .then(res => {
       console.log(res.data)
       if (res.status === 200 && res.data.userList) {
@@ -82,7 +82,7 @@ const AddFriend = ({ list, setList, profileId, full }) => {
 
   const handleDeletePending = () => {
     // user has sent request, wants to rescind request
-    axios.post("http://localhost:3000/deletefriend", { userid: profileId }, { headers: { "Authorization": `Bearer ${access}` }})
+    axios.post("https://rings-of-power.fly.dev/deletefriend", { userid: profileId }, { headers: { "Authorization": `Bearer ${access}` }})
     .then(res => {
       console.log(res.data)
       if (res.status === 200 && res.data.userList) {
@@ -99,7 +99,7 @@ const AddFriend = ({ list, setList, profileId, full }) => {
 
   const handleAcceptRequest = () => {
     // profile has sent request, user clicks to accept
-    axios.post("http://localhost:3000/acceptrequest", { userid: profileId }, { headers: { "Authorization": `Bearer ${access}` }})
+    axios.post("https://rings-of-power.fly.dev/acceptrequest", { userid: profileId }, { headers: { "Authorization": `Bearer ${access}` }})
     .then(res => {
       console.log(res.data)
       if (res.status === 200 && res.data.userList) {
@@ -115,7 +115,7 @@ const AddFriend = ({ list, setList, profileId, full }) => {
   }
   const handleDeleteRequest = () => {
     // profile has sent request, user clicks to ignore
-    axios.post("http://localhost:3000/deletefriend", { userid: profileId }, { headers: { "Authorization": `Bearer ${access}` }})
+    axios.post("https://rings-of-power.fly.dev/deletefriend", { userid: profileId }, { headers: { "Authorization": `Bearer ${access}` }})
     .then(res => {
       console.log(res.data)
       if (res.status === 200 && res.data.userList) {

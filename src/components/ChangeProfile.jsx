@@ -122,7 +122,7 @@ const ChangeProfile = ({ user, setEdit, makeHeader, setUserObject, setUserPhoto,
       setPhotoError('Please upload a new photo file.')
       return
     }
-    const url = "http://localhost:3000/profile/update"
+    const url = "https://rings-of-power.fly.dev/profile/update"
     const profile = getState()
     axios.post(url, profile, { headers: makeHeader() })
     .then(res => {

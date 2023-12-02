@@ -14,7 +14,7 @@ const AddComment = ({ id, setComments, makeHeader }) => {
   const handleAddComment = (e) => {
     e.preventDefault()
     // run axios request
-    axios.post("http://localhost:3000/addcomment", { postid: id, content: commentText }, { headers: makeHeader() })
+    axios.post("https://rings-of-power.fly.dev/addcomment", { postid: id, content: commentText }, { headers: makeHeader() })
     .then(res => {
       if (res.status === 200 && res.data.post) {
         setComments(res.data.post.comments)

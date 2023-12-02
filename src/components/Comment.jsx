@@ -14,7 +14,7 @@ const Comment = ({ post, commentObj, user, setComments, makeHeader }) => {
 
   // need an axios request to get comment author from db
   useEffect(() => {
-    axios.get("http://localhost:3000/author/" + commentObj.author, { headers: makeHeader() })
+    axios.get("https://rings-of-power.fly.dev/author/" + commentObj.author, { headers: makeHeader() })
     .then(res => {
       if (res.status === 200 && res.data.author) {
         setAuthor(res.data.author)
@@ -37,7 +37,7 @@ const Comment = ({ post, commentObj, user, setComments, makeHeader }) => {
   }
   const handleSaveEdit = (e) => {
     e.preventDefault()
-    axios.post("http://localhost:3000/editcomment", {
+    axios.post("https://rings-of-power.fly.dev/editcomment", {
       postid: post,
       commentid: commentObj._id,
       content: comment,
@@ -60,7 +60,7 @@ const Comment = ({ post, commentObj, user, setComments, makeHeader }) => {
     setEdit(true)
   }
   const handleDelete = () => {
-    axios.post("http://localhost:3000/deletecomment", {
+    axios.post("https://rings-of-power.fly.dev/deletecomment", {
       postid: post,
       commentid: commentObj._id,
     }, { headers: makeHeader() })

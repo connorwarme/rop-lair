@@ -11,7 +11,7 @@ const Users = ({ setBg }) => {
 
   const { userObject, setUserObject, access } = useContext(myContext)
 
-  const url = 'http://localhost:3000/users/'
+  const url = 'https://rings-of-power.fly.dev/users/'
   const auth = {
     headers: {
       "Authorization": `Bearer ${access}`

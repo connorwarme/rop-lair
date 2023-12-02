@@ -31,7 +31,7 @@ const Login = () => {
   const { setUserObject, setAccess, errorMsg } = useContext(myContext)
   const navigate = useNavigate()
 
-  const url = 'http://localhost:3000/auth/local'
+  const url = 'https://rings-of-power.fly.dev/auth/local'
 
   const getData = () => {
     console.log('get data fired!')
@@ -108,15 +108,15 @@ const Login = () => {
     })
   }
   const google = () => {
-    window.open('http://localhost:3000/auth/google', "_self")
+    window.open('https://rings-of-power.fly.dev/auth/google', "_self")
     // handleOAuth('google')
   }
 
   const facebook = () => {
-    window.open('http://localhost:3000/auth/facebook', "_self")
+    window.open('https://rings-of-power.fly.dev/auth/facebook', "_self")
   }
   const handleGuest = () => {
-    const url = 'http://localhost:3000/auth/guest'
+    const url = 'https://rings-of-power.fly.dev/auth/guest'
     const data = {
       email: 'filler',
       password: 'filler',
@@ -159,7 +159,7 @@ const Login = () => {
   // oauth login
   // not using currently (7/13)
   const handleOAuth = (platform) => {
-    const url = `http://localhost:3000/auth/` + platform
+    const url = `https://rings-of-power.fly.dev/auth/` + platform
     console.log(url)
 
     fetch(url, {

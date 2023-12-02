@@ -58,7 +58,7 @@ const Post = ({ setBg }) => {
       setPhoto(location.state.photoPath)
     } else {
       console.log('axios mode')
-      axios.get("http://localhost:3000/post/" + id, { headers: makeHeader() })
+      axios.get("https://rings-of-power.fly.dev/post/" + id, { headers: makeHeader() })
       .then(res => {
         if (res.status === 200 && res.data) {
           setPost({
@@ -92,7 +92,7 @@ const Post = ({ setBg }) => {
     setEdit(true)
   }
   const handleDelete = () => {
-    const url = "http://localhost:3000/deletepost/" + id
+    const url = "https://rings-of-power.fly.dev/deletepost/" + id
     axios.post(url, {}, { headers: makeHeader() })
     .then(res => {
       console.log(res)
@@ -188,7 +188,7 @@ const Post = ({ setBg }) => {
           </div>
         )}
         { edit && (
-          <ChangePost url={"http://localhost:3000/editpost/"+id}  post={post} id={id} edit={setEdit} save={setPost} savePhoto={setPhoto} currentPhoto={getCurrentPhoto} />
+          <ChangePost url={"https://rings-of-power.fly.dev/editpost/"+id}  post={post} id={id} edit={setEdit} save={setPost} savePhoto={setPhoto} currentPhoto={getCurrentPhoto} />
         )}
       </div>
     </div>

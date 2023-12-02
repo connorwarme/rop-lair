@@ -17,7 +17,7 @@ const Home = ({ setBg }) => {
   const { userObject, access, makeHeader } = useContext(myContext)
   const location = useLocation()
   
-  const url = "http://localhost:3000/posts"
+  const url = "https://rings-of-power.fly.dev/posts"
   const auth = { headers: makeHeader()}
   const { data, isLoading, error } = useAxios(url, auth)
 

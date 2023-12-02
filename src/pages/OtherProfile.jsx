@@ -13,7 +13,7 @@ import "../styles/profileStyle.css"
 
 const OtherProfile = () => {
   const { id } = useParams()
-  const url = 'http://localhost:3000/profile/'
+  const url = 'https://rings-of-power.fly.dev/profile/'
   const [data, setData] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState(false)

@@ -16,7 +16,7 @@ const UserProfile = ({ setBg }) => {
   const [edit, setEdit] = useState(false)
 
   const { userObject, userPhoto, access, setUserObject, setUserPhoto, makeHeader } = useContext(myContext)
-  const url = 'http://localhost:3000/profile/'
+  const url = 'https://rings-of-power.fly.dev/profile/'
   const auth = {
     headers: {
       "Authorization": `Bearer ${access}`

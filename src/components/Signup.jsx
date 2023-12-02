@@ -38,7 +38,7 @@ const SignUp = ({ cancelFn }) => {
     e.preventDefault()
     setLoading(true)
     console.log('submit form')
-    const url = "http://localhost:3000/signup"
+    const url = "https://rings-of-power.fly.dev/signup"
     const account = getState()
     axios.post(url, account)
     .then(res => {

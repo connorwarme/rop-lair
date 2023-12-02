@@ -16,7 +16,7 @@ const Temp = () => {
   const navigate = useNavigate()
 
   useEffect(() => {
-    axios.get("http://localhost:3000/auth/oauth", {
+    axios.get("https://rings-of-power.fly.dev/auth/oauth", {
       withCredentials: true,
     })
     .then(res => {

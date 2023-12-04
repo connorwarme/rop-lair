@@ -6,9 +6,9 @@
   background-color: rgba(229, 229, 229, 0.7);
   box-shadow: 0 0 3px 0.5px var(--main-blue-dark);
   transition: all 150ms ease-in-out;
-  &:hover {
-    background-color: rgba(229, 229, 229, 0.9);
-  }
+}
+.post-container {
+  background-color: rgba(229, 229, 229, 0.9);
 }
 .post-title-container  {
   display: flex;
@@ -52,10 +52,6 @@
 }
 .post-container .post-content-text {
   margin: 0.5rem;
-}
-.post-container .like-container {
-  /* border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px; */
 }
 .post-container .post-author a:hover {
   color: var(--main-gold);

@@ -46,13 +46,13 @@
   border-radius: 5px;
   outline: none;
   transition: all 200ms ease;
-   &:hover {
-    border-color: var(--main-gold);
-   }
-   &:active {
-    transform: scale(0.95);
-    box-shadow: 0 0 3px var(--main-blue-dark);
-   }
+}
+.profile-edit-button:hover {
+  border-color: var(--main-gold);
+}
+.profile-edit-button:active {
+  transform: scale(0.95);
+  box-shadow: 0 0 3px var(--main-blue-dark);  
 }
 .profile-posts-title {
   margin: 0.5rem;
@@ -133,8 +133,6 @@
   }
   .profile-content .about-me-container {
     min-height: 150px;
-  }
-  .profile-content .add-friend-container {
   }
   .profile-posts-container {
     max-width: 800px;

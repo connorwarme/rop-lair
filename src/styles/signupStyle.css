@@ -16,13 +16,13 @@
   border-radius: 21px;
   box-shadow: 2px 2px 1px var(--main-grey);
   transition: all 200ms ease;
-  &:hover {
-    background-color: var(--main-blue-dark);
-    color: var(--main-grey-light);
-    cursor: pointer;
-  }
-  &:active {
-    transform: scale(0.95);
-    box-shadow: 0 0 3px var(--main-blue-dark);
-  }
+}
+.signup-form .button-container label:hover {
+  background-color: var(--main-blue-dark);
+  color: var(--main-grey-light);
+  cursor: pointer
+}
+.signup-form .button-container label:active {
+  transform: scale(0.95);
+  box-shadow: 0 0 3px var(--main-blue-dark);
 }

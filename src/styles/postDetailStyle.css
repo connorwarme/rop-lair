@@ -1,11 +1,11 @@
 .post-detail-content {
   background-color: rgba(229, 229, 229, 0.7);
 }
-.post-detail-body{
+.post-detail-body {
   transition: all 150ms ease-in-out;
-  &:hover {
-    background-color: rgba(229, 229, 229, 0.7);
-  }
+}
+.post-detail-body:hover {
+  background-color: rgba(229, 229, 229, 0.7);
 }
 .post-detail-content .title {
   padding-top: 0.5rem;
@@ -41,13 +41,13 @@
   border-radius: 5px;
   outline: none;
   transition: all 200ms ease;
-  &:hover {
-    border-color: var(--main-gold);
-  }
-  &:active {
-    transform: scale(0.95);
-    box-shadow: 0 0 3px var(--main-blue-dark);
-  }
+}
+.post-detail-content .options-container button:hover {
+  border-color: var(--main-gold);
+}
+.post-detail-content .options-container button:active {
+  transform: scale(0.95);
+  box-shadow: 0 0 3px var(--main-blue-dark);
 }
 @media screen and (min-width: 464px) {
   .postDetailDiv {
@@ -73,4 +73,5 @@
   .post-detail-content {
     width: calc(60vw - (2rem + 10px));
     max-width: 750px;
+  }
 }

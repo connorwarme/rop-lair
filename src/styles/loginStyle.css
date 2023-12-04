@@ -73,10 +73,10 @@
   border-radius: 2rem;
   box-shadow: 0 0 2px var(--main-blue-dark);
   transition: all 100ms ease;
-  &:focus {
-    box-shadow: 0 0 2px var(--main-blue);
-    outline: 1px solid var(--main-blue);
-  }
+}
+.form-group > input:focus {
+  box-shadow: 0 0 2px var(--main-blue);
+  outline: 1px solid var(--main-blue);
 }
 .login-content button {
   font-family: var(--font-body);
@@ -96,14 +96,14 @@
   justify-content: center;
   align-items: center;
   transition: all 200ms ease;
-  &:hover {
-    background-color: var(--main-blue-dark);
-    color: var(--main-text-lite);
-  }
-  &:active {
-    transform: scale(0.95);
-    box-shadow: 0 0 3px var(--main-blue-dark);
-  }
+}
+.login-content button:hover {
+  background-color: var(--main-blue-dark);
+  color: var(--main-text-lite);
+}
+.login-content button:active {
+  transform: scale(0.95);
+  box-shadow: 0 0 3px var(--main-blue-dark);
 }
 .local-login > button {
   padding: 0;
@@ -159,9 +159,10 @@
 .facebook-login > button,
 .google-login > button {
   padding: 0;
-  &:hover img {
-    filter: invert(99%) sepia(0%) saturate(482%) hue-rotate(150deg) brightness(117%) contrast(80%);
-  }
+}
+.facebook-login > button:hover,
+.google-login > button:hover {
+  filter: invert(99%) sepia(0%) saturate(482%) hue-rotate(150deg) brightness(117%) contrast(80%);
 }
 .facebook-login img,
 .google-login img {
@@ -211,8 +212,6 @@
   }
 }
 @media screen and (min-width: 1000px) {
-  .content {
-  }
   .login-container {
     max-width: 500px;
     grid-area: 1/1/2/3;

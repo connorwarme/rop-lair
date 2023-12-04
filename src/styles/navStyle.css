@@ -18,11 +18,11 @@
   padding: 0.25rem 0.5rem;
   list-style: none;
   text-decoration: none;
-  &:hover {
-    cursor: pointer;
-    color: rgb(63, 60, 60);
-    text-decoration: underline;
-  }
+}
+.nav-links a:hover {
+  cursor: pointer;
+  color: rgb(63, 60, 60);
+  text-decoration: underline; 
 }
 .fan-lair.large {
   display: none;
@@ -65,17 +65,17 @@
   display: inline-block;
   margin: 0.25rem;
   transition: transform var(--btn-press) ease-in-out;
-  &:hover {
-    border-color: var(--main-gold);
-    background:
-    conic-gradient(from 90deg at var(--b) var(--b), var(--main-gold) 90deg, var(--main-blue-dark) 0)
-    calc(100% + var(--b)/2) calc(100% + var(--b)/2)/
-    calc(50%  + var(--b))   calc(50%  + var(--b));
-  }
-  &:active {
-    transform: scale(0.95);
-    box-shadow: 0 0 3px var(--dark-bg);
-  }
+}
+.create-post:hover {
+  border-color: var(--main-gold);
+  background:
+  conic-gradient(from 90deg at var(--b) var(--b), var(--main-gold) 90deg, var(--main-blue-dark) 0)
+  calc(100% + var(--b)/2) calc(100% + var(--b)/2)/
+  calc(50%  + var(--b))   calc(50%  + var(--b));
+}
+.create-post:active {
+  transform: scale(0.95);
+  box-shadow: 0 0 3px var(--dark-bg);
 }
 .radius {
   border-radius: 50%;
@@ -86,10 +86,10 @@ a.user {
   margin: 0.25rem;
   border-radius: 50%;
   transition: transform var(--btn-press) ease;
-  &:active {
-    transform: scale(0.95);
-    box-shadow: 0 0 3px var(--dark-bg);
-  }
+}
+a.user:active {
+  transform: scale(0.95);
+  box-shadow: 0 0 3px var(--dark-bg);
 }
 a.user > img {
   height: 40px;
@@ -162,13 +162,13 @@ a.user .user-name {
   align-items: center;
   padding: 2.5px;
   transition: all var(--btn-press) ease;
-  &:hover {
-    background-color: var(--main-gold);
-  }
-  &:active {
-    transform: scale(0.95);
-    box-shadow: 0 0 3px var(--main-blue-dark);
-  }
+}
+.nav-dropdown > button:hover {
+  background-color: var(--main-gold);
+}
+.nav-dropdown > button:active {
+  transform: scale(0.95);
+  box-shadow: 0 0 3px var(--main-blue-dark);
 }
 .nav-dropdown > button > img {
   height: 35px;
@@ -188,7 +188,6 @@ a.user .user-name {
   padding: 0.25rem 0;
   margin-top: 0.15rem;
   border-radius: 3px;
-  /* animation: rotateMenu 400ms ease-in-out forwards; */
 }
 .divider {
   height: 2px;
@@ -207,9 +206,9 @@ a.user .user-name {
   justify-content: flex-start;
   align-items: center;
   padding: 0 1rem;
-  &:hover {
-    background-color: var(--shadow-lite);
-  }
+}
+.nav-dropdown-content div:hover {
+  background-color: var(--shadow-lite);
 }
 .nav-dropdown-content div > img {
   height: 35px;
@@ -291,9 +290,9 @@ a.user .user-name {
   }
   a.user {
     border-radius: 3px;
-    &:active {
-      box-shadow: none;
-    }
+  }
+  a.user:active {
+    box-shadow: none;
   }
   a.user .user-name {
     display: block;

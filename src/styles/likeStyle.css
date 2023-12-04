@@ -25,13 +25,13 @@
   border-radius: 5px;
   outline: none;
   transition: all 200ms ease;
-  &:hover {
-    cursor: pointer;
-    border: 2px solid var(--main-grey-light);
-  }
-  &:active {
-    transform: scale(0.95);
-  }
+}
+.like-container button:hover {
+  cursor: pointer;
+  border: 2px solid var(--main-grey-light);
+}
+.like-container button:active {
+  transform: scale(0.95);
 }
 .like-container button > p {
   color: var(--main-blue-dark);

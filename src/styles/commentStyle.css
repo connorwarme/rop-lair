@@ -13,19 +13,19 @@
   margin: 0.5rem;
   border-radius: 5px;
   transition: all 200ms ease;
-  &:hover {
-    border-color: var(--main-gold);
-  }
-  &:active {
-    transform: scale(0.95);
-    box-shadow: 0 0 3px var(--main-blue-dark);
-  }
+}
+.comments-container button:hover {
+  border-color: var(--main-gold);
+}
+.comments-container button:active {
+  transform: scale(0.95);
+  box-shadow: 0 0 3px var(--main-blue-dark);  
 }
 .comment-container {
   transition: all 150ms ease-in-out;
-  &:hover {
-    background-color: rgba(229, 229, 229, 0.7);
-  }
+}
+.comment-container:hover {
+  background-color: rgba(229, 229, 229, 0.7);
 }
 .comment-container,
 .add-comment-content {
@@ -59,9 +59,10 @@
   margin-top: 0.5rem;
   border: 1px solid var(--main-blue-dark);
   border-radius: 3px;
-  &:focus {
-    outline: 2px solid var(--main-gold);
-  }
+}
+.text-input > input:focus,
+.text-input > textarea:focus {
+  outline: 2px solid var(--main-gold);
 }
 .text-input > textarea {
   resize: none;

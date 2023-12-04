@@ -13,18 +13,18 @@
   font-family: var(--font-header);
   text-decoration: underline;
   transition: all 150ms ease-in-out;
-  &:hover {
-    color: var(--main-grey-light);
-  }
+}
+.footer-container .back-top:hover {
+  color: var(--main-grey-light);
 }
 .footer-container .watch-link {
   margin-left: 0.35rem;
   text-decoration: underline;
   transition: all 150ms ease-in-out;
-  &:hover {
-    cursor: pointer;
-    color: var(--main-grey-light);
-  }
+}
+.footer-container .watch-link:hover {
+  cursor: pointer;
+  color: var(--main-grey-light);
 }
 .footer-container p {
   margin: 0.75rem 0.5rem;
@@ -38,7 +38,6 @@
   margin: .5rem;
   border-radius: 5px;
 }
-
 @keyframes profileImage {
   0% {
     transform: translateY(0px);

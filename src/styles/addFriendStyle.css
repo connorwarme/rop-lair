@@ -20,15 +20,15 @@
   justify-content: center;
   align-items: center;
   max-height: 40px;
-  &:hover {
-    background-color: var(--main-gold);
-    box-shadow: 0 0 3px var(--main-blue-dark);
-  }
-  &:active {
-    transform: scale(0.95);
-    background-color: var(--main-gold);
-    box-shadow: 0 0 3px var(--main-blue-dark);
-  }
+}
+.add-friend-container button:hover {
+  background-color: var(--main-gold);
+  box-shadow: 0 0 3px var(--main-blue-dark);
+}
+.add-friend-container button:active {
+  transform: scale(0.95);
+  background-color: var(--main-gold);
+  box-shadow: 0 0 3px var(--main-blue-dark);
 }
 .delete-icon,
 .cancel-icon,
@@ -54,14 +54,14 @@
 }
 .add-friend-container button.true {
   border: 2px solid var(--main-blue-dark);
-  &:hover {
-    border-color: var(--main-gold);
-    background-color: var(--main-bg-light);
-    box-shadow: none;
-  }
-  &:active {
-    background-color: var(--main-bg-light);
-  }
+}
+.add-friend-container button.true:hover {
+  border-color: var(--main-gold);
+  background-color: var(--main-bg-light);
+  box-shadow: none;
+}
+.add-friend-container button.true:active {
+  background-color: var(--main-bg-light);
 }
 .add-friend-error {
   display: grid;

@@ -8,13 +8,18 @@ import "../styles/profileStyle.css"
 const Profile = ({ userObject, profile, photoPath, setList }) => {
 
   // todo: add favorites content 8/24
+  const stockStyle = {
+    'max-width': '300px',
+    filter: 'invert(14%) sepia(10%) saturate(2929%) hue-rotate(176deg) brightness(96%) contrast(91%)',
+  }
   
   return ( 
     <>            
     { profile && (
       <>
         <div className="profile-content">
-          <img src={photoPath ? photoPath : icon} className="profile-picture" ></img>
+          { photoPath && <img src={photoPath} className="profile-picture" ></img> }
+          { !photoPath && <img src={icon} className="profile-picture" style={stockStyle} ></img> }
           <h1 className="profile-title">{decodeEscapedData(profile.name)}</h1>
           <div className="about-me-container">
             <h4>About Me:</h4>
@@ -26,7 +31,7 @@ const Profile = ({ userObject, profile, photoPath, setList }) => {
       </>
     )}
     </>
-   );
+   )
 }
  
 export default Profile;

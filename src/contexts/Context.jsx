@@ -27,7 +27,7 @@ const Context = (props) => {
     const abortController = new AbortController()
     if (accessToken) {
       setAccess(accessToken)
-      axios.get("http://localhost:3000/auth/user", {
+      axios.get("https://rings-of-power.fly.dev/auth/user", {
         headers: {
           "Authorization": "Bearer "+ accessToken
         }, 

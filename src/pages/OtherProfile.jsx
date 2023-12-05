@@ -8,16 +8,19 @@ import Profile from "../components/Profile";
 import PostUnit from "../components/PostUnit";
 import decodeEscapedData from "../utility/escape";
 import FriendList from "../components/FriendList";
+import background from "../images/gallery/galadriel-warrior.jpg"
 import custom from "../images/icons/custom2.svg"
 import "../styles/profileStyle.css"
 
-const OtherProfile = () => {
+const OtherProfile = ({ setBg }) => {
   const { id } = useParams()
   const url = 'https://rings-of-power.fly.dev/profile/'
   const [data, setData] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState(false)
   const { userObject, setUserObject, makeHeader } = useContext(myContext)
+
+  setBg(background, '52% 15%')
 
   // not sure what to do / how to get the page to update to different profile. 
   useEffect(() => {
@@ -52,7 +55,6 @@ const OtherProfile = () => {
     }, [id, makeHeader] )
   
   // const url = 'http://localhost:3000/profile/' + id
-
   // useFetch line works, but going to shift everything to axios
   // const { data, isLoading, error } = useFetch(url, auth)
   // const { data, isLoading, error } = useAxios(url, auth)

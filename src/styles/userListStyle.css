@@ -23,10 +23,10 @@
 }
 .userUnit-container > a {
   transition: all 150ms ease-in-out;
-  &:hover {
-    color: var(--main-gold);
-    text-decoration: underline;
-  }
+}
+.userUnit-container > a:hover {
+  color: var(--main-gold);
+  text-decoration: underline;
 }
 .userUnit-content {
   display: grid;

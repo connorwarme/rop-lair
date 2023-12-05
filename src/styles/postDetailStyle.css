@@ -15,10 +15,8 @@
   letter-spacing: 0.05rem;
   text-transform: uppercase;
 }
-.post-detail-content .author-link {
-  &:hover {
-    color: var(--main-gold);
-  }
+.post-detail-content .author-link:hover {
+  color: var(--main-gold);
 }
 .post-detail-content img {
   max-height: 50vh;

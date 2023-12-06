@@ -29,7 +29,8 @@ const Context = (props) => {
       setAccess(accessToken)
       axios.get("https://rings-of-power.fly.dev/auth/user", {
         headers: {
-          "Authorization": "Bearer "+ accessToken
+          "Authorization": "Bearer "+ accessToken,
+          "Access-Control-Allow-Origin": "*",
         }, 
         signal: abortController.signal,
       })
@@ -61,6 +62,7 @@ const Context = (props) => {
     return {
       "Content-Type": "application/json",
       "Authorization": `Bearer ${currentAccess}`,
+      "Access-Control-Allow-Origin": "*",
     }
   }
 

@@ -27,7 +27,7 @@ const Nav = () => {
         if (res.data) {
           clearStorage("access")
           // clear session cookie too? (if they logged in via oauth)
-          window.location.href = "/login"
+          window.location.href = "/rop-lair/login"
         }
       })
       .catch(err => {

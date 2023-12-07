@@ -106,7 +106,7 @@ const OtherProfile = ({ setBg }) => {
               </div>
             </>
           )}
-          { data && data.profile && <FriendList username={data.profile.first_name} listId={data.profile.friend_list} makeHeader={makeHeader} setLoading={setIsLoading} userObject={userObject} setList={setList} /> }
+          { data && data.profile && <FriendList username={data.profile.first_name} listId={data.profile.friend_list._id} makeHeader={makeHeader} setLoading={setIsLoading} userObject={userObject} setList={setList} /> }
         </>
       )}
     </div> 

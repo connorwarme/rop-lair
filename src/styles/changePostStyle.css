@@ -1,6 +1,6 @@
 .change-post-container {
   padding: 0.5rem 1rem;
-  background-color: rgba(229, 229, 229, 0.5);
+  background-color: var(--main-grey-fade);
 }
 .change-post-container h2 {
   font-family: var(--font-header);

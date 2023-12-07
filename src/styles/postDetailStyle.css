@@ -1,11 +1,11 @@
 .post-detail-content {
-  background-color: rgba(229, 229, 229, 0.7);
+  background-color: rgba(229, 229, 229, 0.75);
 }
 .post-detail-body {
   transition: all 150ms ease-in-out;
 }
 .post-detail-body:hover {
-  background-color: rgba(229, 229, 229, 0.7);
+  background-color: rgba(229, 229, 229, 0.75);
 }
 .post-detail-content .title {
   padding-top: 0.5rem;

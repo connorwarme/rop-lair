@@ -3,12 +3,9 @@
   margin: 0.75rem auto;
   border: 1px solid var(--main-blue-dark);
   border-radius: 10px;
-  background-color: rgba(229, 229, 229, 0.7);
+  background-color: rgba(229, 229, 229, 0.9);
   box-shadow: 0 0 3px 0.5px var(--main-blue-dark);
   transition: all 150ms ease-in-out;
-}
-.post-container {
-  background-color: rgba(229, 229, 229, 0.9);
 }
 .post-title-container  {
   display: flex;

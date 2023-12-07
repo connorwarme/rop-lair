@@ -23,6 +23,7 @@
   --main-gold: rgb(234, 144, 16);
   --main-grey: rgb(120, 133, 133);
   --main-grey-light: rgb(229, 229, 229);
+  --main-grey-fade: rgba(229, 229, 229, 0.6);
   --main-green: rgb(75, 112, 54);
   --main-blue: rgb(62, 92, 118);
   --main-blue-dark: rgb(29, 45, 68);

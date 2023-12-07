@@ -64,7 +64,7 @@
   filter: var(--filter-blue);
 }
 .friend-list-container .friend-list-content > ul > li:nth-child(even) {
-  background-color: rgba(229, 229, 229, 0.8);
+  background-color: rgba(229, 229, 229, 0.9);
 }
 .friend-error-container {
   display: flex;
@@ -82,7 +82,7 @@
   margin: 1.5rem;
   box-shadow: none;
   border: none;
-  background-color: rgba(229, 229, 229, 0.7);
+  background-color: var(--main-grey-fade); 
 }
 .friend-list-container .spinner-loading-container > img {
   height: 35px;

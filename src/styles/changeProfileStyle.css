@@ -1,6 +1,6 @@
 .edit-profile-container {
   padding: 0 1rem;
-  background-color: rgba(229, 229, 229, 0.5);
+  background-color: var(--main-grey-fade); 
   width: calc(100vw - 2rem);
 }
 .edit-profile-container .edit-profile-mode {

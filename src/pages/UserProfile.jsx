@@ -1,9 +1,7 @@
 import { useState, useContext } from "react";
 import { myContext } from "../contexts/Context";
-import useFetch from "../hooks/useFetch";
 import useAxios from "../hooks/useAxios";
 import Profile from "../components/Profile";
-import PostList from "../components/PostList";
 import PostUnit from "../components/PostUnit";
 import ChangeProfile from "../components/ChangeProfile";
 import decodeEscapedData from "../utility/escape";
@@ -22,8 +20,6 @@ const UserProfile = ({ setBg }) => {
       "Authorization": `Bearer ${access}`
     }
   }
-  // useFetch line works, but going to shift everything to axios
-  // const { data, isLoading, error } = useFetch(url, auth)
   const { data, isLoading, error } = useAxios(url, auth)
 
   // todo: this is repetitive content (also on OtherProfile) - try to refactor 8/24

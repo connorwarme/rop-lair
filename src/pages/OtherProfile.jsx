@@ -2,8 +2,6 @@ import { useContext, useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { myContext } from "../contexts/Context";
 import axios from "axios";
-import useAxios from "../hooks/useAxios";
-import useFetch from "../hooks/useFetch";
 import Profile from "../components/Profile";
 import PostUnit from "../components/PostUnit";
 import decodeEscapedData from "../utility/escape";

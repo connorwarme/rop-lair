@@ -1,6 +1,5 @@
 /* eslint-disable react/prop-types */
 import { Link } from "react-router-dom";
-import OtherProfile from "../pages/OtherProfile";
 import AddFriend from "./AddFriend";
 import decodeEscapedData from "../utility/escape";
 import icon from "../images/icons/accountIcon.svg"
@@ -10,7 +9,6 @@ const UserUnit = ({ userObject, profile, photo, setList }) => {
   return ( 
     <>
       <div className="userUnit-container">
-        {/* <Link to={`/profile/${profile._id}`} element={<OtherProfile />} > */}
         <Link to={`/profile/${profile._id}`}  >
           <div className="userUnit-content">
             { photo && <img src={photo} alt="Icon" /> }

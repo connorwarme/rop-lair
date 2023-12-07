@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useContext } from 'react';
-import { redirect, useNavigate } from 'react-router-dom';
-import { saveObject, returnObject } from '../utility/ls';
+import { useState, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { saveObject } from '../utility/ls';
 import { myContext } from '../contexts/Context';
 import banner from "../images/titlebanner.png"
 import errorIcon from "../images/icons/error.svg" 
@@ -107,7 +107,6 @@ const Login = () => {
   }
   const google = () => {
     window.open('https://rings-of-power.fly.dev/auth/google', "_self")
-    // handleOAuth('google')
   }
 
   const facebook = () => {

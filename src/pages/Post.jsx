@@ -6,7 +6,6 @@ import ChangePost from '../components/ChangePost';
 import Like from '../components/Like';
 import Comment from '../components/Comment';
 import AddComment from '../components/AddComment';
-import useAxios from '../hooks/useAxios';
 import decodeEscapedData from '../utility/escape';
 import custom from "../images/icons/custom2.svg"
 import bgPhoto from "../images/gallery/wallpaper-goodvsevil.jpg"
@@ -15,7 +14,7 @@ import "../styles/postDetailStyle.css"
 const Post = ({ setBg }) => {
   const { id } = useParams() 
   const location = useLocation()
-  const { userObject, access, makeHeader } = useContext(myContext)
+  const { userObject, makeHeader } = useContext(myContext)
   const navigate = useNavigate()
   const [post, setPost] = useState({
     title: "",

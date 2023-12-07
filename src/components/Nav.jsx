@@ -1,4 +1,4 @@
-import { useState, useContext, useEffect, useRef } from "react";
+import { useState, useContext, useRef } from "react";
 import { Link } from "react-router-dom"
 import axios from "axios";
 import { clearStorage } from "../utility/ls";
@@ -78,15 +78,6 @@ const Nav = () => {
           userObject === null && (
             <>
               <div ref={dropdownRef} className="hidden-div"></div>
-              {/* <div className="outside-nav">
-                <h1>Fan Lair</h1>
-                <div className="nav-spacer"></div>
-                <div className="nav-links">
-                  <Link to="/login" className="login">Login</Link>
-                  <Link to="/signup" className="signup">Sign-Up</Link>
-                  <div ref={dropdownRef} className="hidden-div"></div>
-                </div>
-              </div> */}
             </>
           )
         }

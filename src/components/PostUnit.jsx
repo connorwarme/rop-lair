@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 
 import { useState, useEffect } from "react"
-import { Link, useLocation } from "react-router-dom"
+import { Link } from "react-router-dom"
 import Like from "./Like"
 import Comment from "./Comment"
 import AddComment from "./AddComment"
@@ -21,8 +21,6 @@ const PostUnit = ( { user, post, author, photo, makeHeader }) => {
   })
   const [likesArr, setLikesArr] = useState([])
   const [showComments, setShowComments] = useState(false)
-
-  // const location = useLocation()
 
   useEffect(() => {
     if (post) {

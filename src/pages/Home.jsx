@@ -1,21 +1,15 @@
-import { useEffect, useState, useContext } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useContext } from 'react';
 import { myContext } from '../contexts/Context';
-import axios from 'axios';
 import useAxios from '../hooks/useAxios';
 import PostUnit from '../components/PostUnit';
 import ropBanner from '../images/titlebanner.png'
-import spinner from "../images/icons/spinner.svg"
 import custom from "../images/icons/custom2.svg"
 import mainBgImg from "../images/gallery/wallpaper-city.jpg"
 import "../styles/homeStyle.css"
 
 const Home = ({ setBg }) => {
-  const [posts, setPosts] = useState([])
-  const [errors, setErrors] = useState(null)
 
-  const { userObject, access, makeHeader } = useContext(myContext)
-  const location = useLocation()
+  const { userObject, makeHeader } = useContext(myContext)
   
   const url = "https://rings-of-power.fly.dev/posts"
   const auth = { headers: makeHeader()}

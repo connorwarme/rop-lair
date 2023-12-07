@@ -15,7 +15,7 @@ const Like = ({ id, likes, setLikes, user }) => {
   const [userLikes, setUserLikes] = useState(false)
   const [likeText, setLikeText] = useState('Be the first to like this post.')
 
-  const { access, makeHeader } = useContext(myContext)
+  const { makeHeader } = useContext(myContext)
 
   const findUserLike = () => {
     const userLike = likes.filter(like => like.author === user._id)

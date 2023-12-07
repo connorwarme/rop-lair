@@ -37,7 +37,6 @@ const SignUp = ({ cancelFn }) => {
   const handleSubmit = (e) => {
     e.preventDefault()
     setLoading(true)
-    console.log('submit form')
     const url = "https://rings-of-power.fly.dev/signup"
     const account = getState()
     axios.post(url, account)
@@ -49,7 +48,6 @@ const SignUp = ({ cancelFn }) => {
         setLoading(false)
         navigate(`/`)
       } else if (res.status === 200 && res.data.errors) {
-        console.log(res.data)
         setLoading(false)
         setErrors(res.data.errors)
         handleErrors(res.data.errors)
@@ -78,7 +76,6 @@ const SignUp = ({ cancelFn }) => {
   const handleErrors = (array) => {
     const getArray = Array.from(array)
     getArray.forEach(index => {
-      console.log(index.path)
       if (index.path) {
         if (index.path == 'first_name') {
           setFirst_NameErr(true)

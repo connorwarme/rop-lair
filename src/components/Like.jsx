@@ -55,7 +55,6 @@ const Like = ({ id, likes, setLikes, user }) => {
     axios.post(url, {}, { headers: makeHeader() })
     .then(res => {
       if (res.status === 200 && res.data.post) {
-        console.log(res.data.post)
         setLikes(res.data.post.likes)
         // it worked -> need to fire an update
         // should i have a state value for number of likes? because I'll need the value and text to update
@@ -70,7 +69,6 @@ const Like = ({ id, likes, setLikes, user }) => {
     axios.post(url, {}, { headers: makeHeader() })
     .then(res => {
       if (res.status === 200 && res.data.post) {
-        console.log(res.data.post)
         setLikes(res.data.post.likes)
       } else if (res.data.errors) {
         console.log(res.data.errors)

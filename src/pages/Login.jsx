@@ -34,7 +34,6 @@ const Login = () => {
   const url = 'https://rings-of-power.fly.dev/auth/local'
 
   const getData = () => {
-    console.log('get data fired!')
     return { email: email, password: password }
   }
 
@@ -66,7 +65,6 @@ const Login = () => {
     })
     .then(data => {
       // this is giving me user object, access token, and refresh token
-      console.log(data)
       if (data.errors) {
         setLoading(false)
         // remove password
@@ -85,7 +83,6 @@ const Login = () => {
         setUserObject(data.user)
         setAccess(data.accessToken)
         // need to deal w/ empty return value so it doesn't throw an error..
-        console.log(returnObject("access"))
         // route user to home page w/ data
         navigate('/', { state: data })
       }
@@ -140,7 +137,6 @@ const Login = () => {
     })
     .then(intel => {
       // this is giving me user object, access token
-      console.log(intel)
       if (intel.errors) {
         console.log(intel.errors)
       } else {
@@ -161,7 +157,6 @@ const Login = () => {
   // not using currently (7/13)
   const handleOAuth = (platform) => {
     const url = `https://rings-of-power.fly.dev/auth/` + platform
-    console.log(url)
 
     fetch(url, {
       // options
@@ -179,19 +174,15 @@ const Login = () => {
         error.status = 500
         return res.json({ errors: error })
       }
-      console.log(res)
       return res.json()
     })
     .then(data => {
-      console.log(data)
       if (data.errors) {
         setOAuthError(data.errors)
       } else {
         setOAuthError(null)
         // save token to local storage
         saveObject(data.access, "access")
-        // need to deal w/ empty return value so it doesn't throw an error..
-        console.log(returnObject("access"))
         // route user to home page w/ data
         navigate('/', { state: data })
       }

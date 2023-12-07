@@ -46,7 +46,6 @@ const AddFriend = ({ list, setList, profileId, full }) => {
     axios.post("https://rings-of-power.fly.dev/sendrequest", { userid: profileId }, { headers: { "Authorization": `Bearer ${access}` }})
     .then(res => {
       if (res.status === 200 && res.data.userList) {
-        console.log(res.data)
         setErrors(null)
         setList(res.data.userList)
         // todo: add visual confirmation (green check) if request went through successfully
@@ -65,7 +64,6 @@ const AddFriend = ({ list, setList, profileId, full }) => {
     // currently friends, want to remove from friend list
     axios.post("https://rings-of-power.fly.dev/deletefriend", { userid: profileId }, { headers: { "Authorization": `Bearer ${access}` }})
     .then(res => {
-      console.log(res.data)
       if (res.status === 200 && res.data.userList) {
         setErrors(null)
         setList(res.data.userList)
@@ -84,7 +82,6 @@ const AddFriend = ({ list, setList, profileId, full }) => {
     // user has sent request, wants to rescind request
     axios.post("https://rings-of-power.fly.dev/deletefriend", { userid: profileId }, { headers: { "Authorization": `Bearer ${access}` }})
     .then(res => {
-      console.log(res.data)
       if (res.status === 200 && res.data.userList) {
         setErrors(null)
         setList(res.data.userList)
@@ -101,7 +98,6 @@ const AddFriend = ({ list, setList, profileId, full }) => {
     // profile has sent request, user clicks to accept
     axios.post("https://rings-of-power.fly.dev/acceptrequest", { userid: profileId }, { headers: { "Authorization": `Bearer ${access}` }})
     .then(res => {
-      console.log(res.data)
       if (res.status === 200 && res.data.userList) {
         setErrors(null)
         setList(res.data.userList)
@@ -117,7 +113,6 @@ const AddFriend = ({ list, setList, profileId, full }) => {
     // profile has sent request, user clicks to ignore
     axios.post("https://rings-of-power.fly.dev/deletefriend", { userid: profileId }, { headers: { "Authorization": `Bearer ${access}` }})
     .then(res => {
-      console.log(res.data)
       if (res.status === 200 && res.data.userList) {
         setErrors(null)
         setList(res.data.userList)

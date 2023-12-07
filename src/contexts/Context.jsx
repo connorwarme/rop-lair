@@ -11,17 +11,6 @@ const Context = (props) => {
   const [access, setAccess] = useState(null)
   const [errorMsg, setErrorMsg] = useState(null)
 
-
-  // useEffect(() => {
-  //   // if in local storage, save to React state
-  //   // need a check (scenario where return object comes back as null)
-  //   const accessToken = returnObject("access")
-  //   console.log(accessToken)
-  //   if (accessToken) {
-  //     setAccess(accessToken)
-  //   }
-  //   console.log(access)
-  // }, [])
   useEffect(() => {
     const accessToken = JSON.parse(returnObject("access"))
     const abortController = new AbortController()
@@ -36,7 +25,6 @@ const Context = (props) => {
       })
         .then(res => {
           if (res.status === 200 && res.data.user) {
-            console.log(res.data)
             setUserObject(res.data.user)
           // save access and refresh tokens to local storage?
           }

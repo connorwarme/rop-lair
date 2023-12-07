@@ -20,11 +20,8 @@ const useFetch = (url, auth) => {
       return res.json()
     })
     .then(data => {
-      console.log(data)
       setError(null)
       setData(data)
-      // setLoading(false)
-      console.log('data mode')
       setTimeout(() => {
         setLoading(false)
       }, 1000)

@@ -16,7 +16,6 @@ import Footer from './components/Footer'
 export default function App() {
 
   const { userObject, setUserObject } = useContext(myContext)
-  console.log(userObject)
   // how to utilize userObject?
   // how to protect routes on frontend?
   // how to send auth header when needed?

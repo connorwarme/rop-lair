@@ -75,9 +75,8 @@ const AddPicture = ( photo, setPhoto ) => {
           className="photo"
           accept="image/png, image/jpeg, image/gif"
           onChange={(e) => {
-            handlePhoto(e.target.files[0])
-              ? console.log("successful")
-              : console.log("fail");
+            // does this need to be run twice?! 12/07
+            // handlePhoto(e.target.files[0])
             if (!handlePhoto(e.target.files[0])) {
               e.target.value = null;
               // other option:

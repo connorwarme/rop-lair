@@ -39,7 +39,6 @@ const Post = ({ setBg }) => {
   // to see if value in location state or not
   useEffect(() => {
     if (location.state) {
-      console.log('location state mode')
       setPost({
         title: location.state.post.title,
         // todo: remove switch? 7/25
@@ -57,7 +56,6 @@ const Post = ({ setBg }) => {
       // added 9/22
       setPhoto(location.state.photoPath)
     } else {
-      console.log('axios mode')
       axios.get("https://rings-of-power.fly.dev/post/" + id, { headers: makeHeader() })
       .then(res => {
         if (res.status === 200 && res.data) {
@@ -95,7 +93,6 @@ const Post = ({ setBg }) => {
     const url = "https://rings-of-power.fly.dev/deletepost/" + id
     axios.post(url, {}, { headers: makeHeader() })
     .then(res => {
-      console.log(res)
       // success message?
       if (res.status === 200 && res.data.message) {
         navigate("/")

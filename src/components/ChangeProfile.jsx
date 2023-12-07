@@ -60,7 +60,6 @@ const ChangeProfile = ({ user, setEdit, makeHeader, setUserObject, setUserPhoto,
         type: photo.type,
         data: photoBase,
       }
-      console.log(image.type)
       photoObj.photoRadio = 'new'
       photoObj.photo = image
     }

@@ -20,7 +20,6 @@ const Temp = () => {
       withCredentials: true,
     })
     .then(res => {
-      console.log(res)
       if (res.status === 200 && res.data.accessToken) {
         // should be getting user and accessToken and refreshToken
         // i guess i just need the tokens...

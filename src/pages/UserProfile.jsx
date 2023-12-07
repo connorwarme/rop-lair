@@ -33,7 +33,6 @@ const UserProfile = ({ setBg }) => {
     setUserObject(newObj)
   }
   const handleShowEdit = () => {
-    console.log('show edit')
     setEdit(true)
   }
   const getCurrentPhoto = () => {

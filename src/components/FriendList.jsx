@@ -6,8 +6,8 @@ import custom from "../images/icons/custom2.svg"
 import "../styles/friendListStyle.css"
 
 const FriendList = ({ username, listId, makeHeader, setLoading, userObject, setList }) => {
-
-  const url = `https://rings-of-power.fly.dev/friendlist/${listId._id}`
+  
+  const url = `https://rings-of-power.fly.dev/friendlist/${listId}`
   const auth = { headers: makeHeader()}
   const { data, isLoading, error } = useAxios(url, auth)
 

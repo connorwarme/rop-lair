@@ -6,8 +6,6 @@ import Login from './pages/Login'
 import Users from './pages/Users'
 import Post from './pages/Post'
 import Temp from './components/Temp'
-import { useState, useContext } from 'react'
-import { myContext } from './contexts/Context'
 import CreatePost from './pages/CreatePost'
 import UserProfile from './pages/UserProfile'
 import OtherProfile from './pages/OtherProfile'
@@ -15,7 +13,6 @@ import Footer from './components/Footer'
 
 export default function App() {
 
-  const { userObject, setUserObject } = useContext(myContext)
   // how to utilize userObject?
   // how to protect routes on frontend?
   // how to send auth header when needed?

@@ -3,9 +3,6 @@ import { useState, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { myContext } from "../contexts/Context";
-import AddPicture from "./AddPicture";
-import { saveObject } from "../utility/ls";
-import useAxios from "../hooks/useAxios";
 import decodeEscapedData from '../utility/escape';
 import errorIcon from "../images/icons/error.svg"
 import "../styles/changePostStyle.css"
@@ -40,14 +37,7 @@ const ChangePost = ({ url, post, id, edit, save, savePhoto, currentPhoto }) => {
   const handleChange = (e, updateFn) => {
     updateFn(e.target.value)
   }
-  // this version works. trying to add photo element to the equation.. 09/22
-  // const getState = () => {
-  //   return { title, content }
 
-  // added on 9/22
-  const getPhoto = (input) => {
-    return input
-  }
   // added on 9/22
   const getState = () => {
     const post = { 
@@ -81,6 +71,7 @@ const ChangePost = ({ url, post, id, edit, save, savePhoto, currentPhoto }) => {
 
     return () => URL.revokeObjectURL(objectURL)
   }, [photo])
+
   // added on 9/22
   // handle photo
   // check if they provided an image file
@@ -229,27 +220,6 @@ const ChangePost = ({ url, post, id, edit, save, savePhoto, currentPhoto }) => {
               </div>
             </fieldset>
           </div>
-          {/* <div className="form-input">
-            <label htmlFor="photo">Photo</label>
-            <input type="file" id="photo" className="photo" accept="image/png, image/jpeg, image/gif" onChange={(e) => {
-              if (!handlePhoto(e.target.files[0])) {
-                e.target.value = null
-                // other option:
-                // instead of clearing value, could highlight value in red w/ exclamation point
-                // if value is photo file, could highlight with green border
-              }
-            }}
-            />
-            <br></br>
-            { photoError && <span>{photoError}</span> } 
-          </div>
-          { preview && (
-            <>
-              <div className="photo-preview">
-                <img src={preview} alt="Photo" height={'250px'}/>
-              </div>
-            </>
-          )} */}
           <button type="button" onClick={handleCancel}>Cancel</button>
           <button type="submit">Save</button>
           { errors && (

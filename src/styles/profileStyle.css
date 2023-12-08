@@ -88,7 +88,7 @@
 }
 @media screen and (min-width: 464px) { 
   .profile-content .profile-picture {
-    max-width: 700px;
+    max-width: 600px;
   }
   .profile-content-container {
     max-width: 700px;

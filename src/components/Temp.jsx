@@ -25,8 +25,7 @@ const Temp = () => {
         saveObject(res.data.accessToken, "access")
         // navigate to home page
         // do i need to pass through any state?
-        // just commented 11/23 - needs to go back after styling page
-        // navigate("/")
+        navigate("/")
       }
     })
     .catch(err => {

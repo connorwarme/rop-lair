@@ -16,6 +16,7 @@ const Temp = () => {
   useEffect(() => {
     axios.get("https://rings-of-power.fly.dev/auth/oauth", {
       withCredentials: true,
+      // headers: {'Access-Control-Allow-Origin': 'https://connorwarme.github.io'},
     })
     .then(res => {
       if (res.status === 200 && res.data.accessToken) {

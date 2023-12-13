@@ -23,6 +23,7 @@ const Nav = () => {
   
   const logout = () => {
     axios.post("https://rings-of-power.fly.dev/auth/logout", { headers: makeHeader() })
+    // axios.post("http://localhost:3000/auth/logout", { headers: makeHeader() })
       .then(res => {
         if (res.data) {
           clearStorage("access")

@@ -17,6 +17,7 @@ const Context = (props) => {
     if (accessToken) {
       setAccess(accessToken)
       axios.get("https://rings-of-power.fly.dev/auth/user", {
+      // axios.get("http://localhost:3000/auth/user", {
         headers: {
           "Authorization": "Bearer "+ accessToken,
         }, 
@@ -36,7 +37,9 @@ const Context = (props) => {
             console.log('fetch aborted (component unmounted before completed)')
           } else {
             console.log(err)
-            setErrorMsg(`${err.response.status} ${err.response.statusText}: ${err.response.data.message} Please try again.`)
+            if (err.response) {
+              setErrorMsg(`${err.response.status} ${err.response.statusText}: ${err.response.data.message} Please try again.`)
+            } 
           }
         })
       }

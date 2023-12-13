@@ -107,11 +107,15 @@ const Login = () => {
     })
   }
   const google = () => {
+    // changing on 12/11 to try and debug
     window.open('https://rings-of-power.fly.dev/auth/google', "_self")
+    // window.open('http://localhost:3000/auth/google', "_self")
   }
 
   const facebook = () => {
+    // changing on 12/11 to try and debug
     window.open('https://rings-of-power.fly.dev/auth/facebook', "_self")
+    // window.open('http://localhost:3000/auth/facebook', "_self")
   }
   const handleGuest = () => {
     const url = 'https://rings-of-power.fly.dev/auth/guest'

@@ -14,7 +14,9 @@ const Temp = () => {
   const navigate = useNavigate()
 
   useEffect(() => {
+    // changing on 12/11 to try and debug
     axios.get("https://rings-of-power.fly.dev/auth/oauth", {
+    // axios.get("http://localhost:3000/auth/oauth", {
       withCredentials: true,
       // headers: {'Access-Control-Allow-Origin': 'https://connorwarme.github.io'},
     })

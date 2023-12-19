@@ -15,19 +15,44 @@ const Temp = () => {
 
   useEffect(() => {
     // changing on 12/11 to try and debug
-    axios.get("https://rings-of-power.fly.dev/auth/oauth", {
+    // axios.get("https://rings-of-power.fly.dev/auth/oauth", {
+    // // axios.get("http://localhost:3000/auth/oauth", {
+    //   withCredentials: true,
+    // })
+    // .then(res => {
+    //   if (res.status === 200 && res.data.accessToken) {
+    //     // should be getting user and accessToken and refreshToken
+    //     // i guess i just need the tokens...
+    //     setAccess(res.data.accessToken)
+    //     saveObject(res.data.accessToken, "access")
+    //     // navigate to home page
+    //     // do i need to pass through any state?
+    //     navigate("/")
+    //   }
+    // })
+    // .catch(err => {
+    //   console.log(err)
+    //   // if they don't get a token, then redirect to login page?
+    //   navigate("/login")
+    // })
+    // fetch("https://rings-of-power.fly.dev/auth/oauth", {
     // axios.get("http://localhost:3000/auth/oauth", {
-      withCredentials: true,
-      // headers: {'Access-Control-Allow-Origin': 'https://connorwarme.github.io'},
+    fetch("https://rings-of-power.fly.dev/auth/oauth", {
+      method: 'GET',
+      credentials: 'include',
     })
     .then(res => {
-      if (res.status === 200 && res.data.accessToken) {
-        // should be getting user and accessToken and refreshToken
-        // i guess i just need the tokens...
-        setAccess(res.data.accessToken)
-        saveObject(res.data.accessToken, "access")
+      if (!res.ok) {
+          throw Error('There was a problem getting a response from the server.')
+        }
+        return res.json()
+    })
+    .then(data => {
+      console.log(data)
+      if (data.accessToken) {
+        setAccess(data.accessToken)
+        saveObject(data.accessToken, "access")
         // navigate to home page
-        // do i need to pass through any state?
         navigate("/")
       }
     })

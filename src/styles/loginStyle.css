@@ -160,8 +160,8 @@
 .google-login > button {
   padding: 0;
 }
-.facebook-login > button:hover,
-.google-login > button:hover {
+.facebook-login > button:hover img,
+.google-login > button:hover img {
   filter: invert(99%) sepia(0%) saturate(482%) hue-rotate(150deg) brightness(117%) contrast(80%);
 }
 .facebook-login img,

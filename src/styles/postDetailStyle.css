@@ -6,6 +6,8 @@
 }
 .post-detail-body:hover {
   background-color: rgba(229, 229, 229, 0.75);
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
 }
 .post-detail-content .title {
   padding-top: 0.5rem;

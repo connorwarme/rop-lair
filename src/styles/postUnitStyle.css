@@ -4,7 +4,7 @@
   border: 1px solid var(--main-blue-dark);
   border-radius: 10px;
   background-color: rgba(229, 229, 229, 0.9);
-  box-shadow: 0 0 3px 0.5px var(--main-blue-dark);
+  box-shadow: 0 0 3px 0px var(--main-blue-dark);
   transition: all 150ms ease-in-out;
 }
 .post-title-container  {
@@ -60,7 +60,7 @@
 @media screen and (min-width: 464px) {
   .post-container {
     margin: 1rem auto;
-    border-width: 3px;
+    border-width: 2px;
     max-width: 80vw;
   }
 }

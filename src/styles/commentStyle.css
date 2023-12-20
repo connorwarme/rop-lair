@@ -2,6 +2,8 @@
   border-top: 1rem solid var(--main-gold);
   border-bottom: 1rem solid var(--main-gold);
   padding: 1rem;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 .comments-container button {
   font-family: var(--font-body);

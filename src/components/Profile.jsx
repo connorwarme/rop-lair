@@ -9,7 +9,7 @@ const Profile = ({ userObject, profile, photoPath, setList }) => {
 
   // todo: add favorites content 8/24
   const stockStyle = {
-    'max-width': '300px',
+    width: '300px',
     filter: 'invert(14%) sepia(10%) saturate(2929%) hue-rotate(176deg) brightness(96%) contrast(91%)',
   }
   

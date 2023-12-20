@@ -14,7 +14,7 @@
   border: 1px solid var(--main-blue-dark);
   border-radius: 10px;
   margin-bottom: 10vh;
-  box-shadow: 0 0 10px 0.5px var(--main-blue-dark);
+  box-shadow: 0 0 3px 0px var(--main-blue-dark);
 }
 .friend-list-content .content-loading {
   padding-top: 1rem;
@@ -121,7 +121,7 @@
     padding: 0.5rem 2rem;
   }
   .friend-list-content {
-    border-width: 3px;
+    border-width: 2px;
   }
 }
 @media screen and (min-width: 1000px) {

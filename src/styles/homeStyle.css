@@ -60,7 +60,8 @@
   background-color: var(--main-grey-fade); 
   padding: 2rem 4rem;
   border-radius: 10px;
-  box-shadow: 0 0 3px 1px var(--main-blue-dark);
+  border: 1px solid var(--main-blue-dark);
+  box-shadow: 0 0 3px 0px var(--main-blue-dark);
 }
 .spinner-loading-container > img {
   height: 60px;
@@ -93,6 +94,7 @@
   }
   .success-container .spinner-loading-container {
     padding: 1rem 2rem;
+    border-width: 2px;
   }
 }
 @media screen and (min-width: 1000px) {

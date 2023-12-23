@@ -9,7 +9,7 @@ import "../styles/userListStyle.css"
 
 const Users = ({ setBg }) => {
 
-  const { userObject, setUserObject, access } = useContext(myContext)
+  const { userObject, setUserObject, access, makeHeader } = useContext(myContext)
 
   const url = 'https://rings-of-power.fly.dev/users/'
   const auth = {
@@ -42,7 +42,7 @@ const Users = ({ setBg }) => {
               data.users.map(user => {
                 return (
                   <>
-                    <UserUnit key={user._doc._id} userObject={userObject} profile={user._doc} photo={user.photoImagePath ? user.photoImagePath : false} setList={setList} />
+                    <UserUnit key={user._id} userObject={userObject} profile={user} photo={user.photoImagePath ? user.photoImagePath : false} setList={setList} makeHeader={makeHeader} />
                   </>
                 )
               })

@@ -208,7 +208,6 @@ const ChangePost = ({ url, post, id, edit, save, savePhoto, currentPhoto }) => {
                           // if value is photo file, could highlight with green border
                         }
                       }} />
-                      <br></br>
                      { photoError && <span>{photoError}</span> }
                     </div>
                   </>

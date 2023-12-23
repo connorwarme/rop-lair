@@ -197,8 +197,7 @@ const ChangeProfile = ({ user, setEdit, makeHeader, setUserObject, setUserPhoto,
                           // if value is photo file, could highlight with green border
                         }
                       }} />
-                      <br></br>
-                     { photoError && <span>{photoError}</span> }
+                     { photoError && <p>{photoError}</p> }
                     </div>
                   </>
                 )}

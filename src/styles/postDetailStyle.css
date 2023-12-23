@@ -23,6 +23,8 @@
 .post-detail-content img {
   max-height: 50vh;
   object-fit: cover;
+  border-radius: 10px;
+  margin: 0.5rem 0;
 }
 .post-detail-content .text {
   padding: 0.5rem 1rem 1rem 1rem;

@@ -48,7 +48,6 @@ const Temp = () => {
         return res.json()
     })
     .then(data => {
-      console.log(data)
       if (data.accessToken) {
         setAccess(data.accessToken)
         saveObject(data.accessToken, "access")

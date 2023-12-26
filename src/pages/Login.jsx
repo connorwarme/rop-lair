@@ -109,12 +109,13 @@ const Login = () => {
     window.open('https://rings-of-power.fly.dev/auth/google', "_self")
     // window.open('http://localhost:3000/auth/google', "_self")
   }
-
-  const facebook = () => {
+  // no longer user fb login (Meta requires a business account + verification)
+  // but my code was working, allowed me to login via fb account
+  // const facebook = () => {
     // changing on 12/11 to try and debug
-    window.open('https://rings-of-power.fly.dev/auth/facebook', "_self")
+    // window.open('https://rings-of-power.fly.dev/auth/facebook', "_self")
     // window.open('http://localhost:3000/auth/facebook', "_self")
-  }
+  // }
   const handleGuest = () => {
     const url = 'https://rings-of-power.fly.dev/auth/guest'
     const data = {
@@ -263,9 +264,9 @@ const Login = () => {
                 <div className="google-login">
                   <button onClick={google}><img src={gIcon}></img>Continue with Google+</button>
                 </div>
-                <div className="facebook-login">
+                { /* <div className="facebook-login">
                   <button onClick={facebook}><img src={fbIcon}></img>Continue with Facebook</button>
-                </div>
+                </div> */ }
                 <div className="oauth-error">
                   { errorMsg && <div><img src={errorIcon}/><p>{errorMsg}</p></div> }
                   { oauthError && <div><img src={errorIcon}/><p>{oauthError}</p></div>}

@@ -85,6 +85,9 @@
   filter: var(--filter-blue);
   margin-top: 1rem;
 }
+.spinner-loading-photo-container > img {
+  height: 60px;
+}
 @media screen and (min-width: 464px) {
   .user-list-container {
     width: 80vw;

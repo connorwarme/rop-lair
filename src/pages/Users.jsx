@@ -39,7 +39,8 @@ const Users = ({ setBg }) => {
           <div className="user-list-container">
             <h1>Fellow Fans</h1>
             { (data && data.users) && (
-              data.users.map(user => {
+              data.users.sort((a,b) => (a.family_name.toUpperCase() > b.family_name.toUpperCase()) ? 1 : ((b.family_name.toUpperCase() > a.family_name.toUpperCase()) ? -1 : 0 )).map(user => {
+              {/* data.users.map(user => { */}
                 return (
                   <>
                     <UserUnit key={user._id} userObject={userObject} profile={user} photo={user.photoImagePath ? user.photoImagePath : false} setList={setList} makeHeader={makeHeader} />

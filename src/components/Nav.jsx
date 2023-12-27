@@ -42,7 +42,7 @@ const Nav = () => {
 
   return ( 
     <>
-      <div className="nav-container" id="top">
+      <div className="nav-container" id="top" style={ !userObject ? {backgroundColor: 'transparent'} : null }>
         { userObject &&
         <div className="nav-links-full">
           <Link to="/" className="fan-lair small" title="Home">

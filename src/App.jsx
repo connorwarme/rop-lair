@@ -23,6 +23,7 @@ export default function App() {
     rootDiv.style.backgroundPosition = position ? position : 'center center'
     rootDiv.style.backgroundRepeat = 'no-repeat'
     rootDiv.style.backgroundAttachment = 'fixed'
+    rootDiv.style.backgroundSize = 'cover'
   }
 
   return (

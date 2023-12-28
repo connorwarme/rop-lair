@@ -1,6 +1,6 @@
 # [Rings of Power: Fan Lair](https://connorwarme.github.io/rop-lair/login)
 
-![homepage](https://github.com/connorwarme/pro-site/blob/main/src/images/screenshots/pro-home.png?raw=true "homepage preview")  
+![homepage](https://github.com/connorwarme/rop-lair/blob/main/public/screenshots/homeshort.png?raw=true "homepage preview")  
 
 ## objectives
 * build a social media app with a LOTR: Rings of Power theme  
@@ -21,11 +21,18 @@
 
 ## screenshots  
 * full screen  
-![gallery](https://github.com/connorwarme/pro-site/blob/main/src/images/screenshots/pro-gallery.png?raw=true "gallery preview")  
-![dietitian](https://github.com/connorwarme/pro-site/blob/main/src/images/screenshots/pro-diet.png?raw=true "dietitian preview")  
+![profile](https://github.com/connorwarme/rop-lair/blob/main/public/screenshots/prof1.png?raw=true "profile preview")  
+![profile](https://github.com/connorwarme/rop-lair/blob/main/public/screenshots/prof2.png?raw=true "profile preview continued")   
+![post](https://github.com/connorwarme/rop-lair/blob/main/public/screenshots/post.png?raw=true "post preview")  
+![users](https://github.com/connorwarme/rop-lair/blob/main/public/screenshots/users.png?raw=true "users preview")
+![homepage](https://github.com/connorwarme/rop-lair/blob/main/public/screenshots/home2.png?raw=true "homepage preview continued")  
+![login](https://github.com/connorwarme/rop-lair/blob/main/public/screenshots/login.png?raw=true "login preview")    
 * mobile mode  
-![about](https://github.com/connorwarme/pro-site/blob/main/src/images/screenshots/pro-about.png?raw=true "about Amity on mobile preview")  
-![contact](https://github.com/connorwarme/pro-site/blob/main/src/images/screenshots/pro-contact.png?raw=true "contact on mobile preview") 
+![home](https://github.com/connorwarme/rop-lair/blob/main/public/screenshots/homemobile.png?raw=true "homepage on mobile preview")  
+![createpost](https://github.com/connorwarme/rop-lair/blob/main/public/screenshots/postmobile.png?raw=true "create post on mobile preview")  
+(The background doesn't repeat on webpage - the background image is fixed.)
+![post](https://github.com/connorwarme/rop-lair/blob/main/public/screenshots/postmobilefull.png?raw=true "post on mobile preview")  
+![create](https://github.com/connorwarme/rop-lair/blob/main/public/screenshots/createmobile.png?raw=true "create account on mobile preview") 
 
 ### for improvement:
 * what are the best practices for validating and sanitizing data? I employed express-validator, using it to handle the data before I saved anything to the database. But then I had to deal with "unescaping" data within React, otherwise it would just print out with the html entity ("yoshi&*#*3*9*;s party" instead of "yoshi's party"). I spent a couple days trying to find the right way to deal with this issue. Some folks recommended saving the raw data to the db and then validating/sanitizing on output. But others said to immediately validate and sanitize user input... which left me in a quandry. Eventually, I found a bit of a work around (check out my "escape.js" file, but that requires running the function each time I want to display text data from the db). But I don't know the proper method - let me know if you have any insights to share!

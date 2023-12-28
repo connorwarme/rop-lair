@@ -4,7 +4,7 @@
 
 ## objectives
 * build a social media app with a LOTR: Rings of Power theme  
-* showcase frontend (React) and backend (Express w/ MongoDB) skills
+* showcase frontend (React) and backend (Express w/ MongoDB - [view repo](https://github.com/connorwarme/rings-of-power)) skills
 * authentication with PassportJS - options for local or via Google (implement oauth, creating user from account details) 
 * users can edit their profile page (including photo)
 * users can create/edit posts, option to include photo

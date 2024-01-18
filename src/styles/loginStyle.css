@@ -108,8 +108,9 @@
 .login-content button:focus {
   outline: 2px solid var(--main-blue-dark);
 }
-.local-login > button {
-  padding: 0;
+.local-login > button,
+.guest-login > button {
+  padding: 1.5px 0;
 }
 .local-login > button > span {
   padding: 0.5rem 0.75rem;

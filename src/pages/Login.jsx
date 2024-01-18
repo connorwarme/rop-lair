@@ -26,6 +26,7 @@ const Login = () => {
   const [oauthError, setOAuthError] = useState(null)
   const [login, setLogin] = useState(true)
   const [signup, setSignup] = useState(false)
+  const [guestLoading, setGuestLoading] = useState(false)
 
   // if an error happens verifying the user after oauth login...
   const { setUserObject, setAccess, errorMsg } = useContext(myContext)
@@ -117,6 +118,7 @@ const Login = () => {
     // window.open('http://localhost:3000/auth/facebook', "_self")
   // }
   const handleGuest = () => {
+    setGuestLoading(true)
     const url = 'https://rings-of-power.fly.dev/auth/guest'
     const data = {
       email: 'filler',
@@ -132,7 +134,7 @@ const Login = () => {
     .then(response => {
       if (!response.ok) {
         const error = new Error()
-        setLoading(false)
+        setGuestLoading(false)
         setError('There was a problem logging in, please try again.')
         error.status = 500
       }
@@ -272,7 +274,19 @@ const Login = () => {
                   { oauthError && <div><img src={errorIcon}/><p>{oauthError}</p></div>}
                 </div>
                 <div className="guest-login">
-                  <button onClick={handleGuest}>Continue as Guest</button>
+                  <button onClick={handleGuest}>
+                    { (!success && !guestLoading) && <span>Continue as Guest</span> }
+                    { (!success && guestLoading) && (
+                      <>
+                        <div className="guest-login-loading">
+                          <span className="friend-loader-element"></span>
+                          <span className="friend-loader-element"></span>
+                          <span className="friend-loader-element"></span>
+                        </div>
+                      </>
+                    )}
+                  </button>
+
                 </div>
                 <div className="or-divider">
                   <h3>OR</h3>
